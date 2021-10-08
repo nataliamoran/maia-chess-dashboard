@@ -177,3 +177,64 @@ and/or collaborative process.
     * Explain why the option you decided on makes the most sense for your team/product/users.
  * Essentially, we want to understand how (and why) you ended up with your current product and process plan.
  * This section is useful for important information regarding your decision making process that may not necessarily fit in other sections. 
+
+----
+
+### Partner Selection
+After the group is formed, we first let each team member come up with their top three partners based on interest and abilities.
+We soon found out that we have a shared interest in AI. Follow this theme, partners that we have considered includes:
+ * [CSSLab](https://docs.google.com/document/d/1MHo_cUcqRSHbUD0DN9GiC2_6x4L1dvPczQQBnrCNg6U/edit)
+ * [Software Engineering Lab](https://docs.google.com/document/d/1tdDwwwONTu_Il1r44tNMpEXWAi01XI6z3BMQmpwepYM/edit)
+ * [TAGlab](https://docs.google.com/document/d/1zt4oJpi9BER3QMHpHB2m0is5pGxZ8BjUkaAof1oMznI/edit)
+
+All of them involve building an interface to present an AI-related program.
+
+![alt text](https://i.imgur.com/ubWZvu5.png) 
+
+Three votes are conducted on our discussion board to decide the rank of these partners, where we universally agree that CSSLab is our first partner of choice. The reasons behind this choice include interest in chess and the potential of learning from such research projects. 
+New members who joined after the vote also agreed with CSSLab as the first choice. 
+
+### Website Mockups
+After the meeting with the Partner lead, Reid, we received a lot of interesting insights into the structure and look of the desired application.
+
+Maia uses three major measures to quantify the ability of the user, the state of the game etc ...
+ 
+ * **Performance:** Ratio between difficulty of the move and likeliness of player to play it
+ * **Trickiness:** Defined as the expected-winrate loss for a given player. The trickier the player, the more they “outplay” this statistic, meaning they win when they are expected to lose in a position.
+ * **Entropy:** This statistic describes the probabilistic complexity of a certain position. Will be toned down to be readable by the average user. Essentially   describes how complex the plays of a certain position can be.
+
+![alt text](https://i.imgur.com/yZRpHsa.png) 
+
+Players will be able to select different interest postions within the game and analyze them via. the quantifiers provided by Maia.
+They will be able to see the aggregate of their performance of the various games they uploaded, which will give the user a great insight to their game history. The suggestions for moves in interesting positions will be much more intuitive as Maia will match the moves to the skill level of the player and overall game. This interface will let any user, casual, or professional, gain great insight into the states of various games, and human actions in the games as well.
+
+The scatter plot will allow more advanced users to compare the performance of Maia to Stockfish, on their winrate metrics, meaning the user can quantitatively and qualitatvely be able to compare Maia and Stockfish in real time!
+
+### Teamwork :D
+
+Our team is comprised of many different Computer Science majors from various walks of life. This means:
+ * Our team is extremely dynamic in terms of its skillset
+ * Is comprised of people with various interests in the field of CS
+ * Has members ranging from 3rd year to 5th year of studies with various degrees of experience
+ * We have the ability to learn from one another, and design solutions and applications in various interesting ways, pulling from our knowledge in either pure Computer Science course knowledge, Industry experince, and even hobby knowledge!
+ * Due to this we are able to come up with various awesome designs, whether it comes to frontend GUI, backend multiprocessing etc...
+
+Natalia has extremely in depth knowledge from industry in team collaboration, organization, and work flows, allowing our team to work extremely together, even with our hectic school schedules. 
+
+![alt text](https://i.imgur.com/Mz9W1v4.png) 
+
+Our frontend team comprising of Angel, William, and Robin have extensive experience in frontend ability, and are able to organize their ideas, make mockups, and collaborate effectively to come up with various design for the look of the website. They all ask detailed questions from the Partner to be able to interpret their wishes for the website, and get feedback as to provide an accurate to the Partner user experience.
+
+![alt text](https://i.imgur.com/eUaV2U0.png) 
+![alt text](https://i.imgur.com/by8eYTV.png) 
+
+Our backend team comprised of Natalia, Kevin and Sina, all have various knowledge of backend systems from Industry and school work. The meetings that occur between this team allows all three people to discuss various implementations of the API's based on personal experience, and provide pros and cons of different frameworks as it relates to the clients needs. This allows the team to quickly converge on not only, a near optimal solution for backend tech stack, but also learn a lot in the process!
+
+![alt text](https://i.imgur.com/1t8zY79.jpg) 
+
+
+
+
+
+ 
+
