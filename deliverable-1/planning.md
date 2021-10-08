@@ -17,6 +17,9 @@ of a user’s overall gameplay. To do this we plan to expose three key values: p
 
 ![Chess Board](./images/Q1.png)
 
+[Interactable Mockup](
+https://angelyuan218063.invisionapp.com/prototype/ckuaa4ek700agth01x08c0nbw/play)
+
 #### Q2: Who are your target users?
 Committed chess players from all over the world that want to improve on their chess skills. 
 
@@ -34,11 +37,11 @@ Committed chess players from all over the world that want to improve on their ch
 | **FRUSTRATION**   | He can’t spend money on this and can’t spend a lot of time. The internet he uses is very unstable. Sometimes it becomes very slow and takes a long time for the page to respond.  | 
 
 #### Q3: Why would your users choose your product? What are they using today to solve their problem/need?
-There are a lot of existing superhuman chess engines such as Stockfish that exist in the chess community. And there exist online platforms that provide game-level feedback using those chess engines to the users. However, there are problems with these existing platforms.
+There are a lot of existing superhuman chess engines such as Stockfish that exist in the chess community. And there exist online platforms such as lichess that provide game-level feedback using those chess engines to the users. These platforms are currently used by users to help them improve on their chess skills. However, there are problems with these existing platforms that will cause a user to choose our product instead.
 
-First, the optimal plays that those chess engines generate are often uninterpretable to a human user (as shown from our partner’s research). Since the human user can’t understand why the AI made those plays in the first place, it is hard for the user to learn from those plays and feedback. However, the AI (MAIA) our product will be using takes this in mind and produces human-like optimal plays that our user can understand and learn from.
+First, the optimal plays that those chess engines generate are often uninterpretable to a human user (as shown from our partner’s research). Since the human user can’t understand why the AI made those plays in the first place, it is hard for the user to learn from those plays and feedback. However, the AI (MAIA) our product will be using takes this in mind and produces human-like optimal plays that our user can understand and learn from. The user can more easier understand the feedback our product provide and more easier learn from it.
 
-Second, the current platforms are lacking the ability to find mistakes, interesting moves, tricky moves, from an user’s game history. They are often focused on a specific game and therefore are unable to provide general feedback to help the user learn. In our product, the user can just search for something like their mistakes and it will display mistakes the user made from a range of games the user played in the past. Which is much easier for the user to use and see their mistakes and learn from their mistakes.
+Second, the current platforms are lacking the ability to find mistakes, interesting moves, tricky moves, from an user’s game history. They are often focused on a specific game and only provide game-leve feedback. Our product goes beyond that and provide state-level feedback and general-level feedback. Also, the user can just search for something like their mistakes and it will display mistakes the user made from a range of games the user played in the past. Something other platforms does not provide. This is much easier for the user to use and see their mistakes and learn from their mistakes. The user will get a wider range of feedback specific to them that will help in their learning.
 
 Our partner’s mission is to create an AI that acts as an algorithmic teaching tool to human users. Our project provides a platform to display the current AI our partner has and gather data from the users so our partner can use it in their research.
 
