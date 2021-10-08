@@ -116,13 +116,81 @@ Licence: GPL
 ## Process Details
 
 #### Q6: What are the roles & responsibilities on the team?
+**TECHNICAL ROLES**
+* Backend Dev
+* Frontend Dev
+* Full Stack Dev
+* DevOps 
+* Architect
 
-Describe the different roles on the team and the responsibilities associated with each role. 
- * Roles should reflect the structure of your team and be appropriate for your project. Not necessarily one role to one team member.
+**NON-TECHNICAL ROLES**
+* Project Manager
+    * Create Project Roadmap
+    * Set Project Milestones & Deadlines
+    * Plan sprints together with the Scrum Master
+    * Be responsible for the project delivery by the deadline: contact developers and make sure that they are delivering their tickets functionality by the deadline
+    * Organize and schedule meetings
+* Product Manager
+    * Define the product and all its features
+    * Make sure that the product we are going to build is exactly what the client wants
+    * Manage client expectations (don’t overpromise!)
+    * Work with Systems Analyst to define business requirements and create Trello tickets
+    * Be responsible for the client being happy with the product
+* Systems Analyst
+    * Translate business requirements into technical requirements and create Trello tickets
+    * Estimate tickets with developers
+    * Work with Product Manager to ensure that whatever the client wants is actually technically possible
+    * If something is technically impossible to build, inform the Product Manager & client
+* UI/UX Designer
+    * Work with Product Manager & client to define the product UI/UX
+    * Make / draw wireframes
+* Writing Meeting Minutes
+    * Write meeting minutes and email them to the team and the client after every meeting
+* Scrum Master
+    * Define sprints together with Project Manager
+    * Lead standup meetings
 
-List each team member and:
- * A description of their role(s) and responsibilities including the components they'll work on and non-software related work
- * 3 technical strengths and weaknesses each (e.g. languages, frameworks, libraries, development methodologies, etc.)
+| Team member:      |  Sina Abady | 
+| :---:        |    :----:   |
+| Role(s) Responsibilities |   Full Stack Dev (Focus on Backend)     | 
+| Component worked on   |     *D1:* Highlights section <br> <br> *Future deliverables:* <br> - Develop REST API for backend-analysis logic communication <br> - Integrate the analysis logic into the backend implementation    | 
+| Non software related work   |    Supervises the note taking process shared by all team members     | 
+| 3 technical strengths and weaknesses  |   Strengths: <br> - Back-end server side programming <br> - Algorithms & Runtime Optimizations <br> - AI & NNs  <br> <br> *Weaknesses:* <br> - Frontend UI/UX Design <br> - CI/CD deployments and workflows <br> - Multi-Page Websites    | 
+
+| Team member:      | Robin Gerster | 
+| :---:        |    :----:   |
+| Role(s) Responsibilities |    - Full Stack (focus on frontend) <br> - UI/UX Designer <br> - Product Manager    | 
+| Component worked on   |   *D1:* Q1 section <br> <br> *Future deliverables:* <br> - Develop frontend for a scrollable sorted list of games   <br> - Develop a navigation bar   | 
+| Non software related work   |     Acts as a Product Manager clarifying main product features    | 
+| 3 technical strengths and weaknesses  |   *Strengths:* <br> - Python, C# <br> - AI <br> - UI/UX Design <br> <br> *Weaknesses:* <br> - Javascript <br> - CI/CD deployments and workflows <br> - Lack of documentation/comments on code written.      | 
+
+| Team member:      | Kevin Hong | 
+| :---:        |    :----:   |
+| Role(s) Responsibilities |   - Scrum master <br> - Full-Stack Developer     | 
+| Component worked on   |    *D1:* Q9 section <br> <br> *Future deliverables:* <br> - Develop REST API for frontend-backend communication  <br> - Develop REST API for backend-database communication      | 
+| Non software related work   |  Acts as a Scrum master planning one-week sprints   | 
+| 3 technical strengths and weaknesses  |   *Strengths:* <br> - Have experience building full-stack web applications <br> - Have experience designing full end to end architecture of web applications <br> - Have experience with cloud computing solutions <br> <br> *Weaknesses:* <br> - In-experienced with hosting web applications on local virtual machines <br> - Poor web application designing skills <br> - Weak code testing coverage on server related software      | 
+
+| Team member:      | Natalia Moran | 
+| :---:        |    :----:   |
+| Role(s) Responsibilities |   - Full Stack Dev, DevoOps, Architect <br> - Systems Analyst     | 
+| Component worked on   |     *D1:* Q4, Q5, Q6, Q7, and Q8 sections <br> <br> *Future deliverables:* <br>  - Configure CI/CD and Server <br> - Integrate with Lichess API <br> - Develop logging frontend activity   | 
+| Non software related work   |    - Acts as a Systems Analyst translating business requirements into technical requirements  <br> - Acts as a Project Manager in the absence of a Project Manager   | 
+| 3 technical strengths and weaknesses  |    *Strengths:* <br> - Previous experience with Python, React, MongoDB, RestAPI Design <br> - Previous work experience as a Systems Analyst <br> - Good soft skills  <br> <br> *Weaknesses:* <br> - Minimal experience with CI/CD technology  <br> - Minimal experience with planning an architecture <br> - Minimal knowledge of AI   | 
+
+| Team member:      | William Wang | 
+| :---:        |    :----:   |
+| Role(s) Responsibilities |    - Full Stack (focus on frontend) Dev <br> - DevOps    | 
+| Component worked on   |     *D1:* Highlights section <br> <br> *Future deliverables:* <br>  - Develop chess board visualization <br>  - Develop suggested moves visualization <br>  - Develop user account info visualization   | 
+| Non software related work   |   - Acts as a UI/UX Designer preparing mockups and approving them with the partner      | 
+| 3 technical strengths and weaknesses  |   *Strength:* <br> - HTML/CSS/JavaScript <br> - Data visualization <br> - Python <br> <br> *Weaknesses:* <br> - React <br> - Inexperienced with the connection between frontend and backend <br> - Report writing      | 
+
+| Team member:      | Angel Yuan | 
+| :---:        |    :----:   |
+| Role(s) Responsibilities |    - Full Stack (focus on frontend) Dev <br> - UI/UX Designer    | 
+| Component worked on  |     *D1:* Q2, and Q3 sections <br> <br> *Future deliverables:* <br>  - Develop a filter for the most interesting positions, the most difficult positions, and mistakes, etc <br> - Develop a feedback form    | 
+| Non software related work   |   - Acts as a UI/UX Designer preparing mockups and approving them with the partner       | 
+| 3 technical strengths and weaknesses  |         | 
 
 #### Q7: What operational events will you have as a team?
 
