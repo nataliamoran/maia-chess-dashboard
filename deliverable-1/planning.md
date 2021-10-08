@@ -17,8 +17,10 @@ of a user’s overall gameplay. To do this we plan to expose three key values: p
 
 ![Chess Board](./images/Q1.png)
 
-[Interactable Mockup](
+:small_red_triangle: :small_red_triangle: :small_red_triangle: :small_red_triangle: :small_red_triangle:
+[INTERACTIVE MOCKUP](
 https://angelyuan218063.invisionapp.com/prototype/ckuaa4ek700agth01x08c0nbw/play)
+:small_red_triangle: :small_red_triangle: :small_red_triangle: :small_red_triangle: :small_red_triangle:
 
 #### Q2: Who are your target users?
 Committed chess players from all over the world that want to improve on their chess skills. 
@@ -329,19 +331,6 @@ We understand that sometimes school can be overwhelming and you are unable to re
 
 ----
 ## Highlights
-
-Specify 3 - 5 key decisions and/or insights that came up during your meetings
-and/or collaborative process.
-
- * Short (5 min' read max)
- * Decisions can be related to the product and/or the team process.
-    * Mention which alternatives you were considering.
-    * Present the arguments for each alternative.
-    * Explain why the option you decided on makes the most sense for your team/product/users.
- * Essentially, we want to understand how (and why) you ended up with your current product and process plan.
- * This section is useful for important information regarding your decision making process that may not necessarily fit in other sections. 
-
-----
 
 ### Partner Selection
 After the group is formed, we first let each team member come up with their top three partners based on interest and abilities.
