@@ -258,15 +258,47 @@ When we start development we will have a daily (Monday to Friday) 15-minute onli
   
   
 #### Q8: What artifacts will you use to self-organize?
+**DOODLE**
 
-List/describe the artifacts you will produce in order to organize your team.       
+To find a time slot for a weekly team meeting we used a [Doodle questionnaire](https://doodle.com/poll/9w94i7gmrimh9dr5?utm_source=poll&utm_medium=link).
+ Because all 6 members of our team have different timetables, the only two time slots when everyone is available is on Thursday at 1 pm and 3 pm. 
 
- * Artifacts can be To-Do lists, Task boards, schedule(s), meeting minutes, etc.
- * We want to understand:
-   * How do you keep track of what needs to get done?
-   * **How do you prioritize tasks?**
-   * How do tasks get assigned to team members?
-   * How do you determine the status of work from inception to completion?
+![Doodle](./images/Q8-Doodle.png) 
+
+**SLACK**
+
+Our team created a Slack workspace to communicate with each other and the partner. We organized our discussions with channels such as #choose-project, #meetings, #logistics, etc.
+We will also use Slack to configure automatic notifications from GitHub actions to monitor the deployment process.
+
+![Slack](./images/Q8-Slack.png) 
+
+**TRELLO**
+
+To simplify the work process our team created a Trello board. 
+
+We will work in sprints: although the most common sprint duration in the IT industry is 2 weeks, we will work in 1-week sprints. A shorter sprint duration is chosen because this is a very dynamic course where we have from 2 to 4 weeks for each deliverable. Each sprint will start on Monday and finish on Sunday.
+
+Before starting development we will create a backlog of tickets: each ticket will be a 1-day task. Our Systems Analyst together with the Product Manager will write technical requirements for each ticket. It is the responsibility of developers to provide estimations for tickets: if some tickets are estimated for more than one day, these tickets will be splitted to smaller tasks.
+
+During our weekly meeting with the partner on Thursday we will prioritize tickets. Then the team’s Scrum Master together with the Project Manager will plan the following week’s sprint and move tickets from BACKLOG to TODO. They will assign a developer for each ticket (developers will need to provide their weekly availability). If a developer has multiple tickets in one sprint they can do these tickets in any order they like (unless they are blocking other developers). 
+
+When a developer starts working on a ticket, she/he moves this ticket to the IN DEV column. When a developer creates a Pull Request, she/he moves the ticket to the WAITING FOR QA column. Each Pull Request needs to be reviewed by another developer: when the review starts the ticket needs to be moved to the IN QA column. When the Pull Request is merged, the ticket is moved to the DONE column.
+
+The Trello board will help to keep our work process transparent: each team member will know the current state of each task at any moment. Also, assigning team members to tickets and setting deadlines with alerts on each ticket will help to self-organize.
+
+![Trello](./images/Q8-Trello.png)
+
+**TEAMGANTT**
+
+A TeamGantt chart is connected to our Trello board to allow us to create a roadmap for the project. After the partner’s business requirements are translated into technical requirements and divided into tickets, these tickets can be planned for Deliverable 2, Deliverable 3, or Deliverable 4. This will help us to plan our work for the next 2.5 months and manage the partner’s expectations. 
+
+![Gantt](./images/Q8-Gantt.png)
+
+**FILES STORAGE**
+
+All non-development files needed for the project (e.g. meeting minutes, project application draft) are sorted and stored in a shared Google Drive folder. This way it is easy to keep track of the files that we cannot / choose not to push to the GitHub repository.
+
+![Google Drive](./images/Q8-GoogleDrive.png)
 
 #### Q9: What are the rules regarding how your team works?
 
