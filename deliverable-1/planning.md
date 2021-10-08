@@ -201,9 +201,9 @@ Licence: GPL
 | Team member:      | Angel Yuan | 
 | :---:        |    :----:   |
 | Role(s) Responsibilities |    - Full Stack (focus on frontend) Dev <br> - UI/UX Designer    | 
-| Component worked on  |     *D1:* Q2, and Q3 sections <br> <br> *Future deliverables:* <br>  - Develop a filter for the most interesting positions, the most difficult positions, and mistakes, etc <br> - Develop a feedback form    | 
+| Component worked on  |     *D1:* Q2, and Q3 sections. Mockup design and communicating design with partner.  <br> <br> *Future deliverables:* <br>  - Develop a filter for the most interesting positions, the most difficult positions, and mistakes, etc <br> - Develop a feedback form    | 
 | Non software related work   |   - Acts as a UI/UX Designer preparing mockups and approving them with the partner       | 
-| 3 technical strengths and weaknesses  |         | 
+| 3 technical strengths and weaknesses  |     *Strength:* <br> - HTML/CSS/JavaScript <br> - Python <br> - UI/UX design <br> <br> *Weaknesses:* <br> - CI/CD <br> - connecting frontend and backend <br> - Minimal experience with React   | 
 
 #### Q7: What operational events will you have as a team?
 
