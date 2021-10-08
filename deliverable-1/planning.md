@@ -17,10 +17,8 @@ of a user’s overall gameplay. To do this we plan to expose three key values: p
 
 ![Chess Board](./images/Q1.png)
 
-:small_red_triangle: :small_red_triangle: :small_red_triangle: :small_red_triangle: :small_red_triangle:
-[PLEASE CLICK HERE TO SEE THE INTERACTIVE MOCKUP](
+[Interactable Mockup](
 https://angelyuan218063.invisionapp.com/prototype/ckuaa4ek700agth01x08c0nbw/play)
-:small_red_triangle: :small_red_triangle: :small_red_triangle: :small_red_triangle: :small_red_triangle:
 
 #### Q2: Who are your target users?
 Committed chess players from all over the world that want to improve on their chess skills. 
@@ -79,16 +77,12 @@ When Maia Dashboard needs to retrieve data from Lichess, Maia Dashboard API will
 
 Please see a Sequence Diagram below for details on each flow.
 
-**Sequence Diagram** 
-
-Please click on the diagram to see it in detail. On click the diagram will open in the [Mermaid online editor](https://mermaid.live/). If you need to zoom in please use the button `View` in the Mermaid online editor (right top corner). 
+**Sequence Diagram** (Please click on the diagram to see it in detail.)
 [![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgYXV0b251bWJlclxuICAgIGFjdG9yIHVzZXIgYXMgVXNlclxuICAgIHBhcnRpY2lwYW50IGZlIGFzIFJlYWN0PGJyLz5Gcm9udGVuZFxuICAgIHBhcnRpY2lwYW50IGJlIGFzIEJhY2tlbmRcbiAgICBwYXJ0aWNpcGFudCBhcGkgYXMgRmFzdEFQSVxuICAgIHBhcnRpY2lwYW50IGxpY2hlc3MgYXMgTGljaGVzc1xuICAgIHBhcnRpY2lwYW50IGVuZ2luZSBhcyBBbmFseXNpczxici8-TG9naWNcbiAgICBwYXJ0aWNpcGFudCBkYiBhcyBNb25nb0RCXG5cbiAgICBub3RlIG92ZXIgdXNlciwgZGI6IExvZ2luIHdpdGggTGljaGVzc1xuICAgIHVzZXIgLT4-KyBmZTogbG9naW4gd2l0aCBsaWNoZXNzXG4gICAgZmUgLT4-KyBiZTogbG9naW4gd2l0aCBsaWNoZXNzXG4gICAgYmUgLT4-KyBsaWNoZXNzOiBQYXJ0bmVyIHRvIHByb3ZpZGUgZGV0YWlsc1xuICAgIFxuXG4gICAgbm90ZSBvdmVyIHVzZXIsIGRiOiBOZXcgdXNlciAtIFB1bGwgdXNlciBkYXRhIGZyb20gTGljaGVzcywgc3RvcmUgaW4gTWFpYSBEYXNoYm9hcmQgREIgYW5kIHJldHVybiB0byBGRVxuICAgIGZlIC0-PisgYmU6IGdldCB1c2VyIGRhdGEgIFxuICAgIGJlIC0-PisgYXBpOiBnZXQgdXNlciBkYXRhIGZyb20gREJcbiAgICBhcGkgLT4-KyBkYjogcHVsbCB1c2VyIGRhdGFcbiAgICBkYiAtLT4-KyBhcGk6IHJldHVybiA0MDQgIFxuICAgIGFwaSAtPj4rIGxpY2hlc3M6IHB1bGwgdXNlciBkYXRhIGFuZCBhbGwgZ2FtZXNcbiAgICBsaWNoZXNzIC0tPj4tIGFwaTogdXNlciBkYXRhICYgYWxsIGdhbWVzIHJlc3BvbnNlXG4gICAgYXBpIC0-PisgZGI6IHN0b3JlIHVzZXIgZGF0YSAmIGdhbWVzIHdpdGggc3RhdHVzIFwicGVuZGluZ1wiXG4gICAgZGIgLS0-Pi0gYXBpOiBva1xuICAgIGFwaSAtLT4-LSBiZTogcmV0dXJuIHVzZXIgZGF0YSAmIGdhbWVzXG4gICAgYmUgLS0-Pi0gZmU6IHJldHVybiB1c2VyIGRhdGEgJiBnYW1lc1xuXG5cbiAgICBub3RlIG92ZXIgdXNlciwgZGI6IEV4aXN0aW5nIHVzZXIgLSBHZXQgdXNlciBkYXRhIGZyb20gTWFpYSBEYXNoYm9hcmQgREJcbiAgICBmZSAtPj4rIGJlOiBnZXQgdXNlciBkYXRhXG4gICAgYmUgLT4-KyBhcGk6IGdldCB1c2VyIGRhdGEgZnJvbSBEQlxuICAgIGFwaSAtPj4rIGRiOiBwdWxsIHVzZXIgZGF0YVxuICAgIGRiIC0tPj4rIGFwaTogcmV0dXJuIHVzZXIgZGF0YSAmIGdhbWVzXG4gICAgYXBpIC0tPj4tIGJlOiByZXR1cm4gdXNlciBkYXRhICYgZ2FtZXNcbiAgICBiZSAtLT4-LSBmZTogcmV0dXJuIHVzZXIgZGF0YSAmIGdhbWVzXG5cblxuICAgIG5vdGUgb3ZlciB1c2VyLCBkYjogTmV3IHVzZXIgLSBBbmFseXplIHVzZXIgZGF0YVxuICAgIGZlIC0-PisgYmU6IHRyaWdnZXJzIHVzZXIgZGF0YSBhbmFseXNpc1xuICAgIGJlIC0-PisgYXBpOiBnZXQgdXNlciBkYXRhIGFuYWx5dGljcyBmcm9tIHRoZSBEQlxuICAgIGFwaSAtPj4rIGVuZ2luZTogYW5hbHl6ZSB1c2VyIGRhdGEgXG4gICAgZW5naW5lIC0-PisgZGI6IHF1ZXJ5IHVzZXIgZGF0YSAmIGdhbWVzXG4gICAgZGIgLS0-Pi0gZW5naW5lOiB1c2VyIGRhdGEgJiBnYW1lc1xuICAgIGVuZ2luZSAtPj4gZW5naW5lOiBhbmFseXplIGRhdGFcbiAgICBlbmdpbmUgLT4-KyBkYjogc3RvcmUgc3RhdGlzdGljcyBpbiBEQiBhbmQgY2hhbmdlIHN0YXR1cyB0byBcImFuYWx5emVkXCJcbiAgICBkYiAtLT4-LSBlbmdpbmU6IG9rXG4gICAgZW5naW5lIC0tPj4tIGFwaTogcmV0dXJuIGRpY3Rpb25hcnkgd2l0aCBhbmFseXNpcyBkYXRhXG4gICAgYXBpIC0tPj4tIGJlOiByZXR1cm4gZGljdGlvbmFyeSB3aXRoIGFuYWx5c2lzIGRhdGFcbiAgICBiZSAtLT4-LSBmZTogcmV0dXJuIGRpY3Rpb25hcnkgd2l0aCBhbmFseXNpcyBkYXRhXG5cblxuICAgIG5vdGUgb3ZlciB1c2VyLCBkYjogRXhpc3RpbmcgdXNlciAtIFVzZXIgcmVxdWVzdCB0aGVpciBzdGF0c1xuICAgIHVzZXIgLT4-KyBmZTogZ2V0IGFuYWx5c2lzIGRhdGEgZm9yIHVzZXJcbiAgICBmZSAtPj4rIGJlOiBnZXQgYW5hbHlzaXMgZGF0YSBmb3IgdXNlclxuICAgIGJlIC0-PisgYXBpOiBnZXQgdXNlciBkYXRhIGFuYWx5dGljcyBmcm9tIHRoZSBEQlxuICAgIGFwaSAtPj4rIGRiOiBnZXQgdXNlciBzdGF0c1xuICAgIGRiIC0tPj4tIGFwaTogdXNlciBzdGF0cyBkYXRhXG4gICAgYXBpIC0-PiBhcGk6IHBhcnNlIGRhdGEgZm9yIEZFXG4gICAgYXBpIC0tPj4tIGJlOiB1c2VyIHN0YXRzXG4gICAgYmUgLS0-Pi0gZmU6IHVzZXIgc3RhdHNcbiAgICBmZSAtPj4tIGZlOiBidWlsZCBVSSBmb3Igc3RhdHNcblxuXG4gICAgbm90ZSBvdmVyIHVzZXIsIGRiOiBVc2VyIHNlbmRzIGZlZWRiYWNrXG4gICAgdXNlciAtPj4rIGZlOiBzZW5kIGZlZWRiYWNrXG4gICAgZmUgLT4-KyBiZTogc3RvcmUgZmVlZGJhY2tcbiAgICBiZSAtPj4rIGFwaTogc3RvcmUgZmVlZGJhY2sgaW4gdGhlIERCXG4gICAgYXBpIC0-PisgZGI6IHN0b3JlIHVzZXIgZmVlZGJhY2tcbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkYXJrIn0sInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0)](https://mermaid.live/edit/#eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgYXV0b251bWJlclxuICAgIGFjdG9yIHVzZXIgYXMgVXNlclxuICAgIHBhcnRpY2lwYW50IGZlIGFzIFJlYWN0PGJyLz5Gcm9udGVuZFxuICAgIHBhcnRpY2lwYW50IGJlIGFzIEJhY2tlbmRcbiAgICBwYXJ0aWNpcGFudCBhcGkgYXMgRmFzdEFQSVxuICAgIHBhcnRpY2lwYW50IGxpY2hlc3MgYXMgTGljaGVzc1xuICAgIHBhcnRpY2lwYW50IGVuZ2luZSBhcyBBbmFseXNpczxici8-TG9naWNcbiAgICBwYXJ0aWNpcGFudCBkYiBhcyBNb25nb0RCXG5cbiAgICBub3RlIG92ZXIgdXNlciwgZGI6IExvZ2luIHdpdGggTGljaGVzc1xuICAgIHVzZXIgLT4-KyBmZTogbG9naW4gd2l0aCBsaWNoZXNzXG4gICAgZmUgLT4-KyBiZTogbG9naW4gd2l0aCBsaWNoZXNzXG4gICAgYmUgLT4-KyBsaWNoZXNzOiBQYXJ0bmVyIHRvIHByb3ZpZGUgZGV0YWlsc1xuICAgIFxuXG4gICAgbm90ZSBvdmVyIHVzZXIsIGRiOiBOZXcgdXNlciAtIFB1bGwgdXNlciBkYXRhIGZyb20gTGljaGVzcywgc3RvcmUgaW4gTWFpYSBEYXNoYm9hcmQgREIgYW5kIHJldHVybiB0byBGRVxuICAgIGZlIC0-PisgYmU6IGdldCB1c2VyIGRhdGEgIFxuICAgIGJlIC0-PisgYXBpOiBnZXQgdXNlciBkYXRhIGZyb20gREJcbiAgICBhcGkgLT4-KyBkYjogcHVsbCB1c2VyIGRhdGFcbiAgICBkYiAtLT4-KyBhcGk6IHJldHVybiA0MDQgIFxuICAgIGFwaSAtPj4rIGxpY2hlc3M6IHB1bGwgdXNlciBkYXRhIGFuZCBhbGwgZ2FtZXNcbiAgICBsaWNoZXNzIC0tPj4tIGFwaTogdXNlciBkYXRhICYgYWxsIGdhbWVzIHJlc3BvbnNlXG4gICAgYXBpIC0-PisgZGI6IHN0b3JlIHVzZXIgZGF0YSAmIGdhbWVzIHdpdGggc3RhdHVzIFwicGVuZGluZ1wiXG4gICAgZGIgLS0-Pi0gYXBpOiBva1xuICAgIGFwaSAtLT4-LSBiZTogcmV0dXJuIHVzZXIgZGF0YSAmIGdhbWVzXG4gICAgYmUgLS0-Pi0gZmU6IHJldHVybiB1c2VyIGRhdGEgJiBnYW1lc1xuXG5cbiAgICBub3RlIG92ZXIgdXNlciwgZGI6IEV4aXN0aW5nIHVzZXIgLSBHZXQgdXNlciBkYXRhIGZyb20gTWFpYSBEYXNoYm9hcmQgREJcbiAgICBmZSAtPj4rIGJlOiBnZXQgdXNlciBkYXRhXG4gICAgYmUgLT4-KyBhcGk6IGdldCB1c2VyIGRhdGEgZnJvbSBEQlxuICAgIGFwaSAtPj4rIGRiOiBwdWxsIHVzZXIgZGF0YVxuICAgIGRiIC0tPj4rIGFwaTogcmV0dXJuIHVzZXIgZGF0YSAmIGdhbWVzXG4gICAgYXBpIC0tPj4tIGJlOiByZXR1cm4gdXNlciBkYXRhICYgZ2FtZXNcbiAgICBiZSAtLT4-LSBmZTogcmV0dXJuIHVzZXIgZGF0YSAmIGdhbWVzXG5cblxuICAgIG5vdGUgb3ZlciB1c2VyLCBkYjogTmV3IHVzZXIgLSBBbmFseXplIHVzZXIgZGF0YVxuICAgIGZlIC0-PisgYmU6IHRyaWdnZXJzIHVzZXIgZGF0YSBhbmFseXNpc1xuICAgIGJlIC0-PisgYXBpOiBnZXQgdXNlciBkYXRhIGFuYWx5dGljcyBmcm9tIHRoZSBEQlxuICAgIGFwaSAtPj4rIGVuZ2luZTogYW5hbHl6ZSB1c2VyIGRhdGEgXG4gICAgZW5naW5lIC0-PisgZGI6IHF1ZXJ5IHVzZXIgZGF0YSAmIGdhbWVzXG4gICAgZGIgLS0-Pi0gZW5naW5lOiB1c2VyIGRhdGEgJiBnYW1lc1xuICAgIGVuZ2luZSAtPj4gZW5naW5lOiBhbmFseXplIGRhdGFcbiAgICBlbmdpbmUgLT4-KyBkYjogc3RvcmUgc3RhdGlzdGljcyBpbiBEQiBhbmQgY2hhbmdlIHN0YXR1cyB0byBcImFuYWx5emVkXCJcbiAgICBkYiAtLT4-LSBlbmdpbmU6IG9rXG4gICAgZW5naW5lIC0tPj4tIGFwaTogcmV0dXJuIGRpY3Rpb25hcnkgd2l0aCBhbmFseXNpcyBkYXRhXG4gICAgYXBpIC0tPj4tIGJlOiByZXR1cm4gZGljdGlvbmFyeSB3aXRoIGFuYWx5c2lzIGRhdGFcbiAgICBiZSAtLT4-LSBmZTogcmV0dXJuIGRpY3Rpb25hcnkgd2l0aCBhbmFseXNpcyBkYXRhXG5cblxuICAgIG5vdGUgb3ZlciB1c2VyLCBkYjogRXhpc3RpbmcgdXNlciAtIFVzZXIgcmVxdWVzdCB0aGVpciBzdGF0c1xuICAgIHVzZXIgLT4-KyBmZTogZ2V0IGFuYWx5c2lzIGRhdGEgZm9yIHVzZXJcbiAgICBmZSAtPj4rIGJlOiBnZXQgYW5hbHlzaXMgZGF0YSBmb3IgdXNlclxuICAgIGJlIC0-PisgYXBpOiBnZXQgdXNlciBkYXRhIGFuYWx5dGljcyBmcm9tIHRoZSBEQlxuICAgIGFwaSAtPj4rIGRiOiBnZXQgdXNlciBzdGF0c1xuICAgIGRiIC0tPj4tIGFwaTogdXNlciBzdGF0cyBkYXRhXG4gICAgYXBpIC0-PiBhcGk6IHBhcnNlIGRhdGEgZm9yIEZFXG4gICAgYXBpIC0tPj4tIGJlOiB1c2VyIHN0YXRzXG4gICAgYmUgLS0-Pi0gZmU6IHVzZXIgc3RhdHNcbiAgICBmZSAtPj4tIGZlOiBidWlsZCBVSSBmb3Igc3RhdHNcblxuXG4gICAgbm90ZSBvdmVyIHVzZXIsIGRiOiBVc2VyIHNlbmRzIGZlZWRiYWNrXG4gICAgdXNlciAtPj4rIGZlOiBzZW5kIGZlZWRiYWNrXG4gICAgZmUgLT4-KyBiZTogc3RvcmUgZmVlZGJhY2tcbiAgICBiZSAtPj4rIGFwaTogc3RvcmUgZmVlZGJhY2sgaW4gdGhlIERCXG4gICAgYXBpIC0-PisgZGI6IHN0b3JlIHVzZXIgZmVlZGJhY2tcbiIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJkYXJrXCJcbn0iLCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9)
 
 Please see a Server Diagram below for details on the servers setup.
 
-**Server Diagram** 
-
-Please click on the diagram to see it in detail. On click the diagram will open in the [Mermaid online editor](https://mermaid.live/). If you need to zoom in please use the button `View` in the Mermaid online editor (right top corner). 
+**Server Diagram** (Please click on the diagram to see it in detail.)
 [![](https://mermaid.ink/img/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4gICAgdXNlcltVc2VyXSAtLT58ZW50ZXJzIFVSTHwgd2ViW0Jyb3dzZXJdXG4gICAgd2ViIC0tPnxwb3J0IDgwfCBuZ2lueFtXZWIgU2VydmVyPGJyLz5uZ2lueF1cbiAgICB3ZWIgLS0-fHBvcnQgWHwgbmdpbnhbV2ViIFNlcnZlcjxici8-bmdpbnhdXG4gICAgXG4gICAgc3ViZ3JhcGggc2VydmVyW1NlcnZlciBWTV1cbiAgICAgICAgZGlyZWN0aW9uIFRCICAgICAgIFxuICAgICAgICBzdWJncmFwaCBndW5pY29ybi1wcm9kW0d1bmljb3JuIFBST0RdXG4gICAgICAgICAgICBiZS1wW0JhY2tlbmQgUHl0aG9uXSAtLT4gYXBpLXBbRmFzdEFQSV1cbiAgICAgICAgICAgIGFwaS1wIC0tPiBsb2dpYy1wW1N0YXRzIEFuYWx5dGljcyBMb2dpY11cbiAgICAgICAgICAgIGxvZ2ljLXAgLS4tPiBhcGktcFxuICAgICAgICAgICAgYXBpLXAgLS0-IHxNb25nb0RCfCBkYi1wW0RhdGFiYXNlXVxuICAgICAgICBlbmRcbiAgICAgICAgc3ViZ3JhcGggZ3VuaWNvcm4tZGV2W0d1bmljb3JuIERFVl1cbiAgICAgICAgICAgIGJlLWRbQmFja2VuZCBQeXRob25dIC0tPiBhcGktZFtGYXN0QVBJXVxuICAgICAgICAgICAgYXBpLWQgLS0-IGxvZ2ljLWRbU3RhdHMgQW5hbHl0aWNzIExvZ2ljXVxuICAgICAgICAgICAgbG9naWMtZCAtLi0-IGFwaS1kICAgICAgIFxuICAgICAgICAgICAgYXBpLWQgLS0-IHxNb25nb0RCfCBkYi1kW0RhdGFiYXNlXVxuICAgICAgICBlbmRcbiAgICAgICAgbmdpbnggLS0-fGZvciByZWFjdCBzdGF0aWMgPGJyLz4gaHRtbC9qcy9jc3MgZmlsZXN8IHN0YXRpYy1wcm9kICYgc3RhdGljLWRldlxuICAgICAgICBuZ2lueCAtLT4gZ3VuaWNvcm4tcHJvZCAmIGd1bmljb3JuLWRldlxuICAgIGVuZFxuICAgIGFwaS1wICYgYXBpLWQgLS0-fExpY2hlc3MgQVBJfCBsaWNoZXNzIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRhcmsifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ)](https://mermaid.live/edit/#eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4gICAgdXNlcltVc2VyXSAtLT58ZW50ZXJzIFVSTHwgd2ViW0Jyb3dzZXJdXG4gICAgd2ViIC0tPnxwb3J0IDgwfCBuZ2lueFtXZWIgU2VydmVyPGJyLz5uZ2lueF1cbiAgICB3ZWIgLS0-fHBvcnQgWHwgbmdpbnhbV2ViIFNlcnZlcjxici8-bmdpbnhdXG4gICAgXG4gICAgc3ViZ3JhcGggc2VydmVyW1NlcnZlciBWTV1cbiAgICAgICAgZGlyZWN0aW9uIFRCICAgICAgIFxuICAgICAgICBzdWJncmFwaCBndW5pY29ybi1wcm9kW0d1bmljb3JuIFBST0RdXG4gICAgICAgICAgICBiZS1wW0JhY2tlbmQgUHl0aG9uXSAtLT4gYXBpLXBbRmFzdEFQSV1cbiAgICAgICAgICAgIGFwaS1wIC0tPiBsb2dpYy1wW1N0YXRzIEFuYWx5dGljcyBMb2dpY11cbiAgICAgICAgICAgIGxvZ2ljLXAgLS4tPiBhcGktcFxuICAgICAgICAgICAgYXBpLXAgLS0-IHxNb25nb0RCfCBkYi1wW0RhdGFiYXNlXVxuICAgICAgICBlbmRcbiAgICAgICAgc3ViZ3JhcGggZ3VuaWNvcm4tZGV2W0d1bmljb3JuIERFVl1cbiAgICAgICAgICAgIGJlLWRbQmFja2VuZCBQeXRob25dIC0tPiBhcGktZFtGYXN0QVBJXVxuICAgICAgICAgICAgYXBpLWQgLS0-IGxvZ2ljLWRbU3RhdHMgQW5hbHl0aWNzIExvZ2ljXVxuICAgICAgICAgICAgbG9naWMtZCAtLi0-IGFwaS1kICAgICAgIFxuICAgICAgICAgICAgYXBpLWQgLS0-IHxNb25nb0RCfCBkYi1kW0RhdGFiYXNlXVxuICAgICAgICBlbmRcbiAgICAgICAgbmdpbnggLS0-fGZvciByZWFjdCBzdGF0aWMgPGJyLz4gaHRtbC9qcy9jc3MgZmlsZXN8IHN0YXRpYy1wcm9kICYgc3RhdGljLWRldlxuICAgICAgICBuZ2lueCAtLT4gZ3VuaWNvcm4tcHJvZCAmIGd1bmljb3JuLWRldlxuICAgIGVuZFxuICAgIGFwaS1wICYgYXBpLWQgLS0-fExpY2hlc3MgQVBJfCBsaWNoZXNzIiwibWVybWFpZCI6IntcbiAgXCJ0aGVtZVwiOiBcImRhcmtcIlxufSIsInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0)
 
 **DEPLOYMENT**
@@ -103,9 +97,7 @@ with an automatic Slack message.
 
 Please see the Deployment Diagram below for the deployment flow details.
 
-**Deployment Diagram** 
-
-Please click on the diagram to see it in detail. On click the diagram will open in the [Mermaid online editor](https://mermaid.live/). If you need to zoom in please use the button `View` in the Mermaid online editor (right top corner). 
+**Deployment Diagram** (Please click on the diagram to see it in detail.)
 [![](https://mermaid.ink/img/eyJjb2RlIjoiZmxvd2NoYXJ0IFRCXG4gICAgc3ViZ3JhcGggZGphbmdvW1Rlc3QgUHl0aG9uIGNvZGUgYW5kIGRlcGxveSBiYWNrZW5kXVxuICAgICAgICBkaXJlY3Rpb24gVEJcbiAgICAgICAgZGVwZW5kZW5jaWVzW0luc3RhbGwgcHl0aG9uIGRlcGVuZGVuY2llc10gLS0-IHRlc3RzW1J1biB0ZXN0c11cbiAgICAgICAgdGVzdHMgLS0-IGNvcHlbQ29weSBiYWNrZW5kL3B5dGhvbiBmaWxlc11cbiAgICAgICAgY29weSAtLT4gZ3VuaWNvcm5bUmVzdGFydCBndW5pY29ybiBzZXJ2aWNlIG9uIHNlcnZlcl1cbiAgICBlbmRcbiAgICBzdWJncmFwaCByZWFjdFtCdWlsZCBmcm9udGVudCBhbmQgZGVwbG95XVxuICAgICAgICBkaXJlY3Rpb24gVEJcbiAgICAgICByZWFjdF9kZXBlbmRlbmNpZXNbSW5zdGFsbCByZWFjdCBkZXBlbmRlbmNpZXNdIC0tPiBidWlsZFtSZWFjdCBidWlsZF1cbiAgICAgICBidWlsZCAtLT4gY29weV9mZVtDb3B5IHJlYWN0IGJ1aWxkIHRvIHNlcnZlcl1cbiAgICBlbmRcbiAgICBzdWJncmFwaCBzbGFja1tTbGFjayBub3RpZmljYXRpb25dXG4gICAgICAgIHhbTm90aWZ5IG9uIHN1Y2Nlc3NmdWwgZGVwbG95bWVudF1cbiAgICAgICAgLVtOb3RpZnkgb24gZGVwbG95bWVudCBmYWlsdXJlXVxuICAgICAgICBcbiAgICBlbmRcbiAgICB1c2VyW0RldmVsb3Blcl0gLS0-fHB1c2ggY29kZXwgZ2l0aHViW0dpdEh1YiA8YnIvPiBkZXZlbG9wICYgbWFzdGVyIDxici8-IGJyYW5jaGVzXVxuICAgIGdpdGh1YiAtLT58Z2l0aHViIGFjdGlvbiBqb2IgMXwgZGphbmdvXG4gICAgZ2l0aHViIC0tPnxnaXRodWIgYWN0aW9uIGpvYiAyfCByZWFjdFxuICAgIFxuICAgIHJlYWN0IC0tPiBzbGFja1xuICAgIGRqYW5nbyAtLT4gc2xhY2tcblxuICAgIGNvcHlfZmUgLS4tIGNvbW1lbnRbRW52aXJvbm1lbnQgZGVwZW5kYW50IG9uIGJyYW5jaF1cbiAgICBjb3B5IC0uLSBjb21tZW50XG4gICAgZ3VuaWNvcm4gLS4tIGNvbW1lbnRcbiAgIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRhcmsifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ)](https://mermaid.live/edit/#eyJjb2RlIjoiZmxvd2NoYXJ0IFRCXG4gICAgc3ViZ3JhcGggZGphbmdvW1Rlc3QgUHl0aG9uIGNvZGUgYW5kIGRlcGxveSBiYWNrZW5kXVxuICAgICAgICBkaXJlY3Rpb24gVEJcbiAgICAgICAgZGVwZW5kZW5jaWVzW0luc3RhbGwgcHl0aG9uIGRlcGVuZGVuY2llc10gLS0-IHRlc3RzW1J1biB0ZXN0c11cbiAgICAgICAgdGVzdHMgLS0-IGNvcHlbQ29weSBiYWNrZW5kL3B5dGhvbiBmaWxlc11cbiAgICAgICAgY29weSAtLT4gZ3VuaWNvcm5bUmVzdGFydCBndW5pY29ybiBzZXJ2aWNlIG9uIHNlcnZlcl1cbiAgICBlbmRcbiAgICBzdWJncmFwaCByZWFjdFtCdWlsZCBmcm9udGVudCBhbmQgZGVwbG95XVxuICAgICAgICBkaXJlY3Rpb24gVEJcbiAgICAgICByZWFjdF9kZXBlbmRlbmNpZXNbSW5zdGFsbCByZWFjdCBkZXBlbmRlbmNpZXNdIC0tPiBidWlsZFtSZWFjdCBidWlsZF1cbiAgICAgICBidWlsZCAtLT4gY29weV9mZVtDb3B5IHJlYWN0IGJ1aWxkIHRvIHNlcnZlcl1cbiAgICBlbmRcbiAgICBzdWJncmFwaCBzbGFja1tTbGFjayBub3RpZmljYXRpb25dXG4gICAgICAgIHhbTm90aWZ5IG9uIHN1Y2Nlc3NmdWwgZGVwbG95bWVudF1cbiAgICAgICAgLVtOb3RpZnkgb24gZGVwbG95bWVudCBmYWlsdXJlXVxuICAgICAgICBcbiAgICBlbmRcbiAgICB1c2VyW0RldmVsb3Blcl0gLS0-fHB1c2ggY29kZXwgZ2l0aHViW0dpdEh1YiA8YnIvPiBkZXZlbG9wICYgbWFzdGVyIDxici8-IGJyYW5jaGVzXVxuICAgIGdpdGh1YiAtLT58Z2l0aHViIGFjdGlvbiBqb2IgMXwgZGphbmdvXG4gICAgZ2l0aHViIC0tPnxnaXRodWIgYWN0aW9uIGpvYiAyfCByZWFjdFxuICAgIFxuICAgIHJlYWN0IC0tPiBzbGFja1xuICAgIGRqYW5nbyAtLT4gc2xhY2tcblxuICAgIGNvcHlfZmUgLS4tIGNvbW1lbnRbRW52aXJvbm1lbnQgZGVwZW5kYW50IG9uIGJyYW5jaF1cbiAgICBjb3B5IC0uLSBjb21tZW50XG4gICAgZ3VuaWNvcm4gLS4tIGNvbW1lbnRcbiAgIiwibWVybWFpZCI6IntcbiAgXCJ0aGVtZVwiOiBcImRhcmtcIlxufSIsInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0)
 
 **TESTING**
@@ -266,47 +258,15 @@ When we start development we will have a daily (Monday to Friday) 15-minute onli
   
   
 #### Q8: What artifacts will you use to self-organize?
-**DOODLE**
 
-To find a time slot for a weekly team meeting we used a [Doodle questionnaire](https://doodle.com/poll/9w94i7gmrimh9dr5?utm_source=poll&utm_medium=link).
- Because all 6 members of our team have different timetables, the only two time slots when everyone is available is on Thursday at 1 pm and 3 pm. 
+List/describe the artifacts you will produce in order to organize your team.       
 
-![Doodle](./images/Q8-Doodle.png) 
-
-**SLACK**
-
-Our team created a Slack workspace to communicate with each other and the partner. We organized our discussions with channels such as #choose-project, #meetings, #logistics, etc.
-We will also use Slack to configure automatic notifications from GitHub actions to monitor the deployment process.
-
-![Slack](./images/Q8-Slack.png) 
-
-**TRELLO**
-
-To simplify the work process our team created a Trello board. 
-
-We will work in sprints: although the most common sprint duration in the IT industry is 2 weeks, we will work in 1-week sprints. A shorter sprint duration is chosen because this is a very dynamic course where we have from 2 to 4 weeks for each deliverable. Each sprint will start on Monday and finish on Sunday.
-
-Before starting development we will create a backlog of tickets: each ticket will be a 1-day task. Our Systems Analyst together with the Product Manager will write technical requirements for each ticket. It is the responsibility of developers to provide estimations for tickets: if some tickets are estimated for more than one day, these tickets will be splitted to smaller tasks.
-
-During our weekly meeting with the partner on Thursday we will prioritize tickets. Then the team’s Scrum Master together with the Project Manager will plan the following week’s sprint and move tickets from BACKLOG to TODO. They will assign a developer for each ticket (developers will need to provide their weekly availability). If a developer has multiple tickets in one sprint they can do these tickets in any order they like (unless they are blocking other developers). 
-
-When a developer starts working on a ticket, she/he moves this ticket to the IN DEV column. When a developer creates a Pull Request, she/he moves the ticket to the WAITING FOR QA column. Each Pull Request needs to be reviewed by another developer: when the review starts the ticket needs to be moved to the IN QA column. When the Pull Request is merged, the ticket is moved to the DONE column.
-
-The Trello board will help to keep our work process transparent: each team member will know the current state of each task at any moment. Also, assigning team members to tickets and setting deadlines with alerts on each ticket will help to self-organize.
-
-![Trello](./images/Q8-Trello.png)
-
-**TEAMGANTT**
-
-A TeamGantt chart is connected to our Trello board to allow us to create a roadmap for the project. After the partner’s business requirements are translated into technical requirements and divided into tickets, these tickets can be planned for Deliverable 2, Deliverable 3, or Deliverable 4. This will help us to plan our work for the next 2.5 months and manage the partner’s expectations. 
-
-![Gantt](./images/Q8-Gantt.png)
-
-**FILES STORAGE**
-
-All non-development files needed for the project (e.g. meeting minutes, project application draft) are sorted and stored in a shared Google Drive folder. This way it is easy to keep track of the files that we cannot / choose not to push to the GitHub repository.
-
-![Google Drive](./images/Q8-GoogleDrive.png)
+ * Artifacts can be To-Do lists, Task boards, schedule(s), meeting minutes, etc.
+ * We want to understand:
+   * How do you keep track of what needs to get done?
+   * **How do you prioritize tasks?**
+   * How do tasks get assigned to team members?
+   * How do you determine the status of work from inception to completion?
 
 #### Q9: What are the rules regarding how your team works?
 
@@ -337,6 +297,19 @@ We understand that sometimes school can be overwhelming and you are unable to re
 
 ----
 ## Highlights
+
+Specify 3 - 5 key decisions and/or insights that came up during your meetings
+and/or collaborative process.
+
+ * Short (5 min' read max)
+ * Decisions can be related to the product and/or the team process.
+    * Mention which alternatives you were considering.
+    * Present the arguments for each alternative.
+    * Explain why the option you decided on makes the most sense for your team/product/users.
+ * Essentially, we want to understand how (and why) you ended up with your current product and process plan.
+ * This section is useful for important information regarding your decision making process that may not necessarily fit in other sections. 
+
+----
 
 ### Partner Selection
 After the group is formed, we first let each team member come up with their top three partners based on interest and abilities.
@@ -390,6 +363,56 @@ Our backend team comprised of Natalia, Kevin and Sina, all have various knowledg
 
 ![alt text](https://i.imgur.com/1t8zY79.jpg) 
 
+### Technical Detail Decisions Overview
+
+**Frontend:** This was the section that we were provided the most freedom with. The Partner only desires basic visual features, that can be accomplished via many modern frontend API's. We could list the pros and cons of each API here, but the real reason we chose React were based on these questions:
+
+ * How easy is it to develop using this API?
+ * Can the code be broken down modularily and be tested easily among a small group of developers?
+ * What tools are available to develop a modern website using this API?
+ * How easy will it be to hand off the code to the Partner at the end of this semester?
+ * Most importantly, which framework do our developers have the most experience in.
+
+Now, most modern API's tend to answer these questions fairly well, and can fit all our needs. Depending on who you ask, Angular is far superior to React and it's only time until everyone realizes it and completely switches over. React is far superior, Facebook, Instagram and others use it after all. ETC ... Well these were the key considerations we made.
+
+Reacts componenets structure is ever so slightly easier to develop and maintain, although it gives less of a freedom than Angular does slightly as well. For the purposes of this application, the decisions are neglible since this apps production scale is quite small, and the codebase is meant to be maintained by a couple of developrs in the CSS lab.
+
+Both Angular and React have phenomonmenal component structures that will arm any developer with the tools needed to build fast, beautiful and responsive websites. 
+
+Now the last two questions are what the majority of our decision was made off of. One of the Partners has slight experience with React, which leads us to slightly favour React when it comes to handoff. Lastly, the majority of our developers used React in their Assignment 1. Kevin mentioned using Material UI, which is an extremely easy, and good looking component interface that will make any website look modern. This is a huge bonus to React as it means our devs will need not spend time learning a new framework when it comes to frontend.
+
+Can you guess what we landed on? ....
+
+Thats right :D
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" width="200" height="200">
+
+**Backend:** This portion of the design, we tended to have much less freedom, as the server, language Maia is written in, and API calls are already set in stone. This means that we had a lot less to consider overall when choosing the backend framework and the components that comprise it. 
+
+It made the most sense to choose Python as the language for the backend as this would work very seamlessly with Maia. Django was considered as it has many modern applications such as:
+ * Maintainability: Backend and Message Queue can be developed, debugged, tested, and maintained seperately for ease of workflow.
+ * Scalibility: Implements multi-processing making it largely scalable to large applications as the user base grows
+ * A/B testing: Able to effectively test in real time the effects of different algorithms on the data provided and given to the user base.
+
+In the end we stuck with Python as the Partner insisted that it would be the simplest option for him to read and maintain as the project got handed over, which in all makes sense as the scope of this project will extend long after this course is complete.
+
+The server is already set as an nginx server by the Partner, which is hosted on Microsoft Azure, so we already have a framework (although very broad) to work with when it comes to that. None of the developers have used this framework before, but the Partner already used it to deploy Maia, and as it's a modern framework, it will be easy to deploy the backend of the web application to it.
+
+The database again, was set up by the Partner for our convenience, as a MongoDB backend. This means that the frontend developers will have to call an API to convert React user states to a .json, and push the data to the database for analytics purposes. It was decided that we need multiple processes running interacting with the database at once.
+
+ * Asynchronously track user data and push it to the database.
+ * Process any new games that are loaded from Lichess into the database, and analyze them
+ * Serve useres various statistics, games, and interesting postions on the fly
+
+The ideal API structure was explained to us by Kevin (he drew it on the board but it got erased before we had the chance to take a photo lol):
+
+He emphasized for ease of use by the frontend developers, and for any devs in the research team who may want to work with Maia, that there be a high level black box API that could accomplish any request to the backend that is needed.
+
+This API would then connect to multiple smaller APIs who work asynchronously with one another to accomplish various tasks that he backend needs. This way development can be done in parallel without having to share code within APIs. All that would be needed are guarantees of function signatures from the top level API.
+
+Lastly the smaller asynchronous API's would connect to the Maia API and request any relevant information if need be.
+
+This model made the most sense as it is maintainable, extremely extensible, fast, and most importantly, easy to use :).
 
 
 
