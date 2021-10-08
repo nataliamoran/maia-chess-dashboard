@@ -23,7 +23,15 @@ https://angelyuan218063.invisionapp.com/prototype/ckuaa4ek700agth01x08c0nbw/play
 :small_red_triangle: :small_red_triangle: :small_red_triangle: :small_red_triangle: :small_red_triangle:
 
 #### Q2: Who are your target users?
-Committed chess players from all over the world that want to improve on their chess skills. 
+Committed chess players from all over the world that want to improve on their chess skills.
+
+* Teenager or a young adult learning to play chess on their phone, wanting to see their mistakes.
+* Experienced chess player of any identity, wanting to improve their game level and to see difficult / tricky positions.  
+* Elder person playing chess on their desktop for fun, wanting to see interesting chess positions.
+* Chess-enthusiast playing out of appreciation for the beauty of the game, but not trying to improve their level.
+* Social media influencer streaming chess games on Twitch.
+
+**PERSONAS** 
 
 | ![Amy](./images/Q2-amy.png)     | Amy, 26 (Lives in Australia)  <br />  <br /> **TECHNOLOGY/SKILLS:**<br /> Chess ★★★★✩ <br />Internet ★★★★★ <br />AI ✩✩✩✩✩ | 
 | :---:       |    :----:   | 
