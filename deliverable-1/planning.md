@@ -270,19 +270,29 @@ List/describe the artifacts you will produce in order to organize your team.
 
 #### Q9: What are the rules regarding how your team works?
 
-Describe your team's working culture.
+**COMMUNICATION**
 
-**Communications:**
- * What is the expected frequency? What methods/channels are appropriate? 
- * If you have a partner project, what is your process (in detail) for communicating with your partner?
- 
-**Meetings:**
- * How are people held accountable for attending meetings, completing action items? Is there a moderator or process?
- 
-**Conflict Resolution:**
- * List at least three team scenarios/conflicts you discussed in lecture and how you decided you will resolve them. Indecisions? Non-responsive team members? Any other scenarios you can think of?
+Our team has set up a Slack channel with all our members and the team over at CSSLab. We expect everyone on our team to read messages the day that it was sent and respond with a thumbs up.
 
+To communicate with our partner, we simply ping our main point of contact with the CSSLab on Slack. Reid, our main point of contact has been very responsive and helpful; we believe that their cooperation will continue to be nothing but amazing. However, any complicated questions we have will be addressed in our weekly in-person meetings on Thursdays at 1pm near the CSSLab. 
 
+**MEETINGS**
+
+Our team has developed two consistent meeting times. The first meeting is a 45 minute session, every Tuesday at 8pm over Zoom and the second meeting time is an in-person meeting every Thursday at 1pm in the Pratt building for 1 hour. Our first meeting is with the members of the team to discuss our weekly sprint goals and assign tickets to the developers. The second meeting is primarily focused on discussing our current plans, any urgent blockers and to demo what was created in the previous sprint to the partner. 
+
+The aforementioned meetings are only our weekly scheduled meetings, we already had and will continue to have impromptu meetings for any issues that would be better handled through Zoom. For example for deliverable 1, there was a meeting of UI designers to discuss the mock-ups for our application. In a meeting specific to a single domain where not all members are asked to attend, we keep everyone in the loop about what happened in the meeting by posting all updates on our #meetings Slack channel. 
+
+For every meeting we have, we make sure that one person (on a rotating basis) is responsible for creating and maintaining the meeting minutes for that specific meeting so that we can always refer back to what has been mentioned in the meeting in the future.
+
+We understand all our members including our partner are very individuals. In the case where an individual cannot make our specified meeting times, we try our best to accommodate anyone who could not make our meetings by writing meeting minutes for every meeting we have. 
+
+**CONFLICT RESOLUTION**
+	
+Indecision is the biggest productivity killer. Our methods to eliminate indecision includes through planning of what we need to build and careful guidelines on how we are going to approach certain tasks. However, it is inevitable that different ideas form within the members of our group which can lead to indecision. In that case we as a team agree that discussing pros and cons of each idea will lead to an informed discussion on how to resolve said indecision.
+	
+There are times where certain individuals are unable to finish a given task within an allotted time, which can potentially lead to blockers on other team members' work. To account for such cases, we have implemented a policy to set internal deadlines of our own well before the deadlines given in the course so that we are able to create a buffer. In addition we, as a team, will figure out a way to make sure delays will not happen again.
+
+We understand that sometimes school can be overwhelming and you are unable to respond to messages on Slack. If we are unable to reach a member of our group for a few days near a deadline we will give them the benefit of doubt. However, if there has been no contact for an extended period of time then we will email them once again and then notify the TA about our group’s situation.
 
 
 ----
