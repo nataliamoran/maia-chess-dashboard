@@ -2,7 +2,7 @@
 
 ## Product Details
  
-#### Q1: What are you planning to build?
+### Q1: What are you planning to build?
 We are planning to build an educational, fun and aesthetically pleasing web application 
 in which users will be able to view and learn from their past chess games on [Lichess](https://lichess.org/). 
 
@@ -22,7 +22,7 @@ of a user’s overall gameplay. To do this we plan to expose three key values: p
 https://angelyuan218063.invisionapp.com/prototype/ckuaa4ek700agth01x08c0nbw/play)
 :small_red_triangle: :small_red_triangle: :small_red_triangle: :small_red_triangle: :small_red_triangle:
 
-#### Q2: Who are your target users?
+### Q2: Who are your target users?
 Committed chess players from all over the world that want to improve on their chess skills.
 
 * Teenager or a young adult learning to play chess on their phone, wanting to see their mistakes.
@@ -46,7 +46,7 @@ Committed chess players from all over the world that want to improve on their ch
 | **NEEDS**   | When he was looking at the history of games he played, he discovered that he has been losing a lot. Oliver would like to get better at chess.      | 
 | **FRUSTRATION**   | He can’t spend money on this and can’t spend a lot of time. The internet he uses is very unstable. Sometimes it becomes very slow and takes a long time for the page to respond.  | 
 
-#### Q3: Why would your users choose your product? What are they using today to solve their problem/need?
+### Q3: Why would your users choose your product? What are they using today to solve their problem/need?
 There are a lot of existing superhuman chess engines such as Stockfish that exist in the chess community. And there exist online platforms such as lichess that provide game-level feedback using those chess engines to the users. These platforms are currently used by users to help them improve on their chess skills. However, there are problems with these existing platforms that will cause a user to choose our product instead.
 
 First, the optimal plays that those chess engines generate are often uninterpretable to a human user (as shown from our partner’s research). Since the human user can’t understand why the AI made those plays in the first place, it is hard for the user to learn from those plays and feedback. However, the AI (MAIA) our product will be using takes this in mind and produces human-like optimal plays that our user can understand and learn from. The user can more easier understand the feedback our product provide and more easier learn from it.
@@ -56,7 +56,7 @@ Second, the current platforms are lacking the ability to find mistakes, interest
 Our partner’s mission is to create an AI that acts as an algorithmic teaching tool to human users. Our project provides a platform to display the current AI our partner has and gather data from the users so our partner can use it in their research.
 
 
-#### Q4: How will you build it?
+### Q4: How will you build it?
 
 **TECHNOLOGY STACK**
 * **Backend:** (pure) Python
@@ -122,7 +122,7 @@ For testing we will use unit tests.
 Before a developer creates a Pull Request, this developer needs to write tests for their code 
 and run existing tests to verify that their code has not broken any existing funnctionality.
 
-#### Q5: What are the user stories that make up the MVP?
+### Q5: What are the user stories that make up the MVP?
 Please open [Google Slides here](https://docs.google.com/presentation/d/1V2gnUiMgze4BJ1yaO9ueb0veCmzg0P37orXA-_0MsZc/edit?usp=sharing) to see Maia Dashboard user stories.
 
 ----
@@ -134,7 +134,7 @@ Licence: GPL
 
 ## Process Details
 
-#### Q6: What are the roles & responsibilities on the team?
+### Q6: What are the roles & responsibilities on the team?
 **TECHNICAL ROLES**
 * Backend Dev
 * Frontend Dev
@@ -223,7 +223,7 @@ Licence: GPL
 | Non software related work   |   - Acts as a UI/UX Designer preparing mockups and approving them with the partner       | 
 | 3 technical strengths and weaknesses  |     *Strength:* <br> - HTML/CSS/JavaScript <br> - Python <br> - UI/UX design <br> <br> *Weaknesses:* <br> - CI/CD <br> - connecting frontend and backend <br> - Minimal experience with React   | 
 
-#### Q7: What operational events will you have as a team?
+### Q7: What operational events will you have as a team?
 **WEEKLY MEETING WITH THE PARTNER** 
 
 Our weekly meeting with the partner is scheduled for Thursday 1 pm. The first meeting was held offline on Thursday, September 30. The second meeting was also held offline on Thursday, October 7. All subsequent weekly meetings will be run in person with a possibility to join via Zoom as well.
@@ -232,32 +232,32 @@ Our weekly meeting with the partner is scheduled for Thursday 1 pm. The first me
 
 * **After the meeting:** Instead of appointing one person to do meeting minutes, our team decided to rotate this role in alphabetical order (per our last names). A team member who takes notes during a meeting then stores the meeting minutes in our team’s Google Drive folder and emails them to all team members, the partner and the TA. This is done to minimize misunderstandings between the team and the partner.
 
-**First meeting with the partner** 
+1. **First meeting with the partner** 
 
-During the first meeting, our team and the partner discussed User Stories,
- and drafted together a frontend wireframe to understand better what exactly the partner needs us to build. 
- Also, the partner explained to us the logic of the games analysis 
- and the main features of the analysis algorithm that the partner built. 
- It was important because this algorithm will become the basis of the web application that our team will develop.
- 
- As a result of this meeting, we were able to make detailed mockups to approve with the partner,
- and to write detailed user stories to approve with both the partner and the TA.  
+     During the first meeting, our team and the partner discussed User Stories,
+     and drafted together a frontend wireframe to understand better what exactly the partner needs us to build. 
+     Also, the partner explained to us the logic of the games analysis 
+     and the main features of the analysis algorithm that the partner built. 
+     It was important because this algorithm will become the basis of the web application that our team will develop.
+     
+     As a result of this meeting, we were able to make detailed mockups to approve with the partner,
+     and to write detailed user stories to approve with both the partner and the TA.  
+    
+    Please see the meeting minutes [here](https://docs.google.com/document/d/1WeDdal-qy_DD3StEkZkj-kuqUYG_WsI-937mqdg1aQQ/edit?usp=sharing).
 
-Please see the meeting minutes [here](https://docs.google.com/document/d/1WeDdal-qy_DD3StEkZkj-kuqUYG_WsI-937mqdg1aQQ/edit?usp=sharing).
+2. **Second meeting with the partner**
 
-**Second meeting with the partner**
-
-During the second meeting, our team and the partner reviewed the mockups 
-and agreed on the mockup updates (e.g. adding a filter dropdown instead of filter buttons, 
-moving the analytics to the bottom of the page).
-
-We also discussed the project architecture and technology stack. Our team offered two possible architecture solutions
-for the partner to choose from.  
-
-As a result of the meeting, we were able to finalize the mockups, agree on the technology stack 
-and update the sequence diagram outlining the project architecture.
-
-Please see the meeting minutes [here](https://docs.google.com/document/d/1WeDdal-qy_DD3StEkZkj-kuqUYG_WsI-937mqdg1aQQ/edit?usp=sharing).
+    During the second meeting, our team and the partner reviewed the mockups 
+    and agreed on the mockup updates (e.g. adding a filter dropdown instead of filter buttons, 
+    moving the analytics to the bottom of the page).
+    
+    We also discussed the project architecture and technology stack. Our team offered two possible architecture solutions
+    for the partner to choose from.  
+    
+    As a result of the meeting, we were able to finalize the mockups, agree on the technology stack 
+    and update the sequence diagram outlining the project architecture.
+    
+    Please see the meeting minutes [here](https://docs.google.com/document/d/1WeDdal-qy_DD3StEkZkj-kuqUYG_WsI-937mqdg1aQQ/edit?usp=sharing).
 
 
 **WEEKLY TEAM MEETING**
@@ -275,7 +275,7 @@ Monday’s tutorial gives our team another chance to catch up - already in perso
 When we start development we will have a daily (Monday to Friday) 15-minute online standup meeting at 9 am, where each team member could share (1) what she/he worked on yesterday (2) what she/he will be working on today (3) if she/he has any blockers. This is meant to be a very short meeting to catch up and make sure that everyone is on track. If for any reasons a team member cannot attend a meeting, they can just send their answers in Slack.
   
   
-#### Q8: What artifacts will you use to self-organize?
+### Q8: What artifacts will you use to self-organize?
 **DOODLE**
 
 To find a time slot for a weekly team meeting we used a [Doodle questionnaire](https://doodle.com/poll/9w94i7gmrimh9dr5?utm_source=poll&utm_medium=link).
@@ -318,7 +318,7 @@ All non-development files needed for the project (e.g. meeting minutes, project 
 
 ![Google Drive](./images/Q8-GoogleDrive.png)
 
-#### Q9: What are the rules regarding how your team works?
+### Q9: What are the rules regarding how your team works?
 
 **COMMUNICATION**
 
