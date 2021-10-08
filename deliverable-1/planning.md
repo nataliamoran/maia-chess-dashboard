@@ -160,7 +160,7 @@ Licence: GPL
 | Non software related work   |    Supervises the note taking process shared by all team members     | 
 | 3 technical strengths and weaknesses  |   Strengths: <br> - Back-end server side programming <br> - Algorithms & Runtime Optimizations <br> - AI & NNs  <br> <br> *Weaknesses:* <br> - Frontend UI/UX Design <br> - CI/CD deployments and workflows <br> - Multi-Page Websites    | 
 
-:small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond:
+:small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond:
 
 | Team member:      | Robin Gerster | 
 | :---:        |    :----:   |
@@ -169,7 +169,7 @@ Licence: GPL
 | Non software related work   |     Acts as a Product Manager clarifying main product features    | 
 | 3 technical strengths and weaknesses  |   *Strengths:* <br> - Python, C# <br> - AI <br> - UI/UX Design <br> <br> *Weaknesses:* <br> - Javascript <br> - CI/CD deployments and workflows <br> - Lack of documentation/comments on code written.      | 
 
-:small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond:
+:small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond:
 
 | Team member:      | Kevin Hong | 
 | :---:        |    :----:   |
@@ -178,7 +178,7 @@ Licence: GPL
 | Non software related work   |  Acts as a Scrum master planning one-week sprints   | 
 | 3 technical strengths and weaknesses  |   *Strengths:* <br> - Have experience building full-stack web applications <br> - Have experience designing full end to end architecture of web applications <br> - Have experience with cloud computing solutions <br> <br> *Weaknesses:* <br> - In-experienced with hosting web applications on local virtual machines <br> - Poor web application designing skills <br> - Weak code testing coverage on server related software      | 
 
-:small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond:
+:small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond:
 
 | Team member:      | Natalia Moran | 
 | :---:        |    :----:   |
@@ -187,7 +187,7 @@ Licence: GPL
 | Non software related work   |    - Acts as a Systems Analyst translating business requirements into technical requirements  <br> - Acts as a Project Manager in the absence of a Project Manager   | 
 | 3 technical strengths and weaknesses  |    *Strengths:* <br> - Previous experience with Python, React, MongoDB, RestAPI Design <br> - Previous work experience as a Systems Analyst <br> - Good soft skills  <br> <br> *Weaknesses:* <br> - Minimal experience with CI/CD technology  <br> - Minimal experience with planning an architecture <br> - Minimal knowledge of AI   | 
 
-:small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond:
+:small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond:
 
 | Team member:      | William Wang | 
 | :---:        |    :----:   |
@@ -196,7 +196,7 @@ Licence: GPL
 | Non software related work   |   - Acts as a UI/UX Designer preparing mockups and approving them with the partner      | 
 | 3 technical strengths and weaknesses  |   *Strength:* <br> - HTML/CSS/JavaScript <br> - Data visualization <br> - Python <br> <br> *Weaknesses:* <br> - React <br> - Inexperienced with the connection between frontend and backend <br> - Report writing      | 
 
-:small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond:
+:small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond:
 
 | Team member:      | Angel Yuan | 
 | :---:        |    :----:   |
@@ -206,16 +206,56 @@ Licence: GPL
 | 3 technical strengths and weaknesses  |         | 
 
 #### Q7: What operational events will you have as a team?
+**WEEKLY MEETING WITH THE PARTNER** 
 
-Describe meetings (and other events) you are planning to have. 
- * When and where? Recurring or ad hoc? In-person or online?
- * What's the purpose of each meeting?
- * Other events could be coding sessions, code reviews, quick weekly sync meeting online, etc.
- * You must have at least 2 meetings with your project partner (if you have one) before D1 is due. Describe them here:
-   * What did you discuss during the meetings?
-   * What were the outcomes of each meeting?
-   * You must provide meeting minutes.
-   * You must have a regular meeting schedule established by the second meeting.  
+Our weekly meeting with the partner is scheduled for Thursday 1 pm. The first meeting was held offline on Thursday, September 30. The second meeting was also held offline on Thursday, October 7. All subsequent weekly meetings will be run in person with a possibility to join via Zoom as well.
+
+* **Before the meeting:** The team’s project manager prepares a meeting agenda and emails it to the team and the partner.
+
+* **After the meeting:** Instead of appointing one person to do meeting minutes, our team decided to rotate this role in alphabetical order (per our last names). A team member who takes notes during a meeting then stores the meeting minutes in our team’s Google Drive folder and emails them to all team members, the partner and the TA. This is done to minimize misunderstandings between the team and the partner.
+
+**First meeting with the partner** 
+
+During the first meeting, our team and the partner discussed User Stories,
+ and drafted together a frontend wireframe to understand better what exactly the partner needs us to build. 
+ Also, the partner explained to us the logic of the games analysis 
+ and the main features of the analysis algorithm that the partner built. 
+ It was important because this algorithm will become the basis of the web application that our team will develop.
+ 
+ As a result of this meeting, we were able to make detailed mockups to approve with the partner,
+ and to write detailed user stories to approve with both the partner and the TA.  
+
+Please see the meeting minutes [here](https://docs.google.com/document/d/1WeDdal-qy_DD3StEkZkj-kuqUYG_WsI-937mqdg1aQQ/edit?usp=sharing).
+
+**Second meeting with the partner**
+
+During the second meeting, our team and the partner reviewed the mockups 
+and agreed on the mockup updates (e.g. adding a filter dropdown instead of filter buttons, 
+moving the analytics to the bottom of the page).
+
+We also discussed the project architecture and technology stack. Our team offered two possible architecture solutions
+for the partner to choose from.  
+
+As a result of the meeting, we were able to finalize the mockups, agree on the technology stack 
+and update the sequence diagram outlining the project architecture.
+
+Please see the meeting minutes [here](https://docs.google.com/document/d/1WeDdal-qy_DD3StEkZkj-kuqUYG_WsI-937mqdg1aQQ/edit?usp=sharing).
+
+
+**WEEKLY TEAM MEETING**
+
+Our weekly team meeting is scheduled for Tuesday 8 pm via Zoom. 
+
+It gives us a perfect opportunity to talk to each other 2 days before our weekly meeting with the partner and decide on any additional work that has to be done till Thursday's meeting. 
+
+**TUTORIAL**
+
+Monday’s tutorial gives our team another chance to catch up - already in person - as well as to present our weekly progress to the TA. 
+
+**DAILY 15-MINUTE STANDUP MEETING**
+
+When we start development we will have a daily (Monday to Friday) 15-minute online standup meeting at 9 am, where each team member could share (1) what she/he worked on yesterday (2) what she/he will be working on today (3) if she/he has any blockers. This is meant to be a very short meeting to catch up and make sure that everyone is on track. If for any reasons a team member cannot attend a meeting, they can just send their answers in Slack.
+  
   
 #### Q8: What artifacts will you use to self-organize?
 
