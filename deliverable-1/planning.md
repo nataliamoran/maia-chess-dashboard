@@ -1,68 +1,115 @@
-# YOUR PRODUCT/TEAM NAME
-> _Note:_ This document is meant to evolve throughout the planning phase of your project.   That is, it makes sense for you commit regularly to this file while working on the project (especially edits/additions/deletions to the _Highlights_ section). Most importantly, it is a reflection of all the planning you work you've done in the first iteration. 
- > **This document will serve as a master plan between your team, your partner and your TA.**
+# Maia Dashboard / anti-semicolon-semicolon-club
 
 ## Product Details
  
 #### Q1: What are you planning to build?
+We are planning to build an educational, fun and aesthetically pleasing web application 
+in which users will be able to view and learn from their past chess games on [Lichess](https://lichess.org/). 
 
- > Short (1 - 2 min' read)
- * Start with a single sentence, high-level description of the product.
- * Be clear - Describe the problem you are solving in simple terms.
- * Be concrete. For example:
-    * What are you planning to build? Is it a website, mobile app,
-   browser extension, command-line app, etc.?      
-    * When describing the problem/need, give concrete examples of common use cases.
-    * Assume your the reader knows nothing about the problem domain and provide the necessary context. 
- * Focus on *what* your product does, and avoid discussing *how* you're going to implement it.      
-   For example: This is not the time or the place to talk about which programming language and/or framework you are planning to use.
- * **Feel free (and very much encouraged) to include useful diagrams, mock-ups and/or links**.
+This application should be responsive and not limited to high end devices or internet connections. 
+We plan to expose values computed by [CSSLab’s Maia Chess Project](https://maiachess.com/) in an intuitive 
+and interactive way such that minimal effort is needed to navigate the website and derive strategies for improvement. 
+For example, we will display a large chess board that will reflect the current board positions of a game. 
+As users search through all board states, this chess board will update in real-time and use arrows 
+and highlighted fields to showcase suboptimal play or interesting moves the user performed. 
+Beyond allowing users to inspect single positions and games we will put a strong focus on providing an analysis 
+of a user’s overall gameplay. To do this we plan to expose three key values: performance, entropy and trickiness. 
 
+![Chess Board](./images/Q1.png)
 
 #### Q2: Who are your target users?
+Committed chess players from all over the world that want to improve on their chess skills. 
 
-  > Short (1 - 2 min' read max)
- * Be specific (e.g. a 'a third-year university student studying Computer Science' and not 'a student')
- * **Feel free to use personas. You can create your personas as part of this Markdown file, or add a link to an external site (for example, [Xtensio](https://xtensio.com/user-persona/)).**
+| ![Amy](./images/Q2-amy.png)     | Amy, 26 (Lives in Australia)  <br />  <br /> **TECHNOLOGY/SKILLS:**<br /> Chess ★★★★✩ <br />Internet ★★★★★ <br />AI ✩✩✩✩✩ | 
+| :---:       |    :----:   | 
+| **BIO**         | Amy learned chess from her parents as a child. She has a regular 9 to 6 job. She has a stable but limited income. A stable relationship with her boyfriend. Chess is her hobby and she enjoys using her free time to play a few games online. She finds playing online is easily accessible, easy to find opponents, and meet up with her friends. She mainly plays with her phone and sometimes with her computer. | 
+| **NEEDS**   | She has felt like she reached a bottleneck in chess and wants to improve her skills. She wants a platform to provide her feedback and help her learn and improve.       | 
+| **FRUSTRATION**   | She is only willing to spend a very limited amount of money and is not willing to spend too much time. She wants the feedback to be easily accessible and specific to her.       | 
+
+
+| ![Amy](./images/Q2-oliver.png)     | Oliver, 14 (Lives in India)  <br />  <br /> **TECHNOLOGY/SKILLS:**<br /> Chess ★★★✩✩ <br />Internet ★★✩✩✩ <br />AI ✩✩✩✩✩ | 
+| :---:       |    :----:   | 
+| **BIO**         | Oliver lives with his family. He does not have his own phone or computer, but sometimes he gets to use his mother’s phone. The usage is very restricted and he does not have good internet connections. He discovered chess from one of his friends and after learning the rules got very interested in it. He later discovered that he can play chess online. | 
+| **NEEDS**   | When he was looking at the history of games he played, he discovered that he has been losing a lot. Oliver would like to get better at chess.      | 
+| **FRUSTRATION**   | He can’t spend money on this and can’t spend a lot of time. The internet he uses is very unstable. Sometimes it becomes very slow and takes a long time for the page to respond.  | 
 
 #### Q3: Why would your users choose your product? What are they using today to solve their problem/need?
+There are a lot of existing superhuman chess engines such as Stockfish that exist in the chess community. And there exist online platforms that provide game-level feedback using those chess engines to the users. However, there are problems with these existing platforms.
 
-> Short (1 - 2 min' read max)
- * We want you to "connect the dots" for us - Why does your product (as described in your answer to Q1) fits the needs of your users (as described in your answer to Q2)?
- * Explain the benefits of your product explicitly & clearly. For example:
-    * Save users time (how much?)
-    * Allow users to discover new information (which information? And, why couldn't they discover it before?)
-    * Provide users with more accurate and/or informative data (what kind of data? Why is it useful to them?)
-    * Does this application exist in another form? If so, how does your differ and provide value to the users?
-    * How does this align with your partner's organization's values/mission/mandate?
+First, the optimal plays that those chess engines generate are often uninterpretable to a human user (as shown from our partner’s research). Since the human user can’t understand why the AI made those plays in the first place, it is hard for the user to learn from those plays and feedback. However, the AI (MAIA) our product will be using takes this in mind and produces human-like optimal plays that our user can understand and learn from.
+
+Second, the current platforms are lacking the ability to find mistakes, interesting moves, tricky moves, from an user’s game history. They are often focused on a specific game and therefore are unable to provide general feedback to help the user learn. In our product, the user can just search for something like their mistakes and it will display mistakes the user made from a range of games the user played in the past. Which is much easier for the user to use and see their mistakes and learn from their mistakes.
+
+Our partner’s mission is to create an AI that acts as an algorithmic teaching tool to human users. Our project provides a platform to display the current AI our partner has and gather data from the users so our partner can use it in their research.
+
 
 #### Q4: How will you build it?
 
-> Short (1-2 min' read max)
- * What is the technology stack? Specify any and all languages, frameworks, libraries, PaaS products or tools. 
- * How will you deploy the application?
- * Describe the architecture - what are the high level components or patterns you will use? Diagrams are useful here. 
- * Will you be using third party applications or APIs? If so, what are they?
- * What is your testing strategy?
+**TECHNOLOGY STACK**
+* **Backend:** (pure) Python
+    * Our team offered to use either pure Python or Django with Redis Message Queue for the backend to the Partner. The partner prefers to use pure Python. 
+* **Frontend:** React
+    * The partner's other projects are built in React. We decided to use React for Maia Dashboard as well to keep consistency between the partner's projects. 
+* **Database:** MongoDB
+    * The partner chose to use MongoDB because: 
+        * MongoDB requires less memory than a relational database.
+        * Partner prefers storing data as a JSON to make it easier to retrieve the data.
+        * Partner uses MongoDB for their other projects.
+* **API:** FastAPI
+    * The partner is familiar with the FastAPI technology and used it previously for other projects. We chose to use FastAPI to make the project support easier for the partner.
+* **Third-party API:** [Lichess API](https://lichess.org/api) 
+    * Lichess API will be used to autheticate users and retrieve user games data for analysis.
+* **CI/CD:** GitHub Actions
+    * All our team members practiced using GitHub Actions for A1 so now it seems like a safe choice of CI/CD technology.
+* **Hosting:** Azure
+    * The hosting is provided by the partner.
+* **Web Server:** Nginx 
+* **Python Web Server Gateway Interface HTTP server:** Gunicorn 
+
+**ARCHITECTURE**
+
+Frontend will communicate with the backend through the API, the real API endpoints will be hidden. 
+Backend will communicate with the Database through a separate API. 
+When Maia Dashboard needs to retrieve data from Lichess, Maia Dashboard API will call Lichess API.
+
+Please see a Sequence Diagram below for details on each flow.
+
+**Sequence Diagram** (Please click on the diagram to see it in detail.)
+[![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgYXV0b251bWJlclxuICAgIGFjdG9yIHVzZXIgYXMgVXNlclxuICAgIHBhcnRpY2lwYW50IGZlIGFzIFJlYWN0PGJyLz5Gcm9udGVuZFxuICAgIHBhcnRpY2lwYW50IGJlIGFzIEJhY2tlbmRcbiAgICBwYXJ0aWNpcGFudCBhcGkgYXMgRmFzdEFQSVxuICAgIHBhcnRpY2lwYW50IGxpY2hlc3MgYXMgTGljaGVzc1xuICAgIHBhcnRpY2lwYW50IGVuZ2luZSBhcyBBbmFseXNpczxici8-TG9naWNcbiAgICBwYXJ0aWNpcGFudCBkYiBhcyBNb25nb0RCXG5cbiAgICBub3RlIG92ZXIgdXNlciwgZGI6IExvZ2luIHdpdGggTGljaGVzc1xuICAgIHVzZXIgLT4-KyBmZTogbG9naW4gd2l0aCBsaWNoZXNzXG4gICAgZmUgLT4-KyBiZTogbG9naW4gd2l0aCBsaWNoZXNzXG4gICAgYmUgLT4-KyBsaWNoZXNzOiBQYXJ0bmVyIHRvIHByb3ZpZGUgZGV0YWlsc1xuICAgIFxuXG4gICAgbm90ZSBvdmVyIHVzZXIsIGRiOiBOZXcgdXNlciAtIFB1bGwgdXNlciBkYXRhIGZyb20gTGljaGVzcywgc3RvcmUgaW4gTWFpYSBEYXNoYm9hcmQgREIgYW5kIHJldHVybiB0byBGRVxuICAgIGZlIC0-PisgYmU6IGdldCB1c2VyIGRhdGEgIFxuICAgIGJlIC0-PisgYXBpOiBnZXQgdXNlciBkYXRhIGZyb20gREJcbiAgICBhcGkgLT4-KyBkYjogcHVsbCB1c2VyIGRhdGFcbiAgICBkYiAtLT4-KyBhcGk6IHJldHVybiA0MDQgIFxuICAgIGFwaSAtPj4rIGxpY2hlc3M6IHB1bGwgdXNlciBkYXRhIGFuZCBhbGwgZ2FtZXNcbiAgICBsaWNoZXNzIC0tPj4tIGFwaTogdXNlciBkYXRhICYgYWxsIGdhbWVzIHJlc3BvbnNlXG4gICAgYXBpIC0-PisgZGI6IHN0b3JlIHVzZXIgZGF0YSAmIGdhbWVzIHdpdGggc3RhdHVzIFwicGVuZGluZ1wiXG4gICAgZGIgLS0-Pi0gYXBpOiBva1xuICAgIGFwaSAtLT4-LSBiZTogcmV0dXJuIHVzZXIgZGF0YSAmIGdhbWVzXG4gICAgYmUgLS0-Pi0gZmU6IHJldHVybiB1c2VyIGRhdGEgJiBnYW1lc1xuXG5cbiAgICBub3RlIG92ZXIgdXNlciwgZGI6IEV4aXN0aW5nIHVzZXIgLSBHZXQgdXNlciBkYXRhIGZyb20gTWFpYSBEYXNoYm9hcmQgREJcbiAgICBmZSAtPj4rIGJlOiBnZXQgdXNlciBkYXRhXG4gICAgYmUgLT4-KyBhcGk6IGdldCB1c2VyIGRhdGEgZnJvbSBEQlxuICAgIGFwaSAtPj4rIGRiOiBwdWxsIHVzZXIgZGF0YVxuICAgIGRiIC0tPj4rIGFwaTogcmV0dXJuIHVzZXIgZGF0YSAmIGdhbWVzXG4gICAgYXBpIC0tPj4tIGJlOiByZXR1cm4gdXNlciBkYXRhICYgZ2FtZXNcbiAgICBiZSAtLT4-LSBmZTogcmV0dXJuIHVzZXIgZGF0YSAmIGdhbWVzXG5cblxuICAgIG5vdGUgb3ZlciB1c2VyLCBkYjogTmV3IHVzZXIgLSBBbmFseXplIHVzZXIgZGF0YVxuICAgIGZlIC0-PisgYmU6IHRyaWdnZXJzIHVzZXIgZGF0YSBhbmFseXNpc1xuICAgIGJlIC0-PisgYXBpOiBnZXQgdXNlciBkYXRhIGFuYWx5dGljcyBmcm9tIHRoZSBEQlxuICAgIGFwaSAtPj4rIGVuZ2luZTogYW5hbHl6ZSB1c2VyIGRhdGEgXG4gICAgZW5naW5lIC0-PisgZGI6IHF1ZXJ5IHVzZXIgZGF0YSAmIGdhbWVzXG4gICAgZGIgLS0-Pi0gZW5naW5lOiB1c2VyIGRhdGEgJiBnYW1lc1xuICAgIGVuZ2luZSAtPj4gZW5naW5lOiBhbmFseXplIGRhdGFcbiAgICBlbmdpbmUgLT4-KyBkYjogc3RvcmUgc3RhdGlzdGljcyBpbiBEQiBhbmQgY2hhbmdlIHN0YXR1cyB0byBcImFuYWx5emVkXCJcbiAgICBkYiAtLT4-LSBlbmdpbmU6IG9rXG4gICAgZW5naW5lIC0tPj4tIGFwaTogcmV0dXJuIGRpY3Rpb25hcnkgd2l0aCBhbmFseXNpcyBkYXRhXG4gICAgYXBpIC0tPj4tIGJlOiByZXR1cm4gZGljdGlvbmFyeSB3aXRoIGFuYWx5c2lzIGRhdGFcbiAgICBiZSAtLT4-LSBmZTogcmV0dXJuIGRpY3Rpb25hcnkgd2l0aCBhbmFseXNpcyBkYXRhXG5cblxuICAgIG5vdGUgb3ZlciB1c2VyLCBkYjogRXhpc3RpbmcgdXNlciAtIFVzZXIgcmVxdWVzdCB0aGVpciBzdGF0c1xuICAgIHVzZXIgLT4-KyBmZTogZ2V0IGFuYWx5c2lzIGRhdGEgZm9yIHVzZXJcbiAgICBmZSAtPj4rIGJlOiBnZXQgYW5hbHlzaXMgZGF0YSBmb3IgdXNlclxuICAgIGJlIC0-PisgYXBpOiBnZXQgdXNlciBkYXRhIGFuYWx5dGljcyBmcm9tIHRoZSBEQlxuICAgIGFwaSAtPj4rIGRiOiBnZXQgdXNlciBzdGF0c1xuICAgIGRiIC0tPj4tIGFwaTogdXNlciBzdGF0cyBkYXRhXG4gICAgYXBpIC0-PiBhcGk6IHBhcnNlIGRhdGEgZm9yIEZFXG4gICAgYXBpIC0tPj4tIGJlOiB1c2VyIHN0YXRzXG4gICAgYmUgLS0-Pi0gZmU6IHVzZXIgc3RhdHNcbiAgICBmZSAtPj4tIGZlOiBidWlsZCBVSSBmb3Igc3RhdHNcblxuXG4gICAgbm90ZSBvdmVyIHVzZXIsIGRiOiBVc2VyIHNlbmRzIGZlZWRiYWNrXG4gICAgdXNlciAtPj4rIGZlOiBzZW5kIGZlZWRiYWNrXG4gICAgZmUgLT4-KyBiZTogc3RvcmUgZmVlZGJhY2tcbiAgICBiZSAtPj4rIGFwaTogc3RvcmUgZmVlZGJhY2sgaW4gdGhlIERCXG4gICAgYXBpIC0-PisgZGI6IHN0b3JlIHVzZXIgZmVlZGJhY2tcbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkYXJrIn0sInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0)](https://mermaid.live/edit/#eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgYXV0b251bWJlclxuICAgIGFjdG9yIHVzZXIgYXMgVXNlclxuICAgIHBhcnRpY2lwYW50IGZlIGFzIFJlYWN0PGJyLz5Gcm9udGVuZFxuICAgIHBhcnRpY2lwYW50IGJlIGFzIEJhY2tlbmRcbiAgICBwYXJ0aWNpcGFudCBhcGkgYXMgRmFzdEFQSVxuICAgIHBhcnRpY2lwYW50IGxpY2hlc3MgYXMgTGljaGVzc1xuICAgIHBhcnRpY2lwYW50IGVuZ2luZSBhcyBBbmFseXNpczxici8-TG9naWNcbiAgICBwYXJ0aWNpcGFudCBkYiBhcyBNb25nb0RCXG5cbiAgICBub3RlIG92ZXIgdXNlciwgZGI6IExvZ2luIHdpdGggTGljaGVzc1xuICAgIHVzZXIgLT4-KyBmZTogbG9naW4gd2l0aCBsaWNoZXNzXG4gICAgZmUgLT4-KyBiZTogbG9naW4gd2l0aCBsaWNoZXNzXG4gICAgYmUgLT4-KyBsaWNoZXNzOiBQYXJ0bmVyIHRvIHByb3ZpZGUgZGV0YWlsc1xuICAgIFxuXG4gICAgbm90ZSBvdmVyIHVzZXIsIGRiOiBOZXcgdXNlciAtIFB1bGwgdXNlciBkYXRhIGZyb20gTGljaGVzcywgc3RvcmUgaW4gTWFpYSBEYXNoYm9hcmQgREIgYW5kIHJldHVybiB0byBGRVxuICAgIGZlIC0-PisgYmU6IGdldCB1c2VyIGRhdGEgIFxuICAgIGJlIC0-PisgYXBpOiBnZXQgdXNlciBkYXRhIGZyb20gREJcbiAgICBhcGkgLT4-KyBkYjogcHVsbCB1c2VyIGRhdGFcbiAgICBkYiAtLT4-KyBhcGk6IHJldHVybiA0MDQgIFxuICAgIGFwaSAtPj4rIGxpY2hlc3M6IHB1bGwgdXNlciBkYXRhIGFuZCBhbGwgZ2FtZXNcbiAgICBsaWNoZXNzIC0tPj4tIGFwaTogdXNlciBkYXRhICYgYWxsIGdhbWVzIHJlc3BvbnNlXG4gICAgYXBpIC0-PisgZGI6IHN0b3JlIHVzZXIgZGF0YSAmIGdhbWVzIHdpdGggc3RhdHVzIFwicGVuZGluZ1wiXG4gICAgZGIgLS0-Pi0gYXBpOiBva1xuICAgIGFwaSAtLT4-LSBiZTogcmV0dXJuIHVzZXIgZGF0YSAmIGdhbWVzXG4gICAgYmUgLS0-Pi0gZmU6IHJldHVybiB1c2VyIGRhdGEgJiBnYW1lc1xuXG5cbiAgICBub3RlIG92ZXIgdXNlciwgZGI6IEV4aXN0aW5nIHVzZXIgLSBHZXQgdXNlciBkYXRhIGZyb20gTWFpYSBEYXNoYm9hcmQgREJcbiAgICBmZSAtPj4rIGJlOiBnZXQgdXNlciBkYXRhXG4gICAgYmUgLT4-KyBhcGk6IGdldCB1c2VyIGRhdGEgZnJvbSBEQlxuICAgIGFwaSAtPj4rIGRiOiBwdWxsIHVzZXIgZGF0YVxuICAgIGRiIC0tPj4rIGFwaTogcmV0dXJuIHVzZXIgZGF0YSAmIGdhbWVzXG4gICAgYXBpIC0tPj4tIGJlOiByZXR1cm4gdXNlciBkYXRhICYgZ2FtZXNcbiAgICBiZSAtLT4-LSBmZTogcmV0dXJuIHVzZXIgZGF0YSAmIGdhbWVzXG5cblxuICAgIG5vdGUgb3ZlciB1c2VyLCBkYjogTmV3IHVzZXIgLSBBbmFseXplIHVzZXIgZGF0YVxuICAgIGZlIC0-PisgYmU6IHRyaWdnZXJzIHVzZXIgZGF0YSBhbmFseXNpc1xuICAgIGJlIC0-PisgYXBpOiBnZXQgdXNlciBkYXRhIGFuYWx5dGljcyBmcm9tIHRoZSBEQlxuICAgIGFwaSAtPj4rIGVuZ2luZTogYW5hbHl6ZSB1c2VyIGRhdGEgXG4gICAgZW5naW5lIC0-PisgZGI6IHF1ZXJ5IHVzZXIgZGF0YSAmIGdhbWVzXG4gICAgZGIgLS0-Pi0gZW5naW5lOiB1c2VyIGRhdGEgJiBnYW1lc1xuICAgIGVuZ2luZSAtPj4gZW5naW5lOiBhbmFseXplIGRhdGFcbiAgICBlbmdpbmUgLT4-KyBkYjogc3RvcmUgc3RhdGlzdGljcyBpbiBEQiBhbmQgY2hhbmdlIHN0YXR1cyB0byBcImFuYWx5emVkXCJcbiAgICBkYiAtLT4-LSBlbmdpbmU6IG9rXG4gICAgZW5naW5lIC0tPj4tIGFwaTogcmV0dXJuIGRpY3Rpb25hcnkgd2l0aCBhbmFseXNpcyBkYXRhXG4gICAgYXBpIC0tPj4tIGJlOiByZXR1cm4gZGljdGlvbmFyeSB3aXRoIGFuYWx5c2lzIGRhdGFcbiAgICBiZSAtLT4-LSBmZTogcmV0dXJuIGRpY3Rpb25hcnkgd2l0aCBhbmFseXNpcyBkYXRhXG5cblxuICAgIG5vdGUgb3ZlciB1c2VyLCBkYjogRXhpc3RpbmcgdXNlciAtIFVzZXIgcmVxdWVzdCB0aGVpciBzdGF0c1xuICAgIHVzZXIgLT4-KyBmZTogZ2V0IGFuYWx5c2lzIGRhdGEgZm9yIHVzZXJcbiAgICBmZSAtPj4rIGJlOiBnZXQgYW5hbHlzaXMgZGF0YSBmb3IgdXNlclxuICAgIGJlIC0-PisgYXBpOiBnZXQgdXNlciBkYXRhIGFuYWx5dGljcyBmcm9tIHRoZSBEQlxuICAgIGFwaSAtPj4rIGRiOiBnZXQgdXNlciBzdGF0c1xuICAgIGRiIC0tPj4tIGFwaTogdXNlciBzdGF0cyBkYXRhXG4gICAgYXBpIC0-PiBhcGk6IHBhcnNlIGRhdGEgZm9yIEZFXG4gICAgYXBpIC0tPj4tIGJlOiB1c2VyIHN0YXRzXG4gICAgYmUgLS0-Pi0gZmU6IHVzZXIgc3RhdHNcbiAgICBmZSAtPj4tIGZlOiBidWlsZCBVSSBmb3Igc3RhdHNcblxuXG4gICAgbm90ZSBvdmVyIHVzZXIsIGRiOiBVc2VyIHNlbmRzIGZlZWRiYWNrXG4gICAgdXNlciAtPj4rIGZlOiBzZW5kIGZlZWRiYWNrXG4gICAgZmUgLT4-KyBiZTogc3RvcmUgZmVlZGJhY2tcbiAgICBiZSAtPj4rIGFwaTogc3RvcmUgZmVlZGJhY2sgaW4gdGhlIERCXG4gICAgYXBpIC0-PisgZGI6IHN0b3JlIHVzZXIgZmVlZGJhY2tcbiIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJkYXJrXCJcbn0iLCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9)
+
+Please see a Server Diagram below for details on the servers setup.
+
+**Server Diagram** (Please click on the diagram to see it in detail.)
+[![](https://mermaid.ink/img/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4gICAgdXNlcltVc2VyXSAtLT58ZW50ZXJzIFVSTHwgd2ViW0Jyb3dzZXJdXG4gICAgd2ViIC0tPnxwb3J0IDgwfCBuZ2lueFtXZWIgU2VydmVyPGJyLz5uZ2lueF1cbiAgICB3ZWIgLS0-fHBvcnQgWHwgbmdpbnhbV2ViIFNlcnZlcjxici8-bmdpbnhdXG4gICAgXG4gICAgc3ViZ3JhcGggc2VydmVyW1NlcnZlciBWTV1cbiAgICAgICAgZGlyZWN0aW9uIFRCICAgICAgIFxuICAgICAgICBzdWJncmFwaCBndW5pY29ybi1wcm9kW0d1bmljb3JuIFBST0RdXG4gICAgICAgICAgICBiZS1wW0JhY2tlbmQgUHl0aG9uXSAtLT4gYXBpLXBbRmFzdEFQSV1cbiAgICAgICAgICAgIGFwaS1wIC0tPiBsb2dpYy1wW1N0YXRzIEFuYWx5dGljcyBMb2dpY11cbiAgICAgICAgICAgIGxvZ2ljLXAgLS4tPiBhcGktcFxuICAgICAgICAgICAgYXBpLXAgLS0-IHxNb25nb0RCfCBkYi1wW0RhdGFiYXNlXVxuICAgICAgICBlbmRcbiAgICAgICAgc3ViZ3JhcGggZ3VuaWNvcm4tZGV2W0d1bmljb3JuIERFVl1cbiAgICAgICAgICAgIGJlLWRbQmFja2VuZCBQeXRob25dIC0tPiBhcGktZFtGYXN0QVBJXVxuICAgICAgICAgICAgYXBpLWQgLS0-IGxvZ2ljLWRbU3RhdHMgQW5hbHl0aWNzIExvZ2ljXVxuICAgICAgICAgICAgbG9naWMtZCAtLi0-IGFwaS1kICAgICAgIFxuICAgICAgICAgICAgYXBpLWQgLS0-IHxNb25nb0RCfCBkYi1kW0RhdGFiYXNlXVxuICAgICAgICBlbmRcbiAgICAgICAgbmdpbnggLS0-fGZvciByZWFjdCBzdGF0aWMgPGJyLz4gaHRtbC9qcy9jc3MgZmlsZXN8IHN0YXRpYy1wcm9kICYgc3RhdGljLWRldlxuICAgICAgICBuZ2lueCAtLT4gZ3VuaWNvcm4tcHJvZCAmIGd1bmljb3JuLWRldlxuICAgIGVuZFxuICAgIGFwaS1wICYgYXBpLWQgLS0-fExpY2hlc3MgQVBJfCBsaWNoZXNzIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRhcmsifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ)](https://mermaid.live/edit/#eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4gICAgdXNlcltVc2VyXSAtLT58ZW50ZXJzIFVSTHwgd2ViW0Jyb3dzZXJdXG4gICAgd2ViIC0tPnxwb3J0IDgwfCBuZ2lueFtXZWIgU2VydmVyPGJyLz5uZ2lueF1cbiAgICB3ZWIgLS0-fHBvcnQgWHwgbmdpbnhbV2ViIFNlcnZlcjxici8-bmdpbnhdXG4gICAgXG4gICAgc3ViZ3JhcGggc2VydmVyW1NlcnZlciBWTV1cbiAgICAgICAgZGlyZWN0aW9uIFRCICAgICAgIFxuICAgICAgICBzdWJncmFwaCBndW5pY29ybi1wcm9kW0d1bmljb3JuIFBST0RdXG4gICAgICAgICAgICBiZS1wW0JhY2tlbmQgUHl0aG9uXSAtLT4gYXBpLXBbRmFzdEFQSV1cbiAgICAgICAgICAgIGFwaS1wIC0tPiBsb2dpYy1wW1N0YXRzIEFuYWx5dGljcyBMb2dpY11cbiAgICAgICAgICAgIGxvZ2ljLXAgLS4tPiBhcGktcFxuICAgICAgICAgICAgYXBpLXAgLS0-IHxNb25nb0RCfCBkYi1wW0RhdGFiYXNlXVxuICAgICAgICBlbmRcbiAgICAgICAgc3ViZ3JhcGggZ3VuaWNvcm4tZGV2W0d1bmljb3JuIERFVl1cbiAgICAgICAgICAgIGJlLWRbQmFja2VuZCBQeXRob25dIC0tPiBhcGktZFtGYXN0QVBJXVxuICAgICAgICAgICAgYXBpLWQgLS0-IGxvZ2ljLWRbU3RhdHMgQW5hbHl0aWNzIExvZ2ljXVxuICAgICAgICAgICAgbG9naWMtZCAtLi0-IGFwaS1kICAgICAgIFxuICAgICAgICAgICAgYXBpLWQgLS0-IHxNb25nb0RCfCBkYi1kW0RhdGFiYXNlXVxuICAgICAgICBlbmRcbiAgICAgICAgbmdpbnggLS0-fGZvciByZWFjdCBzdGF0aWMgPGJyLz4gaHRtbC9qcy9jc3MgZmlsZXN8IHN0YXRpYy1wcm9kICYgc3RhdGljLWRldlxuICAgICAgICBuZ2lueCAtLT4gZ3VuaWNvcm4tcHJvZCAmIGd1bmljb3JuLWRldlxuICAgIGVuZFxuICAgIGFwaS1wICYgYXBpLWQgLS0-fExpY2hlc3MgQVBJfCBsaWNoZXNzIiwibWVybWFpZCI6IntcbiAgXCJ0aGVtZVwiOiBcImRhcmtcIlxufSIsInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0)
+
+**DEPLOYMENT**
+
+Deployment to `DEV` and `PROD` environments will be automated with GitHub Actions. 
+GitHub Actions will run tests, 
+compile React frontend code and copy the static files to the Azure server,
+copy updated Python files to the Azure server, and then will restart Gunicorn on the server to show the updates.
+
+On the event of a successful deployment or a deployment failure the team will be notified on Slack 
+with an automatic Slack message.  
+
+Please see the Deployment Diagram below for the deployment flow details.
+
+**Deployment Diagram** (Please click on the diagram to see it in detail.)
+[![](https://mermaid.ink/img/eyJjb2RlIjoiZmxvd2NoYXJ0IFRCXG4gICAgc3ViZ3JhcGggZGphbmdvW1Rlc3QgUHl0aG9uIGNvZGUgYW5kIGRlcGxveSBiYWNrZW5kXVxuICAgICAgICBkaXJlY3Rpb24gVEJcbiAgICAgICAgZGVwZW5kZW5jaWVzW0luc3RhbGwgcHl0aG9uIGRlcGVuZGVuY2llc10gLS0-IHRlc3RzW1J1biB0ZXN0c11cbiAgICAgICAgdGVzdHMgLS0-IGNvcHlbQ29weSBiYWNrZW5kL3B5dGhvbiBmaWxlc11cbiAgICAgICAgY29weSAtLT4gZ3VuaWNvcm5bUmVzdGFydCBndW5pY29ybiBzZXJ2aWNlIG9uIHNlcnZlcl1cbiAgICBlbmRcbiAgICBzdWJncmFwaCByZWFjdFtCdWlsZCBmcm9udGVudCBhbmQgZGVwbG95XVxuICAgICAgICBkaXJlY3Rpb24gVEJcbiAgICAgICByZWFjdF9kZXBlbmRlbmNpZXNbSW5zdGFsbCByZWFjdCBkZXBlbmRlbmNpZXNdIC0tPiBidWlsZFtSZWFjdCBidWlsZF1cbiAgICAgICBidWlsZCAtLT4gY29weV9mZVtDb3B5IHJlYWN0IGJ1aWxkIHRvIHNlcnZlcl1cbiAgICBlbmRcbiAgICBzdWJncmFwaCBzbGFja1tTbGFjayBub3RpZmljYXRpb25dXG4gICAgICAgIHhbTm90aWZ5IG9uIHN1Y2Nlc3NmdWwgZGVwbG95bWVudF1cbiAgICAgICAgLVtOb3RpZnkgb24gZGVwbG95bWVudCBmYWlsdXJlXVxuICAgICAgICBcbiAgICBlbmRcbiAgICB1c2VyW0RldmVsb3Blcl0gLS0-fHB1c2ggY29kZXwgZ2l0aHViW0dpdEh1YiA8YnIvPiBkZXZlbG9wICYgbWFzdGVyIDxici8-IGJyYW5jaGVzXVxuICAgIGdpdGh1YiAtLT58Z2l0aHViIGFjdGlvbiBqb2IgMXwgZGphbmdvXG4gICAgZ2l0aHViIC0tPnxnaXRodWIgYWN0aW9uIGpvYiAyfCByZWFjdFxuICAgIFxuICAgIHJlYWN0IC0tPiBzbGFja1xuICAgIGRqYW5nbyAtLT4gc2xhY2tcblxuICAgIGNvcHlfZmUgLS4tIGNvbW1lbnRbRW52aXJvbm1lbnQgZGVwZW5kYW50IG9uIGJyYW5jaF1cbiAgICBjb3B5IC0uLSBjb21tZW50XG4gICAgZ3VuaWNvcm4gLS4tIGNvbW1lbnRcbiAgIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRhcmsifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ)](https://mermaid.live/edit/#eyJjb2RlIjoiZmxvd2NoYXJ0IFRCXG4gICAgc3ViZ3JhcGggZGphbmdvW1Rlc3QgUHl0aG9uIGNvZGUgYW5kIGRlcGxveSBiYWNrZW5kXVxuICAgICAgICBkaXJlY3Rpb24gVEJcbiAgICAgICAgZGVwZW5kZW5jaWVzW0luc3RhbGwgcHl0aG9uIGRlcGVuZGVuY2llc10gLS0-IHRlc3RzW1J1biB0ZXN0c11cbiAgICAgICAgdGVzdHMgLS0-IGNvcHlbQ29weSBiYWNrZW5kL3B5dGhvbiBmaWxlc11cbiAgICAgICAgY29weSAtLT4gZ3VuaWNvcm5bUmVzdGFydCBndW5pY29ybiBzZXJ2aWNlIG9uIHNlcnZlcl1cbiAgICBlbmRcbiAgICBzdWJncmFwaCByZWFjdFtCdWlsZCBmcm9udGVudCBhbmQgZGVwbG95XVxuICAgICAgICBkaXJlY3Rpb24gVEJcbiAgICAgICByZWFjdF9kZXBlbmRlbmNpZXNbSW5zdGFsbCByZWFjdCBkZXBlbmRlbmNpZXNdIC0tPiBidWlsZFtSZWFjdCBidWlsZF1cbiAgICAgICBidWlsZCAtLT4gY29weV9mZVtDb3B5IHJlYWN0IGJ1aWxkIHRvIHNlcnZlcl1cbiAgICBlbmRcbiAgICBzdWJncmFwaCBzbGFja1tTbGFjayBub3RpZmljYXRpb25dXG4gICAgICAgIHhbTm90aWZ5IG9uIHN1Y2Nlc3NmdWwgZGVwbG95bWVudF1cbiAgICAgICAgLVtOb3RpZnkgb24gZGVwbG95bWVudCBmYWlsdXJlXVxuICAgICAgICBcbiAgICBlbmRcbiAgICB1c2VyW0RldmVsb3Blcl0gLS0-fHB1c2ggY29kZXwgZ2l0aHViW0dpdEh1YiA8YnIvPiBkZXZlbG9wICYgbWFzdGVyIDxici8-IGJyYW5jaGVzXVxuICAgIGdpdGh1YiAtLT58Z2l0aHViIGFjdGlvbiBqb2IgMXwgZGphbmdvXG4gICAgZ2l0aHViIC0tPnxnaXRodWIgYWN0aW9uIGpvYiAyfCByZWFjdFxuICAgIFxuICAgIHJlYWN0IC0tPiBzbGFja1xuICAgIGRqYW5nbyAtLT4gc2xhY2tcblxuICAgIGNvcHlfZmUgLS4tIGNvbW1lbnRbRW52aXJvbm1lbnQgZGVwZW5kYW50IG9uIGJyYW5jaF1cbiAgICBjb3B5IC0uLSBjb21tZW50XG4gICAgZ3VuaWNvcm4gLS4tIGNvbW1lbnRcbiAgIiwibWVybWFpZCI6IntcbiAgXCJ0aGVtZVwiOiBcImRhcmtcIlxufSIsInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0)
+
+**TESTING**
+
+For testing we will use unit tests. 
+Before a developer creates a Pull Request, this developer needs to write tests for their code 
+and run existing tests to verify that their code has not broken any existing funnctionality.
 
 #### Q5: What are the user stories that make up the MVP?
-
- * At least 5 user stories concerning the main features of the application - note that this can broken down further
- * You must follow proper user story format (as taught in lecture) ```As a <user of the app>, I want to <do something in the app> in order to <accomplish some goal>```
- * User stories must contain acceptance criteria. Examples of user stories with different formats can be found here: https://www.justinmind.com/blog/user-story-examples/. **It is important that you provide a link to an artifact containing your user stories**.
- * If you have a partner, these must be reviewed and accepted by them
+Please open [Google Slides here](https://docs.google.com/presentation/d/1V2gnUiMgze4BJ1yaO9ueb0veCmzg0P37orXA-_0MsZc/edit?usp=sharing) to see Maia Dashboard user stories.
 
 ----
 ## Intellectual Property Confidentiality Agreement 
-> Note this section is **not marked** but must be completed briefly if you have a partner. If you have any questions, please contact David and Adam.
->  
-**By default, you own any work that you do as part of your coursework.** However, some partners may want you to keep the project confidential after the course is complete. As part of your first deliverable, you should discuss and agree upon an option with your partner. Examples include:
-1. You can share the software and the code freely with anyone with or without a license, regardless of domain, for any use.
-2. You can upload the code to GitHub or other similar publicly available domains.
-3. You will only share the code under an open-source license with the partner but agree to not distribute it in any way to any other entity or individual. 
-4. You will share the code under an open-source license and distribute it as you wish but only the partner can access the system deployed during the course.
 
-**Briefly describe which option you have agreed to. Your partner cannot ask you to sign any legally binding agreements or documents pertaining to non-disclosure, confidentiality, IP ownership, etc.**
+Licence: GPL
 
 ----
 
