@@ -160,6 +160,8 @@ Licence: GPL
 | Non software related work   |    Supervises the note taking process shared by all team members     | 
 | 3 technical strengths and weaknesses  |   Strengths: <br> - Back-end server side programming <br> - Algorithms & Runtime Optimizations <br> - AI & NNs  <br> <br> *Weaknesses:* <br> - Frontend UI/UX Design <br> - CI/CD deployments and workflows <br> - Multi-Page Websites    | 
 
+:small_orange_diamond:
+
 | Team member:      | Robin Gerster | 
 | :---:        |    :----:   |
 | Role(s) Responsibilities |    - Full Stack (focus on frontend) <br> - UI/UX Designer <br> - Product Manager    | 
