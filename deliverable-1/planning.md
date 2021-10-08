@@ -17,8 +17,8 @@ of a user’s overall gameplay. To do this we plan to expose three key values: p
 
 ![Chess Board](./images/Q1.png)
 
-Interactable Mockup:
-https://angelyuan218063.invisionapp.com/prototype/ckuaa4ek700agth01x08c0nbw/play 
+[Interactable Mockup](
+https://angelyuan218063.invisionapp.com/prototype/ckuaa4ek700agth01x08c0nbw/play)
 
 #### Q2: Who are your target users?
 Committed chess players from all over the world that want to improve on their chess skills. 
