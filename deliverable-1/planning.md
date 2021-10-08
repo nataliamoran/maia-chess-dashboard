@@ -161,6 +161,8 @@ Licence: GPL
     * Define sprints together with Project Manager
     * Lead standup meetings
 
+:small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond:
+
 | Team member:      |  Sina Abady | 
 | :---:        |    :----:   |
 | Role(s) Responsibilities |   Full Stack Dev (Focus on Backend)     | 
