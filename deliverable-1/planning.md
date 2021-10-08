@@ -160,7 +160,7 @@ Licence: GPL
 | Non software related work   |    Supervises the note taking process shared by all team members     | 
 | 3 technical strengths and weaknesses  |   Strengths: <br> - Back-end server side programming <br> - Algorithms & Runtime Optimizations <br> - AI & NNs  <br> <br> *Weaknesses:* <br> - Frontend UI/UX Design <br> - CI/CD deployments and workflows <br> - Multi-Page Websites    | 
 
-:small_orange_diamond:
+:small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond:
 
 | Team member:      | Robin Gerster | 
 | :---:        |    :----:   |
@@ -169,12 +169,16 @@ Licence: GPL
 | Non software related work   |     Acts as a Product Manager clarifying main product features    | 
 | 3 technical strengths and weaknesses  |   *Strengths:* <br> - Python, C# <br> - AI <br> - UI/UX Design <br> <br> *Weaknesses:* <br> - Javascript <br> - CI/CD deployments and workflows <br> - Lack of documentation/comments on code written.      | 
 
+:small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond:
+
 | Team member:      | Kevin Hong | 
 | :---:        |    :----:   |
 | Role(s) Responsibilities |   - Scrum master <br> - Full-Stack Developer     | 
 | Component worked on   |    *D1:* Q9 section <br> <br> *Future deliverables:* <br> - Develop REST API for frontend-backend communication  <br> - Develop REST API for backend-database communication      | 
 | Non software related work   |  Acts as a Scrum master planning one-week sprints   | 
 | 3 technical strengths and weaknesses  |   *Strengths:* <br> - Have experience building full-stack web applications <br> - Have experience designing full end to end architecture of web applications <br> - Have experience with cloud computing solutions <br> <br> *Weaknesses:* <br> - In-experienced with hosting web applications on local virtual machines <br> - Poor web application designing skills <br> - Weak code testing coverage on server related software      | 
+
+:small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond:
 
 | Team member:      | Natalia Moran | 
 | :---:        |    :----:   |
@@ -183,12 +187,16 @@ Licence: GPL
 | Non software related work   |    - Acts as a Systems Analyst translating business requirements into technical requirements  <br> - Acts as a Project Manager in the absence of a Project Manager   | 
 | 3 technical strengths and weaknesses  |    *Strengths:* <br> - Previous experience with Python, React, MongoDB, RestAPI Design <br> - Previous work experience as a Systems Analyst <br> - Good soft skills  <br> <br> *Weaknesses:* <br> - Minimal experience with CI/CD technology  <br> - Minimal experience with planning an architecture <br> - Minimal knowledge of AI   | 
 
+:small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond:
+
 | Team member:      | William Wang | 
 | :---:        |    :----:   |
 | Role(s) Responsibilities |    - Full Stack (focus on frontend) Dev <br> - DevOps    | 
 | Component worked on   |     *D1:* Highlights section <br> <br> *Future deliverables:* <br>  - Develop chess board visualization <br>  - Develop suggested moves visualization <br>  - Develop user account info visualization   | 
 | Non software related work   |   - Acts as a UI/UX Designer preparing mockups and approving them with the partner      | 
 | 3 technical strengths and weaknesses  |   *Strength:* <br> - HTML/CSS/JavaScript <br> - Data visualization <br> - Python <br> <br> *Weaknesses:* <br> - React <br> - Inexperienced with the connection between frontend and backend <br> - Report writing      | 
+
+:small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond:
 
 | Team member:      | Angel Yuan | 
 | :---:        |    :----:   |
