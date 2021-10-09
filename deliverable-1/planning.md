@@ -209,9 +209,9 @@ Licence: GPL
 
 | Team member:      | William Wang | 
 | :---:        |    :----:   |
-| Role(s) Responsibilities |    - Full Stack (focus on frontend) Dev <br> - DevOps    | 
+| Role(s) Responsibilities |    - Full Stack (focus on frontend) Dev <br> - DevOps <br> - Project Manager   | 
 | Component worked on   |     *D1:* Highlights section <br> <br> *Future deliverables:* <br>  - Develop chess board visualization <br>  - Develop suggested moves visualization <br>  - Develop user account info visualization   | 
-| Non software related work   |   - Acts as a UI/UX Designer preparing mockups and approving them with the partner      | 
+| Non software related work   |   - Acts as a UI/UX Designer preparing mockups and approving them with the partner   <br> - Keep track of the progress of each member in the group   | 
 | 3 technical strengths and weaknesses  |   *Strength:* <br> - HTML/CSS/JavaScript <br> - Data visualization <br> - Python <br> <br> *Weaknesses:* <br> - React <br> - Inexperienced with the connection between frontend and backend <br> - Report writing      | 
 
 :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond: :small_orange_diamond:
