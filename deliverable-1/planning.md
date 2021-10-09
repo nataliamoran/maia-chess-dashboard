@@ -6,9 +6,9 @@
 We are planning to build an educational, fun and aesthetically pleasing web application 
 in which users will be able to view and learn from their past chess games on [Lichess](https://lichess.org/). 
 
-This application should be responsive and not limited to high end devices or internet connections. 
-We plan to expose values computed by [CSSLab’s Maia Chess Project](https://maiachess.com/) in an intuitive 
-and interactive way such that minimal effort is needed to navigate the website and derive strategies for improvement. 
+This application should be responsive and not limited to high-end devices or internet connections. 
+We plan to expose values computed by [CSSLab’s Maia Chess Project](https://maiachess.com/) intuitively and 
+interactively such that minimal effort is needed to navigate the website and derive strategies for improvement. 
 For example, we will display a large chess board that will reflect the current board positions of a game. 
 As users search through all board states, this chess board will update in real-time and use arrows 
 and highlighted fields to showcase suboptimal play or interesting moves the user performed. 
@@ -23,13 +23,13 @@ https://angelyuan218063.invisionapp.com/prototype/ckuaa4ek700agth01x08c0nbw/play
 :small_red_triangle: :small_red_triangle: :small_red_triangle: :small_red_triangle: :small_red_triangle:
 
 ### Q2: Who are your target users?
-Committed chess players from all over the world that want to improve on their chess skills.
+Committed chess players from all over the world that want to improve their chess skills.
 
-* Teenager or a young adult learning to play chess on their phone, wanting to see their mistakes.
-* Experienced chess player of any identity, wanting to improve their game level and to see difficult / tricky positions.  
-* Elder person playing chess on their desktop for fun, wanting to see interesting chess positions.
-* Chess-enthusiast playing out of appreciation for the beauty of the game, but not trying to improve their level.
-* Social media influencer streaming chess games on Twitch.
+* Teenagers or young adults learning to play chess on their phones, wanting to see their mistakes.
+* Experienced chess players of any identity, wanting to improve their game level and to see difficult / tricky positions.  
+* Elder people playing chess on their desktop for fun, wanting to see interesting chess positions.
+* Chess-enthusiasts playing out of appreciation for the beauty of the game, but not trying to improve their level.
+* Social media influencers streaming chess games on Twitch.
 
 **PERSONAS** 
 
@@ -47,11 +47,11 @@ Committed chess players from all over the world that want to improve on their ch
 | **FRUSTRATION**   | He can’t spend money on this and can’t spend a lot of time. The internet he uses is very unstable. Sometimes it becomes very slow and takes a long time for the page to respond.  | 
 
 ### Q3: Why would your users choose your product? What are they using today to solve their problem/need?
-There are a lot of existing superhuman chess engines such as Stockfish that exist in the chess community. And there exist online platforms such as lichess that provide game-level feedback using those chess engines to the users. These platforms are currently used by users to help them improve on their chess skills. However, there are problems with these existing platforms that will cause a user to choose our product instead.
+There are a lot of existing superhuman chess engines such as Stockfish that exist in the chess community. And there exist online platforms such as Lichess that provide game-level feedback using those chess engines to the users. These platforms are currently used by users to help them improve their chess skills. However, there are problems with these existing platforms that will cause a user to choose our product instead.
 
-First, the optimal plays that those chess engines generate are often uninterpretable to a human user (as shown from our partner’s research). Since the human user can’t understand why the AI made those plays in the first place, it is hard for the user to learn from those plays and feedback. However, the AI (MAIA) our product will be using takes this in mind and produces human-like optimal plays that our user can understand and learn from. The user can more easier understand the feedback our product provide and more easier learn from it.
+First, the optimal plays that those chess engines generate are often uninterpretable to a human user (as shown from our partner’s research). Since the human user can’t understand why the AI made those plays in the first place, it is hard for the user to learn from those plays and feedback. However, MAIA, the AI our product will be using, takes this in mind and produces human-like optimal plays that our users can understand and learn from. The user can more easily understand the feedback our product provides and more easily learn from it.
 
-Second, the current platforms are lacking the ability to find mistakes, interesting moves, tricky moves, from an user’s game history. They are often focused on a specific game and only provide game-leve feedback. Our product goes beyond that and provide state-level feedback and general-level feedback. Also, the user can just search for something like their mistakes and it will display mistakes the user made from a range of games the user played in the past. Something other platforms does not provide. This is much easier for the user to use and see their mistakes and learn from their mistakes. The user will get a wider range of feedback specific to them that will help in their learning.
+Second, the current platforms are lacking the ability to find mistakes, interesting moves, tricky moves, from a user’s game history. They are often focused on a specific game and only provide game-level feedback. Our product goes beyond that and provides state-level feedback and general-level feedback. Also, the user can just search for something like their mistakes and it will display mistakes the user made from a range of games the user played in the past. Something other platforms do not provide. This is much easier for the user to use and see their mistakes and learn from their mistakes. The user will get a wider range of feedback specific to them that will help in their learning.
 
 Our partner’s mission is to create an AI that acts as an algorithmic teaching tool to human users. Our project provides a platform to display the current AI our partner has and gather data from the users so our partner can use it in their research.
 
