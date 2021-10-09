@@ -51,7 +51,7 @@ There are a lot of existing superhuman chess engines such as Stockfish that exis
 
 First, the optimal plays that those chess engines generate are often uninterpretable to a human user (as shown from our partner’s research). Since the human user can’t understand why the AI made those plays in the first place, it is hard for the user to learn from those plays and feedback. However, MAIA, the AI our product will be using, takes this in mind and produces human-like optimal plays that our users can understand and learn from. The user can more easily understand the feedback our product provides and more easily learn from it.
 
-Second, the current platforms are lacking the ability to find mistakes, interesting moves, tricky moves, from a user’s game history. They are often focused on a specific game and only provide game-level feedback. Our product goes beyond that and provides state-level feedback and general-level feedback. Also, the user can just search for something like their mistakes and it will display mistakes the user made from a range of games the user played in the past. Something other platforms do not provide. This is much easier for the user to use and see their mistakes and learn from their mistakes. The user will get a wider range of feedback specific to them that will help in their learning.
+Second, the current platforms are lacking the ability to find mistakes, interesting moves, tricky moves, from a user’s game history. They are often focused on a specific game and only provide game-level feedback. Our product goes beyond that and provides state-level and general-level feedback. Also, the user can just search for something like their mistakes and it will display mistakes the user made from a range of games the user played in the past. Something other platforms do not provide. This will be much easier for the user to see and learn from their mistakes. The user will get a wider range of feedback specific to them which will help in their learning.
 
 Our partner’s mission is to create an AI that acts as an algorithmic teaching tool to human users. Our project provides a platform to display the current AI our partner has and gather data from the users so our partner can use it in their research.
 
@@ -352,7 +352,7 @@ We understand that sometimes school can be overwhelming and you are unable to re
 
 ### Partner Selection
 After the group is formed, we first let each team member come up with their top three partners based on interest and abilities.
-We soon found out that we have a shared interest in AI. Follow this theme, partners that we have considered includes:
+We soon found out that we have a shared interest in AI. Follow this theme, partners that we have considered include:
  * [CSSLab](https://docs.google.com/document/d/1MHo_cUcqRSHbUD0DN9GiC2_6x4L1dvPczQQBnrCNg6U/edit)
  * [Software Engineering Lab](https://docs.google.com/document/d/1tdDwwwONTu_Il1r44tNMpEXWAi01XI6z3BMQmpwepYM/edit)
  * [TAGlab](https://docs.google.com/document/d/1zt4oJpi9BER3QMHpHB2m0is5pGxZ8BjUkaAof1oMznI/edit)
@@ -369,87 +369,87 @@ After the meeting with the Partner lead, Reid, we received a lot of interesting 
 
 Maia uses three major measures to quantify the ability of the user, the state of the game etc ...
  
- * **Performance:** Ratio between difficulty of the move and likeliness of player to play it
+ * **Performance:** Ratio between the difficulty of the move and likeliness of player to play it
  * **Trickiness:** Defined as the expected-winrate loss for a given player. The trickier the player, the more they “outplay” this statistic, meaning they win when they are expected to lose in a position.
- * **Entropy:** This statistic describes the probabilistic complexity of a certain position. Will be toned down to be readable by the average user. Essentially   describes how complex the plays of a certain position can be.
+ * **Entropy:** This statistic describes the probabilistic complexity of a certain position. Will be toned down to be readable by the average user. Essentially, it describes how complex the plays of a certain position can be.
 
 ![alt text](https://i.imgur.com/yZRpHsa.png) 
 
-Players will be able to select different interest postions within the game and analyze them via. the quantifiers provided by Maia.
-They will be able to see the aggregate of their performance of the various games they uploaded, which will give the user a great insight to their game history. The suggestions for moves in interesting positions will be much more intuitive as Maia will match the moves to the skill level of the player and overall game. This interface will let any user, casual, or professional, gain great insight into the states of various games, and human actions in the games as well.
+Players will be able to select different interest positions within the game and analyze them via. the quantifiers provided by Maia.
+They will be able to see the aggregate of their performance of the various games they uploaded, which will give the user a great insight into their game history. The suggestions for moves in interesting positions will be much more intuitive as Maia will match the moves to the skill level of the player and overall game. This interface will let any user, casual, or professional, gain great insight into the states of various games, and human actions in the games as well.
 
-The scatter plot will allow more advanced users to compare the performance of Maia to Stockfish, on their winrate metrics, meaning the user can quantitatively and qualitatvely be able to compare Maia and Stockfish in real time!
+The scatter plot will allow more advanced users to compare the performance of Maia to Stockfish, on their winrate metrics, meaning the user can quantitatively and qualitatively compare Maia and Stockfish in real time!
 
 ### Teamwork :D
 
 Our team is comprised of many different Computer Science majors from various walks of life. This means:
  * Our team is extremely dynamic in terms of its skillset
  * Is comprised of people with various interests in the field of CS
- * Has members ranging from 3rd year to 5th year of studies with various degrees of experience
- * We have the ability to learn from one another, and design solutions and applications in various interesting ways, pulling from our knowledge in either pure Computer Science course knowledge, Industry experince, and even hobby knowledge!
+ * Has members ranging from 3rd year to 5th year of studies with varying degrees of experience
+ * We can learn from one another, and design solutions and applications in various interesting ways, pulling from our knowledge in either pure Computer Science course knowledge, Industry experience, and even hobby knowledge!
  * Due to this we are able to come up with various awesome designs, whether it comes to frontend GUI, backend multiprocessing etc...
 
-Natalia has extremely in depth knowledge from industry in team collaboration, organization, and work flows, allowing our team to work extremely together, even with our hectic school schedules. 
+Natalia has extremely in-depth knowledge from industry in team collaboration, organization, and workflows, allowing our team to work extremely together, even with our hectic school schedules. 
 
 ![alt text](https://i.imgur.com/Mz9W1v4.png) 
 
-Our frontend team comprising of Angel, William, and Robin have extensive experience in frontend ability, and are able to organize their ideas, make mockups, and collaborate effectively to come up with various design for the look of the website. They all ask detailed questions from the Partner to be able to interpret their wishes for the website, and get feedback as to provide an accurate to the Partner user experience.
+Our frontend team comprising of Angel, William, and Robin, all of whom have extensive experience in frontend projects, and are able to organize their ideas, make mockups, and collaborate effectively to come up with various designs for the look of the website. They all ask the partner detailed questions to interpret their wishes for the website, and use the feedback to provide the user experience that our partner wants.
 
 ![alt text](https://i.imgur.com/eUaV2U0.png) 
 ![alt text](https://i.imgur.com/by8eYTV.png) 
 
-Our backend team comprised of Natalia, Kevin and Sina, all have various knowledge of backend systems from Industry and school work. The meetings that occur between this team allows all three people to discuss various implementations of the API's based on personal experience, and provide pros and cons of different frameworks as it relates to the clients needs. This allows the team to quickly converge on not only, a near optimal solution for backend tech stack, but also learn a lot in the process!
+Our backend team comprised of Natalia, Kevin and Sina, all have various knowledge of backend systems from Industry and school work. The meetings that occur between this team allows all three people to discuss various implementations of the API's based on personal experience, and provide pros and cons of different frameworks as it relates to the client's needs. This allows the team to quickly converge on not only, a near-optimal solution for the backend tech stack, but also learn a lot in the process!
 
 ![alt text](https://i.imgur.com/1t8zY79.jpg) 
 
 ### Technical Detail Decisions Overview
 
-**Frontend:** This was the section that we were provided the most freedom with. The Partner only desires basic visual features, that can be accomplished via many modern frontend API's. We could list the pros and cons of each API here, but the real reason we chose React were based on these questions:
+**Frontend:** This was the section that we were provided with the most freedom with. The Partner only desires basic visual features, that can be accomplished via many modern frontend APIs. We could list the pros and cons of each API here, but the real reason we chose React were based on these questions:
 
  * How easy is it to develop using this API?
- * Can the code be broken down modularily and be tested easily among a small group of developers?
+ * Can the code be broken down modularly and be tested easily among a small group of developers?
  * What tools are available to develop a modern website using this API?
  * How easy will it be to hand off the code to the Partner at the end of this semester?
  * Most importantly, which framework do our developers have the most experience in.
 
-Now, most modern API's tend to answer these questions fairly well, and can fit all our needs. Depending on who you ask, Angular is far superior to React and it's only time until everyone realizes it and completely switches over. React is far superior, Facebook, Instagram and others use it after all. ETC ... Well these were the key considerations we made.
+Now, most modern APIs tend to answer these questions fairly well, and can fit all our needs. Depending on who you ask, Angular is far superior to React and it's only time until everyone realizes it and completely switches over. React is far superior, Facebook, Instagram and others use it after all. ETC ... Well, these were the key considerations we made.
 
-Reacts componenets structure is ever so slightly easier to develop and maintain, although it gives less of a freedom than Angular does slightly as well. For the purposes of this application, the decisions are neglible since this apps production scale is quite small, and the codebase is meant to be maintained by a couple of developrs in the CSS lab.
+React's components structure is ever so slightly easier to develop and maintain, although it gives less freedom than Angular does slightly as well. For the purposes of this application, the decisions are negligible since this app's production scale is quite small, and the codebase is meant to be maintained by a couple of developers in the CSS lab.
 
-Both Angular and React have phenomonmenal component structures that will arm any developer with the tools needed to build fast, beautiful and responsive websites. 
+Both Angular and React have phenomenal component structures that will arm any developer with the tools needed to build fast, beautiful and responsive websites. 
 
-Now the last two questions are what the majority of our decision was made off of. One of the Partners has slight experience with React, which leads us to slightly favour React when it comes to handoff. Lastly, the majority of our developers used React in their Assignment 1. Kevin mentioned using Material UI, which is an extremely easy, and good looking component interface that will make any website look modern. This is a huge bonus to React as it means our devs will need not spend time learning a new framework when it comes to frontend.
+Now the last two questions are what the majority of our decision was made off of. One of the Partners has slight experience with React, which leads us to slightly favour React when it comes to handoff. Lastly, the majority of our developers used React in their Assignment 1. Kevin mentioned using Material UI, which is an extremely easy, and good-looking component interface that will make any website look modern. This is a huge bonus to React as it means our devs will not need to spend time learning a new framework when it comes to the frontend.
 
-Can you guess what we landed on? ....
+Can you guess what we landed on? ...
 
-Thats right :D
+That's right :D
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" width="200" height="200">
 
 **Backend:** This portion of the design, we tended to have much less freedom, as the server, language Maia is written in, and API calls are already set in stone. This means that we had a lot less to consider overall when choosing the backend framework and the components that comprise it. 
 
 It made the most sense to choose Python as the language for the backend as this would work very seamlessly with Maia. Django was considered as it has many modern applications such as:
- * Maintainability: Backend and Message Queue can be developed, debugged, tested, and maintained seperately for ease of workflow.
- * Scalibility: Implements multi-processing making it largely scalable to large applications as the user base grows
+ * Maintainability: Backend and Message Queue can be developed, debugged, tested, and maintained separately for ease of workflow.
+ * Scalability: Implements multi-processing making it largely scalable to large applications as the user base grows
  * A/B testing: Able to effectively test in real time the effects of different algorithms on the data provided and given to the user base.
 
-In the end we stuck with Python as the Partner insisted that it would be the simplest option for him to read and maintain as the project got handed over, which in all makes sense as the scope of this project will extend long after this course is complete.
+In the end, we stuck with Python as the Partner insisted that it would be the simplest option for him to read and maintain as the project got handed over, which in all makes sense as the scope of this project will extend long after this course is complete.
 
-The server is already set as an nginx server by the Partner, which is hosted on Microsoft Azure, so we already have a framework (although very broad) to work with when it comes to that. None of the developers have used this framework before, but the Partner already used it to deploy Maia, and as it's a modern framework, it will be easy to deploy the backend of the web application to it.
+The server is already set as an Nginx server by the Partner, which is hosted on Microsoft Azure, so we already have a framework (although very broad) to work with when it comes to that. None of the developers have used this framework before, but the Partner already used it to deploy Maia, and as it's a modern framework, it will be easy to deploy the backend of the web application to it.
 
-The database again, was set up by the Partner for our convenience, as a MongoDB backend. This means that the frontend developers will have to call an API to convert React user states to a .json, and push the data to the database for analytics purposes. It was decided that we need multiple processes running interacting with the database at once.
+The database was also set up by the Partner for our convenience, as a MongoDB backend. This means that the frontend developers will have to call an API to convert React user states to a .json file, and push the data to the database for analytics purposes. It was decided that we need multiple processes running interacting with the database at once.
 
  * Asynchronously track user data and push it to the database.
  * Process any new games that are loaded from Lichess into the database, and analyze them
- * Serve useres various statistics, games, and interesting postions on the fly
+ * Serve users various statistics, games, and interesting positions on the fly
 
 The ideal API structure was explained to us by Kevin (he drew it on the board but it got erased before we had the chance to take a photo lol):
 
-He emphasized for ease of use by the frontend developers, and for any devs in the research team who may want to work with Maia, that there be a high level black box API that could accomplish any request to the backend that is needed.
+He emphasized for ease of use by the frontend developers, and for any devs in the research team who may want to work with Maia, that there be a high-level black-box API that could accomplish any request to the backend that is needed.
 
-This API would then connect to multiple smaller APIs who work asynchronously with one another to accomplish various tasks that he backend needs. This way development can be done in parallel without having to share code within APIs. All that would be needed are guarantees of function signatures from the top level API.
+This API would then connect to multiple smaller APIs that work asynchronously with one another to accomplish various tasks that the backend needs. This way development can be done in parallel without having to share code within APIs. All that would be needed are guarantees of function signatures from the top-level API.
 
-Lastly the smaller asynchronous API's would connect to the Maia API and request any relevant information if need be.
+Lastly, the smaller asynchronous APIs would connect to the Maia API and request any relevant information if need be.
 
 This model made the most sense as it is maintainable, extremely extensible, fast, and most importantly, easy to use :).
 
