@@ -70,6 +70,10 @@ jobs:
   build_fe_and_deploy:
     timeout-minutes: 5
     runs-on: ubuntu-latest
+    env:
+      HOST: dashboard.maiachess.com
+      PORT: 25277
+      TARGET_DIRECTORY: /opt/maia-dashboard-dev
     strategy:
       matrix:
         node-version: [14.x]
