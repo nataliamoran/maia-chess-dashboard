@@ -1,9 +1,9 @@
 [Unit]
-Description=gunicorn dev daemon
+Description=uvicorn dev deamon
 After=network.target
 
 [Service]
-User=ubuntu
+User=natalia
 Group=www-data
 StandardOutput=syslog
 StandardError=syslog
