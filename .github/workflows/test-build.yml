@@ -1,0 +1,69 @@
+name: Test build
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for manual test'
+
+jobs:
+  deploy_backend:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    env:
+      HOST: dashboard.maiachess.com
+      PORT: 25277
+      TARGET_DIRECTORY: /opt/maia-dashboard-dev
+    strategy:
+      max-parallel: 1
+      matrix:
+        python-version: [3.8]
+
+    steps:
+      - uses: actions/checkout@v2
+      # todo Check how to run FastAPI tests and run them before deploying
+#      - name: Set up Python ${{ matrix.python-version }}
+#        uses: actions/setup-python@v2
+#        with:
+#          python-version: ${{ matrix.python-version }}
+#      - name: Install Dependencies
+#        run: |
+#          python -m pip install --upgrade pip
+#          pip install -r requirements.txt
+#      - name: Run Tests
+#        run: |
+#          cd backend
+#          python manage.py test
+
+      - name: Copy backend folder to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{env.HOST}}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ env.PORT }}
+          source: "backend,config,requirements.txt"
+          target: ${{ env.TARGET_DIRECTORY }}
+          overwrite: true
+      - name: Reinstalling virtualenv, requirements
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{env.HOST}}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ env.PORT }}
+          script: |
+            cd ${{ env.TARGET_DIRECTORY }}
+            virtualenv -p `which python3.8` env
+            source env/bin/activate
+            pip install -r requirements.txt
+            sudo cp config/uvicorn-dev.service /etc/systemd/system/uvicorn-dev.service
+            sudo systemctl daemon-reload
+            sudo systemctl restart uvicorn-dev
+            sudo cp config/dev.nginx.conf /etc/nginx/sites-available/dev.nginx.conf
+            sudo service nginx restart
+
