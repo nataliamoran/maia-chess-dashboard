@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
+app = FastAPI(docs_url="/api/docs",
+              openapi_url="/api/v1/openapi.json",
+              )
 
 origins = ["*", ]
 

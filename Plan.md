@@ -1,17 +1,3 @@
-# 2021-10-10 Steps
-
-Local:
-- Basic FastAPI app - done
-- Basic react app - done
-- react talks to fastapi backend locally - done
-- Install mongodb - done
-- Connect FastAPI to mongodb - done
-
-Deploy
-- deploy manually and have nginx serve FastAPI + react
-- create github actions to deploy
-- 
-
 # Local work
 
 ## Running mongodb container 
@@ -48,11 +34,29 @@ From the `frontend` directory, run
 npm start
 ```
 This will start the react app locally. 
-Notice it proxies requests to the backend on port 7000 - If you wish to change that, 
-update under `packages.json` the line:
+
+Notice you need to proxy requests to the backend on port 7000 - 
+In order to do that, add in `packages.json` the line:
+```json
+{
+  "name": "frontend",
+  ...
+  "scripts": {
+    ...
+  },
+  "proxy": "http://127.0.0.1:7000",   ### <--- This line
+}
 ```
-"proxy": "http://127.0.0.1:7000",
-```
+Do not commit this line otherwise the deployment will fail.
 
+# 2021-10-10 Steps
+Local:
+- Basic FastAPI app - done
+- Basic react app - done
+- react talks to fastapi backend locally - done
+- Install mongodb - done
+- Connect FastAPI to mongodb - done
 
-
+Deploy
+- deploy manually and have nginx serve FastAPI + react - done
+- create github actions to deploy - done
