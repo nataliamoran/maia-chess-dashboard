@@ -1,9 +1,9 @@
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
-export default  function Store(){
+export default  function Home(){
     return (
-      <div className={"Store"}>
-        <Navbar />
+        <div className={"Home"}>
+            <Navbar />
       </div>
     )
 }
