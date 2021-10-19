@@ -1,28 +1,14 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Home from "./components/pages/Home.js"
 import './App.css';
-
-import HelloWorld from "./components/hello";
-
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { };
-  }
-
-  render() {
+function App() {
     return (
-      <BrowserRouter>
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => <HelloWorld state={this.state} />}
-          />
-        </Switch>
-      </BrowserRouter>
-    );
-  }
+        <BrowserRouter>
+            <div className={"App"}>
+            </div>
+            <Route path={"/"} exact component={Home} />
+        </BrowserRouter>
+    )
 }
-
 export default App;
