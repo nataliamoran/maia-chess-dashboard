@@ -32,7 +32,10 @@ class BoardState extends React.Component {
                     
                         <ListGroup.Item key={d.ID}
                         action variant="dark" 
-                        onClick={() => {this.state.curr = d.ID; console.log(this.state.curr);}} >
+                        onClick={(event) => {
+                            this.props.parentCallback(d.ID);
+                            event.preventDefault();
+                            }} >
                             <div>{d.whitePlayer} vs {d.blackPlayer}</div>
                             <div>{d.date}</div>
                             <div>{d.state.round}&nbsp;{d.state.move}</div>
