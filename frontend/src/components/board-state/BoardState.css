@@ -1,0 +1,32 @@
+  .dot-green {
+    height: 15px;
+    width: 15px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .dot-orange {
+    height: 15px;
+    width: 15px;
+    background-color: orange;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .dot-red {
+    height: 15px;
+    width: 15px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+
+.list-group-item-dark.list-group-item-action:focus, .list-group-item-dark.list-group-item-action:hover {
+  color: white !important;
+  background-color: #333238 !important;
+}
+
+.list-group-item-dark {
+  color: white !important;
+  background-color:#4b4a52 !important;
+}
