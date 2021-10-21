@@ -79,14 +79,22 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     env:
-      HOST: dash-dev.maiachess.com
       PORT: 25277
-      TARGET_DIRECTORY: /opt/maia-dashboard-dev
     strategy:
       matrix:
         node-version: [14.x]
     steps:
       - uses: actions/checkout@v2
+      - name: Sets env vars to dev
+        run: |
+          echo "HOST=dash-dev.maiachess.com" >> $GITHUB_ENV
+          echo "TARGET_DIRECTORY=/opt/maia-dashboard-dev" >> $GITHUB_ENV
+        if: startsWith(github.ref, 'refs/heads/develop')
+      - name: Sets env vars to prod
+        run: |
+          echo "HOST=dashboard.maiachess.com" >> $GITHUB_ENV
+          echo "TARGET_DIRECTORY=/opt/maia-dashboard-prod" >> $GITHUB_ENV
+        if: startsWith(github.ref, 'refs/heads/main')
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
