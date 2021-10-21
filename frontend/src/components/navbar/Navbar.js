@@ -1,5 +1,5 @@
 import * as ReactBootStrap from "react-bootstrap"
-import React, { Component } from "react";
+import React from "react";
 class Navbar extends React.Component {
 
     render() {
@@ -9,7 +9,7 @@ class Navbar extends React.Component {
                     <ReactBootStrap.Navbar.Brand href="#home">MAIA CHESS</ReactBootStrap.Navbar.Brand>
                     <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
-                        <ReactBootStrap.Nav>
+                        <ReactBootStrap.Nav className="ms-auto">
                             <ReactBootStrap.Nav.Link eventKey={2} href="#memes" >
                                 Lichess Login
                             </ReactBootStrap.Nav.Link>
