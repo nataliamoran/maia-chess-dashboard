@@ -36,13 +36,15 @@ class BoardState extends React.Component {
                     
                         <ListGroup.Item key={d.ID}
                         /*className = {"item"}*/
+
                         action variant="dark"
                         onClick={(event) => {
+                            this.state.curr = d.ID;
                             this.props.parentCallback(d.ID);
                             event.preventDefault();
                             }} >
-                                 <div style={{'font-size': '18px','font-weight': 'bold'}}>{d.state.round}.&nbsp;{d.state.move}</div>
-                            <div style={{'font-weight': 'bold'}}>{d.whitePlayer} vs {d.blackPlayer}</div>
+                                 <div style={{'font-size': '16px','font-weight': 'bold'}}>{d.state.round}.&nbsp;{d.state.move}</div>
+                            <div /*style={{'font-weight': 'bold'}}*/>{d.whitePlayer} vs {d.blackPlayer}</div>
                             <div>{d.date}</div>
                            
                             <div style={{float: 'left', 'font-weight': 'bold'}}>P:</div> 
