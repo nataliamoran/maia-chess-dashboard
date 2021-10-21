@@ -39,43 +39,45 @@ class BoardState extends React.Component {
 
                         action variant="dark"
                         onClick={(event) => {
-                            this.state.curr = d.ID;
+                            this.setState({
+                                curr: d.ID
+                              });
                             this.props.parentCallback(d.ID);
                             event.preventDefault();
                             }} >
-                                 <div style={{'font-size': '16px','font-weight': 'bold'}}>{d.state.round}.&nbsp;{d.state.move}</div>
+                                 <div style={{'fontSize': '16px','fontWeight': 'bold'}}>{d.state.round}.&nbsp;{d.state.move}</div>
                             <div /*style={{'font-weight': 'bold'}}*/>{d.whitePlayer} vs {d.blackPlayer}</div>
                             <div>{d.date}</div>
                            
-                            <div style={{float: 'left', 'font-weight': 'bold'}}>P:</div> 
+                            <div style={{float: 'left', 'fontWeight': 'bold'}}>P:</div> 
                             {d.state.stat.P > 6 &&
-                                <span class="dot-green" style={{float: 'left'}}></span>
+                                <span className="dot-green" style={{float: 'left'}}></span>
                             }
                             {d.state.stat.P > 3 && d.state.stat.P <=6 &&
-                                <span class="dot-orange" style={{float: 'left'}}></span>
+                                <span className="dot-orange" style={{float: 'left'}}></span>
                             }
                             {d.state.stat.P <= 3 &&
-                                <span class="dot-red" style={{float: 'left'}}></span>
+                                <span className="dot-red" style={{float: 'left'}}></span>
                             }
-                             <div style={{float: 'left', 'margin-left': '5px', 'font-weight': 'bold'}}>T:</div> 
+                             <div style={{float: 'left', 'marginLeft': '5px', 'fontWeight': 'bold'}}>T:</div> 
                             {d.state.stat.T > 6 &&
-                                <span class="dot-green" style={{float: 'left'}}></span>
+                                <span className="dot-green" style={{float: 'left'}}></span>
                             }
                             {d.state.stat.T > 3 && d.state.stat.T <=6 &&
-                                <span class="dot-orange" style={{float: 'left'}}></span>
+                                <span className="dot-orange" style={{float: 'left'}}></span>
                             }
                             {d.state.stat.T <= 3 &&
-                                <span class="dot-red" style={{float: 'left'}}></span>
+                                <span className="dot-red" style={{float: 'left'}}></span>
                             }
-                             <div style={{float: 'left', 'margin-left': '5px','font-weight': 'bold'}}>E:</div> 
+                             <div style={{float: 'left', 'marginLeft': '5px','fontWeight': 'bold'}}>E:</div> 
                             {d.state.stat.E > 6 &&
-                                <span class="dot-green" style={{float: 'left'}}></span>
+                                <span className="dot-green" style={{float: 'left'}}></span>
                             }
                             {d.state.stat.E > 3 && d.state.stat.E <=6 &&
-                                <span class="dot-orange" style={{float: 'left'}}></span>
+                                <span className="dot-orange" style={{float: 'left'}}></span>
                             }
                             {d.state.stat.E <= 3 &&
-                                <span class="dot-red" style={{float: 'left'}}></span>
+                                <span className="dot-red" style={{float: 'left'}}></span>
                             }
                         </ListGroup.Item>
 

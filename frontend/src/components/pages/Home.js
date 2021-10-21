@@ -13,13 +13,13 @@ export default  function Home(){
     return (
         <div className={"Home"}>
             <Navbar/>
-            <div class="ui stackable four column grid">
-                <div class="column">
+            <div className="ui stackable four column grid">
+                <div className="column">
                     <FindMenu/>
                 </div>
-                <div class="column"> <BoardState  parentCallback = {boardHandleCallback}/></div>
-                <div class="column">stackable column 1</div>
-                <div class="column">stackable column 1</div>
+                <div className="column"> <BoardState  parentCallback = {boardHandleCallback}/></div>
+                <div className="column">stackable column 1</div>
+                <div className="column">stackable column 1</div>
             </div>
       </div>
     )
