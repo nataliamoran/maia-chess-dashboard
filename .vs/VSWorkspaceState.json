@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\frontend",
+    "\\frontend\\public",
+    "\\frontend\\src",
+    "\\frontend\\src\\components",
+    "\\frontend\\src\\components\\findMenu",
+    "\\frontend\\src\\components\\navbar",
+    "\\frontend\\src\\components\\pages",
+    "\\scripts"
+  ],
+  "SelectedNode": "\\frontend\\yarn.lock",
+  "PreviewInSolutionExplorer": false
+}
