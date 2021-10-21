@@ -1,5 +1,5 @@
 //import * as ReactBootStrap from "react-bootstrap"
-import { ListGroup, Card,Badge  } from "react-bootstrap";
+import { ListGroup, Card  } from "react-bootstrap";
 //import React, { Component } from "react";
 import React from "react";
 import './BoardState.css';
