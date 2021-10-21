@@ -11,7 +11,7 @@ export default  function Home(){
     }
 
     return (
-        <body style={{"background": "#6a6970", height: "100vh"}}>
+        <div style={{"background": "#6a6970", height: "100vh"}}>
         <div className={"Home"} >
             <Navbar/>
             <div className="ui stackable four column grid" style={{marginTop: "5px"}}>
@@ -24,7 +24,7 @@ export default  function Home(){
                 <div className="column">stackable column 1</div>
             </div>
       </div>
-      </body>
+      </div>
     )
 }
 
