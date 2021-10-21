@@ -18,14 +18,12 @@ export default  function Home(){
         //this.setState({data: childData})
     }
 
-    //const { height, width } = getWindowDimensions();
-
     return (
-        <body style={{"background": "#6a6970", height: "580px"}}>
+        <body style={{"background": "#6a6970", height: "100vh"}}>
         <div className={"Home"} >
             <Navbar/>
-            <div className="ui stackable four column grid" style={{marginTop: "10px"}}>
-                <div className="column" style={{width: "230px"}}>
+            <div className="ui stackable four column grid" style={{marginTop: "5px"}}>
+                <div className="column" style={{width: "230px", marginLeft: "2px"}}>
                     <FindMenu/>
                     
                 </div>
