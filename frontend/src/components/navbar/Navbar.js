@@ -6,7 +6,7 @@ class Navbar extends React.Component {
         return (
             <ReactBootStrap.Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <ReactBootStrap.Container>
-                    <ReactBootStrap.Navbar.Brand href="#home">MAIA CHESS</ReactBootStrap.Navbar.Brand>
+                    <ReactBootStrap.Navbar.Brand href="#home">MAIA CHESS DEV</ReactBootStrap.Navbar.Brand>
                     <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
                         <ReactBootStrap.Nav className="ms-auto">
