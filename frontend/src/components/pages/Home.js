@@ -4,14 +4,6 @@ import BoardState from "../../components/board-state/BoardState";
 import FindMenu from "../../components/findMenu/FindMenu";
 
 export default  function Home(){
-    const getWindowDimensions = () => {
-        const { innerWidth: width, innerHeight: height } = window;
-        return {
-          width,
-          height
-        };
-      }
-
     const boardHandleCallback = (ID, FEN) =>{
         console.log(ID);
         console.log(FEN);
