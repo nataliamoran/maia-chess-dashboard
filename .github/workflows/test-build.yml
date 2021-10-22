@@ -3,7 +3,7 @@ name: Test build
 on:
   push:
     branches:
-      - master
+      - main
       - develop
   workflow_dispatch:
     inputs:
@@ -40,12 +40,18 @@ jobs:
         run: |
           echo "HOST=dash-dev.maiachess.com" >> $GITHUB_ENV
           echo "TARGET_DIRECTORY=/opt/maia-dashboard-dev" >> $GITHUB_ENV
+          echo "UVICORN_CONFIG_FROM=config/uvicorn-dev.service" >> $GITHUB_ENV
+          echo "UVICORN_CONFIG_TO=/etc/systemd/system/uvicorn-dev.service" >> $GITHUB_ENV
+          echo "UVICORN=uvicorn-dev" >> $GITHUB_ENV
         if: startsWith(github.ref, 'refs/heads/develop')
       - name: Sets env vars to prod
         run: |
           echo "HOST=dashboard.maiachess.com" >> $GITHUB_ENV
           echo "TARGET_DIRECTORY=/opt/maia-dashboard-prod" >> $GITHUB_ENV
-        if: startsWith(github.ref, 'refs/heads/master')
+          echo "UVICORN_CONFIG_FROM=config/uvicorn-prod.service" >> $GITHUB_ENV
+          echo "UVICORN_CONFIG_TO=/etc/systemd/system/uvicorn-prod.service" >> $GITHUB_ENV
+          echo "UVICORN=uvicorn-prod" >> $GITHUB_ENV
+        if: startsWith(github.ref, 'refs/heads/main')
       - name: Copy backend folder to server
         uses: appleboy/scp-action@master
         with:
@@ -68,10 +74,9 @@ jobs:
             virtualenv -p `which python3.8` env
             source env/bin/activate
             pip install -r requirements.txt
-            sudo cp config/uvicorn-dev.service /etc/systemd/system/uvicorn-dev.service
-            sudo cp config/uvicorn-prod.service /etc/systemd/system/uvicorn-prod.service
+            sudo cp ${{ env.UVICORN_CONFIG_FROM }} ${{ env.UVICORN_CONFIG_TO }}
             sudo systemctl daemon-reload
-            sudo systemctl restart uvicorn-dev
+            sudo systemctl restart ${{ env.UVICORN }}
             sudo cp config/dev.nginx.conf /etc/nginx/sites-available/dev.nginx.conf
             sudo service nginx restart
 
@@ -79,14 +84,22 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     env:
-      HOST: dash-dev.maiachess.com
       PORT: 25277
-      TARGET_DIRECTORY: /opt/maia-dashboard-dev
     strategy:
       matrix:
         node-version: [14.x]
     steps:
       - uses: actions/checkout@v2
+      - name: Sets env vars to dev
+        run: |
+          echo "HOST=dash-dev.maiachess.com" >> $GITHUB_ENV
+          echo "TARGET_DIRECTORY=/opt/maia-dashboard-dev" >> $GITHUB_ENV
+        if: startsWith(github.ref, 'refs/heads/develop')
+      - name: Sets env vars to prod
+        run: |
+          echo "HOST=dashboard.maiachess.com" >> $GITHUB_ENV
+          echo "TARGET_DIRECTORY=/opt/maia-dashboard-prod" >> $GITHUB_ENV
+        if: startsWith(github.ref, 'refs/heads/main')
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -118,7 +131,7 @@ jobs:
     steps:
       - name: Slack Notification PROD
         uses: rtCamp/action-slack-notify@v2
-        if: github.ref == 'refs/heads/master' &&  success()
+        if: github.ref == 'refs/heads/main' &&  success()
         env:
           SLACK_USERNAME: "Github Actions"
           SLACK_ICON_EMOJI: ":heart_eyes_cat:"
