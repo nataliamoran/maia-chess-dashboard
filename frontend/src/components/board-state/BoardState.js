@@ -9,11 +9,11 @@ class BoardState extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-          data: [{ID: "123", whitePlayer: "user1", blackPlayer: "user2", date: "04/22/20 4:58AM", state: { round: 1, move: "e4 c1", FEN: "", stat: {P: 6, T:8, E:5}}},
-          {ID: "1", whitePlayer: "xxx", blackPlayer: "yyy", date: "04/09/20 9:00PM", state: { round: 6, move: "e4 c1", FEN: "", stat: {P: 3, T:2, E:2}}},
-          {ID: "2", whitePlayer: "user1", blackPlayer: "user2", date: "04/22/20 4:58AM", state: { round: 1, move: "e4 c1", FEN: "", stat: {P: 6, T:8, E:5}}},
-          {ID: "3", whitePlayer: "xxx", blackPlayer: "yyy", date: "04/09/20 9:00PM", state: { round: 6, move: "e4 c1", FEN: "", stat: {P: 3, T:2, E:2}}},
-          {ID: "4", whitePlayer: "user1", blackPlayer: "user2", date: "04/22/20 4:58AM", state: { round: 1, move: "e4 c1", FEN: "", stat: {P: 6, T:8, E:5}}}],
+          data: [{ID: "123", whitePlayer: "user1", blackPlayer: "user2", date: "04/22/20 4:58AM", state: { round: 1, move: "e4 c1", FEN: "b", stat: {P: 6, T:8, E:5}}},
+          {ID: "1", whitePlayer: "xxx", blackPlayer: "yyy", date: "04/09/20 9:00PM", state: { round: 6, move: "e4 c1", FEN: "f", stat: {P: 3, T:2, E:2}}},
+          {ID: "2", whitePlayer: "user1", blackPlayer: "user2", date: "04/22/20 4:58AM", state: { round: 1, move: "e4 c1", FEN: "d", stat: {P: 6, T:8, E:5}}},
+          {ID: "3", whitePlayer: "xxx", blackPlayer: "yyy", date: "04/09/20 9:00PM", state: { round: 6, move: "e4 c1", FEN: "a", stat: {P: 3, T:2, E:2}}},
+          {ID: "4", whitePlayer: "user1", blackPlayer: "user2", date: "04/22/20 4:58AM", state: { round: 1, move: "e4 c1", FEN: "v", stat: {P: 6, T:8, E:5}}}],
           curr: ""
         }
       }
@@ -42,7 +42,7 @@ class BoardState extends React.Component {
                             this.setState({
                                 curr: d.ID
                               });
-                            this.props.parentCallback(d.ID);
+                            this.props.parentCallback(d.ID, d.state.FEN);
                             event.preventDefault();
                             }} >
                                  <div style={{'fontSize': '16px','fontWeight': 'bold'}}>{d.state.round}.&nbsp;{d.state.move}</div>
