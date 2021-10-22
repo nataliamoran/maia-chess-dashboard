@@ -79,22 +79,22 @@ async def create_student(student: StudentModel = Body(...)):
     return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_student)
 
 
-@app.get(
-    "/api/students", response_description="List all students", response_model=List[StudentModel]
-)
-async def list_students():
-    students = await db["students"].find().to_list(1000)
-    return students
-
-
-@app.get(
-    "/api/students/{id}", response_description="Get a single student", response_model=StudentModel
-)
-async def show_student(id: str):
-    if (student := await db["students"].find_one({"_id": id})) is not None:
-        return student
-
-    raise HTTPException(status_code=404, detail=f"Student {id} not found")
+# @app.get(
+#     "/api/students", response_description="List all students", response_model=List[StudentModel]
+# )
+# async def list_students():
+#     students = await db["students"].find().to_list(1000)
+#     return students
+#
+#
+# @app.get(
+#     "/api/students/{id}", response_description="Get a single student", response_model=StudentModel
+# )
+# async def show_student(id: str):
+#     if (student := await db["students"].find_one({"_id": id})) is not None:
+#         return student
+#
+#     raise HTTPException(status_code=404, detail=f"Student {id} not found")
 
 
 @app.put("/api/students/{id}", response_description="Update a student", response_model=StudentModel)
