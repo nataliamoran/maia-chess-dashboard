@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 # import uvicorn
 from database import db_connect, db_disconnect
 # from api.analysis_api import analysis_router
-# from api.dashboard_api import dashboard_router
+from api.dashboard_api import dashboard_router
 # from api.fe_api import fe_router
 
 app = FastAPI(docs_url="/api/docs",
@@ -32,6 +32,6 @@ app.add_event_handler("startup", db_connect)
 app.add_event_handler("shutdown", db_disconnect)
 
 # Have different components be handled separately
-# app.include_router(dashboard_router)
+app.include_router(dashboard_router)
 # app.include_router(analysis_router)
 # app.include_router(fe_router)
