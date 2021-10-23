@@ -2,9 +2,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 # import uvicorn
-from database import db_connect, db_disconnect
+from .db_client import db_connect, db_disconnect
 # from api.analysis_api import analysis_router
-from api.dashboard_api import dashboard_router
+from .dashboard_router import dashboard_router
 # from api.fe_api import fe_router
 
 app = FastAPI(docs_url="/api/docs",
