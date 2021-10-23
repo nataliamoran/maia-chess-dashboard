@@ -2,6 +2,7 @@ from bson import ObjectId
 
 
 class PyObjectId(ObjectId):
+    # This code snippet is taken from https://github.com/mongodb-developer/mongodb-with-fastapi/blob/master/app.py
     @classmethod
     def __get_validators__(cls):
         yield cls.validate
