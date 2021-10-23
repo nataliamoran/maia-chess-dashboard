@@ -11,7 +11,7 @@ SyslogIdentifier=gunicorn_dev
 WorkingDirectory=/opt/maia-dashboard-dev/backend
 Environment="DASHBOARD_DB=dev_dashboard"
 Environment="ANALYSIS_DB=dev_analysis"
-Environment="MONGODB_URL='mongodb://localhost:27017'"
+Environment="MONGODB_URL=mongodb://localhost:27017"
 ExecStart=/opt/maia-dashboard-dev/env/bin/uvicorn main:app --host 127.0.0.1 --port 7000
 
 [Install]
