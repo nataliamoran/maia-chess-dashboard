@@ -7,10 +7,8 @@ class DataBase:
 
 
 db = DataBase()
-# DASHBOARD_DB = os.getenv('DASHBOARD_DB', 'dev_dashboard')
-# ANALYSIS_DB = os.getenv('ANALYSIS_DB', 'dev_analysis')
-DASHBOARD_DB = os.getenv('DASHBOARD_DB')
-ANALYSIS_DB = os.getenv('ANALYSIS_DB')
+DASHBOARD_DB = os.getenv('DASHBOARD_DB', 'dev_dashboard')
+ANALYSIS_DB = os.getenv('ANALYSIS_DB', 'dev_analysis')
 
 
 def get_analysis_db():
@@ -22,8 +20,8 @@ def get_dashboard_db():
 
 
 def db_connect():
-    MONGODB_URL = os.environ.get("MONGODB_URL", 'mongodb://root:example@localhost:27017')
-    # MONGODB_URL='mongodb://localhost:27017'
+    # MONGODB_URL = os.environ.get("MONGODB_URL", 'mongodb://root:example@localhost:27017')
+    MONGODB_URL='mongodb://localhost:27017'
     db.client = motor.motor_asyncio.AsyncIOMotorClient(MONGODB_URL)
 
 
