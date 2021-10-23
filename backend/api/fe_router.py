@@ -173,5 +173,5 @@ async def login(username: str):
 
 
 @fe_router.post("/logout/{username}", response_description="Logout")
-async def login(username: str):
+async def logout(username: str):
     pass
