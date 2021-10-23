@@ -28,10 +28,10 @@ app.add_middleware(
 )
 
 # Connect to Mongo on startup
-app.add_event_handler("startup", database.db_connect)
-app.add_event_handler("shutdown", database.db_disconnect)
+# app.add_event_handler("startup", database.db_connect)
+# app.add_event_handler("shutdown", database.db_disconnect)
 
 # Have different components be handled separately
-app.include_router(dashboard_router)
-app.include_router(analysis_router)
-app.include_router(fe_router)
+# app.include_router(dashboard_router)
+# app.include_router(analysis_router)
+# app.include_router(fe_router)
