@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 # import uvicorn
-# import database
+import database
 # from api.analysis_api import analysis_router
 # from api.dashboard_api import dashboard_router
 # from api.fe_api import fe_router
@@ -28,8 +28,8 @@ app.add_middleware(
 )
 
 # Connect to Mongo on startup
-# app.add_event_handler("startup", database.db_connect)
-# app.add_event_handler("shutdown", database.db_disconnect)
+app.add_event_handler("startup", database.db_connect)
+app.add_event_handler("shutdown", database.db_disconnect)
 
 # Have different components be handled separately
 # app.include_router(dashboard_router)
