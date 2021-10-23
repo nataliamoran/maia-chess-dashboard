@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-import uvicorn
-import database
-from api.analysis_api import analysis_router
-from api.dashboard_api import dashboard_router
-from api.fe_api import fe_router
+# import uvicorn
+# import database
+# from api.analysis_api import analysis_router
+# from api.dashboard_api import dashboard_router
+# from api.fe_api import fe_router
 
 app = FastAPI(docs_url="/api/docs",
               openapi_url="/api/v1/openapi.json",
