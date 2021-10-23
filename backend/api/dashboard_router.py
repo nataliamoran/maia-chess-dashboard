@@ -62,3 +62,13 @@ async def find_username_in_maia_db(username: str):
 @dashboard_router.post("/users/{username}", response_description="Add username to Maia DB")
 async def add_username_to_maia_db(username: str):
     pass
+
+
+@dashboard_router.post("/login/{username}", response_description="Login with Lichess")
+async def login(username: str):
+    pass
+
+
+@dashboard_router.post("/logout/{username}", response_description="Logout")
+async def logout(username: str):
+    pass
