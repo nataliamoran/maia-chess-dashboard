@@ -20,8 +20,8 @@ def get_dashboard_db():
 
 
 def db_connect():
-    # MONGODB_URL = os.environ.get("MONGODB_URL", 'mongodb://root:example@localhost:27017')
-    MONGODB_URL='mongodb://localhost:27017'
+    MONGODB_URL = os.environ.get("MONGODB_URL", 'mongodb://root:example@localhost:27017')
+    # MONGODB_URL='mongodb://localhost:27017'
     db.client = motor.motor_asyncio.AsyncIOMotorClient(MONGODB_URL)
 
 
