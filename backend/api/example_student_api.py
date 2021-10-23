@@ -1,4 +1,3 @@
-import asyncio
 import os
 from fastapi import Body, HTTPException, status
 from fastapi.responses import JSONResponse
@@ -10,8 +9,7 @@ from .api_main import app
 
 import motor.motor_asyncio
 
-# MONGODB_URL = os.environ.get("MONGODB_URL", 'mongodb://localhost:27017')
-MONGODB_URL = 'mongodb://localhost:27017'
+MONGODB_URL = os.environ.get("MONGODB_URL", 'mongodb://localhost:27017')
 
 client = motor.motor_asyncio.AsyncIOMotorClient(MONGODB_URL)
 db = client.college
@@ -84,8 +82,8 @@ async def create_student(student: StudentModel = Body(...)):
 @app.get(
     "/api/students", response_description="List all students", response_model=List[StudentModel]
 )
-def list_students():
-    students = db["students"].find().to_list(1000)
+async def list_students():
+    students = await db["students"].find().to_list(1000)
     return students
 
 
