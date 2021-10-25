@@ -6,7 +6,7 @@ export default class Board extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            fen: props.fen || "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+            fen: props.fen,
             lastMove: props.lastMove,
             arrows: props.arrows || [{orig: "a2", dest: "a4", brush: 'green' }, 
                                    {orig: "b2", dest: "b4", brush: 'yellow' },
@@ -25,6 +25,21 @@ export default class Board extends React.Component {
             };
         this.cg = NativeChessground(this.el, config);
         this.cg.setShapes (this.state.arrows);
+      }
+
+      componentDidUpdate(prevProps) {
+        if(prevProps.fen !== this.props.fen) {
+          this.setState({fen: this.props.fen});
+          const config = {
+            fen: this.state.fen, 
+            lastMove: this.state.lastMove,
+            viewOnly: true,
+            resizable: true,
+
+        };
+        this.cg = NativeChessground(this.el, config);
+        this.cg.setShapes (this.state.arrows);
+        }
       }
     
     
