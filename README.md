@@ -36,7 +36,7 @@ If you want to reset the local mongo database:
 ## Running backend
 You can either run the server from the command line using this command from the `backend` directory:
 ```
-uvicorn main:app --host 0.0.0.0 --port 7000
+uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
 Or alternatively, you can run the `main.py` using your IDE.
@@ -48,30 +48,14 @@ uvicorn.run(app, host="0.0.0.0", port=8000) # << Change port
 If you want your FastAPI to point to a different mongo database, you 
 can set an environment variable `MONGODB_URL` to where you have your mongodb instance.
 
-To check that your backend works, go to `http://localhost:7000/docs` - you should see the 
-FastAPI openapi doc and you can test the basic API (students CRUD).
+To check that your backend works, go to `http://localhost:8000/api/docs` - you should see the 
+FastAPI openapi doc.
 
 ## Running frontend
 
-> IMPORTANT
->
-> Notice you need to proxy requests to the backend on port 7000 - 
-In order to do that, add in `packages.json` the line:
->```
->{
->  "name": "frontend",
->  ...
->  "scripts": {
->    ...
->  },
->  "proxy": "http://127.0.0.1:7000",   ### <--- This line
->}
->```
->
-> Do not commit this line otherwise the deployment will fail.
-
 From the `frontend` directory, run 
 ```
+npm install
 npm start
 ```
 This will start the react app locally. 

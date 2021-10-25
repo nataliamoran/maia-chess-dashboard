@@ -18,14 +18,13 @@ export default  function Home(){
         <div style={{"background": "#6a6970", height: "100vh"}}>
         <div className={"Home"} >
             <Navbar/>
-            <div className="ui stackable four column grid" style={{marginTop: "5px"}}>
-                <div className="column" style={{width: "230px", marginLeft: "2px"}}>
-                    <FindMenu/>
-                    
+                <div className="ui stackable four column padded grid middle aligned" style={{ marginTop: "5px" }}>
+                    <div className="column" align="middle" style={{ width: "230px" }}>
+                    <FindMenu/>    
                 </div>
-                <div className="column" style={{width: "230px"}}> <BoardState  parentCallback = {boardHandleCallback}/></div>
-                <div className="column">stackable column 1</div>
-                <div className="column"><Board  fen = {"r1bq1rk1/ppp1bppp/2np1n2/4p3/2B1PP2/2NP1N2/PPP3PP/R1BQK2R w KQ - 2 7"}
+                    <div className="column" align="middle" style={{width: "230px"}}> <BoardState  parentCallback = {boardHandleCallback}/></div>
+                    <div className="column" align="middle">stackable column 1</div>
+                    <div className="column" align="middle"><Board  fen = {"r1bq1rk1/ppp1bppp/2np1n2/4p3/2B1PP2/2NP1N2/PPP3PP/R1BQK2R w KQ - 2 7"}
                                                 lastMove = {null}
                                                 arrows = {null}
                                                 size = {500} /></div>
