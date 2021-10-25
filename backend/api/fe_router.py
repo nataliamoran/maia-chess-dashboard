@@ -142,7 +142,7 @@ async def get_game(game_id: str):
     pass
 
 
-@fe_router.get("/filter/{games_filter}", response_description="Filter game", response_model=GameFilterModel)
+@fe_router.get("/filters/{games_filter}", response_description="Filter game", response_model=GameFilterModel)
 async def filter_games(games_filter: str):
     pass
 

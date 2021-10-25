@@ -80,24 +80,10 @@ async def get_analyzed_games_num(username: str):
     pass
 
 
-@analysis_router.get("/interesting/{username}",
-                     response_description="Get most interesting games",
+@analysis_router.get("/filters/{games_filter}/{username}",
+                     response_description="Filter user's games per 'most interesting', 'most difficult' or 'mistakes'",
                      response_model=List[ProcessedGameModel])
-async def get_interesting_games(username: str):
-    pass
-
-
-@analysis_router.get("/difficult/{username}",
-                     response_description="Get most difficult games",
-                     response_model=List[ProcessedGameModel])
-async def get_difficult_games(username: str):
-    pass
-
-
-@analysis_router.get("/mistakes/{username}",
-                     response_description="Get mistakes",
-                     response_model=List[ProcessedGameModel])
-async def get_mistakes(username: str):
+async def filter_games(games_filter: str, username: str):
     pass
 
 
