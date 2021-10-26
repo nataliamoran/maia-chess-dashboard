@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Navbar from "../../components/navbar/Navbar";
 import BoardState from "../../components/board-state/BoardState";
 import FindMenu from "../../components/findMenu/FindMenu";
@@ -8,26 +8,46 @@ import "chessground/assets/chessground.brown.css";
 import "chessground/assets/chessground.cburnett.css";
 
 export default  function Home(){
-    const boardHandleCallback = (ID, FEN) =>{
-        console.log(ID);
-        console.log(FEN);
-        //this.setState({data: childData})
+    const [FEN, setFEN] = useState("");
+    const [filter, setFilter] = useState("");
+    const [arrows, setArrows] = useState([]);
+    const [lastMove, setlastMove] = useState([]);
+    const boardHandleCallback = (game, FEN) =>{
+        const stuff = [];
+        if(game.state.last_move){
+            setlastMove([game.state.last_move[0], game.state.last_move[1]]);
+            //stuff.push({orig: game.state.last_move[0], dest: game.state.last_move[1], brush: 'green' });
+        }
+        if(game.state.maia_moves){
+            stuff.push({orig: game.state.maia_moves[0][0], dest: game.state.maia_moves[0][1], brush: 'yellow' });
+        }
+        if(game.state.stockfish_moves){
+            stuff.push({orig: game.state.stockfish_moves[0][0], dest: game.state.stockfish_moves[0][1], brush: 'red' });
+        }
+        setArrows(stuff);
+        setFEN(FEN);
+    }
+    const menuHandleCallback = (filter) =>{
+        setFilter(filter);
     }
 
     return (
         <div style={{"background": "#6a6970", height: "100vh"}}>
         <div className={"Home"} >
             <Navbar/>
-                <div className="ui stackable four column padded grid middle aligned" style={{ marginTop: "5px" }}>
-                    <div className="column" align="middle" style={{ width: "230px" }}>
-                    <FindMenu/>    
+                <div className="ui stackable four column padded grid top aligned" style={{ marginTop: "5px"}}>
+                    <div className="column" align="top" style={{ width: "230px"}}>
+                    <FindMenu parentCallback={menuHandleCallback}/>    
                 </div>
-                    <div className="column" align="middle" style={{width: "230px"}}> <BoardState  parentCallback = {boardHandleCallback}/></div>
-                    <div className="column" align="middle">stackable column 1</div>
-                    <div className="column" align="middle"><Board  fen = {"r1bq1rk1/ppp1bppp/2np1n2/4p3/2B1PP2/2NP1N2/PPP3PP/R1BQK2R w KQ - 2 7"}
-                                                lastMove = {null}
-                                                arrows = {null}
+                    <div className="column" align="top" style={{width: "230px"}}> 
+                    <BoardState  
+                    parentCallback = {boardHandleCallback} 
+                    searchfilter = {filter}/></div>
+                    <div className="column" align="top"><Board  fen = {FEN}
+                                                lastMove = {lastMove}
+                                                arrows = {arrows}
                                                 size = {500} /></div>
+                    <div className="column" align="top"></div>
             </div>
       </div>
       </div>

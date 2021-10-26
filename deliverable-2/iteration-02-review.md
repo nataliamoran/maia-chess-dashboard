@@ -44,6 +44,18 @@ List **process-related** (i.e. team organization and how you work) decisions tha
  In addition, drafting the API documentation before developing the API helped to clarify requirements with the partner.
  ![API](./images/api.png)
 
+ #### Choosing the tech stack based on the Partner's preference
+ Although our team is more familiar with the Django framework and relational databases (e.g. PostgreSQL)
+ and wanted to use technologies which we already know,
+ the Partner asked to implement the project with FastAPI (instead of Django) and MongoDB (instead of PostgreSQL).
+ The team agreed to use the tech stack preferred by the Partner, which turned out to be a good decision because
+ it allowed the Partner to actively participate in the project planning. 
+ Because after December 2021 the Partner will be working on the project 
+ and will have to maintain the project without the team, it is crucial that 
+ the Partner understands and agrees with the project's structure and, especially, the Rest API part
+ (because the Dashboard API that we are building will be re-used for other Maia projects in the future). 
+ 
+ 
 #### Q2. Decisions that did not turn out as well as we hoped
 
 List **process-related** (i.e. team organization and how you work) decisions that, in retrospect, were not as successful as you thought they would be.
@@ -59,6 +71,14 @@ List **process-related** (i.e. team organization and how you work) decisions tha
  
  The decision to skip daily stand up meetings results in developers forgetting about their personal deadlines 
  without an additional reminder at a stand up meeting.
+
+ #### Not assigning a team member responsible for meeting minutes
+ In the beginning of the project our team decided to rotate the responsibility of writing meeting minutes between all team members instead of assigning it to one team member. 
+ As a result of this, the task of writing meeting minutes fell through the cracks. 
+ For example, the meeting minutes for 2021-10-14 and 2021-10-21 meetings with the partner were actually 
+ written by one of the team members on October 25. 
+ These meeting minutes are based on memories of what happened at the meetings 
+ instead of being written during the meetings, which is not optimal.
 
 #### Q3. Planned changes
 
