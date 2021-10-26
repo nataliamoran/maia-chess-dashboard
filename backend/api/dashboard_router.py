@@ -2,13 +2,16 @@ import fastapi
 
 from typing import List
 from pydantic import BaseModel, Field
-from bson import ObjectId
+from bson import ObjectId, json_util
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from fastapi import Body, HTTPException, status
 from .utils import PyObjectId
 from .db_client import get_dashboard_db
 from .models import EventModel, UserModel
+
+import json
+import lichess.api
 
 dashboard_router = fastapi.APIRouter(prefix="/api/dashboard", tags=['dashboard'])
 
@@ -24,6 +27,21 @@ class DashboardTestModel(BaseModel):
         schema_extra = {
             "example": {
                 "dashboard_name": "dashboard test",
+            }
+        }
+
+
+class DBUserModel(BaseModel):
+    id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
+    user: str = Field(...)
+    num_games: int = 0
+
+    class Config:
+        allow_population_by_field_name = True
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}
+        schema_extra = {
+            "example": {
             }
         }
 
@@ -54,14 +72,35 @@ async def get_user_profile_from_lichess(username: str):
     pass
 
 
-@dashboard_router.get("/users/{username}", response_description="Check if username is in Maia DB")
+@dashboard_router.get("/users/{username}", response_description="Check if username is in Maia DB", response_model=DBUserModel)
 async def find_username_in_maia_db(username: str):
-    pass
+    client = get_dashboard_db()
+
+    exists = await client["user_data"].find_one({"user": username})
+    if exists is not None:
+        return JSONResponse(status_code=status.HTTP_200_OK, content=json.loads(json_util.dumps(exists)))
+    else:
+        return JSONResponse(status_code=status.HTTP_200_OK, content=None)
 
 
-@dashboard_router.post("/users/{username}", response_description="Add username to Maia DB")
+@dashboard_router.post("/users/{username}", response_description="Add username to Maia DB", response_model=DBUserModel)
 async def add_username_to_maia_db(username: str):
-    pass
+    new_user_data = {
+        "user": username,
+        "num_games": 0
+    }
+    client = get_dashboard_db()
+
+    exists = await client["user_data"].find_one({"user": username})
+    if exists is not None:
+        return JSONResponse(status_code=status.HTTP_306_RESERVED, content={"reserved": username + " already exists"})
+
+    new_user = await client["user_data"].insert_one(new_user_data)
+    created_user = await client["user_data"].find_one({"_id": new_user.inserted_id})
+
+    ret = json.loads(json_util.dumps(created_user))
+
+    return JSONResponse(status_code=status.HTTP_201_CREATED, content=ret)
 
 
 @dashboard_router.post("/login/{username}", response_description="Login with Lichess")
