@@ -1,6 +1,7 @@
 import fastapi
 import httpx
 import asyncio
+import os
 
 from typing import List, Tuple
 from pydantic import BaseModel, Field
@@ -13,13 +14,15 @@ from .dashboard_router import get_all_dashboard_tests
 from .utils import PyObjectId
 from .models import EventModel, UserModel, GameNumModel
 
+import json
+
 fe_router = fastapi.APIRouter(prefix="/api", tags=['frontend'])
 
 
 class StatModel(BaseModel):
-    p: int = Field(..., ge=1, le=9)
-    t: int = Field(..., ge=1, le=9)
-    e: int = Field(..., ge=1, le=9)
+    p: int = Field(..., ge=-1, le=1)
+    t: int = Field(..., ge=0, le=1)
+    e: int = Field(..., ge=0)
 
     class Config:
         allow_population_by_field_name = True
@@ -38,11 +41,11 @@ class StateModel(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
     round: int = Field(...)
     move: str = Field(...)
-    fen: str = Field(...)
+    FEN: str = Field(...)
     stat: StatModel = Field(...)
     last_move: List[str] = Field(...)
-    maia_moves: List[List[str]] = Field(...)
-    stockfish_moves: List[List[str]] = Field(...)
+    maia_moves: List[str] = Field(...)
+    stockfish_moves: List[str] = Field(...)
 
     class Config:
         allow_population_by_field_name = True
@@ -51,24 +54,38 @@ class StateModel(BaseModel):
         schema_extra = {
             "example": {
                 "round": 1,
-                "move": "d5",
-                "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
-                "stat": {"p": 4, "t": 5, "e": 1, },
-                "last_move": ['a6', 'b6'],
-                "maia_moves": [['e1']],
-                "stockfish_moves": [['e1']],
+                "move": "e4 e1",
+                "FEN": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+                "stat": {
+                    "p": 4,
+                    "t": 5,
+                    "e": 1
+                },
+                "last_move": [
+                    "a6",
+                    "b6"
+                ],
+                "maia_moves": [
+                    "e1",
+                    "e2",
+                    0.6
+                ],
+                "stockfish_moves": [
+                    "a1",
+                    "a2",
+                    0.7
+                ]
             }
         }
 
 
 class GameModel(BaseModel):
-    game_id: str = Field(...)
-    white_player: str = Field(...)
-    black_player: str = Field(...)
+    ID: str = Field(...)
+    whitePlayer: str = Field(...)
+    blackPlayer: str = Field(...)
     date: str = Field(...)
-    board_states: List[str] = Field(...)
-    average_stat: StatModel = Field(...)
-    chosen_state: StateModel = Field(...)
+    averageStat: StatModel = Field(...)
+    state: StateModel = Field(...)
 
     class Config:
         allow_population_by_field_name = True
@@ -76,21 +93,39 @@ class GameModel(BaseModel):
         json_encoders = {ObjectId: str}
         schema_extra = {
             "example": {
-                "game_id": '1004a',
-                "white_player": "name1",
-                "black_player": "name2",
+                "ID": "1a",
+                "whitePlayer": "name1",
+                "blackPlayer": "name2",
                 "date": "01/10/2021 13:15:03",
-                "board_states": ['a6', 'b6'],
-                "average_stat": {"p": 4, "t": 5, "e": 1, },
-                "chosen_state": {
-                                    "round": 1,
-                                    "move": "d5",
-                                    "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
-                                    "stat": {"p": 4, "t": 5, "e": 1, },
-                                    "last_move": ['a6', 'b6'],
-                                    "maia_moves": [['e1']],
-                                    "stockfish_moves": [['e1']],
-                                },
+                        "averageStat": {
+                            "p": 4,
+                            "t": 5,
+                            "e": 1
+                        },
+                "state": {
+                            "round": 1,
+                            "move": "e4 e1",
+                            "FEN": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+                            "stat": {
+                                "p": 4,
+                                "t": 5,
+                                "e": 1
+                            },
+                            "last_move": [
+                                "a6",
+                                "b6"
+                            ],
+                            "maia_moves": [
+                                "e1",
+                                "e2",
+                                0.6
+                            ],
+                            "stockfish_moves": [
+                                "a1",
+                                "a2",
+                                0.7
+                            ]
+                        }
             }
         }
 
@@ -105,24 +140,44 @@ class GameFilterModel(BaseModel):
         json_encoders = {ObjectId: str}
         schema_extra = {
             "example": {
-                "filter": 'mistakes',
-                "games": [{
-                            "game_id": '1004a',
-                            "white_player": "name1",
-                            "black_player": "name2",
-                            "date": "01/10/2021 13:15:03",
-                            "board_states": ['a6', 'b6'],
-                            "average_stat": {"p": 4, "t": 5, "e": 1, },
-                            "chosen_state": {
-                                                "round": 1,
-                                                "move": "d5",
-                                                "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
-                                                "stat": {"p": 4, "t": 5, "e": 1, },
-                                                "last_move": ['a6', 'b6'],
-                                                "maia_moves": [['e1']],
-                                                "stockfish_moves": [['e1']],
-                                            },
-                         }],
+                "filter": "mistakes",
+                "games": [
+                    {
+                        "ID": "1a",
+                        "whitePlayer": "name1",
+                        "blackPlayer": "name2",
+                        "date": "01/10/2021 13:15:03",
+                        "averageStat": {
+                            "p": 4,
+                            "t": 5,
+                            "e": 1
+                        },
+                        "state": {
+                            "round": 1,
+                            "move": "e4 e1",
+                            "FEN": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+                            "stat": {
+                                "p": 4,
+                                "t": 5,
+                                "e": 1
+                            },
+                            "last_move": [
+                                "a6",
+                                "b6"
+                            ],
+                            "maia_moves": [
+                                "e1",
+                                "e2",
+                                0.6
+                            ],
+                            "stockfish_moves": [
+                                "a1",
+                                "a2",
+                                0.7
+                            ]
+                        }
+                    }
+                ]
             }
         }
 
@@ -144,7 +199,15 @@ async def get_game(game_id: str):
 
 @fe_router.get("/filters/{games_filter}", response_description="Filter game", response_model=GameFilterModel)
 async def filter_games(games_filter: str):
-    pass
+    script_dir = os.path.dirname(__file__)
+    if games_filter == 'mistakes':
+        file_path = os.path.join(script_dir, 'resources/mistakes.json')
+    elif games_filter == 'interesting':
+        file_path = os.path.join(script_dir, 'resources/interesting.json')
+    else:
+        file_path = os.path.join(script_dir, 'resources/tricky.json')
+    data = json.load(open(file_path))
+    return data
 
 
 @fe_router.get("/num_games/{username}", response_description="Get the number of games analyzed", response_model=GameNumModel)
