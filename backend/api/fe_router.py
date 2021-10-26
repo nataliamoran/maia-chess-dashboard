@@ -44,8 +44,8 @@ class StateModel(BaseModel):
     FEN: str = Field(...)
     stat: StatModel = Field(...)
     last_move: List[str] = Field(...)
-    maia_moves: List[str] = Field(...)
-    stockfish_moves: List[str] = Field(...)
+    maia_moves: List[List[str]] = Field(...)
+    stockfish_moves: List[List[str]] = Field(...)
 
     class Config:
         allow_population_by_field_name = True
@@ -66,14 +66,18 @@ class StateModel(BaseModel):
                     "b6"
                 ],
                 "maia_moves": [
-                    "e1",
-                    "e2",
-                    0.6
+                    [
+                        "e1",
+                        "e2",
+                        0.6
+                    ]
                 ],
                 "stockfish_moves": [
-                    "a1",
-                    "a2",
-                    0.7
+                    [
+                        "a1",
+                        "a2",
+                        0.7
+                    ]
                 ]
             }
         }
@@ -116,14 +120,18 @@ class GameModel(BaseModel):
                                 "b6"
                             ],
                             "maia_moves": [
-                                "e1",
-                                "e2",
-                                0.6
+                                [
+                                    "e1",
+                                    "e2",
+                                    0.6
+                                ]
                             ],
                             "stockfish_moves": [
-                                "a1",
-                                "a2",
-                                0.7
+                                [
+                                    "a1",
+                                    "a2",
+                                    0.7
+                                ]
                             ]
                         }
             }
@@ -166,14 +174,18 @@ class GameFilterModel(BaseModel):
                                 "b6"
                             ],
                             "maia_moves": [
-                                "e1",
-                                "e2",
-                                0.6
+                                [
+                                    "e1",
+                                    "e2",
+                                    0.6
+                                ]
                             ],
                             "stockfish_moves": [
-                                "a1",
-                                "a2",
-                                0.7
+                                [
+                                    "a1",
+                                    "a2",
+                                    0.7
+                                ]
                             ]
                         }
                     }
