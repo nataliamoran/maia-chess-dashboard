@@ -8,9 +8,19 @@ export default class Board extends React.Component {
         this.state = {
             fen: props.fen,
             lastMove: props.lastMove,
-            arrows: props.arrows || [{orig: "a2", dest: "a4", brush: 'green' }, 
-                                   {orig: "b2", dest: "b4", brush: 'yellow' },
-                                   {orig: "c2", dest: "c4", brush: 'red' }],
+            arrows: props.arrows ||[{orig: "a2", dest: "a4", brush: 'green', modifiers: {lineWidth: 10} }, 
+									{orig: "a2", dest: "a4", brush: 'blue', modifiers: {lineWidth: 5} },
+									{orig: "c2", dest: "c4", brush: 'red' }],
+			/* Color available:  brush:
+				green: { key: 'g', color: '#15781B', opacity: 1, lineWidth: 10 },
+                red: { key: 'r', color: '#882020', opacity: 1, lineWidth: 10 },
+                blue: { key: 'b', color: '#003088', opacity: 1, lineWidth: 10 },
+                yellow: { key: 'y', color: '#e68f00', opacity: 1, lineWidth: 10 },
+                paleBlue: { key: 'pb', color: '#003088', opacity: 0.4, lineWidth: 15 },
+                paleGreen: { key: 'pg', color: '#15781B', opacity: 0.4, lineWidth: 15 },
+                paleRed: { key: 'pr', color: '#882020', opacity: 0.4, lineWidth: 15 },
+                paleGrey: { key: 'pgr', color: '#4a4a4a', opacity: 0.35, lineWidth: 15 }
+			*/
             size: props.size || 300
         }
     }
@@ -36,12 +46,12 @@ export default class Board extends React.Component {
             	viewOnly: true,
             	resizable: true,
 			};
-			
-			this.setState({fen: this.props.fen,arrows: this.props.arrows, lastMove: this.props.lastMove});
+			const arrows = this.props.arrows;
+			this.setState({fen: this.props.fen, lastMove: this.props.lastMove});
 
 			this.cg = NativeChessground(this.el, config);
-			if(this.state.arrows){
-				this.cg.setShapes (this.state.arrows);
+			if(this.props.arrows){
+				this.cg.setShapes (arrows);
 			}
 		}
 	}
