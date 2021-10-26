@@ -10,7 +10,21 @@ import "chessground/assets/chessground.cburnett.css";
 export default  function Home(){
     const [FEN, setFEN] = useState("");
     const [filter, setFilter] = useState("");
-    const boardHandleCallback = (ID, FEN) =>{
+    const [arrows, setArrows] = useState([]);
+    const [lastMove, setlastMove] = useState([]);
+    const boardHandleCallback = (game, FEN) =>{
+        const stuff = [];
+        if(game.state.last_move){
+            setlastMove([game.state.last_move[0], game.state.last_move[1]]);
+            //stuff.push({orig: game.state.last_move[0], dest: game.state.last_move[1], brush: 'green' });
+        }
+        if(game.state.maia_moves){
+            stuff.push({orig: game.state.maia_moves[0][0], dest: game.state.maia_moves[0][1], brush: 'yellow' });
+        }
+        if(game.state.stockfish_moves){
+            stuff.push({orig: game.state.stockfish_moves[0][0], dest: game.state.stockfish_moves[0][1], brush: 'red' });
+        }
+        setArrows(stuff);
         setFEN(FEN);
     }
     const menuHandleCallback = (filter) =>{
@@ -30,8 +44,8 @@ export default  function Home(){
                     parentCallback = {boardHandleCallback} 
                     searchfilter = {filter}/></div>
                     <div className="column" align="top"><Board  fen = {FEN}
-                                                lastMove = {null}
-                                                arrows = {null}
+                                                lastMove = {lastMove}
+                                                arrows = {arrows}
                                                 size = {500} /></div>
                     <div className="column" align="top"></div>
             </div>
