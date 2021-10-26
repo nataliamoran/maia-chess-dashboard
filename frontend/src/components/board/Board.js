@@ -15,38 +15,39 @@ export default class Board extends React.Component {
         }
     }
     
-    componentDidMount() {
-        const config = {
-                fen: this.state.fen, 
-                lastMove: this.state.lastMove,
-                viewOnly: true,
-                resizable: true,
+	componentDidMount() {
+		const config = {
+			fen: this.state.fen, 
+			lastMove: this.state.lastMove,
+			viewOnly: true,
+			resizable: true,
 
-            };
+		};
         this.cg = NativeChessground(this.el, config);
         this.cg.setShapes (this.state.arrows);
-      }
+	}
 
-      componentDidUpdate(prevProps) {
-        console.log();
-        if(prevProps.fen !== this.props.fen ||this.props.arrows !== prevProps.arrows ||this.props.lastMove !== prevProps.lastMove) {
-          this.setState({fen: this.props.fen,arrows: this.props.arrows, lastMove: this.props.lastMove});
-          const config = {
-            fen: this.state.fen, 
-            lastMove: this.state.lastMove,
-            viewOnly: true,
-            resizable: true,
+	componentDidUpdate(prevProps) {
+		console.log();
+		if(prevProps.fen !== this.props.fen ||this.props.arrows !== prevProps.arrows ||this.props.lastMove !== prevProps.lastMove) {
+			const config = {
+				fen: this.props.fen, 
+				lastMove: this.props.lastMove,
+            	viewOnly: true,
+            	resizable: true,
+			};
+			
+			this.setState({fen: this.props.fen,arrows: this.props.arrows, lastMove: this.props.lastMove});
 
-        };
-        this.cg = NativeChessground(this.el, config);
-        if(this.state.arrows){
-          this.cg.setShapes (this.state.arrows);
-        }
-        }
-      }
+			this.cg = NativeChessground(this.el, config);
+			if(this.state.arrows){
+				this.cg.setShapes (this.state.arrows);
+			}
+		}
+	}
     
     
-      render() {
+	render() {
         const props = { style: { ...this.props.style } }
 
         props.style.width = this.state.size
@@ -55,7 +56,7 @@ export default class Board extends React.Component {
         props.style.height = this.state.size
 
         return <div ref={el => this.el = el} {...props} />
-      }
-    }
+	}
+}
 
 
