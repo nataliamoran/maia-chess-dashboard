@@ -64,12 +64,22 @@ async def post_test(test: DashboardTestModel = Body(...)):
 
 @dashboard_router.post("/events", response_description="Log frontend event")
 async def log_fe_event(event: EventModel = Body(...)):
-    pass
+    event_json = jsonable_encoder(event)
+    client = get_dashboard_db()
+    new_event = await client["events"].insert_one(event_json)
+    created_event = await client["events"].find_one({"_id": new_event.inserted_id})
+    return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_event)
 
 
 @dashboard_router.get("/lichess_users/{username}", response_description="Get user profile from Lichess", response_model=UserModel)
 async def get_user_profile_from_lichess(username: str):
-    pass
+    try:
+        lichess_info = lichess.api.user(username)
+    except lichess.api.ApiHttpError as err:
+        return JSONResponse(status_code=status.HTTP_200_OK, content=None)
+
+    ret = {"lichess_id": username, "lichess_info": lichess_info}
+    return JSONResponse(status_code=status.HTTP_200_OK, content=ret)
 
 
 @dashboard_router.get("/users/{username}", response_description="Check if username is in Maia DB", response_model=DBUserModel)

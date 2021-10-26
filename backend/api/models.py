@@ -36,8 +36,8 @@ class EventModel(BaseModel):
 
 class UserModel(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
-    username: str = Field(...)
-    lichess_status: dict = Field(...)
+    lichess_id: str = Field(...)
+    lichess_info: dict = Field(...)
 
     class Config:
         allow_population_by_field_name = True
@@ -46,6 +46,6 @@ class UserModel(BaseModel):
         schema_extra = {
             "example": {
                 "username": "name1",
-                "lichess_status": {}
+                "lichess_info": {}
             }
         }
