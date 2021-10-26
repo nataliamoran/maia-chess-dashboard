@@ -21,7 +21,7 @@ export default  function Home(){
         <div style={{"background": "#6a6970", height: "100vh"}}>
         <div className={"Home"} >
             <Navbar/>
-                <div className="ui stackable four column padded grid middle aligned" style={{ marginTop: "5px"}}>
+                <div className="ui stackable four column padded grid top aligned" style={{ marginTop: "5px"}}>
                     <div className="column" align="top" style={{ width: "230px"}}>
                     <FindMenu parentCallback={menuHandleCallback}/>    
                 </div>
