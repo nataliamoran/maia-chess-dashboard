@@ -10,7 +10,19 @@ import "chessground/assets/chessground.cburnett.css";
 export default  function Home(){
     const [FEN, setFEN] = useState("");
     const [filter, setFilter] = useState("");
-    const boardHandleCallback = (ID, FEN) =>{
+    const [arrows, setArrows] = useState([]);
+    const boardHandleCallback = (game, FEN) =>{
+        const stuff = [];
+        if(game.state.last_move){
+         stuff.push({orig: game.state.last_move[0], dest: game.state.last_move[1], brush: 'green' });
+        }
+        if(game.state.maia_moves){
+            stuff.push({orig: game.state.maia_moves[0][0], dest: game.state.maia_moves[0][1], brush: 'yellow' });
+        }
+        if(game.state.stockfish_moves){
+            stuff.push({orig: game.state.stockfish_moves[0][0], dest: game.state.stockfish_moves[0][1], brush: 'red' });
+        }
+        setArrows(stuff);
         setFEN(FEN);
     }
     const menuHandleCallback = (filter) =>{
@@ -31,7 +43,7 @@ export default  function Home(){
                     searchfilter = {filter}/></div>
                     <div className="column" align="top"><Board  fen = {FEN}
                                                 lastMove = {null}
-                                                arrows = {null}
+                                                arrows = {arrows}
                                                 size = {500} /></div>
                     <div className="column" align="top"></div>
             </div>

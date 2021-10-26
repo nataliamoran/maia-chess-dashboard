@@ -28,8 +28,9 @@ export default class Board extends React.Component {
       }
 
       componentDidUpdate(prevProps) {
-        if(prevProps.fen !== this.props.fen) {
-          this.setState({fen: this.props.fen});
+        console.log();
+        if(prevProps.fen !== this.props.fen ||this.props.arrows !== prevProps.arrows) {
+          this.setState({fen: this.props.fen,arrows: this.props.arrows});
           const config = {
             fen: this.state.fen, 
             lastMove: this.state.lastMove,
@@ -38,7 +39,9 @@ export default class Board extends React.Component {
 
         };
         this.cg = NativeChessground(this.el, config);
-        this.cg.setShapes (this.state.arrows);
+        if(this.state.arrows){
+          this.cg.setShapes (this.state.arrows);
+        }
         }
       }
     
