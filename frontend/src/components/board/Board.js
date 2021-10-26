@@ -29,8 +29,8 @@ export default class Board extends React.Component {
 
       componentDidUpdate(prevProps) {
         console.log();
-        if(prevProps.fen !== this.props.fen ||this.props.arrows !== prevProps.arrows) {
-          this.setState({fen: this.props.fen,arrows: this.props.arrows});
+        if(prevProps.fen !== this.props.fen ||this.props.arrows !== prevProps.arrows ||this.props.lastMove !== prevProps.lastMove) {
+          this.setState({fen: this.props.fen,arrows: this.props.arrows, lastMove: this.props.lastMove});
           const config = {
             fen: this.state.fen, 
             lastMove: this.state.lastMove,
