@@ -20,12 +20,16 @@ class BoardState extends React.Component {
       }
 
       componentDidMount(){
-        /*fetch('http://dash-dev.maiachess.com/api/filters/"${this.state.searchfilter}')  //${this.state.filter}.json
+          if(this.state.filter){
+            fetch('http://dash-dev.maiachess.com/api/filters/'+this.props.searchfilter)  //${this.state.filter}.json
         .then(response => response.json())
-        .then(data => {
-            console.log("hi");
-            console.log(data);
-        });*/
+        .then(res => {
+            this.setState({data: res.games});
+        });
+          }
+          else{
+              this.setState({data:[]});
+          }
     }
 
     componentDidUpdate(prevProps) {
