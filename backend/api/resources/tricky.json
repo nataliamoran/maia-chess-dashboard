@@ -1,0 +1,122 @@
+{
+    "filter": "tricky",
+    "games": [
+        {
+            "ID": "2a",
+            "whitePlayer": "name1",
+            "blackPlayer": "name2",
+            "date": "01/10/2021 13:15:03",
+            "averageStat": {
+                "p": 0.1,
+                "t": 0.2,
+                "e": 1
+            },
+            "state": {
+                "round": 1,
+                "move": "a1 a2",
+                "FEN": "2kn1bnr/B1p1p2p/1p4p1/5p2/4B3/5N2/PPP2PPP/2KR4 w - f6 0 14",
+                "stat": {
+                    "p": 0.1,
+                    "t": 0.2,
+                    "e": 1
+                },
+                "last_move": [
+                    "a6",
+                    "b6"
+                ],
+                "maia_moves": [
+                    [
+                        "e1",
+                        "e2",
+                        0.6
+                    ]
+                ],
+                "stockfish_moves": [
+                    [
+                        "a1",
+                        "a2",
+                        0.7
+                    ]
+                ]
+            }
+        },
+        {
+            "ID": "2b",
+            "whitePlayer": "name3",
+            "blackPlayer": "name4",
+            "date": "01/10/2021 13:15:03",
+            "averageStat": {
+                "p": 0.3,
+                "t": 0.4,
+                "e": 2
+            },
+            "state": {
+                "round": 20,
+                "move": "a3 a4",
+                "FEN": "2k2bnr/Bnp1p2p/1p4p1/3B1p2/8/5N2/PPP2PPP/2KR4 w - - 2 15",
+                "stat": {
+                    "p": 0.3,
+                    "t": 0.4,
+                    "e": 2
+                },
+                "last_move": [
+                    "a6",
+                    "b6"
+                ],
+                "maia_moves": [
+                    [
+                        "e1",
+                        "e2",
+                        0.6
+                    ]
+                ],
+                "stockfish_moves": [
+                    [
+                        "a1",
+                        "a2",
+                        0.7
+                    ]
+                ]
+            }
+        },
+        {
+            "ID": "2c",
+            "whitePlayer": "name5",
+            "blackPlayer": "name6",
+            "date": "01/10/2021 13:15:03",
+            "averageStat": {
+                "p": 0.5,
+                "t": 0.6,
+                "e": 3
+            },
+            "state": {
+                "round": 30,
+                "move": "a3 a4",
+                "FEN": "2k2bnr/Bnp1p2p/1p2B1p1/5p2/8/5N2/PPP2PPP/2KR4 b - - 3 15",
+                "stat": {
+                    "p": 0.3,
+                    "t": 0.4,
+                    "e": 2
+                },
+                "last_move": [
+                    "a6",
+                    "b6"
+                ],
+                "maia_moves": [
+                    [
+                        "e1",
+                        "e2",
+                        0.6
+                    ]
+                ],
+                "stockfish_moves": [
+                    [
+                        "a1",
+                        "a2",
+                        0.7
+                    ]
+                ]
+            }
+        }
+    ]
+}

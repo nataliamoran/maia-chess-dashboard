@@ -18,7 +18,7 @@ class BoardState extends React.Component {
 
       componentDidMount(){
           if(this.state.filter){
-            fetch('/api/filters/'+this.props.searchfilter)  //${this.state.filter}.json
+            fetch('/api/filters/'+this.props.searchfilter) 
         .then(response => response.json())
         .then(res => {
             this.setState({data: res.games});
