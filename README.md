@@ -58,4 +58,16 @@ From the `frontend` directory, run
 npm install
 npm start
 ```
-This will start the react app locally. 
+This will start the react app locally.
+
+## License
+
+This software is licensed by GNU GPL v3.
+ 
+This software is provided without warranty and all authors of this software will not be held liable for any damages inflicted by the software.
+ 
+This license gives the user the freedom to run, study, share and modify the software. However, since GNU GPL v3 is a copyleft license, all derivative works from this software must be licensed by GNU GPL v3 as well.
+ 
+The end user is free to use this software for commercial purposes however this license requires that the source code must be made available when the software is distributed.
+ 
+We chose this license after discussions with our partner, CSSLab, regarding the purpose of this software. In the near future, this software will be published alongside a study produced by the CSSLab, therefore it is important we choose a license which allows all users to freely modify and distribute this software.
