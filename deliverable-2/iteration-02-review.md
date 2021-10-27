@@ -87,6 +87,22 @@ List any **process-related** (i.e. team organization and how you work) changes y
  * Ordered from most to least important.
  * Explain why you are making a change.
 
+Most of the process-related planning up to deliverable 2 has worked out well. Our team has found time to setup meetings with the partner as well as brief meetings on Tuesday in which
+the individual members can discuss their progress and future plans. We have also setup a Slack to which we have dynamically added channels (e.g. frontend/backend) to further improve our
+workflow and communication. However, there do exist some minor issues which we plan to improve upon. From most to least important:
+
+### Improve the team's interaction with Trello
+As of now we are creating "tickets" on Trello to organize which team members tackle which functionalities. Although this has allowed us to keep track of which tasks need working on, members did
+not always update their ticket state (e.g from in development to finished). This ended up causing some confusion as member's could not track other's progress as intended.
+
+### Improve meeting minutes
+We had planned but did not follow through with writing meeting minutes on a rotational schedule. We will work on a way to notify team members who are responsible for given meetings. 
+This could improve the quality of notes and make it harder to overlook specific requests made by the partner. 
+
+
+### Simplify the Slack channel list
+As of now our team uses Slack for communication. The many themed channels allow us to organize our questions, comments and information. However, there do exist several channels which we have made
+little to no use of. We believe removing redundant channels could make tracking messages on Slack even easier. 
 
 ## Product - Review
 
