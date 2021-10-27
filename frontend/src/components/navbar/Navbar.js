@@ -11,7 +11,7 @@ class Navbar extends React.Component {
                     <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
                         <ReactBootStrap.Nav className="ms-auto">
                             <ReactBootStrap.Nav.Link eventKey={2} href="#login" >
-                                Lichess Login [Not Implemented]
+                                Lichess Login [Not Yet Implemented]
                             </ReactBootStrap.Nav.Link>
                         </ReactBootStrap.Nav>
                     </ReactBootStrap.Navbar.Collapse>
