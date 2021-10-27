@@ -11,7 +11,8 @@ class BoardState extends React.Component {
         this.state = {
           data: [],
           curr: "",
-          filter: props.searchfilter
+          filter: props.searchfilter,
+          maxHeight: props.maxHeight | 400
         }
       }
 
@@ -31,11 +32,14 @@ class BoardState extends React.Component {
     componentDidUpdate(prevProps) {
         if(prevProps.searchfilter !== this.props.searchfilter) {
           this.setState({filter: this.props.searchfilter});
-          fetch('/api/filters/'+this.props.searchfilter)//http://dash-dev.maiachess.com
+          fetch('http://dash-dev.maiachess.com/api/filters/'+this.props.searchfilter)//http://dash-dev.maiachess.com
                 .then(response => response.json())
                 .then(res => {
                     this.setState({data: res.games});
                 });
+        }
+        if(prevProps.maxHeight !== this.props.maxHeight){
+            this.setState({maxHeight: this.props.maxHeight});
         }
       }
 
@@ -45,12 +49,9 @@ class BoardState extends React.Component {
             <Card bg="dark" variant="dark" style={{ width: '200px'}}>
                 <Card.Body style={{"textAlign": "left"}}>
                     <Card.Title style={{color:'white'}}>Board State</Card.Title>
-                    <ListGroup variant="flush">
+                    <ListGroup variant="flush" style={{"overflowY": "auto", "maxHeight": (this.state.maxHeight+"px")}}>
                     {this.state.data.map(d => (
-                    
                         <ListGroup.Item key={d.ID}
-                        /*className = {"item"}*/
-
                         action variant="dark"
                         onClick={(event) => {
                             this.setState({
@@ -60,7 +61,7 @@ class BoardState extends React.Component {
                             event.preventDefault();
                             }} >
                                  <div style={{'fontSize': '16px','fontWeight': 'bold'}}>{d.state.round}.&nbsp;{d.state.move}</div>
-                            <div /*style={{'font-weight': 'bold'}}*/>{d.whitePlayer} vs {d.blackPlayer}</div>
+                            <div>{d.whitePlayer} vs {d.blackPlayer}</div>
                             <div>{d.date}</div>
                            
                             <div style={{float: 'left', 'fontWeight': 'bold'}}>P:</div> 
@@ -94,7 +95,6 @@ class BoardState extends React.Component {
                                 <span className="dot-green" style={{float: 'left'}}></span>
                             }
                         </ListGroup.Item>
-
                     ))} 
                     </ListGroup>
                 </Card.Body>
