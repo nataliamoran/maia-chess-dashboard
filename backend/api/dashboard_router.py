@@ -12,6 +12,7 @@ from .models import EventModel, UserModel
 
 import json
 import lichess.api
+import lichess.format
 
 dashboard_router = fastapi.APIRouter(prefix="/api/dashboard", tags=['dashboard'])
 
@@ -113,11 +114,21 @@ async def add_username_to_maia_db(username: str):
     return JSONResponse(status_code=status.HTTP_201_CREATED, content=ret)
 
 
-@dashboard_router.post("/login/{username}", response_description="Login with Lichess")
-async def login(username: str):
-    pass
+@dashboard_router.post("/login/{username}/{oauthtoken}", response_description="Login with Lichess")
+async def login(username: str, oauthtoken: str):
+    try:
+        games = lichess.api.user_games(username=username, max=10, auth=oauthtoken, format=lichess.format.PGN)
+        pgns = list(games)
+    except lichess.api.ApiHttpError as err:
+        return JSONResponse(status_code=status.HTTP_206_PARTIAL_CONTENT, content={"status": "Authentication failed"})
+
+    return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "Authentication succeeded. Pulled 10 sample games", "games": pgns})
 
 
-@dashboard_router.post("/logout/{username}", response_description="Logout")
+@dashboard_router.get("/logout/{username}", response_description="Logout")
 async def logout(username: str):
-    pass
+    ret = {
+        "status": "stubbed logout for " + username + " no action to take here as of yet"
+    }
+
+    return JSONResponse(status_code=status.HTTP_200_OK, content=ret)

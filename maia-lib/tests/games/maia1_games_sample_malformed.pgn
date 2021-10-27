@@ -1,0 +1,52 @@
+[Event "Rated Bullet game"]
+[Site "https://lichess.org/7vjwoLdP"]
+[Date "2021.10.09"]
+[White "maia1"]
+[Black "anonymous_2012"]
+[Result "1-0"]
+[UTCDate "2021.10.09"]
+[UTCTime "08:52:02"]
+[WhiteElo "1628"]
+[BlackElo "1402"]
+[WhiteRatingDiff "+3"]
+[BlackRatingDiff "-1"]
+[WhiteTitle "BOT"]
+[Variant "Standard"]
+[TimeControl "45+0"]
+[ECO "B00"]
+[Termination "Normal"]
+
+1. e4 Nc6 2. Nf3 b6 3. d4 Bb7 4. Nc3 d6 5. d5 Nb4 6. a3 Na6 7. Bb5+ c6 8. dxc6 Bc8 9. c7+ Qd7 1-0
+
+
+
+
+
+
+[Event "Rated Bullet game"]
+[Site "https://lichess.org/6lo9BWZk"]
+[Date "2021.10.09"]
+[White "anonymous_2012"]
+[Black "maia1"]
+[UTCDate "2021.10.09"]
+[UTCTime "08:50:05"]
+[WhiteElo "?"]
+[BlackElo "1234"]
+[BlackElo "?"]
+[BadHeader "?"]
+[WhiteRatingDiff "-1"]
+[BlackRatingDiff "+2"]
+[BlackTitle "BOT"]
+[Variant "Standard"]
+[TimeControl "45+0"]
+[ECO "A02"]
+[Termination "Time forfeit"]
+
+1. f4 e6 2. Nf3 Nc6 3. g3 Nf6 4. Bg2 d5 5. O-O Bc5+ 6. d4 Bb6 7. e3 O-O 8. c3 Ne4 9. Nbd2 Nxd2 10. Bxd2 Ne7 11. Ne5 f6 12. Nf3 Nf5 13. b4 a5 14. Rb1 axb4 15. cxb4 Rxa2 16. Qb3 Ra8 17. b5 Bd7 18. Bb4 Re8 19. Bc5 Bxc5 20. dxc5 c6 21. b6 Ra5 22. Nd4 Rxc5 23. Nxf5 exf5 24. Rfc1 Rb5 25. Qa2 Rxb1 26. Qxb1 Rxe3 27. Qc2 Qxb6 28. Kf1 Qb5+ 29. Kf2 Re2+ 30. Qxe2 Qxe2+ 31. Kxe2 b5 32. Kd3 Kf7 33. Kd4 Ke6 34. Kc5 g5 35. Bf1 gxf4 36. Bxb5 cxb5 37. Kb6 fxg3 38. Kc5 gxh2 39. Rh1 f4 0-1
+
+
+
+[Event "Rated Bullet game"]
+[Site "https://lichess.org/6lo9BWZk"]
+[Date "2021.10.09"]
+[BAD]
