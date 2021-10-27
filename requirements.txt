@@ -19,3 +19,4 @@ sniffio==1.2.0
 starlette==0.16.0
 typing-extensions==3.10.0.2
 uvicorn==0.15.0
+python-lichess
