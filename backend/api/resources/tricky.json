@@ -2,117 +2,117 @@
     "filter": "tricky",
     "games": [
         {
-            "ID": "2a",
-            "whitePlayer": "name1",
-            "blackPlayer": "name2",
-            "date": "01/10/2021 13:15:03",
+            "ID": "yiP8gj5x",
+            "whitePlayer": "joe_luna",
+            "blackPlayer": "maia1",
+            "date": "2021.10.27 20:33:19",
             "averageStat": {
                 "p": 0.1,
                 "t": 0.2,
                 "e": 1
             },
             "state": {
-                "round": 1,
-                "move": "a1 a2",
-                "FEN": "2kn1bnr/B1p1p2p/1p4p1/5p2/4B3/5N2/PPP2PPP/2KR4 w - f6 0 14",
+                "round": 12,
+                "move": "e4 c3",
+                "FEN": "r4rk1/ppp3pp/2nqb3/3p4/4n3/1BN1PN2/PPP2PPP/R2Q1RK1 b - - 1 12",
                 "stat": {
                     "p": 0.1,
                     "t": 0.2,
                     "e": 1
                 },
                 "last_move": [
-                    "a6",
-                    "b6"
+                    "b1",
+                    "c3"
                 ],
                 "maia_moves": [
                     [
-                        "e1",
-                        "e2",
+                        "e4",
+                        "c3",
                         0.6
                     ]
                 ],
                 "stockfish_moves": [
                     [
-                        "a1",
-                        "a2",
+                        "e4",
+                        "c3",
                         0.7
                     ]
                 ]
             }
         },
         {
-            "ID": "2b",
-            "whitePlayer": "name3",
-            "blackPlayer": "name4",
-            "date": "01/10/2021 13:15:03",
+            "ID": "svYGGbta",
+            "whitePlayer": "maia1",
+            "blackPlayer": "TSPG25673",
+            "date": "2021.10.27 20:32:23",
             "averageStat": {
                 "p": 0.3,
                 "t": 0.4,
                 "e": 2
             },
             "state": {
-                "round": 20,
-                "move": "a3 a4",
-                "FEN": "2k2bnr/Bnp1p2p/1p4p1/3B1p2/8/5N2/PPP2PPP/2KR4 w - - 2 15",
+                "round": 8,
+                "move": "b1 c3",
+                "FEN": "rn2kbnr/pp3ppp/1qp1p1b1/3pP1B1/3P2P1/1P3N1P/P1P2P2/RN1QKB1R b KQkq - 0 8",
                 "stat": {
                     "p": 0.3,
                     "t": 0.4,
                     "e": 2
                 },
                 "last_move": [
-                    "a6",
-                    "b6"
+                    "c7",
+                    "c6"
                 ],
                 "maia_moves": [
                     [
-                        "e1",
-                        "e2",
+                        "c2",
+                        "c3",
                         0.6
                     ]
                 ],
                 "stockfish_moves": [
                     [
-                        "a1",
-                        "a2",
+                        "b1",
+                        "c3",
                         0.7
                     ]
                 ]
             }
         },
         {
-            "ID": "2c",
-            "whitePlayer": "name5",
-            "blackPlayer": "name6",
-            "date": "01/10/2021 13:15:03",
+            "ID": "eF5xC8Sj",
+            "whitePlayer": "perorep4321",
+            "blackPlayer": "maia1",
+            "date": "2021.10.27 20:37:11",
             "averageStat": {
                 "p": 0.5,
                 "t": 0.6,
                 "e": 3
             },
             "state": {
-                "round": 30,
-                "move": "a3 a4",
-                "FEN": "2k2bnr/Bnp1p2p/1p2B1p1/5p2/8/5N2/PPP2PPP/2KR4 b - - 3 15",
+                "round": 12,
+                "move": "d6 e7",
+                "FEN": "rnb1k2r/p2p1ppp/2pbp3/1p2N3/3P1P2/2q1P3/P1P1B1PP/1R1Q1RK1 b kq f3 0 12",
                 "stat": {
                     "p": 0.3,
                     "t": 0.4,
                     "e": 2
                 },
                 "last_move": [
-                    "a6",
-                    "b6"
+                    "f2",
+                    "f4"
                 ],
                 "maia_moves": [
                     [
-                        "e1",
-                        "e2",
+                        "d6",
+                        "e5",
                         0.6
                     ]
                 ],
                 "stockfish_moves": [
                     [
-                        "a1",
-                        "a2",
+                        "d6",
+                        "e7",
                         0.7
                     ]
                 ]
