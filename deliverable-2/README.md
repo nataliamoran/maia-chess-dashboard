@@ -1,14 +1,16 @@
 # Maia Dashboard / anti-semicolon-semicolon-club
 
-> _Note:_ This document is intended to be relatively short. Be concise and precise. Assume the reader has no prior knowledge of your application and is non-technical. 
+
 
 ## Description 
- * Provide a high-level description of your application and it's value from an end-user's perspective
- * What is the problem you're trying to solve?
- * Is there any context required to understand **why** the application solves this problem?
+We are developing an educational, easy-to-use, and aesthetically pleasing dashboard where users can review and reflect on their past chess games.
+
+Currently, there are a few chess analyzers in use; however, they all provide feedback based on superhuman engines, such as Stockfish. These AI use complex algorithms to find the globally optimized moves, which is difficult for our human users to interpret and learn.
+
+Our dashboard will be using the [Maia Chess](https://maiachess.com/), the chess engine introduced by our client, [CSSLab](http://csslab.cs.toronto.edu/). Maia is much better at predicting human moves than existing engines. This ability allows Maia to not only offer more relevant and easier to understand suggestions; but also find sets of interesting, tricky, or suboptimal moves (we refer to them as states) to reinforce learning. Our dashboard will be a platform that utilizes the full capability of Maia to list these chess states of interest from users’ past chess games on the [Lichess](https://lichess.org/) server. We will recreate these states on the chessboard, and we will use arrows and highlighting to show better moves or why a state is interesting.
 
 ## Key Features
-For this deliverable, below is the complete set of features an user can access. Note that this features are connected with backend.
+For this deliverable, below is the complete set of features an user can access. Note that these features are connected with the backend.
 * Searching for interesting moves
   * After selecting "interesting" in the filter column, the page will search for interesting moves and display the result under the positions column.
 * Searching for tricky moves
@@ -18,7 +20,7 @@ For this deliverable, below is the complete set of features an user can access. 
 * Viewing a board state on the chessboard
   * The user can choose to view any of the board states by clicking on it. The state will then display on the chessboard.
 * Viewing suggestions from the AIs
-  * When a board state is displayed on the chessboard, arrows representing the suggestions by the AIs will be displayed as well. Each color representing the suggested move from a different AIs.
+  * When a board state is displayed on the chessboard, arrows representing the suggestions by the AIs will be displayed as well. Each color represents the suggested move from a different AI.
   
 ## Instructions
  * Clear instructions for how to use the application from the end-user's perspective
@@ -133,7 +135,7 @@ While a developer is reviewing other developer's Pull Request, they move the Tre
 
 
 ### Production environment deployment process 
-Once in a few days Natalia (or other developer) merges `develop` branch into `main` branch 
+Once in a few days Natalia (or another developer) merges `develop` branch into `main` branch 
 and checks that all functionality works well in the [production environment](http://dashboard.maiachess.com/).
 
 ### CI/CD
