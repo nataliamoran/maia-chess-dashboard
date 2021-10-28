@@ -107,9 +107,86 @@ little to no use of. We believe removing redundant channels could make tracking 
 ## Product - Review
 
 #### Q4. How was your product demo?
- * How did you prepare your demo?
- * What did you manage to demo to your partner?
- * Did your partner accept the features?
- * Were there change requests?
  * What did you learn from the demo from either a process or product perspective?
  * *This section will be marked very leniently so keep it brief and just make sure the points are addressed*
+
+ ##### How did you prepare your demo?
+ Luckily our partner is very technically inclined, so we planned to show our
+ application from the top down. Angel represented the frontend team and prepared
+ to present all the features from filters, board states, stats etc... Natalia prepared a presentation
+of the tech stack our application used (mongo, fastapi, python, yarn, react, shell etc...)
+ Kevin prepared various chess board formats to show to the partner and get their 
+ approval of the formats and that they fit all the specifications needed by the 
+ frontend team. Sina prepared the backend API calls, such as event logging, user 
+ profile fetching, oauth logins, etc ... . The use of the partner prepared library 
+ maia-lib was also prepared to be reviewed as to ensure the team uses it correctly
+ in the next deliverable where the majority of data crunching and ML analysis will
+ be done. 
+ 
+##### What did you manage to demo to your partner?
+*Frontend:* <br/>
+Different chess boards, game states, arrows for move comparisons between
+Stockfish to Maia to user, main game stats (performance, trickiness, entropy),
+favicon for the web page and layout of components, and filtering games by the game stats.
+
+*Project Structure:* <br/>
+Showed the partner our implementation of FastAPI, how we 
+implemented some of the API code he provided us, how the routers and databases are 
+set up to integrate with the API, the React project structure, the yarn package manager
+for the frontend.
+
+*Backend API*: <br/>
+ Database structure, PGN and FEN chess formats, stubbed frontend data and 
+schema to be communicated between front and back end, login, logout, event logging, adding users,
+finding users, lichess user profile retrieval, lichess game retrieval, maia-lib installation and deployment.
+ 
+##### Did your partner accept the features? 
+The partner was satisfied and pleasantly surprised with the features we developed 
+for Deliverable 2. Quoting him "This is a good start for this iteration of the project".
+Obviously the features will be further developed for future deliverables but he was satisfied
+with the starting features as promised. <br/>
+
+Partner likes the front end feature of selecting different types of position, interesting, tricky etc…
+He likes how it shows the last move, the stats of the game state, the stockfish move
+ vs Maia move. Likes how its interactive for the user and the layout matches
+expectations for a first draft. <br/>
+
+Partnered approved of the FastAPI structure for how the API calls, models, 
+etc … are set up. We integrated some of his code from the backend as well. <br/>
+
+Partner approved of all features he required for us for this deliverable. He 
+explained how the project will develop in later iterations and gave insights on 
+what they will eventually add to the api calls. Features for database manipulation
+etc.. were approved. <br/>
+
+Partner approved on planned method to convert from chess notation PGN to FEN. 
+Likes how the json data is structured at the moment. Stubbed data that is passed 
+to the frontend looks good to him. 
+
+He clapped his hands at the end :D
+
+##### Were there change requests?
+There was not a feature where the partner explicitly asked it to be changed. He did 
+recommend various extensions of the features for us to deliver in future deliverables, all
+of which we have listed below. (Note: all of these may not be developed purely for the span of 
+CSC301, but will be wanted for a final deployment of this application): <br/>
+
+* For users added to the DB, add a timestamp for last time we logged the users games.
+* Add server time stamp to event post call. Add time stamp to EventModel
+* Make mongo insert after return for mongo inserts in the API. FastAPI has a feature to do this.
+* fastapi.BackgroundTasks for the above 
+* Recommended adding a feedback form under the filters for Deliverable 3 to send feedback to the team.
+* Recommended adding additional filters, so sort the games by the current filters, and send a json with some options to filter additionally (moves that im white, moves im at this position etc…)
+^ this can be implemented by sending a query directly from the user to the mongoDB
+* *only pull rated games from lichess*
+* *only pull valid game modes (not anti-chess etc...)*
+* Log user profile request to database as well.
+* Use JWT to login users to Maia
+* Add lichess api call to grab games from the last 30 days.
+*Write each model maia_kd_1xxx as a new entry to a dictionary for the same game as its different models analyzing the same game
+Ex: maia_kdd_1200-lxHs7sJd8
+
+
+
+
+
