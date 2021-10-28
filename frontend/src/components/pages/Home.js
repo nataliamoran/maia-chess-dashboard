@@ -30,7 +30,6 @@ export default  function Home(){
                 stuff.push({orig: game.state.maia_moves[0][0], dest: game.state.maia_moves[0][1], brush: 'yellow' });
             }
         }
-        console.log(stuff);
         setArrows(stuff);
         setFEN(FEN);
     }
