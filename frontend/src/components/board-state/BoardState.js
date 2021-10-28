@@ -32,7 +32,7 @@ class BoardState extends React.Component {
     componentDidUpdate(prevProps) {
         if(prevProps.searchfilter !== this.props.searchfilter) {
           this.setState({filter: this.props.searchfilter});
-          fetch('/api/filters/'+this.props.searchfilter)//http://dash-dev.maiachess.com
+          fetch('http://dash-dev.maiachess.com/api/filters/'+this.props.searchfilter)//http://dash-dev.maiachess.com
                 .then(response => response.json())
                 .then(res => {
                     this.setState({data: res.games});
@@ -51,7 +51,7 @@ class BoardState extends React.Component {
                     <Card.Title style={{color:'white'}}>Board State</Card.Title>
                     <ListGroup variant="flush" style={{"overflowY": "auto", "maxHeight": (this.state.maxHeight+"px")}}>
                     {this.state.data.map(d => (
-                        <ListGroup.Item key={d.ID}
+                        <ListGroup.Item key={(d.ID+d.state.round)}
                         action variant="dark"
                         onClick={(event) => {
                             this.setState({
