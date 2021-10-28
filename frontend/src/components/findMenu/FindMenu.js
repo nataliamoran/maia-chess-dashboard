@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import { Menu } from 'semantic-ui-react'
 
 const colorsA = ['olive', 'green', 'teal']
-const filterNames = ["interesting", 'tricky', 'performance']
+const filterNames = ["interesting", 'tricky', 'mistakes']
 
 export default class MenuExampleColoredInverted extends Component {
     state = { activeA: ''}
-    handleAClick = (e, { name }) => this.setState({ activeA: name })
+    handleAClick = (e, { name }) => {
+        this.setState({ activeA: name });
+        this.props.parentCallback(name);
+    }
 
     render() {
         const { activeA} = this.state
