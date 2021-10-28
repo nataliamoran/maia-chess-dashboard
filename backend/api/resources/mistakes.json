@@ -1,0 +1,83 @@
+{
+    "filter": "mistakes",
+    "games": [
+        {
+            "ID": "CNM8WCKb",
+            "whitePlayer": "Amphiox-01",
+            "blackPlayer": "maia1",
+            "date": "2021.10.27 20:10:26",
+            "averageStat": {
+                "p": 0.1,
+                "t": 0.2,
+                "e": 3
+            },
+            "state": {
+                "round": 31,
+                "move": "e3 d4",
+                "FEN": "4k3/p4ppp/n1P5/8/5P2/4K1P1/7P/8 b - - 4 31",
+                "stat": {
+                    "p": 0.1,
+                    "t": 0.2,
+                    "e": 3
+                },
+                "last_move": [
+                    "d8",
+                    "e8"
+                ],
+                "maia_moves": [
+                    [
+                        "e3",
+                        "d4",
+                        0.6
+                    ]
+                ],
+                "stockfish_moves": [
+                    [
+                        "e3",
+                        "d4",
+                        0.7
+                    ]
+                ]
+            }
+        },
+        {
+            "ID": "JV8zVwJi",
+            "whitePlayer": "maia1",
+            "blackPlayer": "sircw",
+            "date": "2021.10.27 20:06:33",
+            "averageStat": {
+                "p": 0.3,
+                "t": 0.4,
+                "e": 5
+            },
+            "state": {
+                "round": 17,
+                "move": "d7 f6",
+                "FEN": "r3r1k1/2pNnp1p/2p1p1p1/p1Np1b2/3P4/1P2P3/P1P2PPP/R2Q1RK1 w - - 2 17",
+                "stat": {
+                    "p": 0.3,
+                    "t": 0.4,
+                    "e": 0.1
+                },
+                "last_move": [
+                    "b8",
+                    "e8"
+                ],
+                "maia_moves": [
+                    [
+                        "d7",
+                        "e5",
+                        0.1
+                    ]
+                ],
+                "stockfish_moves": [
+                    [
+                        "d7",
+                        "f6",
+                        0.7
+                    ]
+                ]
+            }
+        }
+    ]
+}
