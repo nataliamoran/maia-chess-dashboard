@@ -107,7 +107,6 @@ little to no use of. We believe removing redundant channels could make tracking 
 ## Product - Review
 
 #### Q4. How was your product demo?
- * What did you learn from the demo from either a process or product perspective?
  * *This section will be marked very leniently so keep it brief and just make sure the points are addressed*
 
  ##### How did you prepare your demo?
@@ -186,7 +185,14 @@ CSC301, but will be wanted for a final deployment of this application): <br/>
 *Write each model maia_kd_1xxx as a new entry to a dictionary for the same game as its different models analyzing the same game
 Ex: maia_kdd_1200-lxHs7sJd8
 
-
+ ##### What did you learn from the demo from either a process or product perspective?
+ Our partner is generally happy with our product, but there is still much work that needs to be done, to
+ bring the product deployment. Our process of development thanks to our organizaiton using Trello boards,
+ slack, weekely meetings, and end-specific chats, help the process go extremely smoothly. The backend
+ and front end teams are able to develop in parallel without needing to communicate with one another too much,
+ as long as the contracts for what data is passed back and forth is reached. The product still has a 
+ far way to go in terms of optimization of hardware, and the intended user scope of this project is quite vast,
+ which means that our work has to and is being done with the upmost care. 
 
 
 
