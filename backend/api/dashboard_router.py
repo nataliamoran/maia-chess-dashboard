@@ -5,16 +5,17 @@ from pydantic import BaseModel, Field
 from bson import ObjectId, json_util
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
+from fastapi.testclient import TestClient
 from fastapi import Body, HTTPException, status
 from .utils import PyObjectId
 from .db_client import get_dashboard_db
 from .models import EventModel, UserModel
-
 import json
 import lichess.api
 import lichess.format
 
 dashboard_router = fastapi.APIRouter(prefix="/api/dashboard", tags=['dashboard'])
+test_client = TestClient(dashboard_router)
 
 
 class DashboardTestModel(BaseModel):
@@ -47,11 +48,25 @@ class DBUserModel(BaseModel):
         }
 
 
-@dashboard_router.get("/tests", response_description="List all dashboard tests", response_model=List[DashboardTestModel])
+def test_all():
+    # get non-existant user
+    results = []
+
+    # test non-existant user
+    res = test_client.get("/users/idontexist")
+    results += [{"non existance test": str(res)}]
+
+    return results
+
+
+@dashboard_router.get("/tests", response_description="List all dashboard tests", response_model=List)
 async def get_all_dashboard_tests():
-    client = get_dashboard_db()
-    res = await client["tests"].find().to_list(1000)
-    return res
+    # client = get_dashboard_db()
+    # res = await client["tests"].find().to_list(1000)
+    # return res
+
+    results = test_all()
+    return results
 
 
 @dashboard_router.post("/tests", response_description="Add new dashboard test", response_model=DashboardTestModel)
