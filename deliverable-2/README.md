@@ -10,15 +10,15 @@
 ## Key Features
 For this deliverable, below is the complete set of features an user can access. Note that this features are connected with backend.
 * Searching for interesting moves
-  * After selecting "interesting" in the filter the page will search for interesting moves and display the result under positions.
+  * After selecting "interesting" in the filter column, the page will search for interesting moves and display the result under the positions column.
 * Searching for tricky moves
-  * After selecting "tricky" in the filter the page will search for tricky moves and display the result under positions.
+  * After selecting "tricky" in the filter column, the page will search for tricky moves and display the result under the positions column.
 * Searching for mistakes
-  * After selecting "mistakes" in the filter the page will search for mistakes moves and display the result under positions.
-* Viewing a board state on the board
-  * The user can choose to view any of the board states by clicking on it. The state will then display on the chess board.
+  * After selecting "mistakes" in the filter column, the page will search for mistakes moves and display the result under the positions column.
+* Viewing a board state on the chessboard
+  * The user can choose to view any of the board states by clicking on it. The state will then display on the chessboard.
 * Viewing suggestions from the AIs
-  * When a board state is displayed on the chess board, there will be arrows as well. Each representing the suggested move by one of the AIs.
+  * When a board state is displayed on the chessboard, arrows representing the suggestions by the AIs will be displayed as well. Each color representing the suggested move from a different AIs.
   
 ## Instructions
  * Clear instructions for how to use the application from the end-user's perspective
