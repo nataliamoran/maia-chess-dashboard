@@ -8,10 +8,18 @@
  * Is there any context required to understand **why** the application solves this problem?
 
 ## Key Features
- * Described the key features in the application that the user can access
- * Provide a breakdown or detail for each feature that is most appropriate for your application
- * This section will be used to assess the value of the features built
-
+For this deliverable, below is the complete set of features an user can access. Note that this features are connected with backend.
+* Searching for interesting moves
+  * After selecting "interesting" in the filter the page will search for interesting moves and display the result under positions.
+* Searching for tricky moves
+  * After selecting "tricky" in the filter the page will search for tricky moves and display the result under positions.
+* Searching for mistakes
+  * After selecting "mistakes" in the filter the page will search for mistakes moves and display the result under positions.
+* Viewing a board state on the board
+  * The user can choose to view any of the board states by clicking on it. The state will then display on the chess board.
+* Viewing suggestions from the AIs
+  * When a board state is displayed on the chess board, there will be arrows as well. Each representing the suggested move by one of the AIs.
+  
 ## Instructions
  * Clear instructions for how to use the application from the end-user's perspective
  * How do you access it? Are accounts pre-created or does a user register? Where do you start? etc. 
