@@ -24,18 +24,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       # todo Check how to run FastAPI tests and run them before deploying
-#      - name: Set up Python ${{ matrix.python-version }}
-#        uses: actions/setup-python@v2
-#        with:
-#          python-version: ${{ matrix.python-version }}
-#      - name: Install Dependencies
-#        run: |
-#          python -m pip install --upgrade pip
-#          pip install -r requirements.txt
-#      - name: Run Tests
-#        run: |
-#          cd backend
-#          python manage.py test
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Tests
+        run: |
+          cd backend
+          pytest tests/
       - name: Sets env vars to dev
         run: |
           echo "HOST=dash-dev.maiachess.com" >> $GITHUB_ENV
