@@ -172,7 +172,11 @@ Ex: maia_kdd_1200-lxHs7sJd8
  and front end teams are able to develop in parallel without needing to communicate with one another too much,
  as long as the contracts for what data is passed back and forth is reached. The product still has a 
  far way to go in terms of optimization of hardware, and the intended user scope of this project is quite vast,
- which means that our work has to and is being done with the upmost care. 
+ which means that our work has to and is being done with the upmost care. The partner’s 
+ feedback concentrated on improvements of the current functionality and additional features
+  which we did not discuss before. This means that we successfully understood, planned and
+  implemented the basics of this project in accordance with the partner’s vision, and now 
+  it is time to think about additional functionality.
 
 
 
