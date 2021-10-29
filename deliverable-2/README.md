@@ -32,7 +32,40 @@ For this deliverable, below is the complete set of features an user can access. 
 
 **Maia Dashboard website:** http://dashboard.maiachess.com/
 
+### Testing the Backend API
 **Maia Dashboard API docs:** http://dashboard.maiachess.com/api/docs 
+
+The easiest (and recommended) way to test the Backend API currently is to use the link above
+to make API calls. <br>
+ 
+Currently the frontend connects to the "frontend" section of the API in the
+docs above to pull data, and this will be supplemented with dashboard and analysis APIs in following 
+deliverables. The analysis API is not required for this deliverable as it requires code from the partner
+that generates the production data from real games, and is not a first priority for second deliverable. <br>
+
+The Dashboard API showcases ability to get & write data to the backend, as well as search 
+for users, register users, login to Lichess via OAuth, and pull Lichess games and profiles in real time. 
+
+**Below are example ways to call the API. Feel free to use any other inputs you wish** <br>
+<img src="https://media.giphy.com/media/nBY8FLSzN3xWZ8zIiE/giphy.gif" width="40" height="40" />
+
+*Posting Events*: The frontend can post any event they want for user logging. See an example below
+![Alt Text](https://media.giphy.com/media/S7C3SPangUjKCR6A61/source.gif) <br>
+
+*Pulling Lichess User Profiles:* Request a user profile from Lichess and see all their stats. Maia1 (Partner account) is pulled below.
+![Alt Text](https://media.giphy.com/media/rTC4B3jV5b0wT2czC8/source.gif) <br>
+
+*Adding a User:* Add a user to the database after the've been registered into the Maia system. Try registering a user that already exists for yourself :D 
+![Alt Text](https://media.giphy.com/media/0WLhps0d953nCO1tLO/source.gif) <br>
+
+*Get User Data:* Pulls user data from the database
+![Alt Text](https://media.giphy.com/media/5S6UCAdWGV7aPw2rb8/source.gif) <br>
+
+*Lichess OAuth:* Users can login via. Lichess OAuth given they grab a key from their Lichess account. This speeds up game downloads. Team members account used below.
+![Alt Text](https://media.giphy.com/media/Lob5lzCqRQvZ16COjU/source.gif) <br>
+
+*Logout:* This method "logs out" the user. Stubbed for now as we don't have official Maia accounts as of yet.
+![Alt Text](https://media.giphy.com/media/nBY8FLSzN3xWZ8zIiE/source.gif) <br>
  
 ## Development requirements
 ## Local environment installation guidelines
