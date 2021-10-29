@@ -23,14 +23,50 @@ For this deliverable, below is the complete set of features an user can access. 
   * When a board state is displayed on the chessboard, arrows representing the suggestions by the AIs will be displayed as well. Each color represents the suggested move from a different AI.
   
 ## Instructions
- * Clear instructions for how to use the application from the end-user's perspective
- * How do you access it? Are accounts pre-created or does a user register? Where do you start? etc. 
- * Provide clear steps for using each feature described above
- * This section is critical to testing your application and must be done carefully and thoughtfully
+1. Go to the Maia Dashboard website http://dashboard.maiachess.com/ <br />
+![Webpage](./images/webpage.png)
+2. Select a filter you are interested in by click on one of the options.<br />
+![select filter](./images/select_filter.png)
+3. Now a list of board states from games played with the maia1 bot will be displayed under the positions column. Click on one from the list that you are interested to have a better look at.<br />
+![select state](./images/select_state.png)
+4. The game and state of the game is now displayed on the chessboard. Arrows representing the moves that the AIs suggests are also displayed on the chessboard.<br />
+![chessboard](./images/chessboard.png)
 
 **Maia Dashboard website:** http://dashboard.maiachess.com/
 
+### Testing the Backend API
 **Maia Dashboard API docs:** http://dashboard.maiachess.com/api/docs 
+
+The easiest (and recommended) way to test the Backend API currently is to use the link above
+to make API calls. <br>
+ 
+Currently the frontend connects to the "frontend" section of the API in the
+docs above to pull data, and this will be supplemented with dashboard and analysis APIs in following 
+deliverables. The analysis API is not required for this deliverable as it requires code from the partner
+that generates the production data from real games, and is not a first priority for second deliverable. <br>
+
+The Dashboard API showcases ability to get & write data to the backend, as well as search 
+for users, register users, login to Lichess via OAuth, and pull Lichess games and profiles in real time. 
+
+**Below are example ways to call the API. Feel free to use any other inputs you wish** <br>
+
+*Posting Events*: The frontend can post any event they want for user logging. See an example below
+![Alt Text](https://media.giphy.com/media/S7C3SPangUjKCR6A61/source.gif) <br>
+
+*Pulling Lichess User Profiles:* Request a user profile from Lichess and see all their stats. Maia1 (Partner account) is pulled below.
+![Alt Text](https://media.giphy.com/media/rTC4B3jV5b0wT2czC8/source.gif) <br>
+
+*Adding a User:* Add a user to the database after the've been registered into the Maia system. Try registering a user that already exists for yourself :D 
+![Alt Text](https://media.giphy.com/media/0WLhps0d953nCO1tLO/source.gif) <br>
+
+*Get User Data:* Pulls user data from the database
+![Alt Text](https://media.giphy.com/media/5S6UCAdWGV7aPw2rb8/source.gif) <br>
+
+*Lichess OAuth:* Users can login via. Lichess OAuth given they grab a key from their Lichess account. This speeds up game downloads. Team members account used below.
+![Alt Text](https://media.giphy.com/media/Lob5lzCqRQvZ16COjU/source.gif) <br>
+
+*Logout:* This method "logs out" the user. Stubbed for now as we don't have official Maia accounts as of yet.
+![Alt Text](https://media.giphy.com/media/nBY8FLSzN3xWZ8zIiE/source.gif) <br>
  
 ## Development requirements
 ## Local environment installation guidelines
