@@ -26,6 +26,15 @@ For this deliverable, below is the complete set of features an user can access. 
  * Provide clear steps for using each feature described above
  * This section is critical to testing your application and must be done carefully and thoughtfully
 
+1. Go to the Maia Dashboard website http://dashboard.maiachess.com/
+![Webpage](./images/webpage.png)
+2. Select a filter you are interested in by click on one of the options.
+![select filter](./images/select_filter.png)
+3. Now a list of board states from games played with the maia1 bot will be displayed under the positions column. Click on one from the list that you are interested to have a better look at.
+![select state](./images/select_state.png)
+4. The game and state of the game is now displayed on the chessboard. Arrows representing the moves that the AIs suggests are also displayed on the chessboard.
+![chessboard](./images/chessboard.png)
+
 **Maia Dashboard website:** http://dashboard.maiachess.com/
 
 **Maia Dashboard API docs:** http://dashboard.maiachess.com/api/docs 
