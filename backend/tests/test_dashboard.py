@@ -1,8 +1,5 @@
 from .testconf import test_app
 
-def test_get_user(test_app):
-    response = test_app.get("api/dashboard/users/sina")
-    assert response.status_code == 200
 
 def test_get_exisiting_lichess_user(test_app):
     response = test_app.get("/api/dashboard/lichess_users/maia1")

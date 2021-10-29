@@ -15,7 +15,6 @@ import lichess.format
 
 dashboard_router = fastapi.APIRouter(prefix="/api/dashboard", tags=['dashboard'])
 
-
 class DBUserModel(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
     user: str = Field(...)
