@@ -47,7 +47,6 @@ The Dashboard API showcases ability to get & write data to the backend, as well 
 for users, register users, login to Lichess via OAuth, and pull Lichess games and profiles in real time. 
 
 **Below are example ways to call the API. Feel free to use any other inputs you wish** <br>
-<img src="https://media.giphy.com/media/nBY8FLSzN3xWZ8zIiE/giphy.gif" width="40" height="40" />
 
 *Posting Events*: The frontend can post any event they want for user logging. See an example below
 ![Alt Text](https://media.giphy.com/media/S7C3SPangUjKCR6A61/source.gif) <br>
