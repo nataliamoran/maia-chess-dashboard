@@ -9,8 +9,6 @@ from bson import ObjectId
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from fastapi import Body, HTTPException, status
-from .analysis_router import get_all_analysis_tests
-from .dashboard_router import get_all_dashboard_tests
 from .utils import PyObjectId
 from .models import EventModel, UserModel, GameNumModel
 
@@ -192,16 +190,6 @@ class GameFilterModel(BaseModel):
                 ]
             }
         }
-
-
-@fe_router.get("/tests", response_description="List all analysis & dashboard tests")
-async def get_all_tests():
-    async with httpx.AsyncClient() as client:
-        analysis_tests = [get_all_analysis_tests()]
-        dashboard_tests = [get_all_dashboard_tests()]
-        analysis_result = await asyncio.gather(*analysis_tests)
-        dashboard_result = await asyncio.gather(*dashboard_tests)
-        return analysis_result[0] + dashboard_result[0]
 
 
 @fe_router.get("/games/{game_id}", response_description="Get game state", response_model=GameModel)
