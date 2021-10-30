@@ -9,8 +9,15 @@ Currently, there are a few chess analyzers in use; however, they all provide fee
 
 Our dashboard will be using the [Maia Chess](https://maiachess.com/), the chess engine introduced by our client, [CSSLab](http://csslab.cs.toronto.edu/). Maia is much better at predicting human moves than existing engines. This ability allows Maia to not only offer more relevant and easier to understand suggestions; but also find sets of interesting, tricky, or suboptimal moves (we refer to them as states) to reinforce learning. Our dashboard will be a platform that utilizes the full capability of Maia to list these chess states of interest from users’ past chess games on the [Lichess](https://lichess.org/) server. We will recreate these states on the chessboard, and we will use arrows and highlighting to show better moves or why a state is interesting.
 
+**Maia Dashboard website:** http://dashboard.maiachess.com/
+
+**Maia Dashboard API docs:** http://dashboard.maiachess.com/api/docs 
+
 ## Key Features
-For this deliverable, below is the complete set of features an user can access. Note that these features are connected with the backend.
+
+For this deliverable, below is the complete set of features an user can access. 
+
+Note that these features are connected with the backend: the frontend receives stubbed data from the backend via API. It was confirmed with the TA that stubbing the data is ok for Deliverable-2.
 * Searching for interesting moves
   * After selecting "interesting" in the filter column, the page will search for interesting moves and display the result under the positions column.
 * Searching for tricky moves
@@ -32,18 +39,36 @@ For this deliverable, below is the complete set of features an user can access. 
 4. The game and state of the game is now displayed on the chessboard. Arrows representing the moves that the AIs suggests are also displayed on the chessboard.<br />
 ![chessboard](./images/chessboard.png)
 
-**Maia Dashboard website:** http://dashboard.maiachess.com/
-
 ### Testing the Backend API
 **Maia Dashboard API docs:** http://dashboard.maiachess.com/api/docs 
 
-The easiest (and recommended) way to test the Backend API currently is to use the link above
-to make API calls. <br>
- 
-Currently the frontend connects to the "frontend" section of the API in the
-docs above to pull data, and this will be supplemented with dashboard and analysis APIs in following 
-deliverables. The analysis API is not required for this deliverable as it requires code from the partner
-that generates the production data from real games, and is not a first priority for second deliverable. <br>
+The easiest (and recommended) way to test the Maia Dashboard REST API is to use the link above to make API calls.
+
+The API is separated into `frontend`, `dashboard`, and `analysis` sections. 
+The `frontend` API is separated from the `dashboard` and `analysis` API to prevent the frontend from contacting [Lichess](https://lichess.org/) or the Maia Dashboard database directly for security reasons.
+The `dashboard` and `analysis` API are implemented separately to allow the Partner to use their functionality separately in the future. 
+Because other Maia services might already have the data necessary for analysis, they will contact the `analysis` API directly, skipping the `dashboard` API.
+
+
+* `frontend` API
+
+Frontend connects to the `frontend` section of the API (please see the [API documentation](http://dashboard.maiachess.com/api/docs#/frontend)) 
+to pull the games and analysis data provided by the `dashboard` and `analysis` API. 
+Currently, `frontend` API uses stabbed data instead of calling the `dashboard` and `analysis` API, which will be implemented in future deliverables.
+
+* `dashboard` API
+
+The `dashboard` API is responsible for fetching user data and user games from [Lichess](https://lichess.org/) and updating user data in the Maia Dashboard database.
+
+Please find instructions for testing the `dashboard` API below.
+
+* `analysis` API
+
+The `analysis` API is responsible for analysing chess games using the logic provided by the partner and returning analysis results.
+This API is not implemented for Deliverable-2 because it requires an analysis logic from the partner, which is still a work in progress.
+The `analysis` API was not a priority for Deliverable-2 and will be implemented in future deliverables. <br>
+
+#### Dashboard API Testing Guideline
 
 The Dashboard API showcases ability to get & write data to the backend, as well as search 
 for users, register users, login to Lichess via OAuth, and pull Lichess games and profiles in real time. 
@@ -63,8 +88,7 @@ for users, register users, login to Lichess via OAuth, and pull Lichess games an
 ![Alt Text](https://media.giphy.com/media/5S6UCAdWGV7aPw2rb8/source.gif) <br>
 
 *Lichess OAuth:* Users can login via. Lichess OAuth given they grab a key from their Lichess account. This speeds up game downloads. Team members account used below.
-![Alt Text](https://media.giphy.com/media/Lob5lzCqRQvZ16COjU/source.gif) 
-https://media.giphy.com/media/Lob5lzCqRQvZ16COjU/source.gif <br>
+![Alt Text](https://media.giphy.com/media/Lob5lzCqRQvZ16COjU/source.gif) <br>
 
 *Logout:* This method "logs out" the user. Stubbed for now as we don't have official Maia accounts as of yet.
 ![Alt Text](https://media.giphy.com/media/nBY8FLSzN3xWZ8zIiE/source.gif) <br>
@@ -186,10 +210,14 @@ The following diagram was created for Deliverable-1 and used as a guideline for 
 [![](https://mermaid.ink/img/eyJjb2RlIjoiZmxvd2NoYXJ0IFRCXG4gICAgc3ViZ3JhcGggZGphbmdvW1Rlc3QgUHl0aG9uIGNvZGUgYW5kIGRlcGxveSBiYWNrZW5kXVxuICAgICAgICBkaXJlY3Rpb24gVEJcbiAgICAgICAgZGVwZW5kZW5jaWVzW0luc3RhbGwgcHl0aG9uIGRlcGVuZGVuY2llc10gLS0-IHRlc3RzW1J1biB0ZXN0c11cbiAgICAgICAgdGVzdHMgLS0-IGNvcHlbQ29weSBiYWNrZW5kL3B5dGhvbiBmaWxlc11cbiAgICAgICAgY29weSAtLT4gZ3VuaWNvcm5bUmVzdGFydCBndW5pY29ybiBzZXJ2aWNlIG9uIHNlcnZlcl1cbiAgICBlbmRcbiAgICBzdWJncmFwaCByZWFjdFtCdWlsZCBmcm9udGVudCBhbmQgZGVwbG95XVxuICAgICAgICBkaXJlY3Rpb24gVEJcbiAgICAgICByZWFjdF9kZXBlbmRlbmNpZXNbSW5zdGFsbCByZWFjdCBkZXBlbmRlbmNpZXNdIC0tPiBidWlsZFtSZWFjdCBidWlsZF1cbiAgICAgICBidWlsZCAtLT4gY29weV9mZVtDb3B5IHJlYWN0IGJ1aWxkIHRvIHNlcnZlcl1cbiAgICBlbmRcbiAgICBzdWJncmFwaCBzbGFja1tTbGFjayBub3RpZmljYXRpb25dXG4gICAgICAgIHhbTm90aWZ5IG9uIHN1Y2Nlc3NmdWwgZGVwbG95bWVudF1cbiAgICAgICAgLVtOb3RpZnkgb24gZGVwbG95bWVudCBmYWlsdXJlXVxuICAgICAgICBcbiAgICBlbmRcbiAgICB1c2VyW0RldmVsb3Blcl0gLS0-fHB1c2ggY29kZXwgZ2l0aHViW0dpdEh1YiA8YnIvPiBkZXZlbG9wICYgbWFzdGVyIDxici8-IGJyYW5jaGVzXVxuICAgIGdpdGh1YiAtLT58Z2l0aHViIGFjdGlvbiBqb2IgMXwgZGphbmdvXG4gICAgZ2l0aHViIC0tPnxnaXRodWIgYWN0aW9uIGpvYiAyfCByZWFjdFxuICAgIFxuICAgIHJlYWN0IC0tPiBzbGFja1xuICAgIGRqYW5nbyAtLT4gc2xhY2tcblxuICAgIGNvcHlfZmUgLS4tIGNvbW1lbnRbRW52aXJvbm1lbnQgZGVwZW5kYW50IG9uIGJyYW5jaF1cbiAgICBjb3B5IC0uLSBjb21tZW50XG4gICAgZ3VuaWNvcm4gLS4tIGNvbW1lbnRcbiAgIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRhcmsifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ)](https://mermaid.live/edit/#eyJjb2RlIjoiZmxvd2NoYXJ0IFRCXG4gICAgc3ViZ3JhcGggZGphbmdvW1Rlc3QgUHl0aG9uIGNvZGUgYW5kIGRlcGxveSBiYWNrZW5kXVxuICAgICAgICBkaXJlY3Rpb24gVEJcbiAgICAgICAgZGVwZW5kZW5jaWVzW0luc3RhbGwgcHl0aG9uIGRlcGVuZGVuY2llc10gLS0-IHRlc3RzW1J1biB0ZXN0c11cbiAgICAgICAgdGVzdHMgLS0-IGNvcHlbQ29weSBiYWNrZW5kL3B5dGhvbiBmaWxlc11cbiAgICAgICAgY29weSAtLT4gZ3VuaWNvcm5bUmVzdGFydCBndW5pY29ybiBzZXJ2aWNlIG9uIHNlcnZlcl1cbiAgICBlbmRcbiAgICBzdWJncmFwaCByZWFjdFtCdWlsZCBmcm9udGVudCBhbmQgZGVwbG95XVxuICAgICAgICBkaXJlY3Rpb24gVEJcbiAgICAgICByZWFjdF9kZXBlbmRlbmNpZXNbSW5zdGFsbCByZWFjdCBkZXBlbmRlbmNpZXNdIC0tPiBidWlsZFtSZWFjdCBidWlsZF1cbiAgICAgICBidWlsZCAtLT4gY29weV9mZVtDb3B5IHJlYWN0IGJ1aWxkIHRvIHNlcnZlcl1cbiAgICBlbmRcbiAgICBzdWJncmFwaCBzbGFja1tTbGFjayBub3RpZmljYXRpb25dXG4gICAgICAgIHhbTm90aWZ5IG9uIHN1Y2Nlc3NmdWwgZGVwbG95bWVudF1cbiAgICAgICAgLVtOb3RpZnkgb24gZGVwbG95bWVudCBmYWlsdXJlXVxuICAgICAgICBcbiAgICBlbmRcbiAgICB1c2VyW0RldmVsb3Blcl0gLS0-fHB1c2ggY29kZXwgZ2l0aHViW0dpdEh1YiA8YnIvPiBkZXZlbG9wICYgbWFzdGVyIDxici8-IGJyYW5jaGVzXVxuICAgIGdpdGh1YiAtLT58Z2l0aHViIGFjdGlvbiBqb2IgMXwgZGphbmdvXG4gICAgZ2l0aHViIC0tPnxnaXRodWIgYWN0aW9uIGpvYiAyfCByZWFjdFxuICAgIFxuICAgIHJlYWN0IC0tPiBzbGFja1xuICAgIGRqYW5nbyAtLT4gc2xhY2tcblxuICAgIGNvcHlfZmUgLS4tIGNvbW1lbnRbRW52aXJvbm1lbnQgZGVwZW5kYW50IG9uIGJyYW5jaF1cbiAgICBjb3B5IC0uLSBjb21tZW50XG4gICAgZ3VuaWNvcm4gLS4tIGNvbW1lbnRcbiAgIiwibWVybWFpZCI6IntcbiAgXCJ0aGVtZVwiOiBcImRhcmtcIlxufSIsInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0)
  
 
- ## Licenses 
+## License
 
- Keep this section as brief as possible. You may read this [Github article](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/licensing-a-repository) for a start.
+This software is licensed by GNU GPL v3.
 
- * What type of license will you apply to your codebase?
- * What affect does it have on the development and use of your codebase?
- * Why did you or your partner make this choice?
+This software is provided without warranty and all authors of this software will not be held liable for any damages inflicted by the software.
+
+This license gives the user the freedom to run, study, share and modify the software. However, since GNU GPL v3 is a copyleft license, all derivative works from this software must be licensed by GNU GPL v3 as well.
+
+The end user is free to use this software for commercial purposes however this license requires that the source code must be made available when the software is distributed.
+
+We chose this license after discussions with our partner, CSSLab, regarding the purpose of this software. In the near future, this software will be published alongside a study produced by the CSSLab, therefore it is important we choose a license which allows all users to freely modify and distribute this software.
