@@ -13,12 +13,6 @@ app = FastAPI(docs_url="/api/docs",
 
 origins = ["*", ]
 
-# Allow NGINX to proxy
-# app.add_middleware(
-#     uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware,
-#     trusted_hosts="*",
-# )
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
