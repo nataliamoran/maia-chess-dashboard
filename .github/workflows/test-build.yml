@@ -23,7 +23,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      # todo Check how to run FastAPI tests and run them before deploying
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
