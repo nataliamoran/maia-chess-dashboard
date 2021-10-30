@@ -90,8 +90,8 @@ for users, register users, login to Lichess via OAuth, and pull Lichess games an
 *Get User Data:* Pulls user data from the database
 ![Alt Text](https://media.giphy.com/media/5S6UCAdWGV7aPw2rb8/source.gif) <br>
 
-*Lichess OAuth:* Users can login via. Lichess OAuth given they grab a key from their Lichess account. This speeds up game downloads. Team members account used below. ([User Story #1](https://docs.google.com/presentation/d/1V2gnUiMgze4BJ1yaO9ueb0veCmzg0P37orXA-_0MsZc/edit#slide=id.gf59b00164d_0_52))
-![Alt Text](https://media.giphy.com/media/Lob5lzCqRQvZ16COjU/source.gif) <br> 
+*Lichess OAuth:* Users can login via. Lichess OAuth given they grab a key from their Lichess account. This speeds up game downloads. Team members account used below. ([User Story #1](https://docs.google.com/presentation/d/1V2gnUiMgze4BJ1yaO9ueb0veCmzg0P37orXA-_0MsZc/edit#slide=id.gf59b00164d_0_52))<br> 
+<img src="https://media.giphy.com/media/qX49VgsWcDCfJideXU/giphy.gif" width="1000" height="600"> <br>
 
 *Logout:* This method "logs out" the user. Stubbed for now as we don't have official Maia accounts as of yet.
 ![Alt Text](https://media.giphy.com/media/nBY8FLSzN3xWZ8zIiE/source.gif) <br>
