@@ -18,11 +18,11 @@ Our dashboard will be using the [Maia Chess](https://maiachess.com/), the chess 
 For this deliverable, below is the complete set of features an user can access. 
 
 Note that these features are connected with the backend: the frontend receives stubbed data from the backend via API. It was confirmed with the TA that stubbing the data is ok for Deliverable-2.
-* Searching for interesting moves
+* Searching for interesting moves ([User Story #4](https://docs.google.com/presentation/d/1V2gnUiMgze4BJ1yaO9ueb0veCmzg0P37orXA-_0MsZc/edit#slide=id.gf59b00164d_0_72))
   * After selecting "interesting" in the filter column, the page will search for interesting moves and display the result under the positions column.
-* Searching for tricky moves
+* Searching for tricky moves ([User Story #3](https://docs.google.com/presentation/d/1V2gnUiMgze4BJ1yaO9ueb0veCmzg0P37orXA-_0MsZc/edit#slide=id.gf59b00164d_0_65))
   * After selecting "tricky" in the filter column, the page will search for tricky moves and display the result under the positions column.
-* Searching for mistakes
+* Searching for mistakes ([User Story #2](https://docs.google.com/presentation/d/1V2gnUiMgze4BJ1yaO9ueb0veCmzg0P37orXA-_0MsZc/edit#slide=id.gf59b00164d_0_100))
   * After selecting "mistakes" in the filter column, the page will search for mistakes moves and display the result under the positions column.
 * Viewing a board state on the chessboard
   * The user can choose to view any of the board states by clicking on it. The state will then display on the chessboard.
@@ -38,6 +38,9 @@ Note that these features are connected with the backend: the frontend receives s
 ![select state](./images/select_state.png)
 4. The game and state of the game is now displayed on the chessboard. Arrows representing the moves that the AIs suggests are also displayed on the chessboard.<br />
 ![chessboard](./images/chessboard.png)
+
+**NOTE:** The frontend is not responsive for Deliverable-2 because this was not a priority as defined with the partner. 
+Making the frontend responsive is planned for future deliverables.
 
 ### Testing the Backend API
 **Maia Dashboard API docs:** http://dashboard.maiachess.com/api/docs 
@@ -87,8 +90,8 @@ for users, register users, login to Lichess via OAuth, and pull Lichess games an
 *Get User Data:* Pulls user data from the database
 ![Alt Text](https://media.giphy.com/media/5S6UCAdWGV7aPw2rb8/source.gif) <br>
 
-*Lichess OAuth:* Users can login via. Lichess OAuth given they grab a key from their Lichess account. This speeds up game downloads. Team members account used below.
-![Alt Text](https://media.giphy.com/media/Lob5lzCqRQvZ16COjU/source.gif) <br>
+*Lichess OAuth:* Users can login via. Lichess OAuth given they grab a key from their Lichess account. This speeds up game downloads. Team members account used below. ([User Story #1](https://docs.google.com/presentation/d/1V2gnUiMgze4BJ1yaO9ueb0veCmzg0P37orXA-_0MsZc/edit#slide=id.gf59b00164d_0_52))
+![Alt Text](https://media.giphy.com/media/Lob5lzCqRQvZ16COjU/source.gif) <br> 
 
 *Logout:* This method "logs out" the user. Stubbed for now as we don't have official Maia accounts as of yet.
 ![Alt Text](https://media.giphy.com/media/nBY8FLSzN3xWZ8zIiE/source.gif) <br>
