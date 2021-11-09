@@ -146,6 +146,10 @@ jobs:
           SLACK_TITLE: "This is a GitHub Actions DEV build!"
           SLACK_MESSAGE: 'DEV deployment successful :rocket:'
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+  slackNotificationFailure:
+    name: Slack Notification Failure
+    runs-on: ubuntu-latest
+    steps:
       - name: Slack Notification PROD
         uses: rtCamp/action-slack-notify@v2
         if: github.ref == 'refs/heads/main' &&  failure()

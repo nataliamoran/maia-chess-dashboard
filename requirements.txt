@@ -25,7 +25,6 @@ httpx==0.20.0
 idna==3.2
 iniconfig==1.1.1
 Keras-Preprocessing==1.1.2
-maia-lib @ git+https://github.com/CSSLab/maia-lib.git@c07f1aaf3f46544d1b9be1dfba7906bc1367c782
 Markdown==3.3.4
 motor==2.5.1
 numpy==1.18.5
