@@ -1,4 +1,8 @@
 import fastapi
+import maia_lib
+import chess
+import io
+import requests
 
 from typing import List
 from pydantic import BaseModel, Field
@@ -72,15 +76,24 @@ async def filter_games(games_filter: str, username: str):
     pass
 
 
-@analysis_router.post("/analyze/{username}",
-                      response_description="Analyse user games",
-                      response_model=List[ProcessedGameModel])
-async def post_user_games_analysis():
-    pass
-
-
 @analysis_router.post("/games/{username}",
                       response_description="Retrieve raw games from Lichess and store them in Maia DB",
                       response_model=List[RawGameModel])
 async def post_user_raw_games():
     pass
+
+
+@analysis_router.get("/test_local_maia_lib",
+                     response_description="Test Local Maia Lib")
+async def test_local_maia_lib():
+    p, v = maia_lib.models.maia_kdd_1100.eval_board(chess.Board())
+    return [p, v]
+
+
+@analysis_router.get("/test_pgn_parsing",
+                     response_description="Test PGN Parsing Maia Lib")
+async def test_pgn_parsing():
+    r = requests.get("https://lichess.org/api/games/user/maia1?max=10")
+    games = maia_lib.GamesFile(io.StringIO(r.text))
+    mongo_dicts = games.iter_mongo_dicts()
+    return mongo_dicts
