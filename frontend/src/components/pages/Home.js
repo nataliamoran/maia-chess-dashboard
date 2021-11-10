@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Navbar from "../../components/navbar/Navbar";
 import BoardState from "../../components/board-state/BoardState";
 import FindMenu from "../../components/findMenu/FindMenu";
+import ReviewMenu from "../../components/review/ReviewMenu";
 import Board from "../../components/board/Board";
 import "chessground/assets/chessground.base.css";
 import "chessground/assets/chessground.brown.css";
@@ -62,7 +63,9 @@ export default  function Home(){
                         <div style={{'color': 'orange'}}>Maia Suggestions</div>
                         <div style={{'color': 'red'}}>Stockfish Suggestions</div>
                     </div>
-                    <div className="column" align="top"></div>
+                    <div className="column" align="top">
+                        <ReviewMenu></ReviewMenu>
+                    </div>
             </div>
       </div>
       </div>

@@ -10,6 +10,6 @@
     "\\frontend\\src\\components\\pages",
     "\\scripts"
   ],
-  "SelectedNode": "\\frontend\\yarn.lock",
+  "SelectedNode": "\\frontend\\src\\components\\navbar\\Navbar.js",
   "PreviewInSolutionExplorer": false
 }
