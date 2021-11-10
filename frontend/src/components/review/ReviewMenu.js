@@ -7,7 +7,7 @@ const filterNames = ["thumbs up icon", 'thumbs down icon']
 export default class ReviewMenu extends Component {
     state = { activeA: '' }
     handleAClick = (e, { name }) => {
-        if (this.state.activeA == '') {
+        if (this.state.activeA === '') {
             this.setState({ activeA: name });
         }
     }
