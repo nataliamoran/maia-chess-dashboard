@@ -11,7 +11,6 @@ from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from fastapi import Body, HTTPException, status
 from .utils import PyObjectId
-from .db_client import get_analysis_db
 from .models import GameNumModel
 
 analysis_router = fastapi.APIRouter(prefix="/api/analysis", tags=['analysis'])

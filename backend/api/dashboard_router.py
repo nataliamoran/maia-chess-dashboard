@@ -7,13 +7,14 @@ from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from fastapi import Body, HTTPException, status
 from .utils import PyObjectId
-from .db_client import get_dashboard_db
+from . import db_client
 from .models import EventModel, UserModel
 import json
 import lichess.api
 import lichess.format
 
 dashboard_router = fastapi.APIRouter(prefix="/api/dashboard", tags=['dashboard'])
+
 
 class DBUserModel(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
@@ -33,28 +34,30 @@ class DBUserModel(BaseModel):
 @dashboard_router.post("/events", response_description="Log frontend event")
 async def log_fe_event(event: EventModel = Body(...)):
     event_json = jsonable_encoder(event)
-    client = get_dashboard_db()
+    client = db_client.get_dashboard_db()
     new_event = await client["events"].insert_one(event_json)
     created_event = await client["events"].find_one({"_id": new_event.inserted_id})
     return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_event)
 
 
-@dashboard_router.get("/lichess_users/{username}", response_description="Get user profile from Lichess", response_model=UserModel)
+@dashboard_router.get("/lichess_users/{username}", response_description="Get user profile from Lichess",
+                      response_model=UserModel)
 async def get_user_profile_from_lichess(username: str):
     try:
         lichess_info = lichess.api.user(username)
-    except lichess.api.ApiHttpError as err:
+    except lichess.api.ApiError as err:
         return JSONResponse(status_code=status.HTTP_200_OK, content=None)
 
     ret = {"lichess_id": username, "lichess_info": lichess_info}
     return JSONResponse(status_code=status.HTTP_200_OK, content=ret)
 
 
-@dashboard_router.get("/users/{username}", response_description="Check if username is in Maia DB", response_model=DBUserModel)
+@dashboard_router.get("/users/{username}", response_description="Check if username is in Maia DB",
+                      response_model=DBUserModel)
 async def find_username_in_maia_db(username: str):
-    client = get_dashboard_db()
-
-    exists = await client["user_data"].find_one({"user": username})
+    client = db_client.get_dashboard_db()
+    table = client["user_data"]
+    exists = await table.find_one({"user": username})
     if exists is not None:
         return JSONResponse(status_code=status.HTTP_200_OK, content=json.loads(json_util.dumps(exists)))
     else:
@@ -67,14 +70,15 @@ async def add_username_to_maia_db(username: str):
         "user": username,
         "num_games": 0
     }
-    client = get_dashboard_db()
+    client = db_client.get_dashboard_db()
+    table = client["user_data"]
 
-    exists = await client["user_data"].find_one({"user": username})
+    exists = await table.find_one({"user": username})
     if exists is not None:
         return JSONResponse(status_code=status.HTTP_306_RESERVED, content={"reserved": username + " already exists"})
 
-    new_user = await client["user_data"].insert_one(new_user_data)
-    created_user = await client["user_data"].find_one({"_id": new_user.inserted_id})
+    new_user = await table.insert_one(new_user_data)
+    created_user = await table.find_one({"_id": new_user.inserted_id})
 
     ret = json.loads(json_util.dumps(created_user))
 
@@ -89,7 +93,8 @@ async def login(username: str, oauthtoken: str):
     except lichess.api.ApiHttpError as err:
         return JSONResponse(status_code=status.HTTP_206_PARTIAL_CONTENT, content={"status": "Authentication failed"})
 
-    return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "Authentication succeeded. Pulled 10 sample games", "games": pgns})
+    return JSONResponse(status_code=status.HTTP_200_OK,
+                        content={"status": "Authentication succeeded. Pulled 10 sample games", "games": pgns})
 
 
 @dashboard_router.get("/logout/{username}", response_description="Logout")

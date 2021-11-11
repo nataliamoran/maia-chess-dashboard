@@ -34,7 +34,7 @@ jobs:
       - name: Run Tests
         run: |
           cd backend
-          pytest tests/
+          python -m unittest discover tests
       - name: Sets env vars to dev
         run: |
           echo "HOST=dash-dev.maiachess.com" >> $GITHUB_ENV
