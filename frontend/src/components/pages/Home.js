@@ -45,17 +45,15 @@ export default  function Home(){
             <Navbar/>
                 <div className="ui stackable four column padded grid top aligned" style={{ marginTop: "5px"}}>
                     <div className="column" align="top" style={{ width: "230px"}}>
-                        <div style={{'fontSize': '20px','fontWeight': 'bold',  marginBottom: "2px"}}>Filters</div>
+                        <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Filters</div>
                         <FindMenu parentCallback={menuHandleCallback}/>    
                     </div>
                     <div className="column" align="top" style={{width: "230px"}}> 
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Positions</div>
-                        <AutoScale>
                         <BoardState 
                             parentCallback = {boardHandleCallback} 
                             maxHeight = {400}
-                        searchfilter = {filter}/>
-                        </AutoScale>
+                            searchfilter = {filter}/>
                     </div>
                     <div className="column" align="top">
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Board</div>
