@@ -7,6 +7,7 @@ import Board from "../../components/board/Board";
 import "chessground/assets/chessground.base.css";
 import "chessground/assets/chessground.brown.css";
 import "chessground/assets/chessground.cburnett.css";
+import AutoScale from 'react-auto-scale';
 
 export default  function Home(){
     const [FEN, setFEN] = useState("");
@@ -48,18 +49,22 @@ export default  function Home(){
                         <FindMenu parentCallback={menuHandleCallback}/>    
                     </div>
                     <div className="column" align="top" style={{width: "230px"}}> 
-                        <div style={{'fontSize': '20px','fontWeight': 'bold',  marginBottom: "2px"}}>Positions</div>
+                        <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Positions</div>
+                        <AutoScale>
                         <BoardState 
                             parentCallback = {boardHandleCallback} 
                             maxHeight = {400}
-                            searchfilter = {filter}/>
+                        searchfilter = {filter}/>
+                        </AutoScale>
                     </div>
                     <div className="column" align="top">
-                        <div style={{'fontSize': '20px','fontWeight': 'bold',  marginBottom: "2px"}}>Board</div>
+                        <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Board</div>
+                        <AutoScale>
                         <Board  fen = {FEN}
                                 lastMove = {lastMove}
                                 arrows = {arrows}
-                                size = {450} />
+                                size={450} />
+                        </AutoScale>
                         <div style={{'color': 'orange'}}>Maia Suggestions</div>
                         <div style={{'color': 'red'}}>Stockfish Suggestions</div>
                     </div>
