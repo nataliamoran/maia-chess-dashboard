@@ -113,6 +113,48 @@ async def logout(username: str):
     return JSONResponse(status_code=status.HTTP_200_OK, content=ret)
 
 
+@dashboard_router.get("/raw/{username}", response_description="Get all games of a given user from the database")
+async def test_pgn_parsing(username: str, num_games: Optional[int] = None, full_data: Optional[bool] = True):
+    # get the dashboard database
+    dash = db_client.get_dashboard_db()
+
+    # get all games for that user
+    cursor = dash['games'].find({'user': username})
+
+    # get required number of games
+    if num_games is None:
+        found_games = await cursor.to_list(length=100000) # picked some arbitrary value here I guess
+    else:
+        found_games = await cursor.to_list(length=num_games)
+
+    # for JSON serializability
+    for i in range(len(found_games)):
+        found_games[i]['full_date'] = str(found_games[i]['full_date'])
+
+    response = {}
+    response['status'] = 'success'
+
+    # filter the response data if requester doesn't want full data
+    response['games'] = []
+    if full_data:
+        response['games'] = found_games
+    else:
+        for game in found_games:
+            response['games'] += [{
+                '_id': game['_id'],
+                'user': game['user'],
+                'white_player': game['white_player'],
+                'black_player': game['black_player'],
+                'white_won': game['white_won'],
+                'black_won': game['black_won'],
+                'date': game['date'],
+                'game_ply': game['game_ply'],
+                'result': game['result']
+            }]
+
+    return JSONResponse(status_code=status.HTTP_200_OK, content=response)
+
+
 @dashboard_router.post("/raw/{username}", response_description="Get given user's raw games and post them to the database")
 async def download_raw(username: str, maxgames: Optional[int] = 100):
     # get the dashboard database
@@ -126,6 +168,7 @@ async def download_raw(username: str, maxgames: Optional[int] = 100):
 
     # insert each game with update_one upsert to ensure games can be updated if needed, and track which ids are added
     for game in mongo_dicts:
+        game['user'] = username
         await dash['games'].update_one({'_id': game['_id']}, {'$set': game}, upsert=True)
         inserted_ids += [{'_id': game['_id']}]
 
