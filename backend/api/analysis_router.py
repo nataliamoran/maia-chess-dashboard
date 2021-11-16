@@ -4,7 +4,7 @@ import chess
 import io
 import requests
 
-from typing import List
+from typing import List, Optional
 from pydantic import BaseModel, Field
 from bson import ObjectId
 from fastapi.responses import JSONResponse
@@ -12,6 +12,8 @@ from fastapi.encoders import jsonable_encoder
 from fastapi import Body, HTTPException, status
 from .utils import PyObjectId
 from .models import GameNumModel
+from . import db_client
+import maia_lib
 
 analysis_router = fastapi.APIRouter(prefix="/api/analysis", tags=['analysis'])
 
@@ -96,3 +98,32 @@ async def test_pgn_parsing():
     games = maia_lib.GamesFile(io.StringIO(r.text))
     mongo_dicts = games.iter_mongo_dicts()
     return mongo_dicts
+
+
+@analysis_router.post("/anaylze/{username}",response_description="Analyze games from this user that has been added to the Maia Database")
+async def analyze_user(username: str, num_games : Optional[int] = 100):
+    # get the dashboard database
+    dash = db_client.get_dashboard_db()
+
+    # get all games for that user
+    cursor = dash['games'].find({'user': username})
+
+    # get required number of games
+    if num_games is None:
+        found_games = await cursor.to_list(length=100000)  # picked some arbitrary value here I guess
+    else:
+        found_games = await cursor.to_list(length=num_games)
+
+    game_analysis = maia_lib.full_game_analysis(found_games[0]['pgn'])
+    print(game_analysis)
+
+    # for JSON serializability
+    for i in range(len(found_games)):
+        found_games[i]['full_date'] = str(found_games[i]['full_date'])
+
+    response = {}
+    response['status'] = 'success'
+    response['games'] = found_games
+
+    return JSONResponse(status_code=status.HTTP_200_OK, content=response)
+
