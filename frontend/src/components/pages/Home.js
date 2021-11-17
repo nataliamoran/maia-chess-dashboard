@@ -8,6 +8,7 @@ import "chessground/assets/chessground.base.css";
 import "chessground/assets/chessground.brown.css";
 import "chessground/assets/chessground.cburnett.css";
 import AutoScale from 'react-auto-scale';
+import GamesList from "../../components/games/Games";
 
 export default  function Home(){
     const [FEN, setFEN] = useState("");
@@ -35,6 +36,8 @@ export default  function Home(){
         setArrows(stuff);
         setFEN(FEN);
     }
+    const gamesHandleCallback = (gameIDs) =>{
+    }
     const menuHandleCallback = (filter) =>{
         setFilter(filter);
     }
@@ -44,6 +47,13 @@ export default  function Home(){
         <div className={"Home"} >
             <Navbar/>
                 <div className="ui stackable four column padded grid top aligned" style={{ marginTop: "5px"}}>
+                <div className="column" align="top" style={{width: "230px"}}> 
+                        <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Games</div>
+                        <GamesList 
+                            parentCallback = {gamesHandleCallback} 
+                            maxHeight = {400}
+                            />
+                    </div>
                     <div className="column" align="top" style={{ width: "230px"}}>
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Filters</div>
                         <FindMenu parentCallback={menuHandleCallback}/>    
