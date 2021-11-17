@@ -9,12 +9,11 @@ from pydantic import BaseModel, Field
 from bson import ObjectId
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
-from fastapi import Body, HTTPException, status
+from fastapi import Body, HTTPException, status, Request
 from .utils import PyObjectId
 from .models import GameNumModel
 from . import db_client
 import maia_lib
-import simplejson
 
 analysis_router = fastapi.APIRouter(prefix="/api/analysis", tags=['analysis'])
 
@@ -76,20 +75,6 @@ async def get_analyzed_games_num(username: str):
                      response_model=List[ProcessedGameModel])
 async def filter_games(games_filter: str, username: str):
     pass
-
-
-@analysis_router.post("/games/{username}",
-                      response_description="Retrieve raw games from Lichess and store them in Maia DB",
-                      response_model=List[RawGameModel])
-async def post_user_raw_games():
-    pass
-
-
-@analysis_router.get("/test_local_maia_lib",
-                     response_description="Test Local Maia Lib")
-async def test_local_maia_lib():
-    p, v = maia_lib.models.maia_kdd_1100.eval_board(chess.Board())
-    return [p, v]
 
 
 @analysis_router.post("/analyze/", response_description="Analyze games from this user that has been added to the Maia Database")
@@ -231,6 +216,7 @@ async def get_analyzed_games():
 
     return JSONResponse(status_code=status.HTTP_200_OK, content=response)
 
+
 @analysis_router.get("/stats/{game_id}", response_description="Get the aggregates for a given lichess game id")
 async def get_analyzed_games(game_id: str):
     anal = db_client.get_analysis_db()
@@ -246,18 +232,28 @@ async def get_analyzed_games(game_id: str):
 
     return JSONResponse(status_code=status.HTTP_200_OK, content=response)
 
+
 @analysis_router.get("/game_states/{game_id}", response_description="Get states for a given lichess game id")
-async def get_game_states(game_id: str):
+async def get_game_states(game_id: str, every: bool):
     anal = db_client.get_analysis_db()
 
     cursor = anal['game_states'].find({'game_id': game_id})
-    states = await cursor.to_list(length=100000) # arbirtary value to change
+    if every:
+        states = await cursor.to_list(length=100000000)  # arbitrary value to change
+    else:
+        states = await cursor.to_list(length=100)
 
-    # # convert NaN's to string for JSON serializability
-    # for state in states:
-    #     for k,v in state.items():
-    #         if v == float('-0'):
-    #             print('here')
+    # ----------------------------- Convert the result into something JSON serializable ----------------------------
+    def serialize_dict(d: dict):
+        for k, v in d.items():
+            if v != v:
+                d[k] = 'NaN'
+            if v == -0.0:
+                d[k] = 0.0
+            if type(v) == dict:
+                serialize_dict(v)
+    for s in states:
+        serialize_dict(s)
 
     response = {
         'status': 'success',
