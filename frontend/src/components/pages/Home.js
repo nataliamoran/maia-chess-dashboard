@@ -83,7 +83,7 @@ export default  function Home(){
                             gameIDs = {gameIDs}
                             searchfilter = {filter}/>
                     </div>
-                    <div className="column" align="top" style={{ width: Math.max(300, dimensions.width-830) }}>
+                    <div className="column" align="top" style={{ width: Math.max(300, Math.min(dimensions.width-850, dimensions.height - 150)) }}>
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px"}}>Board</div>
                         {/*<AutoScale>*/}
                         <Board  fen = {FEN}
