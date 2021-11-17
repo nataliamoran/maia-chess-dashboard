@@ -14,6 +14,8 @@ from .models import EventModel, UserModel, GameNumModel
 
 import json
 
+from .get_games import get_user_games
+
 fe_router = fastapi.APIRouter(prefix="/api", tags=['frontend'])
 
 
@@ -192,9 +194,68 @@ class GameFilterModel(BaseModel):
         }
 
 
+class RawGameModel(BaseModel):
+    ID: str = Field(...)
+    whitePlayer: str = Field(...)
+    blackPlayer: str = Field(...)
+    date: int = Field(...)
+
+    class Config:
+        allow_population_by_field_name = True
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}
+        schema_extra = {
+            "example": {
+                "ID": "sozvQYHn",
+                "whitePlayer": "neltew",
+                "blackPlayer": "maia1",
+                "date": 1637018565917
+            }
+        }
+
+
+class UserGames(BaseModel):
+    username: str = Field(...)
+    games: List[RawGameModel] = Field(...)
+
+    class Config:
+        allow_population_by_field_name = True
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}
+        schema_extra = {
+            "example": {
+                "username": "maia1",
+                "games": [
+                    {
+                        "ID": "sozvQYHn",
+                        "whitePlayer": "neltew",
+                        "blackPlayer": "maia1",
+                        "date": 1637018565917
+                    },
+                    {
+                        "ID": "pd5v0Q3k",
+                        "whitePlayer": "maia1",
+                        "blackPlayer": "sampowell",
+                        "date": 1637018565917
+                    }
+                ]
+            }
+        }
+
+
 @fe_router.get("/games/{game_id}", response_description="Get game state", response_model=GameModel)
 async def get_game(game_id: str):
     pass
+
+
+@fe_router.get("/get_games", response_description="Return games that the user has played", response_model=UserGames)
+async def get_game(username: str = "maia1"):
+    user_games: list = get_user_games(username, 4)
+    res = {
+        "username": username,
+        "games": user_games
+    }
+    return res
 
 
 @fe_router.get("/filters/{games_filter}", response_description="Filter game", response_model=GameFilterModel)
