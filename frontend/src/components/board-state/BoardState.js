@@ -13,7 +13,7 @@ class BoardState extends React.Component {
           gameIDs: props.gameIDs,
           curr: "",
           filter: props.searchfilter,
-          maxHeight: props.maxHeight | 400
+          maxHeight: props.maxHeight||400
         }
       }
 
@@ -33,7 +33,7 @@ class BoardState extends React.Component {
     componentDidUpdate(prevProps) {
         if(prevProps.searchfilter !== this.props.searchfilter) {
           this.setState({filter: this.props.searchfilter});
-          fetch('/api/filters/'+this.props.searchfilter)//http://dash-dev.maiachess.com
+          fetch('http://dash-dev.maiachess.com/api/filters/'+this.props.searchfilter)//http://dash-dev.maiachess.com
                 .then(response => response.json())
                 .then(res => {
                     this.setState({data: res.games});

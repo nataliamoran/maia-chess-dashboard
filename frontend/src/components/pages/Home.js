@@ -68,7 +68,7 @@ export default  function Home(){
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Games</div>
                         <GamesList 
                             parentCallback = {gamesHandleCallback} 
-                            maxHeight = {Math.max(dimensions.height - 100, 200)}
+                            maxHeight = {Math.max(dimensions.height - 150, 200)}
                             />
                     </div>
                     <div className="column" align="top" style={{ width: "220px"}}>
@@ -79,7 +79,7 @@ export default  function Home(){
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Positions</div>
                         <BoardState 
                             parentCallback = {boardHandleCallback} 
-                            maxHeight = {Math.max(dimensions.height - 100, 200)}
+                            maxHeight = {Math.max(dimensions.height - 150, 200)}
                             gameIDs = {gameIDs}
                             searchfilter = {filter}/>
                     </div>
@@ -89,7 +89,7 @@ export default  function Home(){
                         <Board  fen = {FEN}
                                 lastMove = {lastMove}
                                 arrows = {arrows}
-                                size={Math.max(300, Math.min(dimensions.width-850, dimensions.height - 100))} />
+                                size={Math.max(300, Math.min(dimensions.width-850, dimensions.height - 150))} />
                         {/*</AutoScale>*/}
                         <div style={{'color': 'orange'}}>Maia Suggestions</div>
                         <div style={{'color': 'red'}}>Stockfish Suggestions</div>
