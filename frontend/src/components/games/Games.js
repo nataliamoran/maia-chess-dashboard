@@ -10,7 +10,7 @@ class BoardState extends React.Component {
           data: [],
           currIDs: [],
           username: props.username | "maia1",
-          maxHeight: props.maxHeight | 400
+          maxHeight: props.maxHeight||400
         }
       }
 
@@ -70,7 +70,6 @@ class BoardState extends React.Component {
                                         currIDs: [...prevState.currIDs, d.ID]
                                     }));
                                 }
-                                //console.log(this.state.currIDs);
                                 this.props.parentCallback(this.state.currIDs);
                                 //event.preventDefault();
                                 }}

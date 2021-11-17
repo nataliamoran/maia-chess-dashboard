@@ -13,7 +13,7 @@ class BoardState extends React.Component {
           gameIDs: props.gameIDs,
           curr: "",
           filter: props.searchfilter,
-          maxHeight: props.maxHeight | 400
+          maxHeight: props.maxHeight||400
         }
       }
 
