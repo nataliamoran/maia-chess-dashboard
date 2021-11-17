@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Icon, Menu } from 'semantic-ui-react'
 
 const colorsA = ['green', 'red']
-const filterNames = ["thumbs up icon", 'thumbs down icon']
+const filterNames = ["thumbs up", 'thumbs down']
 
 export default class ReviewMenu extends Component {
     state = { activeA: '' }
