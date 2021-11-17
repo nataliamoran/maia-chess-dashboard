@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Navbar from "../../components/navbar/Navbar";
 import BoardState from "../../components/board-state/BoardState";
 import FindMenu from "../../components/findMenu/FindMenu";
@@ -7,7 +7,7 @@ import Board from "../../components/board/Board";
 import "chessground/assets/chessground.base.css";
 import "chessground/assets/chessground.brown.css";
 import "chessground/assets/chessground.cburnett.css";
-import AutoScale from 'react-auto-scale';
+//import AutoScale from 'react-auto-scale';
 import GamesList from "../../components/games/Games";
 
 export default  function Home(){
@@ -15,6 +15,22 @@ export default  function Home(){
     const [filter, setFilter] = useState("");
     const [arrows, setArrows] = useState([]);
     const [lastMove, setlastMove] = useState([]);
+    const [gameIDs, setGameIDs] = useState([]);
+    const [dimensions, setDimensions] = useState({ 
+        height: window.innerHeight,
+        width: window.innerWidth
+      });
+    useEffect(() => {
+        function handleResize() {
+          setDimensions({
+            height: window.innerHeight,
+            width: window.innerWidth
+          })
+        
+    }
+    window.addEventListener('resize', handleResize)
+})
+
     const boardHandleCallback = (game, FEN) =>{
         var stuff = [];
         if(game.state.last_move){
@@ -37,46 +53,48 @@ export default  function Home(){
         setFEN(FEN);
     }
     const gamesHandleCallback = (gameIDs) =>{
+        setGameIDs(gameIDs);
     }
     const menuHandleCallback = (filter) =>{
         setFilter(filter);
     }
 
     return (
-        <div style={{"background": "#6a6970", height: "100vh"}}>
+        <div style={{"background": "#6a6970", minHeight: "100vh", maxHeight: "1000vh"}}>
         <div className={"Home"} >
             <Navbar/>
                 <div className="ui stackable four column padded grid top aligned" style={{ marginTop: "5px"}}>
-                <div className="column" align="top" style={{width: "230px"}}> 
+                <div className="column" align="top" style={{width: "210px"}}> 
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Games</div>
                         <GamesList 
                             parentCallback = {gamesHandleCallback} 
-                            maxHeight = {400}
+                            maxHeight = {Math.max(dimensions.height - 100, 200)}
                             />
                     </div>
-                    <div className="column" align="top" style={{ width: "230px"}}>
+                    <div className="column" align="top" style={{ width: "220px"}}>
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Filters</div>
                         <FindMenu parentCallback={menuHandleCallback}/>    
                     </div>
-                    <div className="column" align="top" style={{width: "230px"}}> 
+                    <div className="column" align="top" style={{width: "210px"}}> 
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Positions</div>
                         <BoardState 
                             parentCallback = {boardHandleCallback} 
-                            maxHeight = {400}
+                            maxHeight = {Math.max(dimensions.height - 100, 200)}
+                            gameIDs = {gameIDs}
                             searchfilter = {filter}/>
                     </div>
-                    <div className="column" align="top">
-                        <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Board</div>
-                        <AutoScale>
+                    <div className="column" align="top" style={{ width: Math.max(300, dimensions.width-830) }}>
+                        <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px"}}>Board</div>
+                        {/*<AutoScale>*/}
                         <Board  fen = {FEN}
                                 lastMove = {lastMove}
                                 arrows = {arrows}
-                                size={450} />
-                        </AutoScale>
+                                size={Math.max(300, Math.min(dimensions.width-850, dimensions.height - 100))} />
+                        {/*</AutoScale>*/}
                         <div style={{'color': 'orange'}}>Maia Suggestions</div>
                         <div style={{'color': 'red'}}>Stockfish Suggestions</div>
                     </div>
-                    <div className="column" align="top">
+                    <div className="column" align="top" style={{width: "100px", float: "right"}}>
                         <ReviewMenu></ReviewMenu>
                     </div>
             </div>

@@ -54,6 +54,9 @@ export default class Board extends React.Component {
 				this.cg.setShapes (arrows);
 			}
 		}
+		if(prevProps.size !== this.props.size){
+            this.setState({size: this.props.size});
+        }
 	}
     
     

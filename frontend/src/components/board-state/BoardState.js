@@ -10,6 +10,7 @@ class BoardState extends React.Component {
         super(props)
         this.state = {
           data: [],
+          gameIDs: props.gameIDs,
           curr: "",
           filter: props.searchfilter,
           maxHeight: props.maxHeight | 400
@@ -37,7 +38,7 @@ class BoardState extends React.Component {
                 .then(res => {
                     this.setState({data: res.games});
                 });
-        }
+        }      
         if(prevProps.maxHeight !== this.props.maxHeight){
             this.setState({maxHeight: this.props.maxHeight});
         }
