@@ -10,13 +10,13 @@ class BoardState extends React.Component {
         this.state = {
           data: [],
           currIDs: [],
-          username: props.username | "maia1",
+          username: props.username || "maia1",
           maxHeight: props.maxHeight||400
         }
       }
 
       componentDidMount(){
-            fetch(SERVER_URL+'/api/get_games/') 
+            fetch(SERVER_URL+'/api/get_games?username='+this.state.username) 
         .then(response => response.json())
         .then(res => {
             this.setState({data: res.games});
@@ -25,8 +25,8 @@ class BoardState extends React.Component {
 
     componentDidUpdate(prevProps) {
         if(prevProps.username !== this.props.username) {
-          this.setState({username: this.props.username});
-          fetch(SERVER_URL+'/api/get_games/') //http://dash-dev.maiachess.com
+          this.setState({username: this.props.username || "maia1"});
+          fetch(SERVER_URL+'/api/get_games?username='+this.state.username) //http://dash-dev.maiachess.com
                 .then(response => response.json())
                 .then(res => {
                     this.setState({data: res.games});
