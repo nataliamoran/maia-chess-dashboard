@@ -258,12 +258,12 @@ async def get_game(username: str = "maia1"):
     return res
 
 
-@fe_router.get("/filters/{games_filter}", response_description="Filter game", response_model=GameFilterModel)
-async def filter_games(games_filter: str):
+@fe_router.get("/filters", response_description="Filter game", response_model=GameFilterModel)
+async def filter_games(gameFilter: str):
     script_dir = os.path.dirname(__file__)
-    if games_filter == 'mistakes':
+    if gameFilter == 'mistakes':
         file_path = os.path.join(script_dir, 'resources/mistakes.json')
-    elif games_filter == 'interesting':
+    elif gameFilter == 'interesting':
         file_path = os.path.join(script_dir, 'resources/interesting.json')
     else:
         file_path = os.path.join(script_dir, 'resources/tricky.json')
