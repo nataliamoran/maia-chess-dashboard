@@ -8,9 +8,11 @@ from pydantic import BaseModel, Field
 from bson import ObjectId
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
-from fastapi import Body, HTTPException, status
+from fastapi import Body, HTTPException, status, Request, APIRouter
 from .utils import PyObjectId
-from .models import EventModel, UserModel, GameNumModel
+from .models import EventModel, UserModel, GameNumModel, UserFeedbackModel
+from . import db_client, dashboard_router
+from datetime import datetime, time, timedelta
 
 import json
 
@@ -299,3 +301,8 @@ async def login(username: str):
 @fe_router.post("/logout/{username}", response_description="Logout")
 async def logout(username: str):
     pass
+
+
+@fe_router.post("/feedback", response_description="User feedback")
+async def send_user_feedback(feedback: UserFeedbackModel = Body(...)):
+    return await dashboard_router.send_user_feedback(feedback)
