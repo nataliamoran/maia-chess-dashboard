@@ -10,7 +10,7 @@ from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from fastapi import Body, HTTPException, status, Request, APIRouter
 from .utils import PyObjectId
-from .models import EventModel, UserModel, GameNumModel, UserFeedbackModel
+from .models import EventModel, UserModel, GameNumModel, UserFeedbackModel, UserFeedbackRatingModel
 from . import db_client, dashboard_router
 from datetime import datetime, time, timedelta
 
@@ -306,3 +306,8 @@ async def logout(username: str):
 @fe_router.post("/feedback", response_description="User feedback")
 async def send_user_feedback(feedback: UserFeedbackModel = Body(...)):
     return await dashboard_router.send_user_feedback(feedback)
+
+
+@fe_router.post("/feedback_rating", response_description="User feedback rating")
+async def send_user_feedback_rating(feedback_rating: UserFeedbackRatingModel = Body(...)):
+    return await dashboard_router.send_user_feedback_rating(feedback_rating)

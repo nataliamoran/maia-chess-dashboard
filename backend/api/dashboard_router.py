@@ -8,7 +8,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi import Body, HTTPException, status
 from .utils import PyObjectId
 from . import db_client
-from .models import EventModel, UserModel, UserFeedbackModel
+from .models import EventModel, UserModel, UserFeedbackModel, UserFeedbackRatingModel
 import json
 import lichess.api
 import lichess.format
@@ -210,3 +210,13 @@ async def send_user_feedback(feedback: UserFeedbackModel):
     new_feedback = await table.insert_one(feedback_json)
     created_feedback = await table.find_one({"_id": new_feedback.inserted_id})
     return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_feedback)
+
+
+@dashboard_router.post("/feedback_rating", response_description="User feedback rating")
+async def send_user_feedback_rating(feedback_rating: UserFeedbackRatingModel):
+    feedback_json = jsonable_encoder(feedback_rating)
+    client = db_client.get_dashboard_db()
+    table = client["feedback_rating"]
+    new_feedback_rating = await table.insert_one(feedback_json)
+    created_feedback_rating = await table.find_one({"_id": new_feedback_rating.inserted_id})
+    return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_feedback_rating)

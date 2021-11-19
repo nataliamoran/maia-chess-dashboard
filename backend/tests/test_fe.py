@@ -9,7 +9,7 @@ from pymongo.results import InsertOneResult
 from api import fe_router, dashboard_router
 from bson import json_util
 
-from api.models import UserFeedbackModel
+from api.models import UserFeedbackModel, UserFeedbackRatingModel
 
 
 def async_return(result):
@@ -43,6 +43,19 @@ class TestDashboard(TestCase):
 
         # act
         res = self.loop.run_until_complete(fe_router.send_user_feedback(user_feedback))
+
+        # assert
+        self.assertEqual(expected_result, res)
+
+    @mock.patch("api.dashboard_router.send_user_feedback_rating")
+    def test_add_user_feedback_rating__return_201(self, fe_user_feedback_rating):
+        # arrange
+        expected_result = {"feedback_rating": True}
+        fe_user_feedback_rating.return_value = expected_result
+        user_feedback_rating = UserFeedbackRatingModel(username='user1', thumb_up=1, thumb_down=0)
+
+        # act
+        res = self.loop.run_until_complete(fe_router.send_user_feedback_rating(user_feedback_rating))
 
         # assert
         self.assertEqual(expected_result, res)
