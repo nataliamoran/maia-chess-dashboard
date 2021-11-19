@@ -18,7 +18,7 @@ class BoardState extends React.Component {
 
       componentDidMount(){
           if(this.state.filter){
-            fetch(SERVER_URL+'/api/filters/'+this.props.searchfilter) 
+            fetch(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter) 
         .then(response => response.json())
         .then(res => {
             this.setState({data: res.games});
@@ -32,7 +32,7 @@ class BoardState extends React.Component {
     componentDidUpdate(prevProps) {
         if(prevProps.searchfilter !== this.props.searchfilter) {
           this.setState({filter: this.props.searchfilter});
-          fetch(SERVER_URL+'/api/filters/'+this.props.searchfilter)//http://dash-dev.maiachess.com
+          fetch(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter)//http://dash-dev.maiachess.com
                 .then(response => response.json())
                 .then(res => {
                     this.setState({data: res.games});
