@@ -15,14 +15,15 @@ from .models import EventModel, UserModel, GameNumModel
 import json
 
 from .get_games import get_user_games
+from .get_stats import get_user_stats
 
 fe_router = fastapi.APIRouter(prefix="/api", tags=['frontend'])
 
 
 class StatModel(BaseModel):
-    p: int = Field(..., ge=-1, le=1)
-    t: int = Field(..., ge=0, le=1)
-    e: int = Field(..., ge=0)
+    p: float = Field(..., ge=-1, le=1)
+    t: float = Field(..., ge=0, le=1)
+    e: float = Field(..., ge=0)
 
     class Config:
         allow_population_by_field_name = True
@@ -242,6 +243,25 @@ class UserGames(BaseModel):
             }
         }
 
+class UserStats(BaseModel):
+    username: str = Field(...)
+    stats: StatModel =  Field(...)
+
+    class Config:
+        allow_population_by_field_name = True
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}
+        schema_extra = {
+            "example": {
+                "username": "maia1",
+                "stats": {
+                "p": 0.006,
+                "t": 2.156,
+                "e": 0.3936
+                }
+            }
+        }
+
 
 @fe_router.get("/games/{game_id}", response_description="Get game state", response_model=GameModel)
 async def get_game(game_id: str):
@@ -276,10 +296,14 @@ async def get_num_games(username: str):
     pass
 
 
-@fe_router.get("/stats/{username}", response_description="Get user stats", response_model=StatModel)
-async def get_stats(username: str):
-    pass
-
+@fe_router.get("/stats", response_description="Get user stats", response_model=UserStats)
+async def get_stats(username: str = "maia1"):
+    stats = get_user_stats(username)
+    res = {
+        "username": username,
+        "stats": stats
+    }
+    return res
 
 @fe_router.get("/users/{username}", response_description="Get user profile", response_model=UserModel)
 async def get_user_profile(username: str):
