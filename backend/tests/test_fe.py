@@ -6,10 +6,10 @@ from unittest import TestCase, mock
 from fastapi import status
 from pymongo.results import InsertOneResult
 
-from api import fe_router, dashboard_router
+from api import fe_router, dashboard_router, analysis_router
 from bson import json_util
 
-from api.models import UserFeedbackModel, UserFeedbackRatingModel
+from api.models import UserFeedbackModel, UserFeedbackRatingModel, GameNumModel
 
 
 def async_return(result):
@@ -48,7 +48,7 @@ class TestDashboard(TestCase):
         self.assertEqual(expected_result, res)
 
     @mock.patch("api.dashboard_router.send_user_feedback_rating")
-    def test_add_user_feedback_rating__return_201(self, fe_user_feedback_rating):
+    def test_add_user_feedback_rating__success(self, fe_user_feedback_rating):
         # arrange
         expected_result = {"feedback_rating": True}
         fe_user_feedback_rating.return_value = expected_result
@@ -56,6 +56,18 @@ class TestDashboard(TestCase):
 
         # act
         res = self.loop.run_until_complete(fe_router.send_user_feedback_rating(user_feedback_rating))
+
+        # assert
+        self.assertEqual(expected_result, res)
+
+    @mock.patch("api.analysis_router.get_analyzed_games_num")
+    def test_get_analyzed_games_num__success(self, fe_analyzed_games_num):
+        # arrange
+        expected_result = {"analyzed_games_num": True}
+        fe_analyzed_games_num.return_value = expected_result
+
+        # act
+        res = self.loop.run_until_complete(analysis_router.get_analyzed_games_num('user1'))
 
         # assert
         self.assertEqual(expected_result, res)

@@ -11,7 +11,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi import Body, HTTPException, status, Request, APIRouter
 from .utils import PyObjectId
 from .models import EventModel, UserModel, GameNumModel, UserFeedbackModel, UserFeedbackRatingModel
-from . import db_client, dashboard_router
+from . import db_client, dashboard_router, analysis_router
 from datetime import datetime, time, timedelta
 
 import json
@@ -273,9 +273,11 @@ async def filter_games(games_filter: str):
     return data
 
 
-@fe_router.get("/num_games/{username}", response_description="Get the number of games analyzed", response_model=GameNumModel)
+@fe_router.get("/num_games/{username}",
+               response_description="Get the number of games analyzed",
+               response_model=GameNumModel)
 async def get_num_games(username: str):
-    pass
+    return await analysis_router.get_analyzed_games_num(username)
 
 
 @fe_router.get("/stats/{username}", response_description="Get user stats", response_model=StatModel)
