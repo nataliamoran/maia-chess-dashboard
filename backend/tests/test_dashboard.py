@@ -10,7 +10,7 @@ from api import dashboard_router
 from bson import json_util
 
 from api.dashboard_router import get_user_profile_from_lichess
-from api.models import UserFeedbackModel, UserFeedbackRatingModel
+from api.models import UserFeedbackModel, UserFeedbackRatingModel, EventModel
 
 
 def async_return(result):
@@ -164,6 +164,27 @@ class TestDashboard(TestCase):
 
         # act
         res = self.loop.run_until_complete(dashboard_router.send_user_feedback_rating(user_feedback_rating))
+
+        # assert
+        self.assertEqual(status.HTTP_201_CREATED, res.status_code)
+        actual_json = json2dict(res.body.decode('utf8'))
+        self.assertEqual(expected_result, actual_json)
+
+    @mock.patch("api.db_client.get_dashboard_db")
+    def test_fe_event_log__return_201(self, dashboard_db_mock):
+        # arrange
+        expected_result = {"event_log": True}
+        table = mock.MagicMock()
+        table.find_one.return_value = async_return(expected_result)
+        table.insert_one.return_value = async_return(InsertOneResult(1, True))
+        client_mock = mock.MagicMock()
+        client_mock.__getitem__.return_value = table
+        dashboard_db_mock.return_value = client_mock
+
+        event_log = EventModel(event_title='event1', event_status={})
+
+        # act
+        res = self.loop.run_until_complete(dashboard_router.log_fe_event(event_log))
 
         # assert
         self.assertEqual(status.HTTP_201_CREATED, res.status_code)

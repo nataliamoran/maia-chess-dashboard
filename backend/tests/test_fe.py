@@ -9,7 +9,7 @@ from pymongo.results import InsertOneResult
 from api import fe_router, dashboard_router, analysis_router
 from bson import json_util
 
-from api.models import UserFeedbackModel, UserFeedbackRatingModel, GameNumModel
+from api.models import UserFeedbackModel, UserFeedbackRatingModel, GameNumModel, EventModel
 
 
 def async_return(result):
@@ -68,6 +68,20 @@ class TestDashboard(TestCase):
 
         # act
         res = self.loop.run_until_complete(analysis_router.get_analyzed_games_num('user1'))
+
+        # assert
+        self.assertEqual(expected_result, res)
+
+    @mock.patch("api.dashboard_router.log_fe_event")
+    def test_log_fe_event__success(self, fe_log_event):
+        # arrange
+        expected_result = {"log_event": True}
+        fe_log_event.return_value = expected_result
+
+        event_log = EventModel(event_title='event1', event_status={})
+
+        # act
+        res = self.loop.run_until_complete(dashboard_router.log_fe_event(event_log))
 
         # assert
         self.assertEqual(expected_result, res)

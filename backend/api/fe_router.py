@@ -290,9 +290,9 @@ async def get_user_profile(username: str):
     pass
 
 
-@fe_router.post("/events", response_description="Log frontend event")
+@fe_router.post("/log", response_description="Log frontend event")
 async def log_event(event: EventModel = Body(...)):
-    pass
+    return await dashboard_router.log_fe_event(event)
 
 
 @fe_router.post("/login/{username}", response_description="Login with Lichess")

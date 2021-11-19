@@ -38,12 +38,13 @@ class DBUserModel(BaseModel):
         }
 
 
-@dashboard_router.post("/events", response_description="Log frontend event")
-async def log_fe_event(event: EventModel = Body(...)):
+@dashboard_router.post("/log", response_description="Log frontend event")
+async def log_fe_event(event: EventModel):
     event_json = jsonable_encoder(event)
     client = db_client.get_dashboard_db()
-    new_event = await client["events"].insert_one(event_json)
-    created_event = await client["events"].find_one({"_id": new_event.inserted_id})
+    table = client["events"]
+    new_event = await table.insert_one(event_json)
+    created_event = await table.find_one({"_id": new_event.inserted_id})
     return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_event)
 
 

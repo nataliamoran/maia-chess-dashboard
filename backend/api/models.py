@@ -23,6 +23,7 @@ class EventModel(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
     event_title: str = Field(...)
     event_status: dict = Field(...)
+    created_at: Optional[datetime] = datetime.now(timezone.utc)
 
     class Config:
         allow_population_by_field_name = True
