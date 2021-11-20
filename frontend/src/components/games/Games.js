@@ -1,4 +1,5 @@
 import { ListGroup, Card, Form  } from "react-bootstrap";
+import { SERVER_URL } from "../../env";
 import React from "react";
 import './games.css';
 
@@ -9,31 +10,27 @@ class BoardState extends React.Component {
         this.state = {
           data: [],
           currIDs: [],
-          username: props.username | "maia1",
+          username: props.username || "maia1",
           maxHeight: props.maxHeight||400
         }
       }
 
       componentDidMount(){
-            fetch('/api/get_games/') 
+            fetch(SERVER_URL+'/api/get_games?username='+this.state.username) 
         .then(response => response.json())
         .then(res => {
             this.setState({data: res.games});
         });
-          /*this.setState({data:[{ID: "123", whitePlayer: "maia1", blackPlayer: "xxxplayer", date: "2020/12/21"},
-          {ID: "1234", whitePlayer: "wiuoer", blackPlayer: "maia1", date: "2021/4/12"}]});*/
     }
 
     componentDidUpdate(prevProps) {
         if(prevProps.username !== this.props.username) {
-          this.setState({username: this.props.username});
-          fetch('/api/get_games/') //http://dash-dev.maiachess.com
+          this.setState({username: this.props.username || "maia1"});
+          fetch(SERVER_URL+'/api/get_games?username='+this.state.username) //http://dash-dev.maiachess.com
                 .then(response => response.json())
                 .then(res => {
                     this.setState({data: res.games});
                 });
-       /* this.setState({data:[{ID: "123", whitePlayer: "maia1", blackPlayer: "xxxplayer", date: "2020/12/21"},
-          {ID: "1234", whitePlayer: "wiuoer", blackPlayer: "maia1", date: "2021/4/12"}]});*/
         }
         if(prevProps.maxHeight !== this.props.maxHeight){
             this.setState({maxHeight: this.props.maxHeight});
