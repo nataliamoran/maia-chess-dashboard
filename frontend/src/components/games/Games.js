@@ -20,6 +20,9 @@ class BoardState extends React.Component {
         .then(response => response.json())
         .then(res => {
             this.setState({data: res.games});
+        })
+        .catch(err => {
+            console.error(err);
         });
     }
 
@@ -30,6 +33,9 @@ class BoardState extends React.Component {
                 .then(response => response.json())
                 .then(res => {
                     this.setState({data: res.games});
+                })
+                .catch(err => {
+                    console.error(err);
                 });
         }
         if(prevProps.maxHeight !== this.props.maxHeight){

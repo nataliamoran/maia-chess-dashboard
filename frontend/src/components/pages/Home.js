@@ -3,10 +3,7 @@ import Navbar from "../../components/navbar/Navbar";
 import BoardState from "../../components/board-state/BoardState";
 import FindMenu from "../../components/findMenu/FindMenu";
 import ReviewMenu from "../../components/review/ReviewMenu";
-import Board from "../../components/board/Board";
-import "chessground/assets/chessground.base.css";
-import "chessground/assets/chessground.brown.css";
-import "chessground/assets/chessground.cburnett.css";
+import BoardWrapper from "../../components/board/BoardWrapper";
 //import AutoScale from 'react-auto-scale';
 import GamesList from "../../components/games/Games";
 
@@ -86,10 +83,9 @@ export default  function Home(){
                     <div className="column" align="top" style={{ width: Math.max(300, Math.min(dimensions.width-850, dimensions.height - 150)) }}>
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px"}}>Board</div>
                         {/*<AutoScale>*/}
-                        <Board  fen = {FEN}
-                                lastMove = {lastMove}
-                                arrows = {arrows}
-                                size={Math.max(300, Math.min(dimensions.width-850, dimensions.height - 150))} />
+                        <BoardWrapper   gameID = {0} // TODO:
+                                        move = {0}
+                                        boardSize={Math.max(300, Math.min(dimensions.width-850, dimensions.height - 150))} />
                         {/*</AutoScale>*/}
                         <div style={{'color': 'orange'}}>Maia Suggestions</div>
                         <div style={{'color': 'red'}}>Stockfish Suggestions</div>

@@ -7,7 +7,7 @@ export default class Board extends React.Component {
         super(props);
         this.state = {
             fen: props.fen,
-            lastMove: props.lastMove,
+            lastMove: props.lastMove, // e.g. ["c3", "c4"]
             arrows: props.arrows ||[{orig: "a2", dest: "a4", brush: 'green', modifiers: {lineWidth: 10} }, 
 									{orig: "a2", dest: "a4", brush: 'blue', modifiers: {lineWidth: 5} },
 									{orig: "c2", dest: "c4", brush: 'red' }],
