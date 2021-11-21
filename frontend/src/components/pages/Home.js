@@ -8,10 +8,10 @@ import BoardWrapper from "../../components/board/BoardWrapper";
 import GamesList from "../../components/games/Games";
 
 export default  function Home(){
-    const [FEN, setFEN] = useState("");
+    // const [FEN, setFEN] = useState("");
     const [filter, setFilter] = useState("");
-    const [arrows, setArrows] = useState([]);
-    const [lastMove, setlastMove] = useState([]);
+    // const [arrows, setArrows] = useState([]);
+    // const [lastMove, setlastMove] = useState([]);
     const [gameIDs, setGameIDs] = useState([]);
     const [dimensions, setDimensions] = useState({ 
         height: window.innerHeight,
@@ -28,11 +28,11 @@ export default  function Home(){
     window.addEventListener('resize', handleResize)
 })
 
-    const boardHandleCallback = (game, FEN) =>{
+    const boardHandleCallback = (game) =>{
         var stuff = [];
-        if(game.state.last_move){
-            setlastMove([game.state.last_move[0], game.state.last_move[1]]);
-        }
+        // if(game.state.last_move){
+        //     setlastMove([game.state.last_move[0], game.state.last_move[1]]);
+        // }
         //d2 only one arrow for each
         if(game.state.maia_moves && game.state.stockfish_moves && game.state.stockfish_moves[0][0]===game.state.maia_moves[0][0] && game.state.stockfish_moves[0][1]===game.state.maia_moves[0][1]){
             stuff.push({orig: game.state.stockfish_moves[0][0], dest: game.state.stockfish_moves[0][1], brush: 'red' ,  modifiers: {lineWidth: 10}});
@@ -46,8 +46,6 @@ export default  function Home(){
                 stuff.push({orig: game.state.maia_moves[0][0], dest: game.state.maia_moves[0][1], brush: 'yellow' });
             }
         }
-        setArrows(stuff);
-        setFEN(FEN);
     }
     const gamesHandleCallback = (gameIDs) =>{
         setGameIDs(gameIDs);

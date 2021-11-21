@@ -57,7 +57,7 @@ class BoardState extends React.Component {
                             this.setState({
                                 curr: d.ID
                               });
-                            this.props.parentCallback(d, d.state.FEN);
+                            this.props.parentCallback(d);
                             event.preventDefault();
                             }} >
                                  <div style={{'fontSize': '16px','fontWeight': 'bold'}}>{d.state.round}.&nbsp;{d.state.move}</div>
