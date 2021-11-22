@@ -8,9 +8,11 @@ from pydantic import BaseModel, Field
 from bson import ObjectId
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
-from fastapi import Body, HTTPException, status
+from fastapi import Body, HTTPException, status, Request, APIRouter
 from .utils import PyObjectId
-from .models import EventModel, UserModel, GameNumModel
+from .models import EventModel, UserModel, GameNumModel, UserFeedbackModel, UserFeedbackRatingModel
+from . import db_client, dashboard_router, analysis_router
+from datetime import datetime, time, timedelta
 
 import json
 
@@ -291,9 +293,11 @@ async def filter_games(gameFilter: str):
     return data
 
 
-@fe_router.get("/num_games/{username}", response_description="Get the number of games analyzed", response_model=GameNumModel)
+@fe_router.get("/num_games/{username}",
+               response_description="Get the number of games analyzed",
+               response_model=GameNumModel)
 async def get_num_games(username: str):
-    pass
+    return await analysis_router.get_analyzed_games_num(username)
 
 
 @fe_router.get("/stats", response_description="Get user stats", response_model=UserStats)
@@ -310,9 +314,9 @@ async def get_user_profile(username: str):
     pass
 
 
-@fe_router.post("/events", response_description="Log frontend event")
+@fe_router.post("/log", response_description="Log frontend event")
 async def log_event(event: EventModel = Body(...)):
-    pass
+    return await dashboard_router.log_fe_event(event)
 
 
 @fe_router.post("/login/{username}", response_description="Login with Lichess")
@@ -323,3 +327,13 @@ async def login(username: str):
 @fe_router.post("/logout/{username}", response_description="Logout")
 async def logout(username: str):
     pass
+
+
+@fe_router.post("/feedback", response_description="User feedback")
+async def send_user_feedback(feedback: UserFeedbackModel = Body(...)):
+    return await dashboard_router.send_user_feedback(feedback)
+
+
+@fe_router.post("/feedback_rating", response_description="User feedback rating")
+async def send_user_feedback_rating(feedback_rating: UserFeedbackRatingModel = Body(...)):
+    return await dashboard_router.send_user_feedback_rating(feedback_rating)

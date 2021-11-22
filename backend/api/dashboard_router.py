@@ -8,7 +8,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi import Body, HTTPException, status
 from .utils import PyObjectId
 from . import db_client
-from .models import EventModel, UserModel
+from .models import EventModel, UserModel, UserFeedbackModel, UserFeedbackRatingModel
 import json
 import lichess.api
 import lichess.format
@@ -38,12 +38,13 @@ class DBUserModel(BaseModel):
         }
 
 
-@dashboard_router.post("/events", response_description="Log frontend event")
-async def log_fe_event(event: EventModel = Body(...)):
+@dashboard_router.post("/log", response_description="Log frontend event")
+async def log_fe_event(event: EventModel):
     event_json = jsonable_encoder(event)
     client = db_client.get_dashboard_db()
-    new_event = await client["events"].insert_one(event_json)
-    created_event = await client["events"].find_one({"_id": new_event.inserted_id})
+    table = client["events"]
+    new_event = await table.insert_one(event_json)
+    created_event = await table.find_one({"_id": new_event.inserted_id})
     return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_event)
 
 
@@ -201,3 +202,22 @@ async def download_raw(username: str, maxgames: Optional[int] = 100):
 
     return JSONResponse(status_code=status.HTTP_200_OK, content=response)
 
+
+@dashboard_router.post("/feedback", response_description="User feedback")
+async def send_user_feedback(feedback: UserFeedbackModel):
+    feedback_json = jsonable_encoder(feedback)
+    client = db_client.get_dashboard_db()
+    table = client["feedback"]
+    new_feedback = await table.insert_one(feedback_json)
+    created_feedback = await table.find_one({"_id": new_feedback.inserted_id})
+    return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_feedback)
+
+
+@dashboard_router.post("/feedback_rating", response_description="User feedback rating")
+async def send_user_feedback_rating(feedback_rating: UserFeedbackRatingModel):
+    feedback_json = jsonable_encoder(feedback_rating)
+    client = db_client.get_dashboard_db()
+    table = client["feedback_rating"]
+    new_feedback_rating = await table.insert_one(feedback_json)
+    created_feedback_rating = await table.find_one({"_id": new_feedback_rating.inserted_id})
+    return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_feedback_rating)
