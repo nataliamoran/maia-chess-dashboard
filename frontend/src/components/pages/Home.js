@@ -3,18 +3,15 @@ import Navbar from "../../components/navbar/Navbar";
 import BoardState from "../../components/board-state/BoardState";
 import FindMenu from "../../components/findMenu/FindMenu";
 import ReviewMenu from "../../components/review/ReviewMenu";
-import Board from "../../components/board/Board";
-import "chessground/assets/chessground.base.css";
-import "chessground/assets/chessground.brown.css";
-import "chessground/assets/chessground.cburnett.css";
+import BoardWrapper from "../../components/board/BoardWrapper";
 //import AutoScale from 'react-auto-scale';
 import GamesList from "../../components/games/Games";
 
 export default  function Home(){
-    const [FEN, setFEN] = useState("");
+    // const [FEN, setFEN] = useState("");
     const [filter, setFilter] = useState("");
-    const [arrows, setArrows] = useState([]);
-    const [lastMove, setlastMove] = useState([]);
+    // const [arrows, setArrows] = useState([]);
+    // const [lastMove, setlastMove] = useState([]);
     const [gameIDs, setGameIDs] = useState([]);
     const [dimensions, setDimensions] = useState({ 
         height: window.innerHeight,
@@ -31,11 +28,11 @@ export default  function Home(){
     window.addEventListener('resize', handleResize)
 })
 
-    const boardHandleCallback = (game, FEN) =>{
+    const boardHandleCallback = (game) =>{
         var stuff = [];
-        if(game.state.last_move){
-            setlastMove([game.state.last_move[0], game.state.last_move[1]]);
-        }
+        // if(game.state.last_move){
+        //     setlastMove([game.state.last_move[0], game.state.last_move[1]]);
+        // }
         //d2 only one arrow for each
         if(game.state.maia_moves && game.state.stockfish_moves && game.state.stockfish_moves[0][0]===game.state.maia_moves[0][0] && game.state.stockfish_moves[0][1]===game.state.maia_moves[0][1]){
             stuff.push({orig: game.state.stockfish_moves[0][0], dest: game.state.stockfish_moves[0][1], brush: 'red' ,  modifiers: {lineWidth: 10}});
@@ -49,8 +46,6 @@ export default  function Home(){
                 stuff.push({orig: game.state.maia_moves[0][0], dest: game.state.maia_moves[0][1], brush: 'yellow' });
             }
         }
-        setArrows(stuff);
-        setFEN(FEN);
     }
     const gamesHandleCallback = (gameIDs) =>{
         setGameIDs(gameIDs);
@@ -86,10 +81,9 @@ export default  function Home(){
                     <div className="column" align="top" style={{ width: Math.max(300, Math.min(dimensions.width-850, dimensions.height - 150)) }}>
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px"}}>Board</div>
                         {/*<AutoScale>*/}
-                        <Board  fen = {FEN}
-                                lastMove = {lastMove}
-                                arrows = {arrows}
-                                size={Math.max(300, Math.min(dimensions.width-850, dimensions.height - 150))} />
+                        <BoardWrapper   gameID = {0} // TODO:
+                                        move = {0}
+                                        boardSize={Math.max(300, Math.min(dimensions.width-850, dimensions.height - 150))} />
                         {/*</AutoScale>*/}
                         <div style={{'color': 'orange'}}>Maia Suggestions</div>
                         <div style={{'color': 'red'}}>Stockfish Suggestions</div>
