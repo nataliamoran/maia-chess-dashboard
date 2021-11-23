@@ -61,6 +61,7 @@ export default  function Home(){
         setFilter(filter);
     }
     const usernameHandleCallback = (username) => {
+        console.log(username);
         setUsername(username);
     }
 
@@ -73,7 +74,7 @@ export default  function Home(){
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Games</div>
                         <GamesList 
                             parentCallback = {gamesHandleCallback} 
-                            username = {usernameHandleCallback}
+                            username = {username}
                             maxHeight = {Math.max(dimensions.height - 150, 200)}
                         />
                         <div>{usernameHandleCallback}</div>
@@ -105,7 +106,7 @@ export default  function Home(){
                     </div>
                 </div>
                 <div align='center' style={{marginTop: "5px", marginBottom: "10px"}}>
-                    <PlayerStat username = 'test'/><br/>
+                    <PlayerStat username = {username}/><br/>
                 </div>
       </div>
       </div>

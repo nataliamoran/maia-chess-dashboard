@@ -29,14 +29,19 @@ class BoardState extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
+        console.log(this.props.username);
         if(prevProps.username !== this.props.username) {
+            this.setState({username: this.props.username});
+            console.log("update");
             if(this.props.username === "maia1"){
                 this.setState({stats: undefined});
               }
               else{
-                fetch(SERVER_URL+'/api/stats?username='+this.state.username) 
+                  console.log("fetch");
+                fetch(SERVER_URL+'/api/stats?username='+this.props.username) 
                 .then(response => response.json())
                 .then(res => {
+                    console.log(res);
                     this.setState({stats: res.stats});
                 })
                 .catch(err => {
@@ -47,6 +52,7 @@ class BoardState extends React.Component {
       }
 
     render() {
+        console.log("render start");
         if(this.state.username === "maia1" || !this.state.stats){
             return (<div></div>)
         }
@@ -65,6 +71,8 @@ class BoardState extends React.Component {
         var e_length = Math.round(((this.state.stats.e - 0.5)/2.5)*10)*5+2; //usually 0.5-3, divide to 10 uniform "bars"
         if(this.state.stats.e > 2) e_color = 'green';
         else if(this.state.stats.e > 1.5) e_color = 'orange';
+
+        console.log("render");
 
         return (
             <Card bg="dark" variant="dark" style={{ width: '60vw', color:'white'}}>
