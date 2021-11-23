@@ -13,7 +13,7 @@ export default  function Home(){
     const [arrows, setArrows] = useState([]);
     const [lastMove, setlastMove] = useState([]);
     const [gameIDs, setGameIDs] = useState([]);
-    //const [username, setUsername] = useState('');
+    const [username, setUsername] = useState('');
     const [dimensions, setDimensions] = useState({ 
         height: window.innerHeight,
         width: window.innerWidth
@@ -59,19 +59,23 @@ export default  function Home(){
     const menuHandleCallback = (filter) =>{
         setFilter(filter);
     }
+    const usernameHandleCallback = (username) => {
+        setUsername(username);
+    }
 
     return (
-        <div style={{"background": "#6a6970", minHeight: "100vh", maxHeight: "1000vh"}}>
+        <div style={{ "background": "#6a6970", minHeight: "100vh", maxHeight: "1000vh" }}>
         <div className={"Home"} >
-            <Navbar/>
+                <Navbar parentCallback={usernameHandleCallback}/>
                 <div className="ui stackable four column padded grid top aligned" style={{ marginTop: "5px"}}>
                 <div className="column" align="top" style={{width: "210px"}}> 
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Games</div>
                         <GamesList 
                             parentCallback = {gamesHandleCallback} 
-                            //username = {username}
+                            username = {usernameHandleCallback}
                             maxHeight = {Math.max(dimensions.height - 150, 200)}
-                            />
+                        />
+                        <div>{usernameHandleCallback}</div>
                     </div>
                     <div className="column" align="top" style={{ width: "220px"}}>
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Filters</div>
