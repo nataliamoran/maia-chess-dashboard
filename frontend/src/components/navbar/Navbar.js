@@ -23,7 +23,7 @@ class Navbar extends React.Component {
     onFormSubmit(event) {
         event.preventDefault()
         this.setState({ name: this.state.cache })
-        this.props.parentCallback(this.state.name);
+        this.props.parentCallback(this.state.cache);
     }
 
     render() {
