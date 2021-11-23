@@ -4,15 +4,16 @@ import BoardState from "../../components/board-state/BoardState";
 import FindMenu from "../../components/findMenu/FindMenu";
 import ReviewMenu from "../../components/review/ReviewMenu";
 import BoardWrapper from "../../components/board/BoardWrapper";
-//import AutoScale from 'react-auto-scale';
 import GamesList from "../../components/games/Games";
 
 export default  function Home(){
-    // const [FEN, setFEN] = useState("");
+    const [gameID, setGameID] = useState("");
+    const [move, setMove] = useState(0);
     const [filter, setFilter] = useState("");
-    // const [arrows, setArrows] = useState([]);
-    // const [lastMove, setlastMove] = useState([]);
+    const [arrows, setArrows] = useState([]);
+    const [lastMove, setlastMove] = useState([]);
     const [gameIDs, setGameIDs] = useState([]);
+    const [username, setUsername] = useState('');
     const [dimensions, setDimensions] = useState({ 
         height: window.innerHeight,
         width: window.innerWidth
@@ -30,22 +31,27 @@ export default  function Home(){
 
     const boardHandleCallback = (game) =>{
         var stuff = [];
-        // if(game.state.last_move){
-        //     setlastMove([game.state.last_move[0], game.state.last_move[1]]);
-        // }
-        //d2 only one arrow for each
-        if(game.state.maia_moves && game.state.stockfish_moves && game.state.stockfish_moves[0][0]===game.state.maia_moves[0][0] && game.state.stockfish_moves[0][1]===game.state.maia_moves[0][1]){
-            stuff.push({orig: game.state.stockfish_moves[0][0], dest: game.state.stockfish_moves[0][1], brush: 'red' ,  modifiers: {lineWidth: 10}});
-            stuff.push({orig: game.state.maia_moves[0][0], dest: game.state.maia_moves[0][1], brush: 'yellow', modifiers: {lineWidth: 6} });
+         if(game.state.last_move){
+             setlastMove([game.state.last_move[0], game.state.last_move[1]]);
+         }
+         if(game.state.stockfish_moves){
+            game.state.stockfish_moves.forEach(move => {
+                stuff.push({orig: move[0], dest: move[1], brush: 'red' ,  modifiers: {lineWidth: 10}});
+            })
         }
-        else{
-            if(game.state.stockfish_moves){
-                stuff.push({orig: game.state.stockfish_moves[0][0], dest: game.state.stockfish_moves[0][1], brush: 'red' });
-            }
-            if(game.state.maia_moves){
-                stuff.push({orig: game.state.maia_moves[0][0], dest: game.state.maia_moves[0][1], brush: 'yellow' });
-            }
-        }
+         if(game.state.maia_moves){
+             game.state.maia_moves.forEach(move => {
+                if(game.state.stockfish_moves && game.state.stockfish_moves.includes(move)){
+                    stuff.push({orig: move[0], dest: move[1], brush: 'yellow' ,  modifiers: {lineWidth: 6}});
+                }
+                else {
+                    stuff.push({orig: move[0], dest: move[1], brush: 'yellow' ,  modifiers: {lineWidth: 10}});
+                }
+             })
+         }
+         setArrows(stuff);
+         setGameID(game.ID);
+         setMove(game.state.round);
     }
     const gamesHandleCallback = (gameIDs) =>{
         setGameIDs(gameIDs);
@@ -63,6 +69,7 @@ export default  function Home(){
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Games</div>
                         <GamesList 
                             parentCallback = {gamesHandleCallback} 
+                            username = {username}
                             maxHeight = {Math.max(dimensions.height - 150, 200)}
                             />
                     </div>
@@ -76,15 +83,15 @@ export default  function Home(){
                             parentCallback = {boardHandleCallback} 
                             maxHeight = {Math.max(dimensions.height - 150, 200)}
                             gameIDs = {gameIDs}
+                            lastMove = {lastMove}
                             searchfilter = {filter}/>
                     </div>
                     <div className="column" align="top" style={{ width: Math.max(300, Math.min(dimensions.width-850, dimensions.height - 150)) }}>
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px"}}>Board</div>
-                        {/*<AutoScale>*/}
-                        <BoardWrapper   gameID = {0} // TODO:
-                                        move = {0}
+                        <BoardWrapper   gameID = {gameID} // TODO:
+                                        move = {move}
+                                        arrows = {arrows}
                                         boardSize={Math.max(300, Math.min(dimensions.width-850, dimensions.height - 150))} />
-                        {/*</AutoScale>*/}
                         <div style={{'color': 'orange'}}>Maia Suggestions</div>
                         <div style={{'color': 'red'}}>Stockfish Suggestions</div>
                     </div>
