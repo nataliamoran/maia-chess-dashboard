@@ -13,7 +13,7 @@ export default  function Home(){
     const [arrows, setArrows] = useState([]);
     const [lastMove, setlastMove] = useState([]);
     const [gameIDs, setGameIDs] = useState([]);
-    const [username, setUsername] = useState('');
+    //const [username, setUsername] = useState('');
     const [dimensions, setDimensions] = useState({ 
         height: window.innerHeight,
         width: window.innerWidth
@@ -69,7 +69,7 @@ export default  function Home(){
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Games</div>
                         <GamesList 
                             parentCallback = {gamesHandleCallback} 
-                            username = {username}
+                            //username = {username}
                             maxHeight = {Math.max(dimensions.height - 150, 200)}
                             />
                     </div>

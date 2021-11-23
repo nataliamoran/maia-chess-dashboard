@@ -34,10 +34,11 @@ class BoardState extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
+        var games;
         if(this.props.gameIDs !== prevProps.gameIDs){
             this.setState({gameIDs: this.props.gameIDs});
             if(this.props.searchfilter){
-            var games = '';
+            games = '';
               if(this.props.gameIDs){
                 games = '&games='+this.props.gameIDs.toString();
               }
@@ -51,7 +52,7 @@ class BoardState extends React.Component {
         }
         if(prevProps.searchfilter !== this.props.searchfilter) {
           this.setState({filter: this.props.searchfilter});
-          var games = '';
+          games = '';
               if(this.props.gameIDs){
                 games = '&games='+this.props.gameIDs.toString();
               }
