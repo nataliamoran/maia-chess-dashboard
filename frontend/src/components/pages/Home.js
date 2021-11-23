@@ -5,6 +5,7 @@ import FindMenu from "../../components/findMenu/FindMenu";
 import ReviewMenu from "../../components/review/ReviewMenu";
 import BoardWrapper from "../../components/board/BoardWrapper";
 import GamesList from "../../components/games/Games";
+import PlayerStat from "../../components/player-stat/PlayerStat";
 
 export default  function Home(){
     const [gameID, setGameID] = useState("");
@@ -67,7 +68,7 @@ export default  function Home(){
         <div style={{ "background": "#6a6970", minHeight: "100vh", maxHeight: "1000vh" }}>
         <div className={"Home"} >
                 <Navbar parentCallback={usernameHandleCallback}/>
-                <div className="ui stackable four column padded grid top aligned" style={{ marginTop: "5px"}}>
+                <div className="ui stackable four column padded grid top aligned" style={{ marginTop: "5px", minHeight: '100vh'}}>
                 <div className="column" align="top" style={{width: "210px"}}> 
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Games</div>
                         <GamesList 
@@ -102,7 +103,10 @@ export default  function Home(){
                     <div className="column" align="top" style={{width: "100px", float: "right"}}>
                         <ReviewMenu></ReviewMenu>
                     </div>
-            </div>
+                </div>
+                <div align='center' style={{marginTop: "5px", marginBottom: "10px"}}>
+                    <PlayerStat username = 'test'/><br/>
+                </div>
       </div>
       </div>
     )
