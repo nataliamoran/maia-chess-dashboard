@@ -9,7 +9,7 @@ class BoardState extends React.Component {
         super(props)
         this.state = {
           data: [],
-          gameIDs: props.gameIDs,
+          gameIDs: props.gameIDs || [],
           curr: "",
           filter: props.searchfilter,
           maxHeight: props.maxHeight||400
@@ -18,7 +18,11 @@ class BoardState extends React.Component {
 
       componentDidMount(){
           if(this.state.filter){
-            fetch(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter) 
+              var games = '';
+              if(this.state.gameIDs){
+                games = '&games='+this.state.gameIDs.toString();
+              }
+            fetch(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter+games) 
         .then(response => response.json())
         .then(res => {
             this.setState({data: res.games});
@@ -30,11 +34,31 @@ class BoardState extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if(prevProps.searchfilter !== this.props.searchfilter) {
-          this.setState({filter: this.props.searchfilter});
-          fetch(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter)//http://dash-dev.maiachess.com
+        if(this.props.gameIDs !== prevProps.gameIDs){
+            this.setState({gameIDs: this.props.gameIDs});
+            if(this.props.searchfilter){
+            var games = '';
+              if(this.props.gameIDs){
+                games = '&games='+this.props.gameIDs.toString();
+              }
+            fetch(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter+games)
                 .then(response => response.json())
                 .then(res => {
+                    //console.log(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter+games);
+                    this.setState({data: res.games});
+                });
+            }
+        }
+        if(prevProps.searchfilter !== this.props.searchfilter) {
+          this.setState({filter: this.props.searchfilter});
+          var games = '';
+              if(this.props.gameIDs){
+                games = '&games='+this.props.gameIDs.toString();
+              }
+            fetch(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter+games)
+                .then(response => response.json())
+                .then(res => {
+                   // console.log(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter+games);
                     this.setState({data: res.games});
                 });
         }      

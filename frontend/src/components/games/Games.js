@@ -27,6 +27,9 @@ class BoardState extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
+        if(prevProps.currIDs !== this.state.currIDs){
+            this.props.parentCallback(this.state.currIDs);
+        }
         if(prevProps.username !== this.props.username) {
           this.setState({username: this.props.username || "maia1"});
           fetch(SERVER_URL+'/api/get_games?username='+this.state.username) //http://dash-dev.maiachess.com
@@ -42,7 +45,6 @@ class BoardState extends React.Component {
             this.setState({maxHeight: this.props.maxHeight});
         }
       }
-
 
     render() {
         return (
@@ -73,8 +75,6 @@ class BoardState extends React.Component {
                                         currIDs: [...prevState.currIDs, d.ID]
                                     }));
                                 }
-                                this.props.parentCallback(this.state.currIDs);
-                                //event.preventDefault();
                                 }}
                             />
                             

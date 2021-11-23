@@ -34,10 +34,10 @@ class Navbar extends React.Component {
                     <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
                         <ReactBootStrap.Nav className="ms-auto">
                             <form onSubmit={this.onFormSubmit}>
-                                <div class="input-group ms-auto">
-                                <input class="form-control mr-sm-2" name="username" placeholder="Lichess Username" aria-label="Search" value={this.state.cache} onChange={this.eventName}></input>
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go!</button>
+                                <div className="input-group ms-auto">
+                                <input className="form-control mr-sm-2" name="username" placeholder="Lichess Username" aria-label="Search" value={this.state.cache} onChange={this.eventName}></input>
+                                <div className="input-group-append">
+                                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Go!</button>
                                     </div>
                                 </div> 
                             </form>

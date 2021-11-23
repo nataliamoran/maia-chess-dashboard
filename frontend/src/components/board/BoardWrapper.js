@@ -69,7 +69,7 @@ class BoardWrapper extends React.Component {
                                         action variant="dark"
                                          >
   
-                            <span   style={{display: "inline-block", width: "50%", height: "100%", "text-align": "left"}} 
+                            <span   style={{display: "inline-block", width: "50%", height: "100%", "textAlign": "left"}} 
                                     onClick={(event) => { 
                                         event.preventDefault();
                                         console.log("Change to view move ", 2*i)
@@ -79,7 +79,7 @@ class BoardWrapper extends React.Component {
                                 {e[0].lastMove[1]}
                             </span>
                             
-                            <span   style={{display: "inline-block", width: "50%", height: "100%", "text-align": "right"}} 
+                            <span   style={{display: "inline-block", width: "50%", height: "100%", "textAlign": "right"}} 
                                     onClick={(event) => { 
                                         event.preventDefault();
                                         console.log("Change to view move ", 2*i+1)
