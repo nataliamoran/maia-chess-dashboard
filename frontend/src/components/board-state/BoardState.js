@@ -35,19 +35,7 @@ class BoardState extends React.Component {
     
     componentDidMount(){
         if(this.state.filter){
-            var games = '';
-            if(this.state.gameIDs){
-                games = '&games='+this.state.gameIDs.toString();
-            }
-            var customString = '';
-            if(this.state.filter === 'custom'){
-                customString = "&filterString="+this.state.customString;
-            }
-            fetch(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter+customString+games) 
-                .then(response => response.json())
-                .then(res => {
-                    this.setState({data: res.games});
-            });
+            this.fetchData();
         }
         else{
             this.setState({data:[]});
@@ -55,42 +43,15 @@ class BoardState extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        var games, customString;
         if(this.props.gameIDs !== prevProps.gameIDs){
             this.setState({gameIDs: this.props.gameIDs});
             if(this.props.searchfilter){
-            games = '';
-            if(this.props.gameIDs){
-                games = '&games='+this.props.gameIDs.toString();
-            }
-            customString = '';
-            if(this.props.searchfilter === 'custom'){
-                customString = "&filterString="+this.props.customString;
-            }
-            fetch(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter + customString + games)
-                .then(response => response.json())
-                .then(res => {
-                    console.log(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter+games);
-                    this.setState({data: res.games});
-                });
+                this.fetchData();
             }
         }
         if(prevProps.searchfilter !== this.props.searchfilter || this.props.customString !== prevProps.customString) {
             this.setState({filter: this.props.searchfilter, customString: this.props.customString});
-            games = '';
-            if(this.props.gameIDs && this.props.gameIDs.length >0){
-                games = '&games='+this.props.gameIDs.toString();
-            }
-            customString = '';
-            if(this.props.searchfilter === 'custom'){
-                customString = "&filterString="+this.props.customString;
-            }
-            fetch(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter + customString + games)
-                .then(response => response.json())
-                .then(res => {
-                    //console.log(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter+customString + games);
-                    this.setState({data: res.games});
-                });
+            this.fetchData();
         }      
         if(prevProps.maxHeight !== this.props.maxHeight){
             this.setState({maxHeight: this.props.maxHeight});
