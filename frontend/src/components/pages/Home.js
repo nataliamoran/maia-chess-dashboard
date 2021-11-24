@@ -70,7 +70,7 @@ export default  function Home(){
         <div className={"Home"} >
                 <Navbar parentCallback={usernameHandleCallback}/>
                 <div className="ui stackable four column padded grid top aligned" style={{ marginTop: "5px", minHeight: '100vh'}}>
-                <div className="column" align="top" style={{width: "210px"}}> 
+                    <div className="column" align="center" style={{width: "210px"}}>
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Games</div>
                         <GamesList 
                             parentCallback = {gamesHandleCallback} 
@@ -79,11 +79,11 @@ export default  function Home(){
                         />
                         <div>{usernameHandleCallback}</div>
                     </div>
-                    <div className="column" align="top" style={{ width: "220px"}}>
+                    <div className="column" align="center" style={{ width: "220px"}}>
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Filters</div>
                         <FindMenu parentCallback={menuHandleCallback}/>    
                     </div>
-                    <div className="column" align="top" style={{width: "210px"}}> 
+                    <div className="column" align="center" style={{width: "210px"}}>
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Positions</div>
                         <BoardState 
                             parentCallback = {boardHandleCallback} 
@@ -92,7 +92,7 @@ export default  function Home(){
                             lastMove = {lastMove}
                             searchfilter = {filter}/>
                     </div>
-                    <div className="column" align="top" style={{ width: Math.max(300, Math.min(dimensions.width-850, dimensions.height - 150)) }}>
+                    <div className="column" align="center" style={{ width: Math.max(300, Math.min(dimensions.width-850, dimensions.height - 150)) }}>
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px"}}>Board</div>
                         <BoardWrapper   gameID = {gameID} // TODO:
                                         move = {move}
@@ -101,7 +101,7 @@ export default  function Home(){
                         <div style={{'color': 'orange'}}>Maia Suggestions</div>
                         <div style={{'color': 'red'}}>Stockfish Suggestions</div>
                     </div>
-                    <div className="column" align="top" style={{width: "100px", float: "right"}}>
+                    <div className="column" align="center" style={{width: "100px", float: "right"}}>
                         <ReviewMenu></ReviewMenu>
                     </div>
                 </div>
