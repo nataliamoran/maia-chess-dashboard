@@ -50,7 +50,7 @@ class BoardState extends React.Component {
         return (
             <Card bg="dark" variant="dark" style={{ width: '200px'}}>
                 <Card.Body style={{"textAlign": "left"}}>
-                    <Card.Title style={{color:'white'}}>Games</Card.Title>
+                    {/*<Card.Title style={{color:'white'}}>Games</Card.Title>*/}
                     <ListGroup variant="flush" style={{"overflowY": "auto", "maxHeight": (this.state.maxHeight+"px")}}>
                     {this.state.data.map(d => (
                         <ListGroup.Item key={d.ID}

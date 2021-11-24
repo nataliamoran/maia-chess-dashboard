@@ -12,54 +12,83 @@ class BoardState extends React.Component {
           gameIDs: props.gameIDs || [],
           curr: "",
           filter: props.searchfilter,
-          maxHeight: props.maxHeight||400
+          maxHeight: props.maxHeight||400,
+          customString: props.customString
         }
-      }
-
-      componentDidMount(){
-          if(this.state.filter){
-              var games = '';
-              if(this.state.gameIDs){
-                games = '&games='+this.state.gameIDs.toString();
-              }
-            fetch(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter+games) 
-        .then(response => response.json())
-        .then(res => {
-            this.setState({data: res.games});
+    }
+    
+    fetchData(){
+        var games = '';
+        if(this.state.gameIDs){
+            games = '&games='+this.state.gameIDs.toString();
+        }
+        var customString = '';
+        if(this.state.filter === 'custom'){
+            customString = "&filterString="+this.state.customString;
+        }
+        fetch(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter+customString+games) 
+            .then(response => response.json())
+            .then(res => {
+                this.setState({data: res.games});
         });
-          }
-          else{
-              this.setState({data:[]});
-          }
+    }
+    
+    componentDidMount(){
+        if(this.state.filter){
+            var games = '';
+            if(this.state.gameIDs){
+                games = '&games='+this.state.gameIDs.toString();
+            }
+            var customString = '';
+            if(this.state.filter === 'custom'){
+                customString = "&filterString="+this.state.customString;
+            }
+            fetch(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter+customString+games) 
+                .then(response => response.json())
+                .then(res => {
+                    this.setState({data: res.games});
+            });
+        }
+        else{
+            this.setState({data:[]});
+        }
     }
 
     componentDidUpdate(prevProps) {
-        var games;
+        var games, customString;
         if(this.props.gameIDs !== prevProps.gameIDs){
             this.setState({gameIDs: this.props.gameIDs});
             if(this.props.searchfilter){
             games = '';
-              if(this.props.gameIDs){
+            if(this.props.gameIDs){
                 games = '&games='+this.props.gameIDs.toString();
-              }
-            fetch(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter+games)
+            }
+            customString = '';
+            if(this.props.searchfilter === 'custom'){
+                customString = "&filterString="+this.props.customString;
+            }
+            fetch(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter + customString + games)
                 .then(response => response.json())
                 .then(res => {
-                    //console.log(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter+games);
+                    console.log(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter+games);
                     this.setState({data: res.games});
                 });
             }
         }
-        if(prevProps.searchfilter !== this.props.searchfilter) {
-          this.setState({filter: this.props.searchfilter});
-          games = '';
-              if(this.props.gameIDs){
+        if(prevProps.searchfilter !== this.props.searchfilter || this.props.customString !== prevProps.customString) {
+            this.setState({filter: this.props.searchfilter, customString: this.props.customString});
+            games = '';
+            if(this.props.gameIDs && this.props.gameIDs.length >0){
                 games = '&games='+this.props.gameIDs.toString();
-              }
-            fetch(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter+games)
+            }
+            customString = '';
+            if(this.props.searchfilter === 'custom'){
+                customString = "&filterString="+this.props.customString;
+            }
+            fetch(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter + customString + games)
                 .then(response => response.json())
                 .then(res => {
-                   // console.log(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter+games);
+                    //console.log(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter+customString + games);
                     this.setState({data: res.games});
                 });
         }      
@@ -73,7 +102,7 @@ class BoardState extends React.Component {
         return (
             <Card bg="dark" variant="dark" style={{ width: '200px'}}>
                 <Card.Body style={{"textAlign": "left"}}>
-                    <Card.Title style={{color:'white'}}>Board State</Card.Title>
+                    {/*<Card.Title style={{color:'white'}}>Board State</Card.Title>*/}
                     <ListGroup variant="flush" style={{"overflowY": "auto", "maxHeight": (this.state.maxHeight+"px")}}>
                     {this.state.data.map(d => (
                         <ListGroup.Item key={(d.ID+d.state.round)}
