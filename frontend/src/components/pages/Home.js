@@ -8,17 +8,22 @@ import GamesList from "../../components/games/Games";
 import PlayerStat from "../../components/player-stat/PlayerStat";
 
 export default  function Home(){
-    const [gameID, setGameID] = useState("");
-    const [move, setMove] = useState(0);
-    const [filter, setFilter] = useState("");
-    const [arrows, setArrows] = useState([]);
-    const [lastMove, setlastMove] = useState([]);
-    const [gameIDs, setGameIDs] = useState([]);
-    const [username, setUsername] = useState('');
     const [dimensions, setDimensions] = useState({ 
         height: window.innerHeight,
         width: window.innerWidth
       });
+
+    const [username, setUsername] = useState('');
+
+    const [gameIDs, setGameIDs] = useState([]);
+    const [filter, setFilter] = useState("");
+    const [filterString, setFilterString] = useState("");
+
+    const [gameID, setGameID] = useState("");
+    const [move, setMove] = useState(0);
+    const [arrows, setArrows] = useState([]);
+    const [lastMove, setlastMove] = useState([]);
+
     useEffect(() => {
         function handleResize() {
           setDimensions({
@@ -57,11 +62,12 @@ export default  function Home(){
     const gamesHandleCallback = (gameIDs) =>{
         setGameIDs(gameIDs);
     }
-    const menuHandleCallback = (filter) =>{
+    const menuHandleCallback = (filter, customText) =>{
+        setFilterString(customText);
+        console.log(customText);
         setFilter(filter);
     }
     const usernameHandleCallback = (username) => {
-        console.log(username);
         setUsername(username);
     }
 
@@ -71,7 +77,7 @@ export default  function Home(){
                 <Navbar parentCallback={usernameHandleCallback}/>
                 <div className="ui stackable four column padded grid top aligned" style={{ marginTop: "5px", minHeight: '100vh'}}>
                     <div className="column" align="center" style={{width: "210px"}}>
-                        <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Games</div>
+                        <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px","textAlign": "left" }}>Games</div>
                         <GamesList 
                             parentCallback = {gamesHandleCallback} 
                             username = {username}
@@ -79,20 +85,22 @@ export default  function Home(){
                         />
                         <div>{usernameHandleCallback}</div>
                     </div>
-                    <div className="column" align="center" style={{ width: "220px"}}>
+                    <div className="column" align="center" style={{ width: "220px", "textAlign": "left"}}>
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Filters</div>
                         <FindMenu parentCallback={menuHandleCallback}/>    
                     </div>
-                    <div className="column" align="center" style={{width: "210px"}}>
+                    <div className="column" align="center" style={{width: "210px", "textAlign": "left"}}>
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Positions</div>
                         <BoardState 
                             parentCallback = {boardHandleCallback} 
                             maxHeight = {Math.max(dimensions.height - 150, 200)}
                             gameIDs = {gameIDs}
                             lastMove = {lastMove}
-                            searchfilter = {filter}/>
+                            searchfilter = {filter}
+                            customString = {filterString}
+                            />
                     </div>
-                    <div className="column" align="center" style={{ width: Math.max(300, Math.min(dimensions.width-850, dimensions.height - 150)) }}>
+                    <div className="column" align="center" style={{ width: Math.max(300, Math.min(dimensions.width-850, dimensions.height - 150)) ,"textAlign": "left"}}>
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px"}}>Board</div>
                         <BoardWrapper   gameID = {gameID} // TODO:
                                         move = {move}
@@ -101,7 +109,7 @@ export default  function Home(){
                         <div style={{'color': 'orange'}}>Maia Suggestions</div>
                         <div style={{'color': 'red'}}>Stockfish Suggestions</div>
                     </div>
-                    <div className="column" align="center" style={{width: "100px", float: "right"}}>
+                    <div className="column" align="center" style={{width: "100px", float: "right", "textAlign": "left"}}>
                         <ReviewMenu></ReviewMenu>
                     </div>
                 </div>
