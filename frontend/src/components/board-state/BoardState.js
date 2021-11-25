@@ -17,16 +17,16 @@ class BoardState extends React.Component {
         }
     }
     
-    fetchData(){
+    fetchData(gameIDs, filter, customString){
         var games = '';
-        if(this.state.gameIDs){
+        if(gameIDs){
             games = '&games='+this.state.gameIDs.toString();
         }
-        var customString = '';
-        if(this.state.filter === 'custom'){
-            customString = "&filterString="+this.state.customString;
+        var customStringFilter = '';
+        if(filter === 'custom'){
+            customStringFilter = "&filterString="+customString;
         }
-        fetch(SERVER_URL+'/api/filters?gameFilter='+this.props.searchfilter+customString+games) 
+        fetch(SERVER_URL+'/api/filters?gameFilter='+filter+customStringFilter+games) 
             .then(response => response.json())
             .then(res => {
                 this.setState({data: res.games});
@@ -35,7 +35,7 @@ class BoardState extends React.Component {
     
     componentDidMount(){
         if(this.state.filter){
-            this.fetchData();
+            this.fetchData(this.state.gameIDs, this.state.filter, this.state.customString);
         }
         else{
             this.setState({data:[]});
@@ -46,12 +46,12 @@ class BoardState extends React.Component {
         if(this.props.gameIDs !== prevProps.gameIDs){
             this.setState({gameIDs: this.props.gameIDs});
             if(this.props.searchfilter){
-                this.fetchData();
+                this.fetchData(this.props.gameIDs, this.props.searchfilter, this.props.customString);
             }
         }
         if(prevProps.searchfilter !== this.props.searchfilter || this.props.customString !== prevProps.customString) {
             this.setState({filter: this.props.searchfilter, customString: this.props.customString});
-            this.fetchData();
+            this.fetchData(this.props.gameIDs, this.props.searchfilter, this.props.customString);
         }      
         if(prevProps.maxHeight !== this.props.maxHeight){
             this.setState({maxHeight: this.props.maxHeight});
