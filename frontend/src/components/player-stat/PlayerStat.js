@@ -1,6 +1,7 @@
 import { Card  } from "react-bootstrap";
 import { SERVER_URL } from "../../env";
 import React from "react";
+import "./playerStat.css"
 
 class BoardState extends React.Component {
 
@@ -17,10 +18,10 @@ class BoardState extends React.Component {
             this.setState({stats: undefined});
           }
           else{
-            fetch(SERVER_URL+'/api/stats?username='+this.state.username) 
+            fetch(SERVER_URL+'/api/dashboard/lichess_users/'+this.state.username) 
             .then(response => response.json())
             .then(res => {
-                this.setState({stats: res.stats});
+                this.setState({stats: res.lichess_info});
             })
             .catch(err => {
                 console.error(err);
@@ -35,10 +36,10 @@ class BoardState extends React.Component {
                 this.setState({stats: undefined});
               }
               else{
-                fetch(SERVER_URL+'/api/stats?username='+this.props.username) 
+                fetch(SERVER_URL+'/api/dashboard/lichess_users/'+this.props.username) 
                 .then(response => response.json())
                 .then(res => {
-                    this.setState({stats: res.stats});
+                    this.setState({stats: res.lichess_info});
                 })
                 .catch(err => {
                     console.error(err);
@@ -48,36 +49,48 @@ class BoardState extends React.Component {
       }
 
     render() {
-        if(this.state.username === "maia1" || !this.state.stats){
+        if(this.state.username === "maia1" || !this.state.stats || this.state.stats.disabled){
             return (<div></div>)
         }
+        console.log(this.state.stats);
 
-        var p_color = 'red';
-        var p_length = Math.round(((this.state.stats.p + 1)/2)*10)*5+2; //0-2, divide to 10 uniform "bars", add a bit in case it's 0
-        if(this.state.stats.p > 0.5) p_color = 'green';
-        else if(this.state.stats.p > -0.5) p_color = 'orange';
+        var totalGames = this.state.stats.count.rated;
+        var winRate = ((this.state.stats.count.win / totalGames)*100).toFixed(2);
 
-        var t_color = 'red';
-        var t_length = Math.round(((this.state.stats.t))*10)*5+2; //0-1, divide to 10 uniform "bars"
-        if(this.state.stats.t > 0.6) t_color = 'green';
-        else if(this.state.stats.t > 0.4) t_color = 'orange';
-
-        var e_color = 'red';
-        var e_length = Math.round(((this.state.stats.e - 0.5)/2.5)*10)*5+2; //usually 0.5-3, divide to 10 uniform "bars"
-        if(this.state.stats.e > 2) e_color = 'green';
-        else if(this.state.stats.e > 1.5) e_color = 'orange';
 
         return (
-            <Card bg="dark" variant="dark" style={{ width: '60vw', color:'white'}}>
-                <Card.Body style={{"textAlign": "left"}}>
+            <Card bg="dark" variant="dark" style={{ width: '450px', color:'white'}}>
+                <Card.Body style={{"textAlign": "center"}}>
                     <Card.Title>Player Stats For {this.state.username}</Card.Title>
                     <div>
-                    <div>Performance</div>
-                    <div style={{"background": p_color, width: p_length+"vw", height: "10px"}}></div>
-                    <div>Trickness</div>
-                    <div style={{"background": t_color, width: t_length+"vw", height: "10px"}}></div>
-                    <div>Entropy</div>
-                    <div style={{"background": e_color, width: e_length+"vw", height: "10px"}}></div>
+                    <div>Total games: {totalGames} </div>
+                    <div>Win Rate: {winRate}% </div>
+                    <table style={{marginTop: '5px', marginBottom: '10px', padding: '5px', marginLeft: 'auto', marginRight: 'auto'}}>
+                    <tr>
+                    <th></th>
+                    <th>Blitz</th>
+                    <th>Bullet</th>
+                    <th>Correspondence</th>
+                    <th>Classical</th>
+                    <th>Rapid</th>
+                    </tr>
+                    <tr>
+                    <th>Games</th>
+                    <td>{this.state.stats.perfs.blitz.games}</td>
+                    <td>{this.state.stats.perfs.bullet.games} </td>
+                    <td>{this.state.stats.perfs.correspondence.games} </td>
+                    <td>{this.state.stats.perfs.classical.games} </td>
+                    <td>{this.state.stats.perfs.rapid.games}</td>
+                    </tr>
+                    <tr>
+                    <td>Rating</td>
+                    <td>{this.state.stats.perfs.blitz.rating} </td>
+                    <td>{this.state.stats.perfs.bullet.rating} </td>
+                    <td>{this.state.stats.perfs.correspondence.rating} </td>
+                    <td>{this.state.stats.perfs.classical.rating} </td>
+                    <td>{this.state.stats.perfs.rapid.rating} </td>
+                    </tr>
+                    </table>
                     </div>
                 </Card.Body>
             </Card>
