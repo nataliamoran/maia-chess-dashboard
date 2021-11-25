@@ -32,7 +32,7 @@ class BoardState extends React.Component {
         }
         if(prevProps.username !== this.props.username) {
           this.setState({username: this.props.username || "maia1"});
-          fetch(SERVER_URL+'/api/get_games?username='+this.state.username) //http://dash-dev.maiachess.com
+          fetch(SERVER_URL+'/api/get_games?username='+this.props.username) //http://dash-dev.maiachess.com
                 .then(response => response.json())
                 .then(res => {
                     this.setState({data: res.games});
