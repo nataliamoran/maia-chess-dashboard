@@ -18,14 +18,15 @@ import json
 
 from .get_games import get_user_games
 from .get_stats import get_user_stats
+from .filters import get_filters
 
 fe_router = fastapi.APIRouter(prefix="/api", tags=['frontend'])
 
 
 class StatModel(BaseModel):
-    p: float = Field(..., ge=-1, le=1)
-    t: float = Field(..., ge=0, le=1)
-    e: float = Field(..., ge=0)
+    performance: float = Field(..., ge=-1, le=1)
+    trickiness: float = Field(..., ge=0, le=1)
+    entropy: float = Field(..., ge=0)
 
     class Config:
         allow_population_by_field_name = True
@@ -33,9 +34,9 @@ class StatModel(BaseModel):
         json_encoders = {ObjectId: str}
         schema_extra = {
             "example": {
-                "p": 4,
-                "t": 5,
-                "e": 1,
+                "performance": 4,
+                "trickiness": 5,
+                "entropy": 1,
             }
         }
 
@@ -60,9 +61,9 @@ class StateModel(BaseModel):
                 "move": "e4 e1",
                 "FEN": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
                 "stat": {
-                    "p": 4,
-                    "t": 5,
-                    "e": 1
+                    "performance": 4,
+                    "trickiness": 5,
+                    "entropy": 1
                 },
                 "last_move": [
                     "a6",
@@ -105,18 +106,18 @@ class GameModel(BaseModel):
                 "blackPlayer": "name2",
                 "date": "01/10/2021 13:15:03",
                         "averageStat": {
-                            "p": 4,
-                            "t": 5,
-                            "e": 1
+                            "performance": 4,
+                            "trickiness": 5,
+                            "entropy": 1
                         },
                 "state": {
                             "round": 1,
                             "move": "e4 e1",
                             "FEN": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
                             "stat": {
-                                "p": 4,
-                                "t": 5,
-                                "e": 1
+                                "performance": 4,
+                                "trickiness": 5,
+                                "entropy": 1
                             },
                             "last_move": [
                                 "a6",
@@ -159,18 +160,18 @@ class GameFilterModel(BaseModel):
                         "blackPlayer": "name2",
                         "date": "01/10/2021 13:15:03",
                         "averageStat": {
-                            "p": 4,
-                            "t": 5,
-                            "e": 1
+                            "performance": 4,
+                            "trickiness": 5,
+                            "entropy": 1
                         },
                         "state": {
                             "round": 1,
                             "move": "e4 e1",
                             "FEN": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
                             "stat": {
-                                "p": 4,
-                                "t": 5,
-                                "e": 1
+                                "performance": 4,
+                                "trickiness": 5,
+                                "entropy": 1
                             },
                             "last_move": [
                                 "a6",
@@ -259,9 +260,9 @@ class UserStats(BaseModel):
             "example": {
                 "username": "maia1",
                 "stats": {
-                "p": 0.006,
-                "t": 2.156,
-                "e": 0.3936
+                "performance": 0.006,
+                "trickiness": 2.156,
+                "entropy": 0.3936
                 }
             }
         }
@@ -284,17 +285,23 @@ async def get_game(username: str = "maia1"):
 
 
 @fe_router.get("/filters", response_description="Filter game", response_model=GameFilterModel)
-async def filter_games(gameFilter: str):
-    script_dir = os.path.dirname(__file__)
-    if gameFilter == 'mistakes':
-        file_path = os.path.join(script_dir, 'resources/mistakes.json')
-    elif gameFilter == 'interesting':
-        file_path = os.path.join(script_dir, 'resources/interesting.json')
-    else:
-        file_path = os.path.join(script_dir, 'resources/tricky.json')
-    data = json.load(open(file_path))
-    return data
-
+async def filter_games(gameFilter: str, games: str, username: str):
+    # script_dir = os.path.dirname(__file__)
+    # if gameFilter == 'mistakes':
+    #     file_path = os.path.join(script_dir, 'resources/mistakes.json')
+    # elif gameFilter == 'interesting':
+    #     file_path = os.path.join(script_dir, 'resources/interesting.json')
+    # else:
+    #     file_path = os.path.join(script_dir, 'resources/tricky.json')
+    # data = json.load(open(file_path))
+    # return data
+    list_of_games = games.split(",")
+    filtered_games = await get_filters(username, gameFilter, list_of_games)
+    res = {
+        "filter": gameFilter,
+        "games": filtered_games
+    }
+    return res
 
 @fe_router.get("/num_games/{username}",
                response_description="Get the number of games analyzed",
