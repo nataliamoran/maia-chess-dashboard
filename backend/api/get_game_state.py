@@ -1,33 +1,49 @@
-import requests
 import lichess.api
 
+from . import db_client
 
-def get_pgns(gameId):
-    game = lichess.api.game('dpReRq1J')
+STOCKFISH = "stockfish"
+
+async def get_states(game_id, every):
+    anal = db_client.get_analysis_db()
+
+    cursor = anal['game_states'].find({'game_id': game_id})
+    if every:
+        states = await cursor.to_list(length=100000000)  # arbitrary value to change
+    else:
+        states = await cursor.to_list(length=100)
+
+    def serialize_dict(d: dict):
+        for k, v in d.items():
+            if v != v:
+                d[k] = 'NaN'
+            if v == -0.0:
+                d[k] = 0.0
+            if type(v) == dict:
+                serialize_dict(v)
+    for s in states:
+        serialize_dict(s)
+    return states
+
+async def get_pgns(gameId):
+    game = lichess.api.game(gameId)
     moves = game['moves']
     list_of_moves = moves.split(" ")
-    return list_of_moves
+    return list_of_moves[:-1]
 
 
-def get_fens(gameId: str):
-    #  get information about analyzed games do we want to query our api? probably not
-    response = requests.get(
-        f"http://dash-dev.maiachess.com/api/analysis/game_states/{gameId}?every=false")
-    game_states = response.json()['game_states']
-    num_states = len(game_states)
-    list_of_fens = []
-    seen_boards = set()
-    for state in game_states:
-        if state['board'] not in seen_boards:
-            curr = {}
-            list_of_fens.append(state['board'])
-            seen_boards.add(state['board'])
-    return list_of_fens
+async def get_fens(gameId: str):
+    all_states = await get_states(gameId, True)
+    sf_states = []
+    for state in all_states:
+        if state['model'] == STOCKFISH:
+            sf_states.append(state['board'])
+    return sf_states[1:]
 
 
-def get_game_states(gameId):
-    fens = get_fens(gameId)
-    pgns = get_pgns(gameId)
+async def get_game_states(gameId):
+    fens = await get_fens(gameId)
+    pgns = await get_pgns(gameId)
     n = len(fens)
     if len(fens) != len(pgns):
         return -1
@@ -37,9 +53,9 @@ def get_game_states(gameId):
         curr['FEN'] = fens[i]
         curr['PGN'] = pgns[i]
         game_states.append(curr)
-    return len(game_states)
+    return game_states
 
 
 if __name__ == "__main__":
     gameId = "dpReRq1J"
-    print(get_game_states(gameId))
+    get_game_states(gameId)

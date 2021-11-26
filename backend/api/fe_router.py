@@ -18,6 +18,7 @@ import json
 
 from .get_games import get_user_games
 from .get_stats import get_user_stats
+from .get_game_state import get_game_states
 from .filters import get_filters
 
 fe_router = fastapi.APIRouter(prefix="/api", tags=['frontend'])
@@ -267,10 +268,34 @@ class UserStats(BaseModel):
             }
         }
 
+class GameStates(BaseModel):
+    gameId: str = Field(...)
+    states: list = Field(...)
 
-@fe_router.get("/games/{game_id}", response_description="Get game state", response_model=GameModel)
+    class Config:
+        allow_population_by_field_name = True
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}
+        schema_extra = {
+            "example": {
+                "gameId": "xj53pmTF",
+                "states": [
+                    {
+                        "FEN": "rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR b KQkq - 0 1",
+                        "PGN": "d4"
+                    }
+                ]
+            }
+        }
+
+@fe_router.get("/games/{game_id}", response_description="Get game state", response_model=GameStates)
 async def get_game(game_id: str):
-    pass
+    states = await get_game_states(game_id)
+    res = {
+        "gameId": game_id,
+        "states": states
+    }
+    return res
 
 
 @fe_router.get("/get_games", response_description="Return games that the user has played", response_model=UserGames)
