@@ -52,10 +52,10 @@ class BoardState extends React.Component {
         if(this.state.username === "maia1" || !this.state.stats || this.state.stats.disabled){
             return (<div></div>)
         }
-        console.log(this.state.stats);
 
-        var totalGames = this.state.stats.count.rated;
+        var totalGames = this.state.stats.count.all;
         var winRate = ((this.state.stats.count.win / totalGames)*100).toFixed(2);
+        var winTieRate = (((this.state.stats.count.win+this.state.stats.count.draw) / totalGames)*100).toFixed(2);
 
 
         return (
@@ -65,6 +65,7 @@ class BoardState extends React.Component {
                     <div>
                     <div>Total games: {totalGames} </div>
                     <div>Win Rate: {winRate}% </div>
+                    <div>Win+Draw Rate: {winTieRate}% </div>
                     <table style={{marginTop: '5px', marginBottom: '10px', padding: '5px', marginLeft: 'auto', marginRight: 'auto'}}>
                     <tr>
                     <th></th>
@@ -83,7 +84,7 @@ class BoardState extends React.Component {
                     <td>{this.state.stats.perfs.rapid.games}</td>
                     </tr>
                     <tr>
-                    <td>Rating</td>
+                    <th>Rating</th>
                     <td>{this.state.stats.perfs.blitz.rating} </td>
                     <td>{this.state.stats.perfs.bullet.rating} </td>
                     <td>{this.state.stats.perfs.correspondence.rating} </td>
