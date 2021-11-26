@@ -77,6 +77,7 @@ class UserFeedbackRatingModel(BaseModel):
     username: str = Field(...)
     thumb_up: int = Field(...)
     thumb_down: int = Field(...)
+    state: dict = Field(...)
     created_at: Optional[datetime] = datetime.now(timezone.utc)
 
     class Config:
@@ -87,6 +88,7 @@ class UserFeedbackRatingModel(BaseModel):
             "example": {
                 "username": "name1",
                 "thumb_up": 1,
-                "thumb_down": 0
+                "thumb_down": 0,
+                "state": {}
             }
         }

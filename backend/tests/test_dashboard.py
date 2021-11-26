@@ -160,7 +160,7 @@ class TestDashboard(TestCase):
         client_mock.__getitem__.return_value = table
         dashboard_db_mock.return_value = client_mock
 
-        user_feedback_rating = UserFeedbackRatingModel(username='user1', thumb_up=1, thumb_down=0)
+        user_feedback_rating = UserFeedbackRatingModel(username='user1', thumb_up=1, thumb_down=0, state={})
 
         # act
         res = self.loop.run_until_complete(dashboard_router.send_user_feedback_rating(user_feedback_rating))
@@ -209,7 +209,7 @@ class TestDashboard(TestCase):
         # arrange
         expected_result = {"feedback_rating": True}
         fe_user_feedback_rating.return_value = expected_result
-        user_feedback_rating = UserFeedbackRatingModel(username='user1', thumb_up=1, thumb_down=0)
+        user_feedback_rating = UserFeedbackRatingModel(username='user1', thumb_up=1, thumb_down=0, state={})
 
         # act
         res = self.loop.run_until_complete(fe_router.send_user_feedback_rating(user_feedback_rating))
