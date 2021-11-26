@@ -201,7 +201,7 @@ class RawGameModel(BaseModel):
     ID: str = Field(...)
     whitePlayer: str = Field(...)
     blackPlayer: str = Field(...)
-    date: int = Field(...)
+    date: str = Field(...)
 
     class Config:
         allow_population_by_field_name = True
@@ -212,13 +212,14 @@ class RawGameModel(BaseModel):
                 "ID": "sozvQYHn",
                 "whitePlayer": "neltew",
                 "blackPlayer": "maia1",
-                "date": 1637018565917
+                "date": '2021.11.25 19:03:19'
             }
         }
 
 
 class UserGames(BaseModel):
     username: str = Field(...)
+    number_of_games: int = Field(...)
     games: List[RawGameModel] = Field(...)
 
     class Config:
@@ -228,18 +229,19 @@ class UserGames(BaseModel):
         schema_extra = {
             "example": {
                 "username": "maia1",
+                "number_of_games": 2,
                 "games": [
                     {
                         "ID": "sozvQYHn",
                         "whitePlayer": "neltew",
                         "blackPlayer": "maia1",
-                        "date": 1637018565917
+                        "date": '2021.11.25 19:03:19'
                     },
                     {
                         "ID": "pd5v0Q3k",
                         "whitePlayer": "maia1",
                         "blackPlayer": "sampowell",
-                        "date": 1637018565917
+                        "date": '2021.11.25 19:03:19'
                     }
                 ]
             }
@@ -272,9 +274,10 @@ async def get_game(game_id: str):
 
 @fe_router.get("/get_games", response_description="Return games that the user has played", response_model=UserGames)
 async def get_game(username: str = "maia1"):
-    user_games: list = get_user_games(username, 4)
+    user_games, num_ganes = await get_user_games(username)
     res = {
         "username": username,
+        "number_of_games": num_ganes,
         "games": user_games
     }
     return res
