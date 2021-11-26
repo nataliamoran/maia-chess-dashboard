@@ -64,7 +64,6 @@ export default  function Home(){
     }
     const menuHandleCallback = (filter, customText) =>{
         setFilterString(customText);
-        console.log(customText);
         setFilter(filter);
     }
     const usernameHandleCallback = (username) => {
