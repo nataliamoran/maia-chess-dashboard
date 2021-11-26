@@ -100,14 +100,17 @@ export default  function Home(){
                             customString = {filterString}
                             />
                     </div>
-                    <div className="column" align="center" style={{ width: Math.max(300, Math.min(dimensions.width-850, dimensions.height - 150)) ,"textAlign": "left"}}>
+                    <div className="column" align="center" style={{ width: 200 + Math.max(300, Math.min(dimensions.width-850, dimensions.height - 150)) ,"textAlign": "left"}}>
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px"}}>Board</div>
                         <BoardWrapper   gameID = {gameID} // TODO:
                                         move = {move}
                                         arrows = {arrows}
                                         boardSize={Math.max(300, Math.min(dimensions.width-850, dimensions.height - 150))} />
-                        <div style={{'color': 'orange'}}>Maia Suggestions</div>
-                        <div style={{'color': 'red'}}>Stockfish Suggestions</div>
+                        <p style={{float: "left"}}>
+                            <span style={{'color': 'orange'}}>Maia Suggestions</span> 
+                            <br/>
+                            <span style={{'color': 'red'}}>Stockfish Suggestions</span>
+                        </p>
                     </div>
                     <div className="column" align="center" style={{width: "100px", float: "right", "textAlign": "left"}}>
                         <ReviewMenu></ReviewMenu>

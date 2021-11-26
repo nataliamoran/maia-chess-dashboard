@@ -17,7 +17,7 @@ class BoardWrapper extends React.Component {
             move: props.move,// which move to display
             boardSize: props.boardSize, 
             arrows: props.arrows, 
-            states: [{"FEN":"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1","PGN":"d4"},{"FEN":"rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR b KQkq - 0 1","PGN":"d5"},{"FEN":"rnbqkbnr/ppp1pppp/8/3p4/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 0 2","PGN":"c4"},{"FEN":"rnbqkbnr/ppp1pppp/8/3p4/2PP4/8/PP2PPPP/RNBQKBNR b KQkq - 0 2","PGN":"dxc4"},{"FEN":"rnbqkbnr/ppp1pppp/8/8/2pP4/8/PP2PPPP/RNBQKBNR w KQkq - 0 3","PGN":"e4"},{"FEN":"rnbqkbnr/ppp1pppp/8/8/2pPP3/8/PP3PPP/RNBQKBNR b KQkq - 0 3","PGN":"e5"}],
+            states: [    {        "FEN": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",        "PGN": "d4"    },    {        "FEN": "rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR b KQkq - 0 1",        "PGN": "d5"    },    {        "FEN": "rnbqkbnr/ppp1pppp/8/3p4/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 0 2",        "PGN": "c4"    },    {        "FEN": "rnbqkbnr/ppp1pppp/8/3p4/2PP4/8/PP2PPPP/RNBQKBNR b KQkq - 0 2",        "PGN": "dxc4"    },    {        "FEN": "rnbqkbnr/ppp1pppp/8/8/2pP4/8/PP2PPPP/RNBQKBNR w KQkq - 0 3",        "PGN": "e4"    },    {        "FEN": "rnbqkbnr/ppp1pppp/8/8/2pPP3/8/PP3PPP/RNBQKBNR b KQkq - 0 3",        "PGN": "e5"    },    {        "FEN": "rnbqkbnr/ppp2ppp/8/4p3/2pPP3/8/PP3PPP/RNBQKBNR w KQkq - 0 4",        "PGN": "d5"    },    {        "FEN": "rnbqkbnr/ppp2ppp/8/3Pp3/2p1P3/8/PP3PPP/RNBQKBNR b KQkq - 0 4",        "PGN": "c6"    },    {        "FEN": "rnbqkbnr/pp3ppp/2p5/3Pp3/2p1P3/8/PP3PPP/RNBQKBNR w KQkq - 0 5",        "PGN": "Bxc4"    },    {        "FEN": "rnbqkbnr/pp3ppp/2p5/3Pp3/2B1P3/8/PP3PPP/RNBQK1NR b KQkq - 0 5",        "PGN": "cxd5"    },    {        "FEN": "rnbqkbnr/pp3ppp/8/3pp3/2B1P3/8/PP3PPP/RNBQK1NR w KQkq - 0 6",        "PGN": "exd5"    },    {        "FEN": "rnbqkbnr/pp3ppp/8/3Pp3/2B5/8/PP3PPP/RNBQK1NR b KQkq - 0 6",        "PGN": "Nf6"    },    {        "FEN": "rnbqkb1r/pp3ppp/5n2/3Pp3/2B5/8/PP3PPP/RNBQK1NR w KQkq - 1 7",        "PGN": "Nc3"    },    {        "FEN": "rnbqkb1r/pp3ppp/5n2/3Pp3/2B5/2N5/PP3PPP/R1BQK1NR b KQkq - 2 7",        "PGN": "Bb4"    },    {        "FEN": "rnbqk2r/pp3ppp/5n2/3Pp3/1bB5/2N5/PP3PPP/R1BQK1NR w KQkq - 3 8",        "PGN": "Bd2"    },    {        "FEN": "rnbqk2r/pp3ppp/5n2/3Pp3/1bB5/2N5/PP1B1PPP/R2QK1NR b KQkq - 4 8",        "PGN": "Bxc3"    },    {        "FEN": "rnbqk2r/pp3ppp/5n2/3Pp3/2B5/2b5/PP1B1PPP/R2QK1NR w KQkq - 0 9",        "PGN": "Bxc3"    },    {        "FEN": "rnbqk2r/pp3ppp/5n2/3Pp3/2B5/2B5/PP3PPP/R2QK1NR b KQkq - 0 9",        "PGN": "O-O"    },    {        "FEN": "rnbq1rk1/pp3ppp/5n2/3Pp3/2B5/2B5/PP3PPP/R2QK1NR w KQ - 1 10",        "PGN": "Bxe5"    },    {        "FEN": "rnbq1rk1/pp3ppp/5n2/3PB3/2B5/8/PP3PPP/R2QK1NR b KQ - 0 10",        "PGN": "Re8"    },    {        "FEN": "rnbqr1k1/pp3ppp/5n2/3PB3/2B5/8/PP3PPP/R2QK1NR w KQ - 1 11",        "PGN": "Nf3"    },    {        "FEN": "rnbqr1k1/pp3ppp/5n2/3PB3/2B5/5N2/PP3PPP/R2QK2R b KQ - 2 11",        "PGN": "Bg4"    },    {        "FEN": "rn1qr1k1/pp3ppp/5n2/3PB3/2B3b1/5N2/PP3PPP/R2QK2R w KQ - 3 12",        "PGN": "Qe2"    },    {        "FEN": "rn1qr1k1/pp3ppp/5n2/3PB3/2B3b1/5N2/PP2QPPP/R3K2R b KQ - 4 12",        "PGN": "Bxf3"    },    {        "FEN": "rn1qr1k1/pp3ppp/5n2/3PB3/2B5/5b2/PP2QPPP/R3K2R w KQ - 0 13",        "PGN": "gxf3"    },    {        "FEN": "rn1qr1k1/pp3ppp/5n2/3PB3/2B5/5P2/PP2QP1P/R3K2R b KQ - 0 13",        "PGN": "Nxd5"    },    {        "FEN": "rn1qr1k1/pp3ppp/8/3nB3/2B5/5P2/PP2QP1P/R3K2R w KQ - 0 14",        "PGN": "Bxd5"    },    {        "FEN": "rn1qr1k1/pp3ppp/8/3BB3/8/5P2/PP2QP1P/R3K2R b KQ - 0 14",        "PGN": "Qxd5"    },    {        "FEN": "rn2r1k1/pp3ppp/8/3qB3/8/5P2/PP2QP1P/R3K2R w KQ - 0 15",        "PGN": "f4"    },    {        "FEN": "rn2r1k1/pp3ppp/8/3qB3/5P2/8/PP2QP1P/R3K2R b KQ - 0 15",        "PGN": "Qxh1+"    },    {        "FEN": "rn2r1k1/pp3ppp/8/4B3/5P2/8/PP2QP1P/R3K2q w Q - 0 16",        "PGN": "Kd2"    },    {        "FEN": "rn2r1k1/pp3ppp/8/4B3/5P2/8/PP1KQP1P/R6q b - - 1 16",        "PGN": "Qxa1"    },    {        "FEN": "rn2r1k1/pp3ppp/8/4B3/5P2/8/PP1KQP1P/q7 w - - 0 17",        "PGN": "Qc4"    },    {        "FEN": "rn2r1k1/pp3ppp/8/4B3/2Q2P2/8/PP1K1P1P/q7 b - - 1 17",        "PGN": "Rd8+"    },    {        "FEN": "rn1r2k1/pp3ppp/8/4B3/2Q2P2/8/PP1K1P1P/q7 w - - 2 18",        "PGN": "Ke2"    },    {        "FEN": "rn1r2k1/pp3ppp/8/4B3/2Q2P2/8/PP2KP1P/q7 b - - 3 18",        "PGN": "Qd1+"    },    {        "FEN": "rn1r2k1/pp3ppp/8/4B3/2Q2P2/8/PP2KP1P/3q4 w - - 4 19",        "PGN": "Ke3"    },    {        "FEN": "rn1r2k1/pp3ppp/8/4B3/2Q2P2/4K3/PP3P1P/3q4 b - - 5 19",        "PGN": "Nc6"    }],
             // Ideally, states includs:
                 //      FEN, the FEN after the move
                 //      move
@@ -27,28 +27,31 @@ class BoardWrapper extends React.Component {
         }
     }
 
-    componentDidMount(){
-        fetch("https://pastebin.com/raw/Wurhbwf4") 
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                this.setState({states: data})
-                this.state.states.push({FEN:"", PGN: ""})
-            })
-    }
+    // componentDidMount(){
+    //     fetch("https://pastebin.com/raw/Wurhbwf4", { method: 'GET', mode: 'no-cors' }) 
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             this.setState({states: data})
+    //             this.state.states.push({FEN:"", PGN: ""})
+    //         })
+    //         .catch(err => {
+    //             console.error(err)
+    //         })
+    // }
 
 
     componentDidUpdate(prevProps) {
-        if(prevProps.gameID !== this.props.gameID) { // TODO
-            this.setState({gameID: this.props.gameID});
-            fetch("https://pastebin.com/raw/Wurhbwf4") //http://dash-dev.maiachess.com/api/games/
-                .then(response => response.json())
-                .then(data => {
-                    console.log("change to view game with id", this.props.gameID, ", move", this.props.move)
-                    this.setState({states: data})
-                })
+        // if(prevProps.gameID !== this.props.gameID) { // TODO
+        //     this.setState({gameID: this.props.gameID});
+        //     fetch("https://pastebin.com/raw/Wurhbwf4") //http://dash-dev.maiachess.com/api/games/
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             console.log("change to view game with id", this.props.gameID, ", move", this.props.move)
+        //             this.setState({states: data})
+        //         })
+        // }
 
-        } 
         if (prevProps.move !== this.props.move) {
             this.setState({move: this.props.move});
         }
