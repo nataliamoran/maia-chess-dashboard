@@ -75,8 +75,8 @@ export default  function Home(){
         <div style={{ "background": "#6a6970", minHeight: "100vh", maxHeight: "1000vh" }}>
         <div className={"Home"} >
                 <Navbar parentCallback={usernameHandleCallback}/>
-                <div className="ui stackable four column padded grid top aligned" style={{ marginTop: "5px", minHeight: '100vh'}}>
-                    <div className="column" align="center" style={{width: "210px"}}>
+                <div className="ui stackable four column padded grid top aligned" style={{ marginTop: "5px", minHeight: '85vh'}}>
+                    <div className="column" align="center" style={{width: "190px"}}>
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px","textAlign": "left" }}>Games</div>
                         <GamesList 
                             parentCallback = {gamesHandleCallback} 
@@ -85,12 +85,12 @@ export default  function Home(){
                         />
                         <div>{usernameHandleCallback}</div>
                     </div>
-                    <div className="column" align="center" style={{ width: "220px", "textAlign": "left"}}>
-                        <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Filters</div>
-                        <FindMenu parentCallback={menuHandleCallback}/>    
+                    <div className="column" align="center" style={{ width: "180px"}}>
+                        <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" , "textAlign": "left"}}>Filters</div>
+                        <FindMenu parentCallback={menuHandleCallback}/>  
                     </div>
-                    <div className="column" align="center" style={{width: "210px", "textAlign": "left"}}>
-                        <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Positions</div>
+                    <div className="column" align="center" style={{width: "190px"}}>
+                        <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px", "textAlign": "left" }}>Positions</div>
                         <BoardState 
                             parentCallback = {boardHandleCallback} 
                             maxHeight = {Math.max(dimensions.height - 150, 200)}
@@ -100,12 +100,13 @@ export default  function Home(){
                             customString = {filterString}
                             />
                     </div>
-                    <div className="column" align="center" style={{ width: 200 + Math.max(300, Math.min(dimensions.width-850, dimensions.height - 150)) ,"textAlign": "left"}}>
+                    <div className="column" align="center" style={{ width: 200 + Math.max(300, Math.min(dimensions.width-920, dimensions.height - 150)) ,"textAlign": "left"}}>
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px"}}>Board</div>
                         <BoardWrapper   gameID = {gameID} // TODO:
                                         move = {move}
                                         arrows = {arrows}
-                                        boardSize={Math.max(300, Math.min(dimensions.width-850, dimensions.height - 150))} />
+                                        stateSize = {Math.max(dimensions.height - 150, 200)}
+                                        boardSize={Math.max(300, Math.min(dimensions.width-920, dimensions.height - 150))} />
                         <p style={{float: "left"}}>
                             <span style={{'color': 'orange'}}>Maia Suggestions</span> 
                             <br/>
@@ -116,7 +117,7 @@ export default  function Home(){
                         <ReviewMenu></ReviewMenu>
                     </div>
                 </div>
-                <div align='center' style={{marginTop: "5px", marginBottom: "10px"}}>
+                <div align='center' style={{ marginBottom: "10px"}}>
                     <PlayerStat username = {username}/><br/>
                 </div>
       </div>

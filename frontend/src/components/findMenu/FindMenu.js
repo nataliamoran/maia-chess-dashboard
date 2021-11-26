@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Menu } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react';
+import { Button  } from "react-bootstrap";
 
-const colorsA = ['olive', 'green', 'teal']
-const filterNames = ["interesting", 'tricky', 'mistakes']
+const colorsA = ['olive', 'green', 'teal'];
+const filterNames = ["interesting", 'tricky', 'mistakes'];
 
 export default class MenuExampleColoredInverted extends Component {
     constructor(props){
@@ -43,7 +44,7 @@ export default class MenuExampleColoredInverted extends Component {
 
         return (
             <div>
-                <Menu inverted vertical>
+                <Menu inverted vertical style={{width: "170px"}}>
                     {colorsA.map((c, ind) => (
                         <Menu.Item
                             key={c}
@@ -63,8 +64,9 @@ export default class MenuExampleColoredInverted extends Component {
                             {this.state.activeA === 'custom' &&
                              <form className='ui form' onSubmit={this.onFormSubmit}>
                                 <div style={{marginTop: '5px'}}>
-                                <textarea style={{background: textareaColor}} placeholder="filter" rows="3" value={this.state.cache} onChange={this.eventName}></textarea>
-                                <button className='ui icon button'  style={{background: "DarkGray", marginTop: '1px'}}  type="submit"><i aria-hidden="true" className="play icon"></i></button>
+                                <textarea style={{background: textareaColor}} placeholder="Mongo Filter" rows="2" value={this.state.cache} onChange={this.eventName}></textarea>
+                                {/*<button className='ui icon button'  style={{background: "DarkGray", marginTop: '1px'}}  type="submit"><i aria-hidden="true" className="play icon"></i></button>*/}
+                                <Button variant="outline-light" size='sm' style={{marginTop: '2px'}}>Search</Button>
                                 </div> 
                             </form>
                             }
