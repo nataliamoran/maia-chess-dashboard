@@ -48,16 +48,13 @@ class BoardState extends React.Component {
 
     render() {
         return (
-            <Card bg="dark" variant="dark" style={{ width: '200px'}}>
+            <Card bg="dark" variant="dark" style={{ width: '180px'}}>
                 <Card.Body style={{"textAlign": "left"}}>
-                    {/*<Card.Title style={{color:'white'}}>Games</Card.Title>*/}
                     <ListGroup variant="flush" style={{"overflowY": "auto", "maxHeight": (this.state.maxHeight+"px")}}>
                     {this.state.data.map(d => (
                         <ListGroup.Item key={d.ID}
-                        variant="dark"
-                        >
+                        variant="dark">
                             <Form.Check 
-                            inline 
                             id={d.ID} 
                             style={{'fontSize': '12px','fontWeight': 'bold'}}
                             label = {<div style={{'width': '100%','height': '100%'}}><div>{d.whitePlayer+" vs "+d.blackPlayer} </div>

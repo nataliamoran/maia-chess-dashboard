@@ -61,7 +61,7 @@ class BoardState extends React.Component {
 
     render() {
         return (
-            <Card bg="dark" variant="dark" style={{ width: '200px'}}>
+            <Card bg="dark" variant="dark" style={{ width: '180px'}}>
                 <Card.Body style={{"textAlign": "left"}}>
                     {/*<Card.Title style={{color:'white'}}>Board State</Card.Title>*/}
                     <ListGroup variant="flush" style={{"overflowY": "auto", "maxHeight": (this.state.maxHeight+"px")}}>
@@ -76,8 +76,8 @@ class BoardState extends React.Component {
                             event.preventDefault();
                             }} >
                                  <div style={{'fontSize': '16px','fontWeight': 'bold'}}>{d.state.round}.&nbsp;{d.state.move}</div>
-                            <div>{d.whitePlayer} vs {d.blackPlayer}</div>
-                            <div>{d.date}</div>
+                            <div style={{'fontSize': '12px'}}>{d.whitePlayer} vs {d.blackPlayer}</div>
+                            <div style={{'fontSize': '10px'}}>{d.date.substring(5, 10).replaceAll('.', '/')}/{d.date.substring(0, 4)}&nbsp;{d.date.substring(11, 16)}</div>
                            
                             <div style={{float: 'left', 'fontWeight': 'bold'}}>P:</div> 
                             {d.state.stat.p > 0.5 &&
