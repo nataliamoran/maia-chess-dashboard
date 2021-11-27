@@ -1,5 +1,6 @@
 import React from "react";
 import { ListGroup, Card  } from "react-bootstrap";
+import { SERVER_URL } from "../../env";
 //import { LineChart, Line, ScatterChart, Scatter, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';  // TODO: chart
 import Board from "../../components/board/Board";
 import "chessground/assets/chessground.base.css";
@@ -29,7 +30,7 @@ class BoardWrapper extends React.Component {
     }
 
     componentDidMount(){
-        fetch("http://dash-dev.maiachess.com/api/games/" + this.state.gameID) 
+        fetch(SERVER_URL+"/api/games/" + this.state.gameID) 
             .then((response) => { 
                 if (response.ok) {
                     return response.json()
@@ -50,9 +51,8 @@ class BoardWrapper extends React.Component {
 
 
     componentDidUpdate(prevProps) {
-        if(prevProps.gameID !== this.props.gameID) { 
-            this.setState({gameID: this.props.gameID});
-            fetch("http://dash-dev.maiachess.com/api/games/" + this.state.gameID) 
+        if(this.state.gameID !== this.props.gameID) { 
+            fetch("http://dash-dev.maiachess.com/api/games/" + this.props.gameID) 
                 .then((response) => { 
                     if (response.ok) {
                         return response.json()
@@ -63,7 +63,7 @@ class BoardWrapper extends React.Component {
                 .then((data) => {
                     //console.log(data)
                     if (data) {
-                        this.setState({states: data.states})
+                        this.setState({gameID: this.props.gameID, states: data.states})
                     }
                 })
                 .catch(err => {
@@ -71,21 +71,20 @@ class BoardWrapper extends React.Component {
                 })
         }
 
-        if (prevProps.move !== this.props.move) {
-            this.setState({move: this.props.move});
-        }
-        if (prevProps.boardSize !== this.props.boardSize) {
-            this.setState({boardSize: this.props.boardSize});
-        }
-        if (prevProps.stateSize !== this.props.stateSize) {
-            this.setState({stateSize: this.props.stateSize});
-        }
-        if (prevProps.arrows !== this.props.arrows) {
-            this.setState({arrows: this.props.arrows});
+        if (prevProps.move !== this.props.move ||
+            prevProps.boardSize !== this.props.boardSize ||
+            prevProps.stateSize !== this.props.stateSize ||
+            prevProps.arrows !== this.props.arrows) {
+            
+            this.setState({ move: this.props.move, 
+                            boardSize: this.props.boardSize,
+                            stateSize: this.props.stateSize,
+                            arrows: this.props.arrows});
         }
     }
 
     render() {
+        //console.log("state ID:", this.state.gameID, "prop id:", this.props.gameID, "move:", this.props.move)
         let dest = "AA"
         if (this.state.states.length !== 0) {
 
@@ -130,7 +129,7 @@ class BoardWrapper extends React.Component {
                                         this.setState({move: 2 * i });
                                     }}
                             >
-                            {i+1}. {e[0].PGN} 
+                            {2 * i+1}. {e[0].PGN} 
                             </span>
                             
                             <span   style={{display: "inline-block", width: "45%", height: "100%",  padding: "8px 5px"}} 
