@@ -114,7 +114,7 @@ export default  function Home(){
                         </p>
                     </div>
                     <div className="column" align="center" style={{width: "100px", float: "right", "textAlign": "left"}}>
-                        <ReviewMenu></ReviewMenu>
+                        <ReviewMenu username={username}></ReviewMenu>
                     </div>
                 </div>
                 <div align='center' style={{ marginBottom: "10px"}}>
