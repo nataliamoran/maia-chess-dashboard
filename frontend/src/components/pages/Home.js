@@ -13,7 +13,7 @@ export default  function Home(){
         width: window.innerWidth
       });
 
-    const [username, setUsername] = useState('');
+    const [username, setUsername] = useState('maia1');
 
     const [gameIDs, setGameIDs] = useState([]);
     const [filter, setFilter] = useState("");
@@ -30,10 +30,9 @@ export default  function Home(){
             height: window.innerHeight,
             width: window.innerWidth
           })
-        
-    }
-    window.addEventListener('resize', handleResize)
-})
+        }
+        window.addEventListener('resize', handleResize);
+    })
 
     const boardHandleCallback = (game) =>{
         var stuff = [];
@@ -97,6 +96,7 @@ export default  function Home(){
                             lastMove = {lastMove}
                             searchfilter = {filter}
                             customString = {filterString}
+                            username = {username}
                             />
                     </div>
                     <div className="column" align="center" style={{ width: 200 + Math.max(300, Math.min(dimensions.width-920, dimensions.height - 150)) ,"textAlign": "left"}}>

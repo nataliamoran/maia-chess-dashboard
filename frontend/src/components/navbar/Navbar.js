@@ -30,6 +30,31 @@ class Navbar extends React.Component {
                 if(res){
                     this.setState({ name: this.state.cache, valid: true });
                     this.props.parentCallback(this.state.cache);
+                    
+                    const requestOptions = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' }
+                        //body: JSON.stringify({maxgames: 10})
+                    };
+                    fetch(SERVER_URL+'/api/dashboard/raw/'+this.state.cache+"?maxgames=3", requestOptions)
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            fetch(SERVER_URL+'/api/analysis/analyze?username='+this.state.cache+"&num_games=3", {
+                                method: 'POST',
+                                headers: new Headers({
+                                    'Content-Type': 'application/json'
+                                  }),
+                               // body: "username="+this.state.cache+"&num_games=5"
+                              })
+                                .then(response => {
+                                    console.log(response)
+                                    response.json()})
+                                    .then(res => {
+                                        console.log(res)
+                                    })
+                        });
+                
                 }
                 else{
                     this.setState({ name: this.state.cache, valid: false });
@@ -46,7 +71,6 @@ class Navbar extends React.Component {
         else if (this.state.name){
             login_color = '#fce1de';
         }
-        console.log(login_color);
         return (
             <ReactBootStrap.Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <ReactBootStrap.Container>
@@ -57,7 +81,7 @@ class Navbar extends React.Component {
                             <form onSubmit={this.onFormSubmit}>
                                 <div style={{display: 'none'}}>{this.state.name}</div>
                                 <div className="input-group ms-auto">
-                                <input style={{background: login_color}} autocomplete="off" className="form-control mr-sm-2" name="username" placeholder="Lichess Username" aria-label="Search" value={this.state.cache} onChange={this.eventName}></input>
+                                <input style={{background: login_color}} autoComplete="off" className="form-control mr-sm-2" name="username" placeholder="Lichess Username" aria-label="Search" value={this.state.cache} onChange={this.eventName}></input>
                                 <div className="input-group-append">
                                     <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Go!</button>
                                     </div>

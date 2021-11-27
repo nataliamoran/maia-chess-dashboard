@@ -11,46 +11,73 @@ class BoardState extends React.Component {
           data: [],
           currIDs: [],
           username: props.username || "maia1",
-          maxHeight: props.maxHeight||400
+          maxHeight: props.maxHeight||400,
+          count: 0,
+          numGames: 0
         }
       }
 
-      componentDidMount(){
-            fetch(SERVER_URL+'/api/get_games?username='+this.state.username) 
+      fetchData(username, updateNumGames){
+        //console.log(username);
+        fetch(SERVER_URL+'/api/get_games?username='+username) 
         .then(response => response.json())
         .then(res => {
-            this.setState({data: res.games});
+            if(res.number_of_games === 0 && updateNumGames){
+                this.fetchData('maia1', false)
+            }
+            else{
+                this.setState({data: res.games});
+                if(updateNumGames){
+                    this.setState({numGames: res.number_of_games});
+                }
+                else{
+                    this.setState({numGames: 0});
+                }
+            }
         })
         .catch(err => {
             console.error(err);
         });
     }
 
+    tick() {
+        this.setState(state => ({
+          count: state.count + 1
+        }));
+      }
+
+      componentDidMount(){
+        this.interval = setInterval(() => this.tick(), 1000);
+        this.fetchData(this.state.username, true);
+    }
+
     componentDidUpdate(prevProps) {
         if(prevProps.currIDs !== this.state.currIDs){
             this.props.parentCallback(this.state.currIDs);
         }
-        if(prevProps.username !== this.props.username) {
-          this.setState({username: this.props.username || "maia1"});
-          fetch(SERVER_URL+'/api/get_games?username='+this.props.username) //http://dash-dev.maiachess.com
-                .then(response => response.json())
-                .then(res => {
-                    this.setState({data: res.games});
-                })
-                .catch(err => {
-                    console.error(err);
-                });
+        //console.log(prevProps.numGames + 'vs' + this.props.numGames);
+        if(prevProps.username !== this.props.username  ||prevProps.numGames !== this.props.numGames ) {
+          this.setState({username: this.props.username || "maia1", numGames: this.props.numGames});
+          this.fetchData(this.props.username, true);
         }
         if(prevProps.maxHeight !== this.props.maxHeight){
             this.setState({maxHeight: this.props.maxHeight});
         }
+        if(this.state.count === 3){
+            this.fetchData(this.props.username, true);
+            this.setState({count: 0});
+        }
+      }
+
+      componentWillUnmount() {
+        clearInterval(this.interval);
       }
 
     render() {
         return (
             <Card bg="dark" variant="dark" style={{ width: '180px'}}>
                 <Card.Body style={{"textAlign": "left"}}>
-                    <ListGroup variant="flush" style={{"overflowY": "auto", "maxHeight": (this.state.maxHeight+"px")}}>
+                    <ListGroup variant="flush" style={{"overflowY": "auto", "maxHeight": (this.state.maxHeight-100)}}>
                     {this.state.data.map(d => (
                         <ListGroup.Item key={d.ID}
                         variant="dark">
@@ -78,7 +105,15 @@ class BoardState extends React.Component {
                             
                         </ListGroup.Item>
                     ))} 
+                    
                     </ListGroup>
+                    {this.state.numGames > 0 &&
+                                <span style={{color: 'white'}}>{this.state.numGames} games analyzed</span>
+                            }
+                    {this.state.numGames === 0 &&
+                                <span style={{color: 'white'}}>Your games are being analyzed, plz wait!</span>
+                            }
+                    
                 </Card.Body>
             </Card>
         )
