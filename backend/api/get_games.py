@@ -50,7 +50,7 @@ async def get_user_games(username: str):
     for game in games:
         states = await get_states(game, False)
         first_state = states[0]
-        if username in (first_state['white_player'], first_state['black_player']):
+        if username.lower() in (first_state['white_player'].lower(), first_state['black_player'].lower()):
             curr = {}
             curr['ID'] = first_state['game_id']
             curr['whitePlayer'] = first_state['white_player']
