@@ -59,6 +59,7 @@ export default class MenuExampleColoredInverted extends Component {
                             name={'custom'}
                             active={activeA === 'custom'}
                             color={'blue'}
+                            style= {{display: 'none'}}
                             onClick={this.handleAClick}>
                             Custom
                             {this.state.activeA === 'custom' &&

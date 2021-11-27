@@ -62,6 +62,7 @@ export default  function Home(){
         setGameIDs(gameIDs);
     }
     const menuHandleCallback = (filter, customText) =>{
+        console.log("callback");
         setFilterString(customText);
         setFilter(filter);
     }

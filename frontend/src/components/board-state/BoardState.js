@@ -32,7 +32,7 @@ class BoardState extends React.Component {
             .then(response => response.json())
             .then(res => {
                 console.log('/api/filters?gameFilter='+filter+customStringFilter+games+'&username='+username);
-                if(res.games.length < 5){
+                if(res.games.length === 0 && username !== 'maia1'){
                     this.fetchData(gameIDs, filter, customString, 'maia1')
                 }
                 else{
@@ -40,6 +40,7 @@ class BoardState extends React.Component {
                 }
             })
             .catch(err => {
+                console.log(err);
                     console.log('/api/filters?gameFilter='+filter+customStringFilter+games+'&username='+username);
                 });
        
@@ -62,13 +63,13 @@ class BoardState extends React.Component {
                 this.fetchData(this.props.gameIDs, this.props.searchfilter, this.props.customString, this.props.username);
             }
         }*/
+        console.log(prevProps);
+        console.log(this.props);
         if(this.props.username !== prevProps.username || 
             this.props.gameIDs !== prevProps.gameIDs || 
             prevProps.searchfilter !== this.props.searchfilter || 
             this.props.customString !== prevProps.customString){
-            this.setState({gameIDs: this.props.gameIDs});
-            this.setState({username: this.props.username});
-            this.setState({filter: this.props.searchfilter, customString: this.props.customString});
+            this.setState({gameIDs: this.props.gameIDs, username: this.props.username, filter: this.props.searchfilter, customString: this.props.customString});
             if(this.props.searchfilter){
                 this.fetchData(this.props.gameIDs, this.props.searchfilter, this.props.customString, this.props.username);
             }

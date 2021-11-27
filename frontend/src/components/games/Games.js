@@ -26,6 +26,7 @@ class BoardState extends React.Component {
                 this.fetchData('maia1', false)
             }
             else{
+                if(updateNumGames || this.state.data.length !== 0){
                 this.setState({data: res.games});
                 if(updateNumGames){
                     this.setState({numGames: res.number_of_games});
@@ -33,6 +34,7 @@ class BoardState extends React.Component {
                 else{
                     this.setState({numGames: 0});
                 }
+            }
             }
         })
         .catch(err => {
@@ -57,7 +59,7 @@ class BoardState extends React.Component {
         }
         //console.log(prevProps.numGames + 'vs' + this.props.numGames);
         if(prevProps.username !== this.props.username  ||prevProps.numGames !== this.props.numGames ) {
-          this.setState({username: this.props.username || "maia1", numGames: this.props.numGames});
+          this.setState({username: this.props.username || "maia1", numGames: this.props.numGames, currIDs: [], data: []});
           this.fetchData(this.props.username, true);
         }
         if(prevProps.maxHeight !== this.props.maxHeight){
