@@ -55,22 +55,22 @@ async def get_filters(username: str, filters: str, games: list) -> dict:
                     curr_state['blackPlayer'] = state['black_player']
                     curr_state['date'] = state['datetime']
                     curr_state['averageStat'] = {
-                        "performance": stats['avg_performance'],
-                        "trickiness": stats['avg_trickiness'],
-                        "entropy": stats['avg_entropy']
+                        "p": stats['avg_performance'],
+                        "t": stats['avg_trickiness'],
+                        "e": stats['avg_entropy']
                     }
                     details = {}
                     details['move'] = f"{state['player_move'][:2]} {state['player_move'][2:]}"
                     details['FEN'] = state['board']
                     details['stat'] = {
-                        "performance": state['performance'],
-                        "trickiness": state['trickiness'],
-                        "entropy": state['model_entropy']
+                        "p": state['performance'],
+                        "t": state['trickiness'],
+                        "e": state['model_entropy']
                     }
                     details['maia_moves'] = [[state['model_move'][:2], state['model_move'][2:], state['model_top_policy']]]
                     curr_state['state'] = details
                     # check that the filter value exists
-                    if isinstance(details['stat']['trickiness'], (int, float)) and isinstance(details['stat']['performance'], (int, float)) and isinstance(details['stat']['entropy'], (int, float)):
+                    if isinstance(details['stat']['t'], (int, float)) and isinstance(details['stat']['p'], (int, float)) and isinstance(details['stat']['e'], (int, float)):
                         user_states.append(curr_state)
             elif state['model'] == STOCKFISH:
                 stockfish_moves[state['board']] = [[state['model_move'][:2], state['model_move'][2:], state['model_optimal_winrate']]]

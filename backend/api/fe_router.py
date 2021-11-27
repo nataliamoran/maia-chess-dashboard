@@ -25,9 +25,9 @@ fe_router = fastapi.APIRouter(prefix="/api", tags=['frontend'])
 
 
 class StatModel(BaseModel):
-    performance: float = Field(...)
-    trickiness: float = Field(...)
-    entropy: float = Field(...)
+    p: float = Field(...)
+    t: float = Field(...)
+    e: float = Field(...)
 
     class Config:
         allow_population_by_field_name = True
@@ -35,9 +35,9 @@ class StatModel(BaseModel):
         json_encoders = {ObjectId: str}
         schema_extra = {
             "example": {
-                "performance": 4,
-                "trickiness": 5,
-                "entropy": 1,
+                "p": 4,
+                "t": 5,
+                "e": 1,
             }
         }
 
@@ -62,9 +62,9 @@ class StateModel(BaseModel):
                 "move": "e4 e1",
                 "FEN": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
                 "stat": {
-                    "performance": 4,
-                    "trickiness": 5,
-                    "entropy": 1
+                    "p": 4,
+                    "t": 5,
+                    "e": 1
                 },
                 "last_move": [
                     "a6",
@@ -107,18 +107,18 @@ class GameModel(BaseModel):
                 "blackPlayer": "name2",
                 "date": "01/10/2021 13:15:03",
                         "averageStat": {
-                            "performance": 4,
-                            "trickiness": 5,
-                            "entropy": 1
+                            "p": 4,
+                            "t": 5,
+                            "e": 1
                         },
                 "state": {
                             "round": 1,
                             "move": "e4 e1",
                             "FEN": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
                             "stat": {
-                                "performance": 4,
-                                "trickiness": 5,
-                                "entropy": 1
+                                "p": 4,
+                                "t": 5,
+                                "e": 1
                             },
                             "last_move": [
                                 "a6",
@@ -161,18 +161,18 @@ class GameFilterModel(BaseModel):
                         "blackPlayer": "name2",
                         "date": "01/10/2021 13:15:03",
                         "averageStat": {
-                            "performance": 4,
-                            "trickiness": 5,
-                            "entropy": 1
+                            "p": 4,
+                            "t": 5,
+                            "e": 1
                         },
                         "state": {
                             "round": 1,
                             "move": "e4 e1",
                             "FEN": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
                             "stat": {
-                                "performance": 4,
-                                "trickiness": 5,
-                                "entropy": 1
+                                "p": 4,
+                                "t": 5,
+                                "e": 1
                             },
                             "last_move": [
                                 "a6",
@@ -313,11 +313,11 @@ async def get_game(username: str = "maia1"):
 async def filter_games(gameFilter: str, games: str, username: str):
     currFilter = gameFilter
     if gameFilter == 'mistakes':
-        currFilter = 'performance'
+        currFilter = 'p'
     elif gameFilter == 'interesting':
-        currFilter = 'entropy'
+        currFilter = 'e'
     else:
-        currFilter = 'trickiness'
+        currFilter = 't'
     list_of_games = games.split(",")
     filtered_games = await get_filters(username, currFilter, list_of_games)
     res = {
