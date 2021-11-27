@@ -70,7 +70,7 @@ async def get_filters(username: str, filters: str, games: list) -> dict:
                     details['maia_moves'] = [[state['model_move'][:2], state['model_move'][2:], state['model_top_policy']]]
                     curr_state['state'] = details
                     # check that the filter value exists
-                    if isinstance(state[filters], (int, float)):
+                    if isinstance(details['stat']['trickiness'], (int, float)) and isinstance(details['stat']['performance'], (int, float)) and isinstance(details['stat']['entropy'], (int, float)):
                         user_states.append(curr_state)
             elif state['model'] == STOCKFISH:
                 stockfish_moves[state['board']] = [[state['model_move'][:2], state['model_move'][2:], state['model_optimal_winrate']]]

@@ -25,9 +25,9 @@ fe_router = fastapi.APIRouter(prefix="/api", tags=['frontend'])
 
 
 class StatModel(BaseModel):
-    performance: float = Field(..., ge=-1, le=1)
-    trickiness: float = Field(..., ge=0, le=1)
-    entropy: float = Field(..., ge=0)
+    performance: float = Field(...)
+    trickiness: float = Field(...)
+    entropy: float = Field(...)
 
     class Config:
         allow_population_by_field_name = True
@@ -311,17 +311,15 @@ async def get_game(username: str = "maia1"):
 
 @fe_router.get("/filters", response_description="Filter game", response_model=GameFilterModel)
 async def filter_games(gameFilter: str, games: str, username: str):
-    # script_dir = os.path.dirname(__file__)
-    # if gameFilter == 'mistakes':
-    #     file_path = os.path.join(script_dir, 'resources/mistakes.json')
-    # elif gameFilter == 'interesting':
-    #     file_path = os.path.join(script_dir, 'resources/interesting.json')
-    # else:
-    #     file_path = os.path.join(script_dir, 'resources/tricky.json')
-    # data = json.load(open(file_path))
-    # return data
+    currFilter = gameFilter
+    if gameFilter == 'mistakes':
+        currFilter = 'performance'
+    elif gameFilter == 'interesting':
+        currFilter = 'entropy'
+    else:
+        currFilter = 'trickiness'
     list_of_games = games.split(",")
-    filtered_games = await get_filters(username, gameFilter, list_of_games)
+    filtered_games = await get_filters(username, currFilter, list_of_games)
     res = {
         "filter": gameFilter,
         "games": filtered_games
