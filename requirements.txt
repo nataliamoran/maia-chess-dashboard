@@ -74,4 +74,4 @@ urllib3==1.26.7
 uvicorn==0.15.0
 Werkzeug==2.0.2
 wrapt==1.13.3
-git+https://b658c265d729bba29ad78d36c084fbe678510672:@github.com/CSSLab/maia-lib.git@0.0.5#egg=maia-lib
+git+https://b658c265d729bba29ad78d36c084fbe678510672:@github.com/CSSLab/maia-lib.git
