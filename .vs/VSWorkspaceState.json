@@ -4,10 +4,10 @@
     "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\components",
-    "\\frontend\\src\\components\\hello",
-    "\\frontend\\src\\components\\navbar",
+    "\\frontend\\src\\components\\board-state",
+    "\\frontend\\src\\components\\findMenu",
+    "\\frontend\\src\\components\\games",
     "\\frontend\\src\\components\\pages",
-    "\\frontend\\src\\components\\player-stat",
     "\\frontend\\src\\components\\review",
     "\\scripts"
   ],

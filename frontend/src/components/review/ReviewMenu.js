@@ -12,6 +12,7 @@ export default class ReviewMenu extends Component {
         this.state = {
             username: props.username || "maia1",
             activeA: '',
+            activeB: ''
         }
     }
 
@@ -42,11 +43,20 @@ export default class ReviewMenu extends Component {
         })
     }
 
+    handleBClick = (e) => {
+        this.setState({ activeB: "active" });
+        window.open(
+            'https://google.com',
+            '_blank' // <- This is what makes it open in a new window.
+        );
+
+    }
+
     render() {
         const { activeA } = this.state
+        const { activeB } = this.state
         return (
             <div>
-                <div>{this.state.pos}</div>
                 <Menu compact icon inverted>
                     {colorsA.map((c, ind) => (
                         <Menu.Item
@@ -59,6 +69,14 @@ export default class ReviewMenu extends Component {
                             <Icon name={filterNames[ind]} />
                         </Menu.Item>
                     ))}
+                    <Menu.Item
+                        name={"B"}
+                        color={'blue'}
+                        active={activeB === "active"}
+                        onClick={this.handleBClick}
+                    >
+                        <Icon name="chat square text" />
+                    </Menu.Item>
                 </Menu>
             </div>
         )
