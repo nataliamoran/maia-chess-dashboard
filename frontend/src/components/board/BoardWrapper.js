@@ -15,7 +15,7 @@ class BoardWrapper extends React.Component {
 
         this.state = {
             gameID: props.gameID,
-            move: props.move,// which move to display
+            move: 0,// which move to display
             boardSize: props.boardSize, 
             stateSize: props.stateSize,
             arrows: props.arrows || [], 
@@ -61,10 +61,17 @@ class BoardWrapper extends React.Component {
             prevProps.stateSize !== this.props.stateSize ||
             prevProps.arrows !== this.props.arrows) {
             
-            this.setState({ move: this.props.move, 
+            this.setState({ move: this.props.move-1, 
                             boardSize: this.props.boardSize,
                             stateSize: this.props.stateSize,
                             arrows: this.props.arrows});
+
+            const selected = document.getElementById("board_move_"+Math.floor((this.props.move-1)/2) );
+            //console.log("board_move_"+Math.floor((this.props.move-1)/2), selected);
+            if (selected) {
+                selected.scrollIntoView({behavior: 'smooth'});
+            }
+        
         }
 
         if(this.state.gameID !== this.props.gameID) { 
@@ -81,6 +88,8 @@ class BoardWrapper extends React.Component {
                     // console.log(data.gameId)
                     if (data && data.gameId === this.props.gameID) {
                         this.setState({states: data.states, arrows: this.props.arrows})
+                        const selected = document.getElementById("board_move_"+Math.floor((this.props.move-1)/2) );
+                        selected.scrollIntoView({behavior: 'smooth'});
                     }
                 })
                 .catch(err => {
@@ -120,7 +129,7 @@ class BoardWrapper extends React.Component {
             <div >
                 <Board  fen = {this.state.states.length > this.state.move ? this.state.states[this.state.move].FEN : "" }
                         lastMove = {["AA", dest]}   // any 2 letters will prevent default highlighting of a8
-                        arrows = {this.state.move === this.props.move? this.state.arrows : []}
+                        arrows = {this.state.move === this.props.move-1? this.state.arrows : []}
                         size={this.state.boardSize} />
             </div>
             <Card bg="dark" variant="dark" style={{ width: '199px', maxHeight: this.state.stateSize, float: "right"}}>
@@ -128,19 +137,30 @@ class BoardWrapper extends React.Component {
                     <Card.Title style={{color:'white'}}>Moves</Card.Title>
                     <ListGroup variant="flush" style={{"overflowY": "auto", "maxHeight": this.state.stateSize - 100}}> 
                     {states.map((e,i) => (
-                        <ListGroup.Item key={(i)} action variant="dark" style={{padding: '0px'}}
+                        <ListGroup.Item id={"board_move_"+i} key={(i)} action variant="dark" style={{padding: '0px'}}
                                         >
-                            <span   style={{display: "inline-block", width: "55%", height: "100%", "textAlign": "left", padding: "8px 5px"}}
+                            <span   style={{display: "inline-block", 
+                                            width: "55%", 
+                                            height: "100%", 
+                                            "textAlign": "left", 
+                                            padding: "8px 5px", 
+                                            "background-color": 2*i === this.props.move-1 ? "#4d4f07" : "",
+                                        }}
                                     onClick={(event) => { 
                                         event.preventDefault();
                                         console.log("Change to view move ", 2*i)
                                         this.setState({move: 2 * i });
                                     }}
                             >
-                            {2 * i+1}. {e[0].PGN} 
+                            {i+1}. {e[0].PGN} 
                             </span>
                             
-                            <span   style={{display: "inline-block", width: "45%", height: "100%",  padding: "8px 5px"}} 
+                            <span   style={{display: "inline-block", 
+                                            width: "45%", 
+                                            height: "100%",  
+                                            padding: "8px 5px",
+                                            "background-color": 2*i+2 === this.props.move? "#4d4f07" : ""
+                                        }} 
                                     onClick={(event) => { 
                                         event.preventDefault();
                                         console.log("Change to view move ", 2*i+1)
