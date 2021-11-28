@@ -31,7 +31,7 @@ class BoardState extends React.Component {
         fetch(SERVER_URL+'/api/filters?gameFilter='+filter+customStringFilter+games+'&username='+username) 
             .then(response => response.json())
             .then(res => {
-                console.log('/api/filters?gameFilter='+filter+customStringFilter+games+'&username='+username);
+                //console.log('/api/filters?gameFilter='+filter+customStringFilter+games+'&username='+username);
                 if(res.games.length === 0 && username !== 'maia1'){
                     this.fetchData(gameIDs, filter, customString, 'maia1')
                 }
@@ -63,8 +63,8 @@ class BoardState extends React.Component {
                 this.fetchData(this.props.gameIDs, this.props.searchfilter, this.props.customString, this.props.username);
             }
         }*/
-        console.log(prevProps);
-        console.log(this.props);
+        //console.log(prevProps);
+        //console.log(this.props);
         if(this.props.username !== prevProps.username || 
             this.props.gameIDs !== prevProps.gameIDs || 
             prevProps.searchfilter !== this.props.searchfilter || 
