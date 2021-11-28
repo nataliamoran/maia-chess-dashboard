@@ -18,7 +18,7 @@ class BoardWrapper extends React.Component {
             move: props.move,// which move to display
             boardSize: props.boardSize, 
             stateSize: props.stateSize,
-            arrows: props.arrows, 
+            arrows: props.arrows || [], 
             states: [    ],
             // Ideally, states includs:
                 //      FEN, the FEN after the move
@@ -29,47 +29,32 @@ class BoardWrapper extends React.Component {
         }
     }
 
-    componentDidMount(){
-        fetch(SERVER_URL+"/api/games/" + this.state.gameID) 
-            .then((response) => { 
-                if (response.ok) {
-                    return response.json()
-                } else {
-                    console.log("Invalid gameID")
-                }
-            })
-            .then((data) => {
-                //console.log(data)
-                if (data) {
-                    this.setState({states: data.states})
-                }
-            })
-            .catch(err => {
-                console.error("Failed to fetch", err)
-            })
-    }
+    // componentDidMount(){
+    //     if (this.state.gameID) {
+
+    //         fetch(SERVER_URL+"/api/games/" + this.state.gameID) 
+    //             .then((response) => { 
+    //                 if (response.ok) {
+    //                     return response.json()
+    //                 } else {
+    //                     console.log("Invalid gameID")
+    //                     return Promise.reject("Invalid gameID")
+    //                 }
+    //             })
+    //             .then((data) => {
+    //                 //console.log(data)
+    //                 if (data) {
+    //                     this.setState({states: data.states})
+    //                 }
+    //             })
+    //             .catch(err => {
+    //                 console.error("Failed to fetch", err)
+    //             })
+    //     }
+    // }
 
 
     componentDidUpdate(prevProps) {
-        if(this.state.gameID !== this.props.gameID) { 
-            fetch("http://dash-dev.maiachess.com/api/games/" + this.props.gameID) 
-                .then((response) => { 
-                    if (response.ok) {
-                        return response.json()
-                    } else {
-                        console.log("Invalid gameID")
-                    }
-                })
-                .then((data) => {
-                    //console.log(data)
-                    if (data) {
-                        this.setState({gameID: this.props.gameID, states: data.states})
-                    }
-                })
-                .catch(err => {
-                    console.error("Failed to fetch", err)
-                })
-        }
 
         if (prevProps.move !== this.props.move ||
             prevProps.boardSize !== this.props.boardSize ||
@@ -81,12 +66,35 @@ class BoardWrapper extends React.Component {
                             stateSize: this.props.stateSize,
                             arrows: this.props.arrows});
         }
+
+        if(this.state.gameID !== this.props.gameID) { 
+            this.setState({states: [], gameID: this.props.gameID, arrows: [] })
+            fetch(SERVER_URL+"/api/games/" + this.props.gameID) 
+                .then((response) => { 
+                    if (response.ok) {
+                        return response.json()
+                    } else {
+                        console.log("Invalid gameID")
+                    }
+                })
+                .then((data) => {
+                    // console.log(data.gameId)
+                    if (data && data.gameId === this.props.gameID) {
+                        this.setState({states: data.states, arrows: this.props.arrows})
+                    }
+                })
+                .catch(err => {
+                    console.error("Failed to fetch", err)
+                })
+        }
+
+        
     }
 
     render() {
         //console.log("state ID:", this.state.gameID, "prop id:", this.props.gameID, "move:", this.props.move)
-        let dest = "AA"
-        if (this.state.states.length !== 0) {
+        let dest = "AA" // any 2 letters will prevent default highlighting of a8
+        if (this.state.states.length > this.state.move) {
 
             dest = this.state.states[this.state.move].PGN
             if (dest.charAt(dest.length-1) === "+") {
