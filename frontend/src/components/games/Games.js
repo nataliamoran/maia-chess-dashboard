@@ -18,13 +18,9 @@ class BoardState extends React.Component {
       }
 
       fetchData(username, updateNumGames){
-        console.log(username);
         fetch(SERVER_URL+'/api/get_games?username='+username) 
         .then(response => response.json())
         .then(res => {
-            console.log(res);
-            console.log(updateNumGames);
-            console.log(this.state.username);
             //need to use maia temporary
             if(res.number_of_games === 0 && updateNumGames && username === this.state.username){
                 this.fetchData('maia1', false);
