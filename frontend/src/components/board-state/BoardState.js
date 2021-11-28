@@ -57,14 +57,6 @@ class BoardState extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        /*if(this.props.gameIDs !== prevProps.gameIDs){
-            
-            if(this.props.searchfilter){
-                this.fetchData(this.props.gameIDs, this.props.searchfilter, this.props.customString, this.props.username);
-            }
-        }*/
-        //console.log(prevProps);
-        //console.log(this.props);
         if(this.props.username !== prevProps.username || 
             this.props.gameIDs !== prevProps.gameIDs || 
             prevProps.searchfilter !== this.props.searchfilter || 

@@ -39,21 +39,28 @@ export default  function Home(){
          if(game.state.last_move){
              setlastMove([game.state.last_move[0], game.state.last_move[1]]);
          }
-         if(game.state.stockfish_moves){
-            game.state.stockfish_moves.forEach(move => {
-                stuff.push({orig: move[0], dest: move[1], brush: 'red' ,  modifiers: {lineWidth: 10}});
+         if(game.state.move){
+            var temp = game.state.move.split(' ');
+            var size = 12;
+            if(game.state.stockfish_moves && game.state.stockfish_moves.includes(temp)) size -= 3;
+            if(game.state.maia_moves && game.state.maia_moves.includes(temp)) size -= 3;
+            stuff.push({orig: temp[0], dest: temp[1], brush: 'paleGrey' ,  modifiers: {lineWidth: size}});
+         }
+         if(game.state.maia_moves){
+            game.state.maia_moves.forEach(move => {
+               if(game.state.stockfish_moves && game.state.stockfish_moves.includes(move)){
+                   stuff.push({orig: move[0], dest: move[1], brush: 'yellow' ,  modifiers: {lineWidth: 9}});
+               }
+               else {
+                   stuff.push({orig: move[0], dest: move[1], brush: 'yellow' ,  modifiers: {lineWidth: 12}});
+               }
             })
         }
-         if(game.state.maia_moves){
-             game.state.maia_moves.forEach(move => {
-                if(game.state.stockfish_moves && game.state.stockfish_moves.includes(move)){
-                    stuff.push({orig: move[0], dest: move[1], brush: 'yellow' ,  modifiers: {lineWidth: 6}});
-                }
-                else {
-                    stuff.push({orig: move[0], dest: move[1], brush: 'yellow' ,  modifiers: {lineWidth: 10}});
-                }
-             })
-         }
+         if(game.state.stockfish_moves){
+            game.state.stockfish_moves.forEach(move => {
+                stuff.push({orig: move[0], dest: move[1], brush: 'red' ,  modifiers: {lineWidth: 12}});
+            })
+        }
          setArrows(stuff);
          setGameID(game.ID);
          setMove(game.state.round);
