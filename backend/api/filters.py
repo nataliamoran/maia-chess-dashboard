@@ -48,7 +48,7 @@ async def get_filters(username: str, filters: str, games: list) -> dict:
                 prev_move = [state['player_move'][:2], state['player_move'][2:]]
                 count += 1
                 # Check whether or not to add curr state into list
-                if state['active_player'] == username:
+                if state['active_player'].lower() == username.lower():
                     curr_state = {}
                     curr_state['ID'] = game
                     curr_state['whitePlayer'] = state['white_player']
