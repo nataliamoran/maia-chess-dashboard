@@ -1,5 +1,5 @@
-import React, { Component, useState } from "react";
-import { SERVER_URL } from "../../env";
+import React, { Component } from "react";
+
 import { Icon, Menu } from 'semantic-ui-react'
 
 const colorsA = ['blue']
@@ -18,14 +18,9 @@ export default class Feedback extends Component {
     handleAClick = (e, { name }) => {
         this.setState({ activeA: name });
 
-        var plus = 0
-        var neg = 0
-
         if (this.state.activeA === "share") {
-            plus = 1
         }
         else {
-            neg = 1
         }
     }
 
