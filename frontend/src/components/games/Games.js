@@ -96,7 +96,7 @@ class BoardState extends React.Component {
                             id={d.ID} 
                             style={{'fontSize': '12px','fontWeight': 'bold'}}
                             label = {<div style={{'width': '100%','height': '100%'}}><div>{d.whitePlayer+" vs "+d.blackPlayer} </div>
-                                   <div style={{'fontSize': '10px'}}>{(new Date(d.date)).toLocaleDateString()}</div>
+                                   <div style={{'fontSize': '10px'}}>{d.date.substring(5, 10).replaceAll('.', '/')}/{d.date.substring(0, 4)}&nbsp;{d.date.substring(11, 16)}</div>
                                    </div>} 
                             checked = {this.state.currIDs.includes(d.ID)}
                             onChange={(event) => {
