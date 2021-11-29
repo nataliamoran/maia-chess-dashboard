@@ -92,7 +92,7 @@ class BoardState extends React.Component {
                             this.props.parentCallback(d);
                             event.preventDefault();
                             }} >
-                                 <div style={{'fontSize': '16px','fontWeight': 'bold'}}>{d.state.round}.&nbsp;{d.state.move}</div>
+                                 <div style={{'fontSize': '16px','fontWeight': 'bold'}}>{Math.ceil(d.state.round/2)}.&nbsp;{d.state.move}</div>
                             <div style={{'fontSize': '12px'}}>{d.whitePlayer} vs {d.blackPlayer}</div>
                             <div style={{'fontSize': '10px'}}>{d.date.substring(5, 10).replaceAll('.', '/')}/{d.date.substring(0, 4)}&nbsp;{d.date.substring(11, 16)}</div>
                            
