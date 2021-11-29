@@ -19,13 +19,13 @@ class BoardState extends React.Component {
       }
 
       fetchData(username){
-          console.log("username: "+username);
+        //  console.log("username: "+username);
         fetch(SERVER_URL+'/api/get_games?username='+username) 
         .then(response => response.json())
         .then(res => {
-            console.log("# of games: "+res.number_of_games+ " for username: "+username);
+            //console.log("# of games: "+res.number_of_games+ " for username: "+username);
             if(res.number_of_games !== 0 && username === 'maia1' && this.state.maiaGames.length === 0){
-                console.log("initalize maia games");
+               // console.log("initalize maia games");
                 this.setState({maiaGames: res.games, data: res.games, numGames: res.number_of_games});
             }
             //need to use maia temporary
