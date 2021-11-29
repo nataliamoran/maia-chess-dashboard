@@ -12,34 +12,38 @@ class BoardState extends React.Component {
           currIDs: [],
           username: props.username || "maia1",
           maxHeight: props.maxHeight||400,
+          maiaGames: [],
           count: 0,
           numGames: 0
         }
       }
 
-      fetchData(username, updateNumGames){
+      fetchData(username){
+          console.log("username: "+username);
         fetch(SERVER_URL+'/api/get_games?username='+username) 
         .then(response => response.json())
         .then(res => {
+            console.log("# of games: "+res.number_of_games+ " for username: "+username);
+            if(res.number_of_games !== 0 && username === 'maia1' && this.state.maiaGames.length === 0){
+                console.log("initalize maia games");
+                this.setState({maiaGames: res.games, data: res.games, numGames: res.number_of_games});
+            }
             //need to use maia temporary
-            if(res.number_of_games === 0 && updateNumGames && username === this.state.username){
-                this.fetchData('maia1', false);
+            else if(res.number_of_games <= 0 && username === this.state.username){
+                this.setState({data: this.state.maiaGames, numGames: 0});
             }
             //actual data
-            else if(username === this.state.username || (username === 'maia1' && !updateNumGames)){
-                if(updateNumGames || this.state.data.length !== 0){
-                    this.setState({data: res.games});
-                    if(updateNumGames){
-                        this.setState({numGames: res.number_of_games});
-                    }
-                    else{
-                        this.setState({numGames: 0});
-                    }
+            else if(username === this.state.username){
+                if(this.state.numGames !== res.number_of_games){
+                    this.setState({data: res.games, numGames: res.number_of_games});
                 }
+            }
+            else if(this.state.data.length === 0){
+                this.setState({data: this.state.maiaGames, numGames: 0});
             }
         })
         .catch(err => {
-            console.error(err);
+            this.setState({games: this.state.maiaGames, numGames: 0});
         });
     }
 
@@ -51,7 +55,8 @@ class BoardState extends React.Component {
 
       componentDidMount(){
         this.interval = setInterval(() => this.tick(), 1000);
-        this.fetchData(this.state.username, true);
+        this.fetchData("maia1");
+        this.fetchData(this.state.username);
     }
 
     componentDidUpdate(prevProps) {
@@ -59,15 +64,18 @@ class BoardState extends React.Component {
             this.props.parentCallback(this.state.currIDs);
         }
         //console.log(prevProps.numGames + 'vs' + this.props.numGames);
-        if(prevProps.username !== this.props.username  ||prevProps.numGames !== this.props.numGames ) {
-          this.setState({username: this.props.username || "maia1", numGames: this.props.numGames, currIDs: [], data: []});
-          this.fetchData(this.props.username, true);
+        if(prevProps.username !== this.props.username) {
+          this.setState({username: this.props.username || "maia1", currIDs: [], data: this.state.maiaGames, numGames: 0});
+          this.fetchData(this.props.username);
         }
         if(prevProps.maxHeight !== this.props.maxHeight){
             this.setState({maxHeight: this.props.maxHeight});
         }
         if(this.state.count === 3){
-            this.fetchData(this.props.username, true);
+            if(this.state.data.length < 3 || this.state.numGames === 0){
+                this.fetchData(this.props.username);
+                
+            }
             this.setState({count: 0});
         }
       }

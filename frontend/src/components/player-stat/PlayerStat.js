@@ -67,6 +67,7 @@ class BoardState extends React.Component {
                     <div>Win Rate: {winRate}% </div>
                     <div>Win+Draw Rate: {winTieRate}% </div>
                     <table style={{marginTop: '5px', marginBottom: '10px', padding: '5px', marginLeft: 'auto', marginRight: 'auto'}}>
+                    <tbody>
                     <tr>
                     <th></th>
                     <th>Blitz</th>
@@ -91,6 +92,7 @@ class BoardState extends React.Component {
                     <td>{this.state.stats.perfs.classical.rating} </td>
                     <td>{this.state.stats.perfs.rapid.rating} </td>
                     </tr>
+                    </tbody>
                     </table>
                     </div>
                 </Card.Body>
