@@ -49,15 +49,16 @@ async def get_user_games(username: str):
     num_games = 0
     for game in games:
         states = await get_states(game, False)
-        first_state = states[0]
-        if username.lower() in (first_state['white_player'].lower(), first_state['black_player'].lower()):
-            curr = {}
-            curr['ID'] = first_state['game_id']
-            curr['whitePlayer'] = first_state['white_player']
-            curr['blackPlayer'] = first_state['black_player']
-            curr['date'] = first_state['datetime']
-            info.append(curr)
-            num_games += 1
+        if states:
+            first_state = states[0]
+            if username.lower() in (first_state['white_player'].lower(), first_state['black_player'].lower()):
+                curr = {}
+                curr['ID'] = first_state['game_id']
+                curr['whitePlayer'] = first_state['white_player']
+                curr['blackPlayer'] = first_state['black_player']
+                curr['date'] = first_state['datetime']
+                info.append(curr)
+                num_games += 1
     return info, num_games
 
 

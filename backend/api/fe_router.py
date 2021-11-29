@@ -249,25 +249,6 @@ class UserGames(BaseModel):
             }
         }
 
-class UserStats(BaseModel):
-    username: str = Field(...)
-    stats: StatModel =  Field(...)
-
-    class Config:
-        allow_population_by_field_name = True
-        arbitrary_types_allowed = True
-        json_encoders = {ObjectId: str}
-        schema_extra = {
-            "example": {
-                "username": "maia1",
-                "stats": {
-                "performance": 0.006,
-                "trickiness": 2.156,
-                "entropy": 0.3936
-                }
-            }
-        }
-
 class GameStates(BaseModel):
     gameId: str = Field(...)
     states: list = Field(...)
@@ -331,16 +312,6 @@ async def filter_games(gameFilter: str, games: str, username: str):
                response_model=GameNumModel)
 async def get_num_games(username: str):
     return await analysis_router.get_analyzed_games_num(username)
-
-
-@fe_router.get("/stats", response_description="Get user stats", response_model=UserStats)
-async def get_stats(username: str = "maia1"):
-    stats = get_user_stats(username)
-    res = {
-        "username": username,
-        "stats": stats
-    }
-    return res
 
 @fe_router.get("/users/{username}", response_description="Get user profile", response_model=UserModel)
 async def get_user_profile(username: str):
