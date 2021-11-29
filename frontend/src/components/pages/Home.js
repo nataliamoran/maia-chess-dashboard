@@ -6,6 +6,7 @@ import ReviewMenu from "../../components/review/ReviewMenu";
 import BoardWrapper from "../../components/board/BoardWrapper";
 import GamesList from "../../components/games/Games";
 import PlayerStat from "../../components/player-stat/PlayerStat";
+import Feedback from "../review/Feedback";
 
 export default  function Home(){
     const [dimensions, setDimensions] = useState({ 
@@ -124,8 +125,11 @@ export default  function Home(){
                             <span style={{'color': 'red'}}>Stockfish Suggestions</span>
                         </p>
                     </div>
-                    <div className="column" align="center" style={{width: "100px", float: "right", "textAlign": "left"}}>
+                    <div className="column" align="center" style={{ width: "320px", float: "right", "textAlign": "left" }}>
+                        <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Feedback</div>
                         <ReviewMenu username={username}></ReviewMenu>
+                        <Feedback username={username}></Feedback>
+                        
                     </div>
                 </div>
                 <div align='center' style={{ marginBottom: "10px"}}>
