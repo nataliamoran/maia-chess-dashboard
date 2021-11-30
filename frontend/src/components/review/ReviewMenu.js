@@ -39,6 +39,7 @@ export default class ReviewMenu extends Component {
             body: JSON.stringify({
                 username: this.state.username,
                 thumbs_up: plus,
+                thumbs_down: neg,
                 state: {
                     gameID: this.state.gameID,
                     move: this.state.move
