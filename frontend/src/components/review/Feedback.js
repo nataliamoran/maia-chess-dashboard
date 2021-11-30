@@ -35,7 +35,7 @@ export default class Feedback extends Component {
             })
         })
 
-        this.setState(this.state.cache, '');
+        this.setState({ cache: '' });
         setTimeout(function () { //Start the timer
             this.setState({ activeA: '' }) //After 1 second, set color to default
         }.bind(this), 1000)
@@ -53,7 +53,6 @@ export default class Feedback extends Component {
         const { activeA } = this.state
         return (
             <div>
-                <div>{this.state.cache}</div>
                 <form>
                     <div class="form-outline">
                         <textarea type="primary" class="form-control" id="textArea" rows="1" maxLength="300" value={this.state.cache} onChange={this.eventName} ></textarea>
