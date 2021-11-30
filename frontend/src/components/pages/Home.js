@@ -127,7 +127,7 @@ export default  function Home(){
                     </div>
                     <div className="column" align="center" style={{ width: "320px", float: "right", "textAlign": "left" }}>
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px" }}>Feedback</div>
-                        <ReviewMenu username={username}></ReviewMenu>
+                        <ReviewMenu username={username} gameID={gameID} move={move} ></ReviewMenu>
                         <Feedback username={username}></Feedback>
                         
                     </div>

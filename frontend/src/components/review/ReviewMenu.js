@@ -11,7 +11,9 @@ export default class ReviewMenu extends Component {
         super(props)
         this.state = {
             username: props.username || "maia1",
-            activeA: ''
+            gameID: '',
+            activeA: '',
+            move: 0
         }
     }
 
@@ -37,7 +39,10 @@ export default class ReviewMenu extends Component {
             body: JSON.stringify({
                 username: this.state.username,
                 thumbs_up: plus,
-                thumbs_down: neg
+                state: {
+                    gameID: this.state.gameID,
+                    move: this.state.move
+                }
             })
         })
     }

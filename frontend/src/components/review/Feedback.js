@@ -35,7 +35,7 @@ export default class Feedback extends Component {
             })
         })
 
-        this.setState(cache, '');
+        this.setState(this.state.cache, '');
         setTimeout(function () { //Start the timer
             this.setState({ activeA: '' }) //After 1 second, set color to default
         }.bind(this), 1000)
