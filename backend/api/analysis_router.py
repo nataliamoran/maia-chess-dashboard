@@ -14,6 +14,7 @@ from .utils import PyObjectId
 from .models import GameNumModel
 from . import db_client
 import maia_lib
+import multiprocessing as mp
 
 analysis_router = fastapi.APIRouter(prefix="/api/analysis", tags=['analysis'])
 
@@ -63,11 +64,26 @@ class AnalysisTestModel(BaseModel):
         }
 
 
-@analysis_router.get("/num_games/{username}",
-                     response_description="Get the number of games analyzed",
+@analysis_router.get("/game_ids/{username}",
+                     response_description="Get game ids of analyzed games for this user",
                      response_model=GameNumModel)
 async def get_analyzed_games_num(username: str):
-    pass
+    anal = db_client.get_analysis_db()
+
+    # get list of analyzed game lichess ids
+    cursor = anal['analyzed'].find()
+    every = await cursor.to_list(length=100000)
+
+    ret = []
+    for game in every:
+        if game['white_player'] == username or game['black_player'] == username:
+            ret += [game['_id']]
+
+    response = {
+        'status': 'success',
+        'game_ids': ret
+    }
+    return JSONResponse(status_code=status.HTTP_200_OK, content=response)
 
 
 @analysis_router.get("/filters/{games_filter}/{username}",
@@ -76,6 +92,102 @@ async def get_analyzed_games_num(username: str):
 async def filter_games(games_filter: str, username: str):
     pass
 
+
+def parallel_analysis(games, analyzed_game_ids):
+    todo = []
+    for game in games:
+        if game['_id'] not in analyzed_game_ids:
+            todo += [game['pgn']]
+
+    with mp.Pool(mp.cpu_count()) as p:
+        analyses = p.map(maia_lib.full_game_analysis, todo)
+
+    return analyses
+
+def post_analysis_parallel(game):
+    # get the dashboard database
+    anal = db_client.get_analysis_db()
+
+    # mark the game as analyzed in the collection
+    print('pre database request')
+    anal['analyzed'].update_one({'_id': game['_id']}, {
+        '$set': {'_id': game['_id'], 'white_player': game['white_player'], 'black_player': game['black_player']}},
+                                      upsert=True)
+
+    # analyze the game
+    print("analyzing", game['_id'])
+    game_analysis = maia_lib.full_game_analysis(game['pgn'])
+
+    aggregates = {}  # store PTE for each model except Stockfish
+    aggregates['_id'] = game['_id']
+
+    for model, states in game_analysis.items():
+        # fill the aggregates for this model with dummy values to be modified
+        agg = {
+            'avg_performance': 0,
+            'avg_entropy': 0,
+            'avg_trickiness': 0,
+            'max_performance': float('-inf'),
+            'min_performance': float('inf'),
+            'max_entropy': float('-inf'),
+            'min_entropy': float('inf'),
+            'max_trickiness': float('-inf'),
+            'min_trickiness': float('inf'),
+        }
+
+        # ---------------------------- analyze states -----------------------------------
+        for state in states:
+            # add the id and model name for this state
+            state['_id'] = str(model) + '-' + str(state['game_id']) + '-' + str(state['move_ply'])
+            state['model'] = str(model)
+
+            # insert the state
+            anal['game_states'].update_one({'_id': state['_id']}, {'$set': state}, upsert=True)
+
+            if model == 'stockfish':
+                continue
+
+            # record the aggregates
+            p = state['performance']
+            t = state['trickiness']
+            e = state['model_entropy']
+
+            # these dumb looking statements check if the value is NaN
+            if p == p:
+                if agg['max_performance'] < p:
+                    agg['max_performance'] = p
+                if agg['min_performance'] > p:
+                    agg['min_performance'] = p
+                agg['avg_performance'] += p
+
+            if e == e:
+                if agg['max_entropy'] < e:
+                    agg['max_entropy'] = e
+                if agg['min_entropy'] > e:
+                    agg['min_entropy'] = e
+                agg['avg_entropy'] += e
+
+            if t == t:
+                if agg['max_trickiness'] < t:
+                    agg['max_trickiness'] = t
+                if agg['min_trickiness'] > t:
+                    agg['min_trickiness'] = t
+                agg['avg_trickiness'] += t
+
+        # -------------------- state analysis done, record aggregates ---------------------------
+        if model == 'stockfish':
+            continue
+
+        agg['avg_performance'] /= len(states)
+        agg['avg_entropy'] /= len(states)
+        agg['avg_trickiness'] /= len(states)
+
+        aggregates[model] = agg
+
+    # insert the aggregates
+    anal['stats'].update_one({'_id': game['_id']}, {'$set': aggregates}, upsert=True)
+
+    return game['_id']
 
 @analysis_router.post("/analyze/", response_description="Analyze games from this user that has been added to the Maia Database")
 async def analyze_user(username: str, num_games : Optional[int] = 1):
@@ -105,90 +217,93 @@ async def analyze_user(username: str, num_games : Optional[int] = 1):
     for i in range(len(analyzed_game_ids)):
         analyzed_game_ids[i] = analyzed_game_ids[i]['_id']
 
-    new_games = []
-
-    # write the remaining games into the database, collect average metrics, and add it into the analyzed section after
+    # set up for analysis and writing to db
+    todo = []  # stores games that are not analyzed that now should be
     for game in found_games:
-        # skip if game is already analyzed
-        if game['_id'] in analyzed_game_ids:
-            continue
-        else:
-            new_games += [game['_id']]
+        if game['_id'] not in analyzed_game_ids:
+            todo += [game]
 
-        # mark the game as analyzed in the collection
-        await anal['analyzed'].update_one({'_id': game['_id']}, {'$set': {'_id': game['_id'], 'white_player': game['white_player'], 'black_player': game['black_player']}}, upsert=True)
+    print('about to analyze')
+    with mp.Pool(mp.cpu_count()) as p:
+        # stores the id of all new games analyzed
+        new_games = p.map(post_analysis_parallel, todo)
 
-        # analyze the game
-        game_analysis = maia_lib.full_game_analysis(game['pgn'])
-
-        aggregates = {}  # store PTE for each model except Stockfish
-        aggregates['_id'] = game['_id']
-
-        for model, states in game_analysis.items():
-            # fill the aggregates for this model with dummy values to be modified
-            agg = {
-                'avg_performance': 0,
-                'avg_entropy': 0,
-                'avg_trickiness': 0,
-                'max_performance': float('-inf'),
-                'min_performance': float('inf'),
-                'max_entropy': float('-inf'),
-                'min_entropy': float('inf'),
-                'max_trickiness': float('-inf'),
-                'min_trickiness': float('inf'),
-            }
-
-            # ---------------------------- analyze states -----------------------------------
-            for state in states:
-                # add the id and model name for this state
-                state['_id'] = str(model) + '-' + str(state['game_id']) + '-' + str(state['move_ply'])
-                state['model'] = str(model)
-
-                # insert the state
-                await anal['game_states'].update_one({'_id': state['_id']}, {'$set': state}, upsert=True)
-
-                if model == 'stockfish':
-                    continue
-
-                # record the aggregates
-                p = state['performance']
-                t = state['trickiness']
-                e = state['model_entropy']
-
-                # these dumb looking statements check if the value is NaN
-                if p == p:
-                    if agg['max_performance'] < p:
-                        agg['max_performance'] = p
-                    if agg['min_performance'] > p:
-                        agg['min_performance'] = p
-                    agg['avg_performance'] += p
-
-                if e == e:
-                    if agg['max_entropy'] < e:
-                        agg['max_entropy'] = e
-                    if agg['min_entropy'] > e:
-                        agg['min_entropy'] = e
-                    agg['avg_entropy'] += e
-
-                if t == t:
-                    if agg['max_trickiness'] < t:
-                        agg['max_trickiness'] = t
-                    if agg['min_trickiness'] > t:
-                        agg['min_trickiness'] = t
-                    agg['avg_trickiness'] += t
-
-            # -------------------- state analysis done, record aggregates ---------------------------
-            if model == 'stockfish':
-                continue
-
-            agg['avg_performance'] /= len(states)
-            agg['avg_entropy'] /= len(states)
-            agg['avg_trickiness'] /= len(states)
-
-            aggregates[model] = agg
-
-        # insert the aggregates
-        await anal['stats'].update_one({'_id': game['_id']}, {'$set': aggregates}, upsert=True)
+    # # write the remaining games into the database, collect average metrics, and add it into the analyzed section after
+    # for game in todo:
+    #     # mark the game as analyzed in the collection
+    #     await anal['analyzed'].update_one({'_id': game['_id']}, {'$set': {'_id': game['_id'], 'white_player': game['white_player'], 'black_player': game['black_player']}}, upsert=True)
+    #
+    #     # analyze the game
+    #     game_analysis = maia_lib.full_game_analysis(game['pgn'])
+    #
+    #     aggregates = {}  # store PTE for each model except Stockfish
+    #     aggregates['_id'] = game['_id']
+    #
+    #     for model, states in game_analysis.items():
+    #         # fill the aggregates for this model with dummy values to be modified
+    #         agg = {
+    #             'avg_performance': 0,
+    #             'avg_entropy': 0,
+    #             'avg_trickiness': 0,
+    #             'max_performance': float('-inf'),
+    #             'min_performance': float('inf'),
+    #             'max_entropy': float('-inf'),
+    #             'min_entropy': float('inf'),
+    #             'max_trickiness': float('-inf'),
+    #             'min_trickiness': float('inf'),
+    #         }
+    #
+    #         # ---------------------------- analyze states -----------------------------------
+    #         for state in states:
+    #             # add the id and model name for this state
+    #             state['_id'] = str(model) + '-' + str(state['game_id']) + '-' + str(state['move_ply'])
+    #             state['model'] = str(model)
+    #
+    #             # insert the state
+    #             await anal['game_states'].update_one({'_id': state['_id']}, {'$set': state}, upsert=True)
+    #
+    #             if model == 'stockfish':
+    #                 continue
+    #
+    #             # record the aggregates
+    #             p = state['performance']
+    #             t = state['trickiness']
+    #             e = state['model_entropy']
+    #
+    #             # these dumb looking statements check if the value is NaN
+    #             if p == p:
+    #                 if agg['max_performance'] < p:
+    #                     agg['max_performance'] = p
+    #                 if agg['min_performance'] > p:
+    #                     agg['min_performance'] = p
+    #                 agg['avg_performance'] += p
+    #
+    #             if e == e:
+    #                 if agg['max_entropy'] < e:
+    #                     agg['max_entropy'] = e
+    #                 if agg['min_entropy'] > e:
+    #                     agg['min_entropy'] = e
+    #                 agg['avg_entropy'] += e
+    #
+    #             if t == t:
+    #                 if agg['max_trickiness'] < t:
+    #                     agg['max_trickiness'] = t
+    #                 if agg['min_trickiness'] > t:
+    #                     agg['min_trickiness'] = t
+    #                 agg['avg_trickiness'] += t
+    #
+    #         # -------------------- state analysis done, record aggregates ---------------------------
+    #         if model == 'stockfish':
+    #             continue
+    #
+    #         agg['avg_performance'] /= len(states)
+    #         agg['avg_entropy'] /= len(states)
+    #         agg['avg_trickiness'] /= len(states)
+    #
+    #         aggregates[model] = agg
+    #
+    #     # insert the aggregates
+    #     await anal['stats'].update_one({'_id': game['_id']}, {'$set': aggregates}, upsert=True)
 
     # set the response to send
     response = {}
@@ -207,14 +322,23 @@ async def get_analyzed_games():
 
     # generate list of analyzed game lichess ids
     cursor = anal['analyzed'].find()
-    mids = await cursor.to_list(length=100000)
-    ids = []
-    for m in mids:
-        ids += [m['_id']]
+    every = await cursor.to_list(length=100000)
+    data = []
+    for d in every:
+        data += [{
+            '_id': d['_id'],
+            'white_player': d['white_player'],
+            'black_player': d['black_player']
+        }]
+
+    # cpus = mp.cpu_count()
+    #
+    # with mp.Pool(cpus) as p:
+    #     data = p.map(f, data)
 
     response = {
         'status': 'success',
-        'games': ids
+        'games': data
     }
 
     return JSONResponse(status_code=status.HTTP_200_OK, content=response)
