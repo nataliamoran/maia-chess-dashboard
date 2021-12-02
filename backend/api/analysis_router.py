@@ -88,9 +88,12 @@ async def analyze_user(username: str, num_games : Optional[int] = 1):
 
     # get required number of games
     if num_games is None:
-        found_games = await cursor.to_list(length=100000)  # picked some arbitrary value here I guess
+        found_games = await cursor.to_list(length=1)  # picked some arbitrary value here I guess
     else:
         found_games = await cursor.to_list(length=num_games)
+
+    if found_games == []:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "message": "attempting to analyze a player with no games stored"})
 
     # find games that are already analyzed
     game_ids = []
@@ -113,7 +116,7 @@ async def analyze_user(username: str, num_games : Optional[int] = 1):
             new_games += [game['_id']]
 
         # mark the game as analyzed in the collection
-        await anal['analyzed'].update_one({'_id': game['_id']}, {'$set': {'_id': game['_id']}}, upsert=True)
+        await anal['analyzed'].update_one({'_id': game['_id']}, {'$set': {'_id': game['_id'], 'white_player': game['white_player'], 'black_player': game['black_player']}}, upsert=True)
 
         # analyze the game
         game_analysis = maia_lib.full_game_analysis(game['pgn'])
