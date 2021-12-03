@@ -1,4 +1,4 @@
-import { SERVER_URL } from "../../env";
+import { SERVER_URL } from "../env";
 
 //function used to post an event log
 export default function postEventLog(eventTitle, eventStatus){

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Menu } from 'semantic-ui-react';
 import { Button  } from "react-bootstrap";
+import postEventLog from "../util.js";
 
 const colorsA = ['olive', 'green', 'teal'];
 const filterNames = ["interesting", 'tricky', 'mistakes'];
@@ -23,6 +24,13 @@ export default class MenuExampleColoredInverted extends Component {
             this.setState({cache: '', applied: ''});
         }
         this.props.parentCallback(name, this.state.cache);
+
+        postEventLog("Filter by " + this.state.activeA,
+            {
+                username: this.state.username,
+                time: Date().toLocaleString()
+            }
+        )
     }
 
     eventName(event) {
