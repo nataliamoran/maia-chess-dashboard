@@ -4,13 +4,8 @@
     "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\components",
-    "\\frontend\\src\\components\\hello",
-    "\\frontend\\src\\components\\navbar",
-    "\\frontend\\src\\components\\pages",
-    "\\frontend\\src\\components\\player-stat",
-    "\\frontend\\src\\components\\review",
-    "\\scripts"
+    "\\frontend\\src\\components\\findMenu"
   ],
-  "SelectedNode": "\\frontend\\src\\components\\pages\\Home.js",
+  "SelectedNode": "\\frontend\\src\\components\\findMenu\\FindMenu.js",
   "PreviewInSolutionExplorer": false
 }

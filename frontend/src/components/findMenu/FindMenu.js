@@ -28,7 +28,7 @@ export default class MenuExampleColoredInverted extends Component {
         postEventLog("Filter by " + this.state.activeA,
             {
                 username: this.state.username,
-                time: Date().toLocaleString()
+                log_time_fe: Date().toLocaleString()
             }
         )
     }
