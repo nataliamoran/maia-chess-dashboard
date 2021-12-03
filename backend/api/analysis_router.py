@@ -66,7 +66,7 @@ class AnalysisTestModel(BaseModel):
 @analysis_router.get("/num_games/{username}",
                      response_description="Get number of games for a user",
                      response_model=GameNumModel)
-async def get_user_analyzed_games(username: str):
+async def get_analyzed_games_num(username: str):
     anal = db_client.get_analysis_db()
 
     # get list of analyzed game lichess ids
