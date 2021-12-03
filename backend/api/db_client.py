@@ -7,8 +7,8 @@ class DataBase:
 
 
 db = DataBase()
-DASHBOARD_DB = os.getenv('DASHBOARD_DB', 'dev_dashboard')
-ANALYSIS_DB = os.getenv('ANALYSIS_DB', 'dev_analysis')
+DASHBOARD_DB = os.getenv('DASHBOARD_DB', 'dev2_dashboard')
+ANALYSIS_DB = os.getenv('ANALYSIS_DB', 'dev2_analysis')
 
 
 def get_analysis_db():
