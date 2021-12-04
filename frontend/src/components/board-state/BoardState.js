@@ -1,6 +1,7 @@
 import { ListGroup, Card  } from "react-bootstrap";
 import { SERVER_URL } from "../../env";
 import React from "react";
+import postEventLog from "../util.js";
 import './BoardState.css';
 
 class BoardState extends React.Component {
@@ -90,6 +91,14 @@ class BoardState extends React.Component {
                                 curr: d.ID
                               });
                             this.props.parentCallback(d);
+                            postEventLog("User change position to be displayed",
+                            {
+                                username: this.state.username,
+                                game_id: d.ID,
+                                game_state: d.state,
+                                log_time_fe: Date().toLocaleString()
+                            }
+                            );
                             event.preventDefault();
                             }} >
                                  <div style={{'fontSize': '16px','fontWeight': 'bold'}}>{Math.ceil(d.state.round/2)}.&nbsp;{d.state.move}</div>

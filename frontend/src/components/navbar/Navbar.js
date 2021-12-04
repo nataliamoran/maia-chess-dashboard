@@ -1,6 +1,7 @@
 import * as ReactBootStrap from "react-bootstrap"
 import { SERVER_URL } from "../../env";
 import React from "react";
+import postEventLog from "../util.js";
 class Navbar extends React.Component {
 
 
@@ -30,17 +31,23 @@ class Navbar extends React.Component {
                 if(res){
                     this.setState({ name: this.state.cache, valid: true });
                     this.props.parentCallback(this.state.cache);
+                    postEventLog("User login with username",
+                    {
+                        username: this.state.cache,
+                        log_time_fe: Date().toLocaleString()
+                    }
+                    );
                     
                     const requestOptions = {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' }
                         //body: JSON.stringify({maxgames: 10})
                     };
-                    fetch(SERVER_URL+'/api/dashboard/raw/'+this.state.cache+"?maxgames=3", requestOptions)
+                    fetch(SERVER_URL+'/api/dashboard/raw/'+this.state.cache+"?maxgames=5", requestOptions)
                         .then(response => response.json())
                         .then(data => {
                             console.log(data);
-                            fetch(SERVER_URL+'/api/analysis/analyze?username='+this.state.cache+"&num_games=3", {
+                            fetch(SERVER_URL+'/api/analysis/analyze?username='+this.state.cache+"&num_games=5", {
                                 method: 'POST',
                                 headers: new Headers({
                                     'Content-Type': 'application/json'
@@ -52,14 +59,22 @@ class Navbar extends React.Component {
                                     response.json()})
                                     .then(res => {
                                         console.log(res)
-                                    })
-                        });
+                                    }).catch(err => {
+                                        console.log(err);
+                                    });
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });;
                 
                 }
                 else{
                     this.setState({ name: this.state.cache, valid: false });
                 }
-        });
+        })
+        .catch(err => {
+            console.log(err);
+        });;
         
     }
 

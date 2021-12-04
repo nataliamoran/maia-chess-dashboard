@@ -13,7 +13,7 @@ export default function postEventLog(eventTitle, eventStatus){
     };
     fetch(SERVER_URL+'/api/log', requestOptions)
         .then(response => response.json())
-        .then(data => console.log(data));
+        .catch(err => console.log(err));
 
 }
 
