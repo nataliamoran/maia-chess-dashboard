@@ -41,6 +41,13 @@ export default class MenuExampleColoredInverted extends Component {
         event.preventDefault()
         this.setState({ applied: this.state.cache })
         this.props.parentCallback('custom', this.state.cache);
+        postEventLog("Send custom filter query",
+        {
+            username: this.state.username,
+            custom_string: this.state.cache,
+            log_time_fe: Date().toLocaleString()
+        }
+    )
     }
 
     render() {

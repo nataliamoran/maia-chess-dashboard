@@ -1,6 +1,7 @@
 import { ListGroup, Card, Form  } from "react-bootstrap";
 import { SERVER_URL } from "../../env";
 import React from "react";
+import postEventLog from "../util.js";
 import './games.css';
 
 class BoardState extends React.Component {
@@ -17,15 +18,26 @@ class BoardState extends React.Component {
           numGames: 0
         }
       }
-
+      //for the given username, check if the username is still the same as the states'
+      //Check if numGames return > state.numGames, if true call fetchData
+      checkNumGames(username){
+        fetch(SERVER_URL+'/api/analysis/num_games/'+username) 
+        .then(response => response.json())
+        .then(res => {
+            if(username === this.state.username && res > this.state.numGames){
+                this.fetchData(username);
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        });
+      }
       fetchData(username){
-        //  console.log("username: "+username);
         fetch(SERVER_URL+'/api/get_games?username='+username) 
         .then(response => response.json())
         .then(res => {
-            //console.log("# of games: "+res.number_of_games+ " for username: "+username);
+            //initalize maia games as a state
             if(res.number_of_games !== 0 && username === 'maia1' && this.state.maiaGames.length === 0){
-               // console.log("initalize maia games");
                 this.setState({maiaGames: res.games, data: res.games, numGames: res.number_of_games});
             }
             //need to use maia temporary
@@ -38,6 +50,7 @@ class BoardState extends React.Component {
                     this.setState({data: res.games, numGames: res.number_of_games});
                 }
             }
+            //old calls
             else if(this.state.data.length === 0){
                 this.setState({data: this.state.maiaGames, numGames: 0});
             }
@@ -62,6 +75,13 @@ class BoardState extends React.Component {
     componentDidUpdate(prevProps) {
         if(prevProps.currIDs !== this.state.currIDs){
             this.props.parentCallback(this.state.currIDs);
+            postEventLog("User change games to be searched",
+            {
+                username: this.state.username,
+                games_ids: this.state.currIDs,
+                log_time_fe: Date().toLocaleString()
+            }
+            );
         }
         //console.log(prevProps.numGames + 'vs' + this.props.numGames);
         if(prevProps.username !== this.props.username) {
@@ -71,9 +91,10 @@ class BoardState extends React.Component {
         if(prevProps.maxHeight !== this.props.maxHeight){
             this.setState({maxHeight: this.props.maxHeight});
         }
+        //timer as reached 3 secs, check if the num games increased
         if(this.state.count === 3){
-            if(this.state.data.length < 3 || this.state.numGames === 0){
-                this.fetchData(this.props.username);
+            if(this.state.data.length < 5 || this.state.numGames === 0){
+                this.checkNumGames(this.props.username);
                 
             }
             this.setState({count: 0});
