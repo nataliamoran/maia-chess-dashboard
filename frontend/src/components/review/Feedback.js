@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { SERVER_URL } from "../../env";
 import { Icon, Menu } from 'semantic-ui-react'
+import postEventLog from "../util.js";
 
 const colorsA = ['blue']
 const filterNames = ["share"]
@@ -22,6 +23,13 @@ export default class Feedback extends Component {
             return;
         }
         this.setState({ activeA: name });
+
+        postEventLog("Sending feedback",
+            {
+                username: this.state.username,
+                log_time_fe: Date().toLocaleString()
+            }
+        )
 
         fetch(SERVER_URL + '/api/feedback', {
             method: 'POST',

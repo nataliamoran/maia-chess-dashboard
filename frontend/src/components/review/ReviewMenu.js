@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Icon, Menu } from 'semantic-ui-react'
 import { SERVER_URL } from "../../env";
+import postEventLog from "../util.js";
 
 const colorsA = ['green', 'red']
 const filterNames = ["thumbs up", 'thumbs down']
@@ -29,6 +30,13 @@ export default class ReviewMenu extends Component {
         else {
             neg = 1
         }
+
+        postEventLog(this.state.activeA,
+            {
+                username: this.state.username,
+                log_time_fe: Date().toLocaleString()
+            }
+        )
 
         fetch(SERVER_URL +'/api/feedback_rating', {
             method: 'POST',
