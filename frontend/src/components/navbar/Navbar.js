@@ -43,11 +43,11 @@ class Navbar extends React.Component {
                         headers: { 'Content-Type': 'application/json' }
                         //body: JSON.stringify({maxgames: 10})
                     };
-                    fetch(SERVER_URL+'/api/dashboard/raw/'+this.state.cache+"?maxgames=5", requestOptions)
+                    fetch(SERVER_URL+'/api/dashboard/raw/'+this.state.cache+"?maxgames=10", requestOptions)
                         .then(response => response.json())
                         .then(data => {
                             console.log(data);
-                            fetch(SERVER_URL+'/api/analysis/analyze?username='+this.state.cache+"&num_games=5", {
+                            fetch(SERVER_URL+'/api/analysis/analyze?username='+this.state.cache+"&num_games=10", {
                                 method: 'POST',
                                 headers: new Headers({
                                     'Content-Type': 'application/json'
