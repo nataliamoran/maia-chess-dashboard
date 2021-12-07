@@ -61,7 +61,7 @@ class BoardWrapper extends React.Component {
             prevProps.stateSize !== this.props.stateSize ||
             prevProps.arrows !== this.props.arrows) {
             
-            this.setState({ move: this.props.move-1, 
+            this.setState({ move: Math.max(this.props.move-1, 0),
                             boardSize: this.props.boardSize,
                             stateSize: this.props.stateSize,
                             arrows: this.props.arrows});
@@ -124,15 +124,14 @@ class BoardWrapper extends React.Component {
         }
         // console.log(states)
         
-
-        return <div style={{display: "flex"}}>
+        return <div style={{display: (window.innerWidth>500)? "flex":"block"}}>
             <div >
                 <Board  fen = {this.state.states.length > this.state.move ? this.state.states[this.state.move].FEN : "" }
                         lastMove = {["AA", dest]}   // any 2 letters will prevent default highlighting of a8
                         arrows = {this.state.move === this.props.move-1? this.state.arrows : []}
                         size={this.state.boardSize} />
             </div>
-            <Card bg="dark" variant="dark" style={{ width: '199px', maxHeight: this.state.stateSize, float: "right"}}>
+            <Card bg="dark" variant="dark" style={{ width: '199px', maxHeight: this.state.stateSize }}>
                 <Card.Body style={{"textAlign": "left"}}>
                     <Card.Title style={{color:'white'}}>Moves</Card.Title>
                     <ListGroup variant="flush" style={{"overflowY": "auto", "maxHeight": this.state.stateSize - 100}}> 
