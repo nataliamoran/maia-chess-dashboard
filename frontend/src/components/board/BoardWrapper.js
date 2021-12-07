@@ -6,6 +6,7 @@ import Board from "../../components/board/Board";
 import "chessground/assets/chessground.base.css";
 import "chessground/assets/chessground.brown.css";
 import "chessground/assets/chessground.cburnett.css";
+import postEventLog from "../util.js";
 
 // For everything that needs to change for each state
 class BoardWrapper extends React.Component {
@@ -20,6 +21,7 @@ class BoardWrapper extends React.Component {
             stateSize: props.stateSize,
             arrows: props.arrows || [], 
             states: [    ],
+            username: props.username
             // Ideally, states includs:
                 //      FEN, the FEN after the move
                 //      move
@@ -66,11 +68,13 @@ class BoardWrapper extends React.Component {
                             stateSize: this.props.stateSize,
                             arrows: this.props.arrows});
 
-            const selected = document.getElementById("board_move_"+Math.floor((this.props.move-1)/2) );
-            //console.log("board_move_"+Math.floor((this.props.move-1)/2), selected);
-            if (selected) {
-                selected.scrollIntoView({behavior: 'smooth'});
-            }
+            // const selected = document.getElementById("board_move_"+Math.floor((this.props.move-1)/2) );
+            // //console.log("board_move_"+Math.floor((this.props.move-1)/2), selected);
+            // if (selected) {
+            //     selected.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+            // }
+
+            
         
         }
 
@@ -89,7 +93,7 @@ class BoardWrapper extends React.Component {
                     if (data && data.gameId === this.props.gameID) {
                         this.setState({states: data.states, arrows: this.props.arrows})
                         const selected = document.getElementById("board_move_"+Math.floor((this.props.move-1)/2) );
-                        selected.scrollIntoView({behavior: 'smooth'});
+                        selected.scrollIntoView({behavior: 'smooth', block: 'nearest'});
                     }
                 })
                 .catch(err => {
@@ -147,8 +151,15 @@ class BoardWrapper extends React.Component {
                                         }}
                                     onClick={(event) => { 
                                         event.preventDefault();
-                                        console.log("Change to view move ", 2*i)
+                                        console.log("Change to view move "+(2*i+1)+" of "+this.state.gameID);
+                                        postEventLog("Change moves", {
+                                            username: this.state.username,
+                                            log_time_fe: Date().toLocaleString(),
+                                            move: 2 * i,
+                                            gameID: this.state.gameID }
+                                        )
                                         this.setState({move: 2 * i });
+                                        
                                     }}
                             >
                             {i+1}. {e[0].PGN} 
@@ -162,7 +173,13 @@ class BoardWrapper extends React.Component {
                                         }} 
                                     onClick={(event) => { 
                                         event.preventDefault();
-                                        console.log("Change to view move ", 2*i+1)
+                                        console.log("Change to view move "+(2*i+2)+" of "+this.state.gameID);
+                                        postEventLog("Change moves", {
+                                            username: this.state.username,
+                                            log_time_fe: Date().toLocaleString(),
+                                            move: 2 * i + 1,
+                                            gameID: this.state.gameID }
+                                        )
                                         this.setState({move: 2 * i + 1 });
                                     }}
                             >

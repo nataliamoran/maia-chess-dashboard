@@ -114,11 +114,12 @@ export default  function Home(){
                     </div>
                     <div className="column" align="center" style={{ width: 200 + Math.max(300, Math.min(dimensions.width-920, dimensions.height - 150)) ,"textAlign": "left"}}>
                         <div style={{ 'fontSize': '20px', 'fontWeight': 'bold', marginBottom: "2px"}}>Board</div>
-                        <BoardWrapper   gameID = {gameID} // TODO:
+                        <BoardWrapper   gameID = {gameID}
                                         move = {move}
                                         arrows = {arrows}
                                         stateSize = {Math.max(dimensions.height - 150, 200)}
-                                        boardSize={Math.max(300, Math.min(dimensions.width-920, dimensions.height - 150))} />
+                                        boardSize={Math.max(300, Math.min(dimensions.width-920, dimensions.height - 150))}
+                                        username={username} />
                         <p style={{float: "left"}}>
                             <span style={{'color': 'orange'}}>Maia Suggestions</span> 
                             <br/>
