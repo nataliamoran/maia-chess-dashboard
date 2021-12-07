@@ -93,7 +93,8 @@ class BoardState extends React.Component {
         }
         //timer as reached 3 secs, check if the num games increased
         if(this.state.count === 3){
-            if(this.state.data.length < 5 || this.state.numGames === 0){
+            //since we usually just have 10 games analyzed
+            if(this.state.data.length < 10 || this.state.numGames === 0){
                 this.checkNumGames(this.props.username);
                 
             }

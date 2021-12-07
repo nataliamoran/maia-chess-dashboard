@@ -121,6 +121,8 @@ export default  function Home(){
                                         boardSize={Math.max(300, Math.min(dimensions.width-920, dimensions.height - 150))}
                                         username={username} />
                         <p style={{float: "left"}}>
+                        <span style={{'color': 'DarkGreen'}}>User's Moves</span> 
+                            <br/>
                             <span style={{'color': 'orange'}}>Maia Suggestions</span> 
                             <br/>
                             <span style={{'color': 'red'}}>Stockfish Suggestions</span>

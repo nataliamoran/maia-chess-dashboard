@@ -74,14 +74,13 @@ export default class MenuExampleColoredInverted extends Component {
                             name={'custom'}
                             active={activeA === 'custom'}
                             color={'blue'}
-                            style= {{display: 'none'}}
+                            /*style= {{display: 'none'}}*/
                             onClick={this.handleAClick}>
                             Custom
                             {this.state.activeA === 'custom' &&
                              <form className='ui form' onSubmit={this.onFormSubmit}>
                                 <div style={{marginTop: '5px'}}>
                                 <textarea style={{background: textareaColor}} placeholder="Mongo Filter" rows="2" value={this.state.cache} onChange={this.eventName}></textarea>
-                                {/*<button className='ui icon button'  style={{background: "DarkGray", marginTop: '1px'}}  type="submit"><i aria-hidden="true" className="play icon"></i></button>*/}
                                 <Button variant="outline-light" size='sm' style={{marginTop: '2px'}}>Search</Button>
                                 </div> 
                             </form>
