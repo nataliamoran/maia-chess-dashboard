@@ -2,6 +2,7 @@ import fastapi
 import httpx
 import asyncio
 import os
+import ast
 
 from typing import List, Tuple
 from pydantic import BaseModel, Field
@@ -291,7 +292,15 @@ async def get_game(username: str = "maia1"):
 
 
 @fe_router.get("/filters", response_description="Filter game", response_model=GameFilterModel)
-async def filter_games(gameFilter: str, games: str, username: str):
+async def filter_games(gameFilter: str, games: str, username: str, filterString:str = None):
+    custom = None
+    isCustom = False
+    if filterString and gameFilter == 'custom':
+        try:
+            custom = ast.literal_eval(filterString)
+        except:
+            pass
+        isCustom = True
     currFilter = gameFilter
     if gameFilter == 'mistakes':
         currFilter = 'p'
@@ -300,7 +309,7 @@ async def filter_games(gameFilter: str, games: str, username: str):
     else:
         currFilter = 't'
     list_of_games = games.split(",")
-    filtered_games = await get_filters(username, currFilter, list_of_games)
+    filtered_games = await get_filters(username, currFilter, list_of_games, custom, isCustom)
     res = {
         "filter": gameFilter,
         "games": filtered_games
