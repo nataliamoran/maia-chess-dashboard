@@ -39,7 +39,6 @@ async def get_filters(username: str, filters: str, games: list, filterString: di
         full_query = {'game_id': game}
         if filterString and isCustom:
             full_query.update(filterString)
-            print(full_query)
         states = await get_states(full_query, True)
         stats = await get_analyzed_games(game)
         prev_moves = {} # previous moves hashmap,
