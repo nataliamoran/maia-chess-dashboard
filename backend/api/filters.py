@@ -3,10 +3,10 @@ from . import db_client
 MODEL_NAME = "maia_kdd_1900"
 STOCKFISH = "stockfish"
 
-async def get_states(game_id, every):
+async def get_states(query, every):
     anal = db_client.get_analysis_db()
 
-    cursor = anal['game_states'].find({'game_id': game_id})
+    cursor = anal['game_states'].find(query)
     if every:
         states = await cursor.to_list(length=100000000)  # arbitrary value to change
     else:
@@ -32,11 +32,15 @@ async def get_analyzed_games(game_id: str):
     stats = await cursor.to_list(length=1)
     return stats[0][MODEL_NAME]
 
-async def get_filters(username: str, filters: str, games: list) -> dict:
+async def get_filters(username: str, filters: str, games: list, filterString: dict, isCustom: bool) -> dict:
     all_states = []
     for game in games:
         user_states = []
-        states = await get_states(game, True)
+        full_query = {'game_id': game}
+        if filterString and isCustom:
+            full_query.update(filterString)
+            print(full_query)
+        states = await get_states(full_query, True)
         stats = await get_analyzed_games(game)
         prev_moves = {} # previous moves hashmap,
         count = 1
