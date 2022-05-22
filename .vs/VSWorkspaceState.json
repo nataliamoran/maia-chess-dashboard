@@ -2,14 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\frontend",
-    "\\frontend\\public",
     "\\frontend\\src",
     "\\frontend\\src\\components",
-    "\\frontend\\src\\components\\findMenu",
-    "\\frontend\\src\\components\\navbar",
-    "\\frontend\\src\\components\\pages",
-    "\\scripts"
+    "\\frontend\\src\\components\\findMenu"
   ],
-  "SelectedNode": "\\frontend\\yarn.lock",
+  "SelectedNode": "\\frontend\\src\\components\\findMenu\\FindMenu.js",
   "PreviewInSolutionExplorer": false
 }

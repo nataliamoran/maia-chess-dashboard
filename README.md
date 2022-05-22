@@ -55,7 +55,7 @@ FastAPI openapi doc.
 
 From the `frontend` directory, run 
 ```
-npm install
+yarn install
 npm start
 ```
 This will start the react app locally.

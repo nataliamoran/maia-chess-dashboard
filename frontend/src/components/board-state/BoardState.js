@@ -1,7 +1,7 @@
-//import * as ReactBootStrap from "react-bootstrap"
 import { ListGroup, Card  } from "react-bootstrap";
-//import React, { Component } from "react";
+import { SERVER_URL } from "../../env";
 import React from "react";
+import postEventLog from "../util.js";
 import './BoardState.css';
 
 class BoardState extends React.Component {
@@ -10,34 +10,67 @@ class BoardState extends React.Component {
         super(props)
         this.state = {
           data: [],
+          gameIDs: props.gameIDs || [],
           curr: "",
           filter: props.searchfilter,
-          maxHeight: props.maxHeight | 400
+          maxHeight: props.maxHeight||400,
+          customString: props.customString,
+          username: props.username
+          
         }
-      }
-
-      componentDidMount(){
-          if(this.state.filter){
-            fetch('/api/filters/'+this.props.searchfilter) 
-        .then(response => response.json())
-        .then(res => {
-            this.setState({data: res.games});
-        });
-          }
-          else{
-              this.setState({data:[]});
-          }
+    }
+    
+    fetchData(gameIDs, filter, customString, username){
+        var games = '';
+        if(gameIDs && gameIDs.length > 0){
+            games = '&games='+gameIDs.toString();
+        
+        var customStringFilter = '';
+        if(filter === 'custom'){
+            customStringFilter = "&filterString="+customString;
+        }
+        fetch(SERVER_URL+'/api/filters?gameFilter='+filter+customStringFilter+games+'&username='+username) 
+            .then(response => response.json())
+            .then(res => {
+                //console.log('/api/filters?gameFilter='+filter+customStringFilter+games+'&username='+username);
+                if(res.games.length === 0 && username !== 'maia1'){
+                    this.fetchData(gameIDs, filter, customString, 'maia1')
+                }
+                else{
+                    this.setState({data: res.games})
+                }
+            })
+            .catch(err => {
+                console.log(err);
+                    console.log('/api/filters?gameFilter='+filter+customStringFilter+games+'&username='+username);
+                });
+       
+        }
+    }
+    
+    componentDidMount(){
+        if(this.state.filter){
+            this.fetchData(this.state.gameIDs, this.state.filter, this.state.customString, this.state.username);
+        }
+        else{
+            this.setState({data:[]});
+        }
     }
 
     componentDidUpdate(prevProps) {
-        if(prevProps.searchfilter !== this.props.searchfilter) {
-          this.setState({filter: this.props.searchfilter});
-          fetch('/api/filters/'+this.props.searchfilter)//http://dash-dev.maiachess.com
-                .then(response => response.json())
-                .then(res => {
-                    this.setState({data: res.games});
-                });
+        if(this.props.username !== prevProps.username || 
+            this.props.gameIDs !== prevProps.gameIDs || 
+            prevProps.searchfilter !== this.props.searchfilter || 
+            this.props.customString !== prevProps.customString){
+            this.setState({gameIDs: this.props.gameIDs, username: this.props.username, filter: this.props.searchfilter, customString: this.props.customString});
+            if(this.props.searchfilter){
+                this.fetchData(this.props.gameIDs, this.props.searchfilter, this.props.customString, this.props.username);
+            }
         }
+        /*if(prevProps.searchfilter !== this.props.searchfilter || this.props.customString !== prevProps.customString) {
+            
+            this.fetchData(this.props.gameIDs, this.props.searchfilter, this.props.customString, this.props.username);
+        }   */   
         if(prevProps.maxHeight !== this.props.maxHeight){
             this.setState({maxHeight: this.props.maxHeight});
         }
@@ -46,10 +79,10 @@ class BoardState extends React.Component {
 
     render() {
         return (
-            <Card bg="dark" variant="dark" style={{ width: '200px'}}>
+            <Card bg="dark" variant="dark" style={{ width: '180px'}}>
                 <Card.Body style={{"textAlign": "left"}}>
-                    <Card.Title style={{color:'white'}}>Board State</Card.Title>
-                    <ListGroup variant="flush" style={{"overflowY": "auto", "maxHeight": (this.state.maxHeight+"px")}}>
+                    {/*<Card.Title style={{color:'white'}}>Board State</Card.Title>*/}
+                    <ListGroup variant="flush" style={{"overflowY": "auto", "maxHeight": (this.state.maxHeight-50)}}>
                     {this.state.data.map(d => (
                         <ListGroup.Item key={(d.ID+d.state.round)}
                         action variant="dark"
@@ -57,12 +90,20 @@ class BoardState extends React.Component {
                             this.setState({
                                 curr: d.ID
                               });
-                            this.props.parentCallback(d, d.state.FEN);
+                            this.props.parentCallback(d);
+                            postEventLog("User change position to be displayed",
+                            {
+                                username: this.state.username,
+                                game_id: d.ID,
+                                game_state: d.state,
+                                log_time_fe: Date().toLocaleString()
+                            }
+                            );
                             event.preventDefault();
                             }} >
-                                 <div style={{'fontSize': '16px','fontWeight': 'bold'}}>{d.state.round}.&nbsp;{d.state.move}</div>
-                            <div>{d.whitePlayer} vs {d.blackPlayer}</div>
-                            <div>{d.date}</div>
+                                 <div style={{'fontSize': '16px','fontWeight': 'bold'}}>{Math.ceil(d.state.round/2)}.&nbsp;{d.state.move}</div>
+                            <div style={{'fontSize': '12px'}}>{d.whitePlayer} vs {d.blackPlayer}</div>
+                            <div style={{'fontSize': '10px'}}>{d.date.substring(5, 10).replaceAll('.', '/')}/{d.date.substring(0, 4)}&nbsp;{d.date.substring(11, 16)}</div>
                            
                             <div style={{float: 'left', 'fontWeight': 'bold'}}>P:</div> 
                             {d.state.stat.p > 0.5 &&
@@ -96,6 +137,7 @@ class BoardState extends React.Component {
                             }
                         </ListGroup.Item>
                     ))} 
+                    
                     </ListGroup>
                 </Card.Body>
             </Card>

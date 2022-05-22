@@ -2,25 +2,33 @@ import fastapi
 import httpx
 import asyncio
 import os
+import ast
 
 from typing import List, Tuple
 from pydantic import BaseModel, Field
 from bson import ObjectId
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
-from fastapi import Body, HTTPException, status
+from fastapi import Body, HTTPException, status, Request, APIRouter
 from .utils import PyObjectId
-from .models import EventModel, UserModel, GameNumModel
+from .models import EventModel, UserModel, GameNumModel, UserFeedbackModel, UserFeedbackRatingModel
+from . import db_client, dashboard_router, analysis_router
+from datetime import datetime, time, timedelta
 
 import json
+
+from .get_games import get_user_games
+from .get_stats import get_user_stats
+from .get_game_state import get_game_states
+from .filters import get_filters
 
 fe_router = fastapi.APIRouter(prefix="/api", tags=['frontend'])
 
 
 class StatModel(BaseModel):
-    p: int = Field(..., ge=-1, le=1)
-    t: int = Field(..., ge=0, le=1)
-    e: int = Field(..., ge=0)
+    p: float = Field(...)
+    t: float = Field(...)
+    e: float = Field(...)
 
     class Config:
         allow_population_by_field_name = True
@@ -192,42 +200,136 @@ class GameFilterModel(BaseModel):
         }
 
 
-@fe_router.get("/games/{game_id}", response_description="Get game state", response_model=GameModel)
+class RawGameModel(BaseModel):
+    ID: str = Field(...)
+    whitePlayer: str = Field(...)
+    blackPlayer: str = Field(...)
+    date: str = Field(...)
+
+    class Config:
+        allow_population_by_field_name = True
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}
+        schema_extra = {
+            "example": {
+                "ID": "sozvQYHn",
+                "whitePlayer": "neltew",
+                "blackPlayer": "maia1",
+                "date": '2021.11.25 19:03:19'
+            }
+        }
+
+
+class UserGames(BaseModel):
+    username: str = Field(...)
+    number_of_games: int = Field(...)
+    games: List[RawGameModel] = Field(...)
+
+    class Config:
+        allow_population_by_field_name = True
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}
+        schema_extra = {
+            "example": {
+                "username": "maia1",
+                "number_of_games": 2,
+                "games": [
+                    {
+                        "ID": "sozvQYHn",
+                        "whitePlayer": "neltew",
+                        "blackPlayer": "maia1",
+                        "date": '2021.11.25 19:03:19'
+                    },
+                    {
+                        "ID": "pd5v0Q3k",
+                        "whitePlayer": "maia1",
+                        "blackPlayer": "sampowell",
+                        "date": '2021.11.25 19:03:19'
+                    }
+                ]
+            }
+        }
+
+class GameStates(BaseModel):
+    gameId: str = Field(...)
+    states: list = Field(...)
+
+    class Config:
+        allow_population_by_field_name = True
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}
+        schema_extra = {
+            "example": {
+                "gameId": "xj53pmTF",
+                "states": [
+                    {
+                        "FEN": "rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR b KQkq - 0 1",
+                        "PGN": "d4"
+                    }
+                ]
+            }
+        }
+
+@fe_router.get("/games/{game_id}", response_description="Get game state", response_model=GameStates)
 async def get_game(game_id: str):
-    pass
+    states = await get_game_states(game_id)
+    res = {
+        "gameId": game_id,
+        "states": states
+    }
+    return res
 
 
-@fe_router.get("/filters/{games_filter}", response_description="Filter game", response_model=GameFilterModel)
-async def filter_games(games_filter: str):
-    script_dir = os.path.dirname(__file__)
-    if games_filter == 'mistakes':
-        file_path = os.path.join(script_dir, 'resources/mistakes.json')
-    elif games_filter == 'interesting':
-        file_path = os.path.join(script_dir, 'resources/interesting.json')
+@fe_router.get("/get_games", response_description="Return games that the user has played", response_model=UserGames)
+async def get_game(username: str = "maia1"):
+    user_games, num_ganes = await get_user_games(username)
+    res = {
+        "username": username,
+        "number_of_games": num_ganes,
+        "games": user_games
+    }
+    return res
+
+
+@fe_router.get("/filters", response_description="Filter game", response_model=GameFilterModel)
+async def filter_games(gameFilter: str, games: str, username: str, filterString:str = None):
+    custom = None
+    isCustom = False
+    if filterString and gameFilter == 'custom':
+        try:
+            custom = ast.literal_eval(filterString)
+        except:
+            pass
+        isCustom = True
+    currFilter = gameFilter
+    if gameFilter == 'mistakes':
+        currFilter = 'p'
+    elif gameFilter == 'interesting':
+        currFilter = 'e'
     else:
-        file_path = os.path.join(script_dir, 'resources/tricky.json')
-    data = json.load(open(file_path))
-    return data
+        currFilter = 't'
+    list_of_games = games.split(",")
+    filtered_games = await get_filters(username, currFilter, list_of_games, custom, isCustom)
+    res = {
+        "filter": gameFilter,
+        "games": filtered_games
+    }
+    return res
 
-
-@fe_router.get("/num_games/{username}", response_description="Get the number of games analyzed", response_model=GameNumModel)
+@fe_router.get("/num_games/{username}",
+               response_description="Get the number of games analyzed",
+               response_model=GameNumModel)
 async def get_num_games(username: str):
-    pass
-
-
-@fe_router.get("/stats/{username}", response_description="Get user stats", response_model=StatModel)
-async def get_stats(username: str):
-    pass
-
+    return await analysis_router.get_analyzed_games_num(username)
 
 @fe_router.get("/users/{username}", response_description="Get user profile", response_model=UserModel)
 async def get_user_profile(username: str):
     pass
 
 
-@fe_router.post("/events", response_description="Log frontend event")
+@fe_router.post("/log", response_description="Log frontend event")
 async def log_event(event: EventModel = Body(...)):
-    pass
+    return await dashboard_router.log_fe_event(event)
 
 
 @fe_router.post("/login/{username}", response_description="Login with Lichess")
@@ -238,3 +340,13 @@ async def login(username: str):
 @fe_router.post("/logout/{username}", response_description="Logout")
 async def logout(username: str):
     pass
+
+
+@fe_router.post("/feedback", response_description="User feedback")
+async def send_user_feedback(feedback: UserFeedbackModel = Body(...)):
+    return await dashboard_router.send_user_feedback(feedback)
+
+
+@fe_router.post("/feedback_rating", response_description="User feedback rating")
+async def send_user_feedback_rating(feedback_rating: UserFeedbackRatingModel = Body(...)):
+    return await dashboard_router.send_user_feedback_rating(feedback_rating)
