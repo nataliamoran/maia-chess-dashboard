@@ -1,8 +1,12 @@
-### Deliverable 1 Planning Document
-https://github.com/csc301-fall-2021/team-project-4-csslab-uoft/tree/main/deliverable-1
+# Maia Chess Dashboard
 
-### Deliverable 1 Mockups
-https://angelyuan218063.invisionapp.com/prototype/maia-chess-ckuaa4ek700agth01x08c0nbw/play/4b27e4b5
+[Maia Chess Dashboard](https://dash-dev.maiachess.com/) is an online platform using a [human-like chess AI Maia](https://maiachess.com/) to analyze chess games. This project is implemented in collaboration with [CSSLab](http://csslab.cs.toronto.edu/) for CSC301 course at the University of Toronto.
+
+Detailed feature description can be found [here](https://github.com/nataliamoran/maia-chess-dashboard/tree/main/deliverable-2).
+
+Watch a Youtube demo [here](https://youtu.be/yDHj_cD_ahU) or click on the preview below.
+
+[![maia dashboard demo](https://img.youtube.com/vi/yDHj_cD_ahU/0.jpg)](https://www.youtube.com/watch?v=yDHj_cD_ahU)
 
 # Local environment installation guidelines
 ## Dependencies
